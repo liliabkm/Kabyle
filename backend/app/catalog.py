@@ -39,3 +39,20 @@ def seed_catalog(session):
             session.add(MediaAsset(**asset))
             counts["photos_added"] += 1
     return counts
+
+def seed_lesson_previews(session):
+    from .models import Lesson
+    phrases = json.loads((ROOT / "catalog/preview-phrases.json").read_text())
+    lessons = json.loads((ROOT / "catalog/vocabulary-lessons.json").read_text())
+    counts = {"phrases_added": 0, "lessons_added": 0}
+    for item in phrases:
+        if item["status"] != "draft" or not item["data"].get("publication_blockers"):
+            raise ValueError("Unreviewed preview phrases must remain drafts")
+        if session.get(Content, item["id"]) is None:
+            session.add(Content(**item)); counts["phrases_added"] += 1
+    for item in lessons:
+        if item['status'] != 'draft':
+            raise ValueError('Source preview lesson cannot be published by the seed')
+        if session.get(Lesson, item["id"]) is None:
+            session.add(Lesson(**item)); counts["lessons_added"] += 1
+    return counts

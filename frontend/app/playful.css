@@ -2166,3 +2166,452 @@ footer > span:last-child {
     margin-bottom: 22px;
   }
 }
+
+.vocabulary-entry {
+  background: #fff;
+  border: 2px solid #e3dcf1;
+  border-radius: 24px;
+  padding: 30px;
+  margin: 22px 0;
+  text-align: center;
+}
+.vocabulary-entry-icon {
+  width: 70px;
+  height: 70px;
+  display: grid;
+  place-items: center;
+  background: #e9e2fb;
+  color: #7653af;
+  border-radius: 22px;
+  margin: 0 auto 20px;
+}
+.vocabulary-entry h2 {
+  font-size: 29px;
+  margin: 0 0 13px;
+}
+.vocabulary-entry > p {
+  font-size: 16px;
+  color: #586682;
+  line-height: 1.8;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.vocabulary-roadmap {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 24px 0;
+  flex-wrap: wrap;
+}
+.vocabulary-roadmap > span {
+  background: #f1edf9;
+  border-radius: 14px;
+  padding: 12px 15px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #6a528d;
+}
+.teacher-preview-gate {
+  text-align: left;
+  border-top: 1px solid #e9e5f1;
+  padding-top: 18px;
+}
+.teacher-preview-gate summary {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 700;
+  color: #6b509c;
+  min-height: 44px;
+}
+.teacher-preview-gate > p {
+  font-size: 13px;
+  line-height: 1.9;
+  color: #59657f;
+}
+.teacher-preview-gate label {
+  font-size: 13px;
+  font-weight: 700;
+  color: #52617b;
+}
+.teacher-preview-gate form {
+  max-width: 620px;
+  margin: 18px auto;
+}
+.teacher-preview-gate .primary {
+  margin-top: 17px;
+}
+.private-preview-label {
+  display: inline-block;
+  font-size: 10px;
+  margin-top: 7px;
+  background: #fff0d7;
+  border-radius: 12px;
+  padding: 5px 9px;
+  color: #79592f;
+}
+.word-lesson {
+  max-width: 850px;
+  margin: auto;
+  text-align: center;
+}
+.word-preview-notice {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  font-size: 12px;
+  color: #7d5c25;
+  background: #fff2d8;
+  padding: 13px 15px;
+  border-radius: 12px;
+  line-height: 1.7;
+  margin: 0 0 23px;
+}
+.word-lesson > .back {
+  margin-bottom: 20px;
+}
+.word-lesson h1 {
+  font-size: 32px;
+}
+.word-discovery-card,
+.phrase-discovery-card {
+  background: #fff;
+  border: 2px solid #e5dcf3;
+  border-bottom-width: 6px;
+  border-radius: 24px;
+  padding: 27px;
+  margin: 24px auto;
+  max-width: 620px;
+}
+.word-discovery-card h2 {
+  font: 800 36px var(--serif);
+  color: #6950a4;
+  min-height: 45px;
+  margin: 12px 0;
+}
+.word-discovery-card > p {
+  font-size: 22px;
+  color: #51607a;
+  margin: 12px 0;
+}
+.word-discovery-card .text-button {
+  font-size: 14px;
+  display: inline-flex;
+  margin-top: 8px;
+}
+.animal-visual {
+  display: block;
+  width: 220px;
+  height: 180px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+.word-photo-cluster {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  min-height: 180px;
+  flex-wrap: wrap;
+}
+.word-photo-cluster img {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+  max-width: 30%;
+  background: #fff;
+}
+.phrase-discovery-card h2 {
+  font: 800 29px/1.6 var(--serif);
+  color: #51416e;
+  overflow-wrap: anywhere;
+}
+.phrase-discovery-card mark {
+  border-radius: 7px;
+  background: #fff0c8;
+  color: #685184;
+  padding: 3px 6px;
+}
+.phrase-discovery-card > p {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #596580;
+}
+.word-lesson .discovery-track {
+  margin: 15px auto 26px;
+  max-width: 600px;
+}
+.exercise-french {
+  font-size: 21px;
+  color: #5a4b7b;
+  line-height: 1.8;
+  margin: 20px 0;
+  font-weight: 700;
+}
+.word-choices {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 13px;
+  margin: 22px auto;
+  max-width: 700px;
+}
+.word-choices button,
+.word-chips button,
+.assembled-phrase button,
+.character-keys button {
+  border: 2px solid #dcd4eb;
+  border-bottom-width: 5px;
+  background: #fff;
+  color: #654aa2;
+  border-radius: 14px;
+  min-height: 52px;
+  padding: 11px 15px;
+  font-size: 17px;
+  font-weight: 700;
+}
+.word-choices button {
+  min-height: 65px;
+  overflow-wrap: anywhere;
+}
+.word-chips,
+.assembled-phrase {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 25px 0;
+}
+.assembled-phrase {
+  border: 2px dashed #d8d0e7;
+  border-radius: 17px;
+  padding: 18px;
+  min-height: 97px;
+  align-items: center;
+  background: #fff;
+}
+.assembled-phrase > span {
+  font-size: 14px;
+  color: #818397;
+}
+.assembled-phrase button {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: #ede7fa;
+}
+.word-chips button:disabled {
+  opacity: 0.35;
+}
+.word-lesson .feedback {
+  margin: 25px auto;
+  text-align: left;
+  max-width: 650px;
+}
+.word-lesson .feedback p {
+  font-size: 22px;
+}
+.word-lesson .feedback .feedback-translation {
+  font-size: 15px;
+}
+.cloze-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+  flex-wrap: wrap;
+  font-size: 23px;
+  line-height: 1.8;
+  color: #5e4a85;
+  margin: 25px auto;
+}
+.cloze-line input {
+  max-width: 310px;
+  font-size: 23px;
+  text-align: center;
+  margin: 0;
+}
+.character-keys {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+.character-keys button {
+  min-width: 48px;
+}
+.vocab-summary {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin: 25px 0;
+}
+.vocab-summary > div {
+  background: #e7f4eb;
+  color: #3f7458;
+  border-radius: 14px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px;
+}
+.vocab-summary b {
+  font-size: 20px;
+}
+.vocab-summary span {
+  font-size: 15px;
+}
+.word-source-note {
+  text-align: left;
+  margin-top: 35px;
+}
+.word-source-note > p {
+  font-size: 13px;
+  line-height: 1.9;
+}
+.word-source-note > div {
+  margin: 16px 0;
+}
+.word-source-note b {
+  font-size: 14px;
+}
+.word-picture-unavailable {
+  font-size: 14px;
+  color: #68738b;
+  padding: 35px;
+}
+@media (max-width: 600px) {
+  .vocabulary-entry {
+    padding: 23px 17px;
+  }
+  .vocabulary-entry h2 {
+    font-size: 25px;
+  }
+  .vocabulary-entry > p {
+    font-size: 15px;
+  }
+  .vocabulary-roadmap {
+    gap: 7px;
+  }
+  .vocabulary-roadmap > span {
+    font-size: 11px;
+    padding: 10px 9px;
+  }
+  .teacher-preview-gate summary {
+    font-size: 14px;
+  }
+  .teacher-preview-gate > p {
+    font-size: 12px;
+  }
+  .teacher-preview-gate .primary {
+    width: 100%;
+    font-size: 14px;
+  }
+  .word-preview-notice {
+    font-size: 11px;
+    align-items: flex-start;
+  }
+  .word-preview-notice svg {
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .word-lesson h1 {
+    font-size: 28px;
+  }
+  .word-discovery-card,
+  .phrase-discovery-card {
+    padding: 22px 15px;
+    margin: 23px 0;
+  }
+  .word-discovery-card h2 {
+    font-size: 31px;
+    overflow-wrap: anywhere;
+  }
+  .word-discovery-card > p {
+    font-size: 20px;
+  }
+  .animal-visual {
+    width: 200px;
+    height: 164px;
+  }
+  .word-photo-cluster {
+    min-height: 150px;
+  }
+  .word-photo-cluster img {
+    width: 83px;
+    height: 83px;
+  }
+  .phrase-discovery-card h2 {
+    font-size: 24px;
+    line-height: 1.8;
+  }
+  .phrase-discovery-card > p {
+    font-size: 16px;
+  }
+  .exercise-french {
+    font-size: 19px;
+  }
+  .word-choices {
+    grid-template-columns: 1fr;
+    gap: 11px;
+    max-width: 320px;
+  }
+  .word-choices button {
+    min-height: 56px;
+    font-size: 19px;
+  }
+  .word-chips {
+    gap: 9px;
+  }
+  .word-chips button,
+  .assembled-phrase button {
+    font-size: 17px;
+    padding: 10px 13px;
+  }
+  .assembled-phrase {
+    min-height: 100px;
+    padding: 15px;
+  }
+  .cloze-line {
+    font-size: 21px;
+    gap: 9px;
+  }
+  .cloze-line input {
+    max-width: 260px;
+    font-size: 21px;
+  }
+  .word-lesson .feedback p {
+    font-size: 20px;
+  }
+  .word-lesson .feedback .feedback-translation {
+    font-size: 14px;
+  }
+  .vocab-summary {
+    gap: 10px;
+  }
+  .vocab-summary > div {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .vocab-summary b {
+    font-size: 17px;
+  }
+  .vocab-summary span {
+    font-size: 14px;
+  }
+  .word-lesson .lesson-topline {
+    align-items: flex-start;
+  }
+  .word-lesson .lesson-topline > span:first-child {
+    white-space: normal;
+  }
+  .word-lesson .lesson-steps li {
+    font-size: 12px;
+    min-height: 48px;
+  }
+}

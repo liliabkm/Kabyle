@@ -1,0 +1,106 @@
+[
+  {
+    "id": "phrase-ll-preview-dog",
+    "kind": "phrase",
+    "variety": "kab",
+    "script": "Latn",
+    "theme": "premiers-mots",
+    "status": "draft",
+    "data": {
+      "latin": "Max d aqjun",
+      "french": "Max est un chien",
+      "tifinagh": "",
+      "alternative_versions": [
+        "Max d aydi"
+      ],
+      "sources": [
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/animals.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_index": 1,
+          "source_section": "Phrases",
+          "source_sha256": "4be8d11803b86d966ce02cd9d47b5ca7fd5a6817dee107a21219ad744a43b201",
+          "changes": "Extraction sans réécriture, espaces de fin retirés."
+        }
+      ],
+      "license_conflict": true,
+      "publication_blockers": [
+        "Licence du cours à clarifier : BY-NC-SA / BY-SA",
+        "Relecture linguistique et pédagogique requise"
+      ],
+      "validation_status": "source_attested_not_reviewed",
+      "target_word_id": "word-ll-1eab8b37b60faf6b"
+    }
+  },
+  {
+    "id": "phrase-ll-preview-horse",
+    "kind": "phrase",
+    "variety": "kab",
+    "script": "Latn",
+    "theme": "premiers-mots",
+    "status": "draft",
+    "data": {
+      "latin": "D agmar",
+      "french": "C'est un cheval",
+      "tifinagh": "",
+      "alternative_versions": [],
+      "sources": [
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/animals.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_index": 0,
+          "source_section": "Phrases",
+          "source_sha256": "4be8d11803b86d966ce02cd9d47b5ca7fd5a6817dee107a21219ad744a43b201",
+          "changes": "Extraction sans réécriture, espaces de fin retirés."
+        }
+      ],
+      "license_conflict": true,
+      "publication_blockers": [
+        "Licence du cours à clarifier : BY-NC-SA / BY-SA",
+        "Relecture linguistique et pédagogique requise"
+      ],
+      "validation_status": "source_attested_not_reviewed",
+      "target_word_id": "word-ll-744863bc359507d6"
+    }
+  },
+  {
+    "id": "phrase-ll-preview-strawberry",
+    "kind": "phrase",
+    "variety": "kab",
+    "script": "Latn",
+    "theme": "premiers-mots",
+    "status": "draft",
+    "data": {
+      "latin": "Tizwal uṛumi d tizeggaɣin",
+      "french": "Les fraises sont rouges",
+      "tifinagh": "",
+      "alternative_versions": [],
+      "sources": [
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/plurals.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_index": 2,
+          "source_section": "Phrases",
+          "source_sha256": "06d3b474270cc91fac7b164295151156424b8a6c37a7448743ef6e50895c7b12",
+          "changes": "Extraction sans réécriture, espaces de fin retirés."
+        }
+      ],
+      "license_conflict": true,
+      "publication_blockers": [
+        "Licence du cours à clarifier : BY-NC-SA / BY-SA",
+        "Relecture linguistique et pédagogique requise"
+      ],
+      "validation_status": "source_attested_not_reviewed",
+      "target_word_id": "word-ll-61bc0cbd747688cf"
+    }
+  }
+]

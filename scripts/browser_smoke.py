@@ -43,7 +43,7 @@ with sync_playwright() as p:
     assert info.value.suggested_filename=='tifin-a.png'
     page.get_by_role('button',name='Effacer',exact=True).click()
     expect(page.get_by_role('button',name='Garder mon dessin')).to_be_disabled()
-    expect(page.get_by_role('navigation').get_by_role('button',name='Les mots',exact=True)).to_have_count(0)
+    expect(page.get_by_role('navigation').get_by_role('button',name='Mots et phrases',exact=True)).to_be_visible()
     page.get_by_role('button',name='Gestion des contenus').click()
     expect(page.get_by_role('button',name='Ouvrir la bibliothèque')).to_be_disabled()
     page.get_by_text('Édition avancée et import JSON',exact=True).click()

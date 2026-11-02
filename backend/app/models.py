@@ -36,3 +36,11 @@ class MediaAsset(Base):
     label_fr: Mapped[str] = mapped_column(String)
     status: Mapped[str] = mapped_column(String, default="available")
     data: Mapped[dict] = mapped_column(JSON)
+
+class Lesson(Base):
+    __tablename__ = "lesson"
+    id: Mapped[str] = mapped_column(String, primary_key=True)
+    title: Mapped[str] = mapped_column(String)
+    theme: Mapped[str] = mapped_column(String)
+    status: Mapped[str] = mapped_column(String, default="draft")
+    data: Mapped[dict] = mapped_column(JSON)

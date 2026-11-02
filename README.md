@@ -45,7 +45,7 @@ Pour récupérer une mise à jour de l’interface sur une installation existant
 
 ## Ce qui reste à livrer
 
-Les 30 mots illustrés, les exemples kabyles validés, les exercices photo avec vocabulaire réel, les paires audio–texte, le modèle visuel et la transcription vocale ne sont pas livrés. Les écrans les présentent honnêtement en attente ou indisponibles. L’audit a identifié des licences/mappings manquants et des destinations réseau bloquées ; voir [les sources](docs/SOURCES.md) et [l’état IA](ml/EVALUATION.md). Le stockage S3 est prévu par séparation de service mais pas implémenté. Ne pas présenter cette tranche comme la totalité du cahier des charges.
+Les 30 mots illustrés, les exemples kabyles validés, les parcours illustrés publiés pour ce vocabulaire, les paires audio–texte, le modèle visuel et la transcription vocale ne sont pas livrés. Les écrans les présentent honnêtement en attente ou indisponibles. L’audit a identifié des licences/mappings manquants et des destinations réseau bloquées ; voir [les sources](docs/SOURCES.md) et [l’état IA](ml/EVALUATION.md). Le stockage S3 est prévu par séparation de service mais pas implémenté. Ne pas présenter cette tranche comme la totalité du cahier des charges.
 
 ## Parcours pour apprendre
 
@@ -53,9 +53,17 @@ L’accueil propose désormais trois mini-leçons regroupant les 8 lettres publi
 
 Après le défi, l’apprenant peut tracer uniquement les lettres qu’il vient de découvrir, passer à la suite ou revoir ses progrès. Les exercices libres et les révisions restent disponibles. Les cartes de leçon marquent les lettres déjà reconnues, ce qui ne constitue pas une certification de maîtrise ni une preuve de rétention à long terme. L’état exact de l’écran de découverte n’est pas conservé après rechargement ; les réponses enregistrées le sont.
 
-Le parcours enseigne pour l’instant **l’écriture de 8 lettres**, pas un cours complet de conversation kabyle. Aucun audio n’est simulé. Le vocabulaire non validé reste dans l’administration ; l’entrée « Les mots » n’apparaît dans la navigation apprenant que lorsqu’au moins un mot est publié. Les questions techniques ne sont pas nécessaires pour suivre la leçon : les sources et précisions restent dans le volet parents.
+Le parcours enseigne pour l’instant **l’écriture de 8 lettres**, pas un cours complet de conversation kabyle. Aucun audio n’est simulé. Le vocabulaire non validé n’entre pas dans les cours publiés. L’entrée « Mots et phrases » propose désormais un aperçu privé pour préparer les contenus, protégé par le jeton enseignant. Les questions techniques ne sont pas nécessaires pour suivre la leçon : les sources et précisions restent dans le volet parents.
 
 Test du parcours complet, après démarrage : `.venv/bin/python scripts/guided_browser_smoke.py` (Playwright/Chromium requis comme pour les autres tests navigateur).
+
+## Mots et phrases : aperçu pédagogique privé
+
+Dans « Mots et phrases », ouvrir « Essayer la leçon privée (enseignant) » et saisir le jeton ADMIN_TOKEN local. Le jeton reste uniquement en mémoire dans cet écran. Le parcours utilise trois mots existants et trois phrases attestées du cours LibreLingo, sans traduction générée : chien (`aqjun`), cheval (`agmar`), fraises (`tizwal uṛumi`). Il montre d’abord les cartes illustrées, puis les phrases en contexte, et propose huit exercices : reconnaissance, reconstruction avec des jetons, phrase à compléter et rappel écrit.
+
+Cet aperçu n’est **pas un cours publié** : sources et licences restent en relecture. Les textes sont utilisés dans le cadre du prototype privé non commercial, sous les restrictions déjà documentées. Aucun tifinagh ou audio n’est inventé. Les résultats sont corrigés par le serveur mais le bilan reste celui de la séance ; il ne crée pas de faux progrès dans les leçons validées. L’accès public à cette leçon renvoie 404. La migration Alembic 003 conserve sa définition en base et le seed ajoute les trois phrases en brouillon sans écraser les corrections.
+
+Les principes ont été étudiés dans les formats publics de LibreLingo, le manuel Anki et la recherche HLR de Duolingo, pas en prétendant reproduire leurs algorithmes ou avoir visité leurs interfaces actuelles. Voir [la méthode, les exercices et le dataset Sifal](docs/WORDS-AND-PHRASES.md).
 
 ## Base de mots et de photos
 

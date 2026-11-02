@@ -1,0 +1,87 @@
+[
+  {
+    "id": "premiers-mots",
+    "title": "Mes premiers mots",
+    "theme": "decouverte",
+    "status": "draft",
+    "data": {
+      "word_ids": [
+        "word-ll-1eab8b37b60faf6b",
+        "word-ll-744863bc359507d6",
+        "word-ll-61bc0cbd747688cf"
+      ],
+      "phrase_ids": [
+        "phrase-ll-preview-dog",
+        "phrase-ll-preview-horse",
+        "phrase-ll-preview-strawberry"
+      ],
+      "media": {
+        "word-ll-1eab8b37b60faf6b": {
+          "illustration": "dog"
+        },
+        "word-ll-744863bc359507d6": {
+          "illustration": "horse"
+        },
+        "word-ll-61bc0cbd747688cf": {
+          "asset_id": "photo-fruits360-fraise",
+          "repeat": 3
+        }
+      },
+      "exercises": [
+        {
+          "id": "recognize-0",
+          "type": "recognize",
+          "content_id": "word-ll-1eab8b37b60faf6b"
+        },
+        {
+          "id": "recognize-1",
+          "type": "recognize",
+          "content_id": "word-ll-744863bc359507d6"
+        },
+        {
+          "id": "recognize-2",
+          "type": "recognize",
+          "content_id": "word-ll-61bc0cbd747688cf"
+        },
+        {
+          "id": "order-0",
+          "type": "order",
+          "content_id": "phrase-ll-preview-dog"
+        },
+        {
+          "id": "order-1",
+          "type": "order",
+          "content_id": "phrase-ll-preview-horse"
+        },
+        {
+          "id": "order-2",
+          "type": "order",
+          "content_id": "phrase-ll-preview-strawberry"
+        },
+        {
+          "id": "cloze-fruit",
+          "type": "cloze",
+          "content_id": "phrase-ll-preview-strawberry",
+          "word_id": "word-ll-61bc0cbd747688cf"
+        },
+        {
+          "id": "recall-dog",
+          "type": "recall",
+          "content_id": "word-ll-1eab8b37b60faf6b"
+        }
+      ],
+      "scope": "private_noncommercial_preview",
+      "notice": "Aperçu privé en relecture. Les textes ne sont pas publiés dans les leçons apprenants. Aucun audio ni tifinagh généré.",
+      "learning_objectives": [
+        "Associer une image et un mot",
+        "Retrouver un mot dans une phrase",
+        "Reconstruire une phrase source",
+        "Retrouver un mot sans le regarder"
+      ],
+      "method_sources": [
+        "https://github.com/LibreLingo/LibreLingo/blob/3c4bcfb3ef999ae48ee3d361afb0c4a5fa317dee/docs/courses/challenge.md",
+        "https://github.com/ankitects/anki-manual/blob/91f7485236db2a89d2a8abaed618976caf971de2/src/studying.md"
+      ]
+    }
+  }
+]

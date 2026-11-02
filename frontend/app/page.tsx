@@ -19,6 +19,7 @@ import {
   Target,
   X,
 } from "lucide-react";
+import VocabularyPreview from "../components/VocabularyPreview";
 import GuidedLesson from "../components/GuidedLesson";
 import Mascot from "../components/Mascot";
 import Matching from "../components/Matching";
@@ -150,12 +151,12 @@ export default function Home() {
   const nav = [
     { id: "learn", label: "Accueil", icon: Compass },
     { id: "alphabet", label: "Les lettres", icon: BookOpen },
-    { id: "words", label: "Les mots", icon: LayoutGrid },
+    { id: "words", label: "Mots et phrases", icon: LayoutGrid },
     { id: "draw", label: "Dessiner", icon: PenLine },
     { id: "oral", label: "Ma voix", icon: Headphones },
     { id: "progress", label: "Mes progrès", icon: Target },
   ] as const;
-  const learnerNav = nav.filter((n) => n.id !== "words" || words.length > 0);
+  const learnerNav = nav;
   return (
     <div className="shell">
       <aside className={mobile ? "sidebar open" : "sidebar"}>
@@ -521,6 +522,24 @@ export default function Home() {
                     Jouer <ArrowRight size={19} />
                   </button>
                 </div>
+                <div>
+                  <span className="game-icon">
+                    <BookOpen size={27} />
+                  </span>
+                  <div>
+                    <h3>Des mots aux phrases</h3>
+                    <p>Cartes, mots à replacer et phrases à compléter.</p>
+                    <span className="private-preview-label">
+                      Aperçu privé en relecture
+                    </span>
+                  </div>
+                  <button
+                    className="secondary"
+                    onClick={() => navigate("words")}
+                  >
+                    Découvrir <ArrowRight size={18} />
+                  </button>
+                </div>
                 {due.length > 0 && (
                   <div>
                     <span className="game-icon">
@@ -636,23 +655,26 @@ export default function Home() {
           ) : view === "words" ? (
             <>
               <PageTitle
-                tag="03 · LE QUOTIDIEN"
-                title="Les mots en images"
-                text="Regarde l’image et trouve le mot."
+                tag="APPRENDRE AVEC DES MOTS"
+                title="Mots et phrases"
+                text="Une image pour comprendre. Une phrase pour utiliser le mot."
               />
-              <div className="themes">
-                {[
-                  "Tous les thèmes",
-                  "Animaux",
-                  "Fruits",
-                  "Légumes",
-                  "Famille",
-                  "Maison",
-                  "Vie quotidienne",
-                ].map((t) => (
-                  <span key={t}>{t}</span>
-                ))}
-              </div>
+              <VocabularyPreview />
+              {words.length > 0 && (
+                <div className="themes">
+                  {[
+                    "Tous les thèmes",
+                    "Animaux",
+                    "Fruits",
+                    "Légumes",
+                    "Famille",
+                    "Maison",
+                    "Vie quotidienne",
+                  ].map((t) => (
+                    <span key={t}>{t}</span>
+                  ))}
+                </div>
+              )}
               {words.length ? (
                 <>
                   <div className="course-grid">
@@ -688,20 +710,7 @@ export default function Home() {
                     Pratiquer les mots <ArrowRight size={17} />
                   </button>
                 </>
-              ) : (
-                <div className="empty">
-                  <div className="empty-art">♧</div>
-                  <span className="pill light">À DÉCOUVRIR BIENTÔT</span>
-                  <h2>Les mots arrivent bientôt !</h2>
-                  <p>En attendant, viens jouer avec les lettres !</p>
-                  <button
-                    className="secondary"
-                    onClick={() => navigate("alphabet")}
-                  >
-                    Découvrir les lettres <ArrowRight size={16} />
-                  </button>
-                </div>
-              )}
+              ) : null}
             </>
           ) : view === "draw" ? (
             <>

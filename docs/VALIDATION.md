@@ -46,3 +46,11 @@ Compilation TypeScript/Next.js réussie. Test Chromium réexécuté : bouton d�
 Le test Chromium `scripts/guided_browser_smoke.py` passe : découverte avant les questions, masquage/révélation de l’équivalent latin, erreur volontaire puis nouvelle tentative, trois réponses correctes enregistrées et une erreur réelle dans PostgreSQL, bilan de réussite, atelier limité aux trois lettres vues, proposition de la leçon suivante, conservation des résultats après rechargement. Disposition vérifiée à 390 et 320 px sans débordement. Les tests des exercices libres et du dessin passent également. Compilation Next.js/TypeScript réussie. Aucune modification de schéma ni dépendance ajoutée pour ce parcours.
 
 Captures : artifacts/learning-home.png, guided-discovery.png, guided-success.png, guided-mobile.png. Aucune étude de l’efficacité pédagogique ni validation auprès d’enfants n’a été réalisée ; il s’agit d’un parcours utilisable techniquement avec le sous-ensemble graphique déjà documenté. Le vocabulaire en brouillon reste exclu.
+
+## Mots et phrases en aperçu privé
+
+Migration 003 appliquée, leçon stockée en base, trois mots existants référencés et trois phrases sources ajoutées en brouillon. Suite API : **18 tests passés**, dont accès public refusé, authentification privée, phrase exacte, variante attestée, ordre incorrect, conservation des diacritiques et absence d’écriture dans la progression publique. Compilation Next.js/TypeScript réussie.
+
+`scripts/vocabulary_browser_smoke.py` passe sur une API réelle avec un jeton temporaire : carte masquée/révélée, trois contextes, erreur volontaire et réessai, reconnaissance, trois phrases reconstruites, complétion, rappel écrit, huit réponses correctes, bilan de séance et absence de progrès public. Affichage vérifié à 390 et 320 px. Les exercices libres existants passent aussi. Captures : artifacts/vocabulary-word.png, vocabulary-context.png, vocabulary-cloze-mobile.png. Le test utilise des réponses d’exercices réels, sans simuler une prédiction IA.
+
+Sifal/Kabyle-French : l’audit de métadonnées n’a pas pu accéder au serveur (tunnel proxy refusé HTTP 403). Aucune ligne importée, aucune licence ni qualité supposée. Rapport local ignoré par Git : artifacts/sifal-audit/report.json. Le collecteur de l’aperçu a été rejoué avec la révision source figée, sans changement des sorties.

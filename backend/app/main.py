@@ -105,3 +105,6 @@ def import_content(items: list[ContentInput],s=Depends(db)):
 @app.get("/api/admin/media", dependencies=[Depends(admin)])
 def admin_media(s=Depends(db)):
     return [{"id": a.id, "kind": a.kind, "theme": a.theme, "label_fr": a.label_fr, "status": a.status, "data": a.data} for a in s.scalars(select(MediaAsset).order_by(MediaAsset.label_fr))]
+
+from .vocabulary import register_routes
+register_routes(app, db, admin)
