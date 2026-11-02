@@ -19,12 +19,12 @@ import {
   Target,
   X,
 } from "lucide-react";
+import GuidedLesson from "../components/GuidedLesson";
 import Mascot from "../components/Mascot";
 import Matching from "../components/Matching";
 import type { Entry, Progress } from "../lib/types";
 import { request } from "../lib/api";
 import PageTitle from "../components/PageTitle";
-import Course from "../components/Course";
 import Drawing from "../components/Drawing";
 import Recorder from "../components/Recorder";
 import Admin from "../components/Admin";
@@ -37,6 +37,8 @@ type View =
   | "progress"
   | "admin";
 export default function Home() {
+  const [lessonIndex, setLessonIndex] = useState<number | null>(null);
+  const [drawingLetters, setDrawingLetters] = useState<Entry[] | null>(null);
   const [matching, setMatching] = useState<Entry[] | null>(null);
   const [view, setView] = useState<View>("learn"),
     [entries, setEntries] = useState<Entry[]>([]),
@@ -55,6 +57,24 @@ export default function Home() {
     [mobile, setMobile] = useState(false);
   const letters = entries.filter((e) => e.kind === "letter"),
     words = entries.filter((e) => e.kind === "word");
+  const lessonGroups = Array.from(
+    { length: Math.ceil(letters.length / 3) },
+    (_, i) => letters.slice(i * 3, i * 3 + 3),
+  );
+  const recognized = (id: string) =>
+    progress.some((p) => p.content_id === id && p.correct > 0);
+  const nextLesson = Math.max(
+    0,
+    lessonGroups.findIndex((g) => !g.every((l) => recognized(l.id))),
+  );
+  function startLesson(i: number) {
+    setMatching(null);
+    setQuiz(false);
+    setActive(null);
+    setLessonIndex(i);
+    setMobile(false);
+    setError("");
+  }
   const done = progress.filter((p) => p.correct > 0).length;
   const due = progress
     .filter((p) => new Date(p.due) <= new Date())
@@ -67,8 +87,10 @@ export default function Home() {
   }, []);
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [view, quiz, matching]);
+  }, [view, quiz, matching, lessonIndex]);
   function navigate(v: View) {
+    setLessonIndex(null);
+    setDrawingLetters(null);
     setMatching(null);
     setView(v);
     setActive(null);
@@ -133,6 +155,7 @@ export default function Home() {
     { id: "oral", label: "Ma voix", icon: Headphones },
     { id: "progress", label: "Mes progrès", icon: Target },
   ] as const;
+  const learnerNav = nav.filter((n) => n.id !== "words" || words.length > 0);
   return (
     <div className="shell">
       <aside className={mobile ? "sidebar open" : "sidebar"}>
@@ -152,7 +175,7 @@ export default function Home() {
         </a>
         <div className="workspace-label">À TOI DE JOUER</div>
         <nav>
-          {nav.map((n) => (
+          {learnerNav.map((n) => (
             <button
               key={n.id}
               className={view === n.id ? "nav-item selected" : "nav-item"}
@@ -218,6 +241,25 @@ export default function Home() {
             <div className="empty">
               <Sparkles /> On prépare les jeux…
             </div>
+          ) : lessonIndex !== null && lessonGroups[lessonIndex] ? (
+            <GuidedLesson
+              key={lessonIndex}
+              letters={lessonGroups[lessonIndex]}
+              number={lessonIndex + 1}
+              total={lessonGroups.length}
+              onExit={() => setLessonIndex(null)}
+              onSaved={refresh}
+              onDraw={() => {
+                const group = lessonGroups[lessonIndex];
+                navigate("draw");
+                setDrawingLetters(group);
+              }}
+              onNext={() => {
+                if (lessonIndex + 1 < lessonGroups.length)
+                  startLesson(lessonIndex + 1);
+                else navigate("progress");
+              }}
+            />
           ) : matching ? (
             <Matching
               entries={matching}
@@ -350,23 +392,23 @@ export default function Home() {
                     <Sparkles size={17} /> Apprendre en s’amusant
                   </span>
                   <h1>Le kabyle, c’est parti !</h1>
-                  <p>Un petit jeu. Une nouvelle découverte.</p>
+                  <p>Une petite leçon, un jeu, puis une révision.</p>
                 </div>
               </div>
               <section className="hero">
                 <div className="hero-content">
-                  <span className="pill">TON PREMIER DÉFI</span>
+                  <span className="pill">MON PARCOURS D’APPRENTISSAGE</span>
                   <h2>
-                    On joue avec
+                    J’apprends mes
                     <br />
-                    les lettres ?
+                    premières lettres.
                   </h2>
-                  <p>Regarde la forme. Trouve la bonne lettre !</p>
+                  <p>Je découvre. Je joue. Je retiens.</p>
                   <button
                     className="cream-button"
-                    onClick={() => begin(letters)}
+                    onClick={() => startLesson(nextLesson)}
                   >
-                    C’est parti ! <ArrowRight size={22} />
+                    Commencer ma leçon <ArrowRight size={22} />
                   </button>
                   <div className="hero-meta">
                     <span>
@@ -419,44 +461,50 @@ export default function Home() {
                   Mes progrès <ArrowRight size={18} />
                 </button>
               </div>
-              <div className="section-heading">
-                <h2>Choisis ton activité</h2>
-                <span>À ton rythme !</span>
-              </div>
-              <div className="course-grid">
-                <Course
-                  color="sand"
-                  symbol="ⴰ"
-                  label="1"
-                  title="Les lettres"
-                  text="Regarde et reconnais."
-                  footer="Je découvre"
-                  onClick={() => navigate("alphabet")}
-                />
-                <Course
-                  color="sage"
-                  symbol="✎"
-                  label="2"
-                  title="Je dessine"
-                  text="À toi de tracer !"
-                  footer="Je prends mon crayon"
-                  onClick={() => navigate("draw")}
-                />
-                <Course
-                  color="rose"
-                  symbol="♧"
-                  label="3"
-                  title="Les mots"
-                  text={
-                    words.length
-                      ? "Des images et des mots."
-                      : "De nouvelles aventures se préparent."
-                  }
-                  footer={words.length ? "Je découvre" : "Bientôt disponible"}
-                  onClick={() => navigate("words")}
-                  pending={!words.length}
-                />
-              </div>
+              <section className="learning-path" aria-label="Mes mini-leçons">
+                <div className="section-heading">
+                  <h2>Mes mini-leçons</h2>
+                  <span>Découvrir → jouer → réviser</span>
+                </div>
+                <div className="lesson-map">
+                  {lessonGroups.map((group, i) => {
+                    const complete = group.every((l) => recognized(l.id));
+                    return (
+                      <button
+                        key={group[0].id}
+                        className={
+                          complete
+                            ? "lesson-node done"
+                            : i === nextLesson
+                              ? "lesson-node recommended"
+                              : "lesson-node"
+                        }
+                        onClick={() => startLesson(i)}
+                      >
+                        <span className="lesson-node-number">
+                          {complete ? <Check size={23} /> : i + 1}
+                        </span>
+                        <span className="lesson-node-body">
+                          <b>Leçon {i + 1}</b>
+                          <span className="lesson-node-glyphs" lang="kab-Tfng">
+                            {group.map((l) => l.tifinagh).join(" ")}
+                          </span>
+                          <small>
+                            {complete
+                              ? "Lettres déjà reconnues"
+                              : `${group.length} lettres à découvrir`}
+                          </small>
+                        </span>
+                        <ArrowRight size={22} />
+                      </button>
+                    );
+                  })}
+                </div>
+                <p className="tiny">
+                  Pas besoin de savoir lire le tifinagh. On te montre avant de
+                  te demander de reconnaître.
+                </p>
+              </section>
               <div className="home-games">
                 <div>
                   <span className="game-icon">
@@ -662,7 +710,7 @@ export default function Home() {
                 title="À toi de dessiner !"
                 text="Choisis une lettre, puis dessine-la avec ton doigt ou la souris."
               />
-              <Drawing letters={letters} />
+              <Drawing letters={drawingLetters || letters} />
             </>
           ) : view === "oral" ? (
             <>

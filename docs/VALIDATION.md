@@ -40,3 +40,9 @@ Compilation TypeScript/Next.js réussie. Test Chromium réexécuté : bouton d�
 - Bibliothèque vérifiée à 390 px sans débordement. Capture : artifacts/photo-library.png. La vignette doit rester petite : pas de prétention à la haute définition ni de test auprès d’enfants.
 - Collecte répétée avec les fichiers déjà contrôlés : aucun téléchargement nécessaire, mêmes 61/30, fichier YAML invalide toujours exclu et signalé.
 - Aucun mot supplémentaire publié dans les jeux, aucune conversion tifinaghe automatique, aucune inférence de traduction ou d’audio.
+
+## Parcours pédagogique guidé
+
+Le test Chromium `scripts/guided_browser_smoke.py` passe : découverte avant les questions, masquage/révélation de l’équivalent latin, erreur volontaire puis nouvelle tentative, trois réponses correctes enregistrées et une erreur réelle dans PostgreSQL, bilan de réussite, atelier limité aux trois lettres vues, proposition de la leçon suivante, conservation des résultats après rechargement. Disposition vérifiée à 390 et 320 px sans débordement. Les tests des exercices libres et du dessin passent également. Compilation Next.js/TypeScript réussie. Aucune modification de schéma ni dépendance ajoutée pour ce parcours.
+
+Captures : artifacts/learning-home.png, guided-discovery.png, guided-success.png, guided-mobile.png. Aucune étude de l’efficacité pédagogique ni validation auprès d’enfants n’a été réalisée ; il s’agit d’un parcours utilisable techniquement avec le sous-ensemble graphique déjà documenté. Le vocabulaire en brouillon reste exclu.

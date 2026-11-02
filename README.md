@@ -47,6 +47,16 @@ Pour récupérer une mise à jour de l’interface sur une installation existant
 
 Les 30 mots illustrés, les exemples kabyles validés, les exercices photo avec vocabulaire réel, les paires audio–texte, le modèle visuel et la transcription vocale ne sont pas livrés. Les écrans les présentent honnêtement en attente ou indisponibles. L’audit a identifié des licences/mappings manquants et des destinations réseau bloquées ; voir [les sources](docs/SOURCES.md) et [l’état IA](ml/EVALUATION.md). Le stockage S3 est prévu par séparation de service mais pas implémenté. Ne pas présenter cette tranche comme la totalité du cahier des charges.
 
+## Parcours pour apprendre
+
+L’accueil propose désormais trois mini-leçons regroupant les 8 lettres publiées (3 + 3 + 2). Le bouton « Commencer ma leçon » ouvre la première dont toutes les lettres n’ont pas encore été reconnues. Chaque leçon suit la séquence : objectif court, découverte des correspondances tifinagh–latin, rappel en cachant la réponse, reconnaissance à choix multiple, correction avec nouvelle tentative après une erreur, puis bilan. Aucune réussite n’est affichée avant une réponse correcte à chaque question. Les réponses et erreurs utilisent l’API et la progression PostgreSQL existantes ; pas de points ou de résultats simulés.
+
+Après le défi, l’apprenant peut tracer uniquement les lettres qu’il vient de découvrir, passer à la suite ou revoir ses progrès. Les exercices libres et les révisions restent disponibles. Les cartes de leçon marquent les lettres déjà reconnues, ce qui ne constitue pas une certification de maîtrise ni une preuve de rétention à long terme. L’état exact de l’écran de découverte n’est pas conservé après rechargement ; les réponses enregistrées le sont.
+
+Le parcours enseigne pour l’instant **l’écriture de 8 lettres**, pas un cours complet de conversation kabyle. Aucun audio n’est simulé. Le vocabulaire non validé reste dans l’administration ; l’entrée « Les mots » n’apparaît dans la navigation apprenant que lorsqu’au moins un mot est publié. Les questions techniques ne sont pas nécessaires pour suivre la leçon : les sources et précisions restent dans le volet parents.
+
+Test du parcours complet, après démarrage : `.venv/bin/python scripts/guided_browser_smoke.py` (Playwright/Chromium requis comme pour les autres tests navigateur).
+
 ## Base de mots et de photos
 
 Le démarrage importe maintenant **61 entrées kabyle–français en brouillon** et **30 photos réelles de fruits/légumes** dans PostgreSQL, en plus des 8 lettres. Dans « Gestion des contenus », saisir le jeton administrateur local, puis « Ouvrir la bibliothèque ». Les onglets permettent de rechercher un mot, voir ses sources, corriger une fiche et lui associer une photo en brouillon. L’éditeur JSON reste disponible dans « Édition avancée ».
