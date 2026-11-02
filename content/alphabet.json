@@ -1,0 +1,202 @@
+[
+  {
+    "id": "letter-a",
+    "kind": "letter",
+    "variety": "kab",
+    "script": "Tfng",
+    "theme": "alphabet",
+    "status": "validated",
+    "data": {
+      "latin": "a",
+      "tifinagh": "ⴰ",
+      "french": "La lettre A",
+      "hint": "Voyelle ouverte, comme le a de « papa ».",
+      "ipa": "/a/",
+      "sources": [
+        {
+          "url": "https://www.unicode.org/charts/PDF/U2D30.pdf",
+          "author": "Unicode Consortium",
+          "license": "Unicode License v3 — noms et propriétés des caractères"
+        }
+      ],
+      "reviewed_by": "Contrôle technique Unicode ; convention pédagogique limitée aux correspondances de base",
+      "reviewed_at": "2026-11-02",
+      "validation_scope": "Correspondance graphique Unicode, pas validation lexicale ni phonétique par un locuteur."
+    }
+  },
+  {
+    "id": "letter-b",
+    "kind": "letter",
+    "variety": "kab",
+    "script": "Tfng",
+    "theme": "alphabet",
+    "status": "validated",
+    "data": {
+      "latin": "b",
+      "tifinagh": "ⴱ",
+      "french": "La lettre B",
+      "hint": "Valeur de base b ; les réalisations kabyles peuvent varier.",
+      "ipa": "/b/",
+      "sources": [
+        {
+          "url": "https://www.unicode.org/charts/PDF/U2D30.pdf",
+          "author": "Unicode Consortium",
+          "license": "Unicode License v3 — noms et propriétés des caractères"
+        }
+      ],
+      "reviewed_by": "Contrôle technique Unicode ; convention pédagogique limitée aux correspondances de base",
+      "reviewed_at": "2026-11-02",
+      "validation_scope": "Correspondance graphique Unicode, pas validation lexicale ni phonétique par un locuteur."
+    }
+  },
+  {
+    "id": "letter-d",
+    "kind": "letter",
+    "variety": "kab",
+    "script": "Tfng",
+    "theme": "alphabet",
+    "status": "validated",
+    "data": {
+      "latin": "d",
+      "tifinagh": "ⴷ",
+      "french": "La lettre D",
+      "hint": "Valeur de base d ; la spirantisation sera étudiée séparément.",
+      "ipa": "/d/",
+      "sources": [
+        {
+          "url": "https://www.unicode.org/charts/PDF/U2D30.pdf",
+          "author": "Unicode Consortium",
+          "license": "Unicode License v3 — noms et propriétés des caractères"
+        }
+      ],
+      "reviewed_by": "Contrôle technique Unicode ; convention pédagogique limitée aux correspondances de base",
+      "reviewed_at": "2026-11-02",
+      "validation_scope": "Correspondance graphique Unicode, pas validation lexicale ni phonétique par un locuteur."
+    }
+  },
+  {
+    "id": "letter-f",
+    "kind": "letter",
+    "variety": "kab",
+    "script": "Tfng",
+    "theme": "alphabet",
+    "status": "validated",
+    "data": {
+      "latin": "f",
+      "tifinagh": "ⴼ",
+      "french": "La lettre F",
+      "hint": "Comme le f de « famille ».",
+      "ipa": "/f/",
+      "sources": [
+        {
+          "url": "https://www.unicode.org/charts/PDF/U2D30.pdf",
+          "author": "Unicode Consortium",
+          "license": "Unicode License v3 — noms et propriétés des caractères"
+        }
+      ],
+      "reviewed_by": "Contrôle technique Unicode ; convention pédagogique limitée aux correspondances de base",
+      "reviewed_at": "2026-11-02",
+      "validation_scope": "Correspondance graphique Unicode, pas validation lexicale ni phonétique par un locuteur."
+    }
+  },
+  {
+    "id": "letter-i",
+    "kind": "letter",
+    "variety": "kab",
+    "script": "Tfng",
+    "theme": "alphabet",
+    "status": "validated",
+    "data": {
+      "latin": "i",
+      "tifinagh": "ⵉ",
+      "french": "La lettre I",
+      "hint": "Voyelle i, comme dans « ici ».",
+      "ipa": "/i/",
+      "sources": [
+        {
+          "url": "https://www.unicode.org/charts/PDF/U2D30.pdf",
+          "author": "Unicode Consortium",
+          "license": "Unicode License v3 — noms et propriétés des caractères"
+        }
+      ],
+      "reviewed_by": "Contrôle technique Unicode ; convention pédagogique limitée aux correspondances de base",
+      "reviewed_at": "2026-11-02",
+      "validation_scope": "Correspondance graphique Unicode, pas validation lexicale ni phonétique par un locuteur."
+    }
+  },
+  {
+    "id": "letter-l",
+    "kind": "letter",
+    "variety": "kab",
+    "script": "Tfng",
+    "theme": "alphabet",
+    "status": "validated",
+    "data": {
+      "latin": "l",
+      "tifinagh": "ⵍ",
+      "french": "La lettre L",
+      "hint": "Comme le l de « lune ».",
+      "ipa": "/l/",
+      "sources": [
+        {
+          "url": "https://www.unicode.org/charts/PDF/U2D30.pdf",
+          "author": "Unicode Consortium",
+          "license": "Unicode License v3 — noms et propriétés des caractères"
+        }
+      ],
+      "reviewed_by": "Contrôle technique Unicode ; convention pédagogique limitée aux correspondances de base",
+      "reviewed_at": "2026-11-02",
+      "validation_scope": "Correspondance graphique Unicode, pas validation lexicale ni phonétique par un locuteur."
+    }
+  },
+  {
+    "id": "letter-m",
+    "kind": "letter",
+    "variety": "kab",
+    "script": "Tfng",
+    "theme": "alphabet",
+    "status": "validated",
+    "data": {
+      "latin": "m",
+      "tifinagh": "ⵎ",
+      "french": "La lettre M",
+      "hint": "Comme le m de « maman ».",
+      "ipa": "/m/",
+      "sources": [
+        {
+          "url": "https://www.unicode.org/charts/PDF/U2D30.pdf",
+          "author": "Unicode Consortium",
+          "license": "Unicode License v3 — noms et propriétés des caractères"
+        }
+      ],
+      "reviewed_by": "Contrôle technique Unicode ; convention pédagogique limitée aux correspondances de base",
+      "reviewed_at": "2026-11-02",
+      "validation_scope": "Correspondance graphique Unicode, pas validation lexicale ni phonétique par un locuteur."
+    }
+  },
+  {
+    "id": "letter-n",
+    "kind": "letter",
+    "variety": "kab",
+    "script": "Tfng",
+    "theme": "alphabet",
+    "status": "validated",
+    "data": {
+      "latin": "n",
+      "tifinagh": "ⵏ",
+      "french": "La lettre N",
+      "hint": "Comme le n de « nuit ».",
+      "ipa": "/n/",
+      "sources": [
+        {
+          "url": "https://www.unicode.org/charts/PDF/U2D30.pdf",
+          "author": "Unicode Consortium",
+          "license": "Unicode License v3 — noms et propriétés des caractères"
+        }
+      ],
+      "reviewed_by": "Contrôle technique Unicode ; convention pédagogique limitée aux correspondances de base",
+      "reviewed_at": "2026-11-02",
+      "validation_scope": "Correspondance graphique Unicode, pas validation lexicale ni phonétique par un locuteur."
+    }
+  }
+]

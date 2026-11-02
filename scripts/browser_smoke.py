@@ -1,0 +1,65 @@
+"""Real-browser integration checks against the running development stack."""
+from pathlib import Path
+from playwright.sync_api import sync_playwright, expect
+
+artifacts=Path(__file__).resolve().parent.parent/'artifacts'
+artifacts.mkdir(exist_ok=True)
+with sync_playwright() as p:
+    browser=p.chromium.launch(executable_path='/usr/bin/chromium',headless=True,args=['--no-sandbox'])
+    context=browser.new_context(viewport={'width':1440,'height':1100})
+    page=context.new_page()
+    errors=[]
+    page.on('pageerror',lambda error:errors.append(str(error)))
+    page.goto('http://127.0.0.1:3000')
+    expect(page.get_by_role('heading',name='Un petit pas, un nouveau lien.')).to_be_visible()
+    page.screenshot(path=str(artifacts/'desktop.png'),full_page=True)
+    page.get_by_role('button',name='Découvrir l’alphabet').click()
+    expect(page.locator('.letter-card')).to_have_count(8)
+    page.get_by_role('button',name='Associer les cartes').click()
+    expect(page.get_by_role('heading',name='À chaque forme, son équivalent.')).to_be_visible()
+    page.locator('.matching > div').nth(0).get_by_role('button').nth(0).click()
+    page.locator('.matching > div').nth(1).get_by_role('button',name='a',exact=True).click()
+    expect(page.get_by_text('Une nouvelle paire retrouvée !')).to_be_visible()
+    page.get_by_role('button',name='Retour aux fiches').click()
+    page.get_by_role('button',name='Commencer les exercices').click()
+    page.locator('.answers').get_by_role('button',name='a',exact=True).click()
+    expect(page.get_by_text('Très bien !')).to_be_visible()
+    page.get_by_role('button',name='Quitter l’exercice').click()
+    page.get_by_role('button',name='Mes progrès',exact=True).click()
+    expect(page.locator('.progress-list')).to_contain_text('2 réussite(s)')
+    page.reload()
+    page.get_by_role('button',name='Mes progrès',exact=True).click()
+    expect(page.locator('.progress-list')).to_contain_text('2 réussite(s)')
+    page.get_by_role('button',name='Atelier d’écriture',exact=True).click()
+    canvas=page.locator('canvas')
+    box=canvas.bounding_box()
+    page.mouse.move(box['x']+40,box['y']+40)
+    page.mouse.down()
+    page.mouse.move(box['x']+130,box['y']+150,steps=12)
+    page.mouse.up()
+    expect(page.get_by_role('button',name='Enregistrer mon tracé')).to_be_enabled()
+    with page.expect_download() as info:
+        page.get_by_role('button',name='Enregistrer mon tracé').click()
+    assert info.value.suggested_filename=='tifin-a.png'
+    page.get_by_role('button',name='Effacer',exact=True).click()
+    expect(page.get_by_role('button',name='Enregistrer mon tracé')).to_be_disabled()
+    page.get_by_role('button',name='Les mots du quotidien').click()
+    expect(page.get_by_role('heading',name='Les premiers mots se préparent.')).to_be_visible()
+    page.get_by_role('button',name='Gestion des contenus').click()
+    expect(page.get_by_role('button',name='Charger les contenus')).to_be_disabled()
+    # Clean only the anonymous identity created by this run.
+    assert context.request.delete('http://127.0.0.1:3000/api/progress').status==204
+    assert not errors,errors
+    print('Desktop: navigation, quiz, persistence, canvas/export, unavailable vocabulary, admin: PASS')
+    mobile=browser.new_context(viewport={'width':390,'height':844},is_mobile=True,has_touch=True)
+    mp=mobile.new_page()
+    mp.goto('http://127.0.0.1:3000')
+    expect(mp.get_by_role('heading',name='Un petit pas, un nouveau lien.')).to_be_visible()
+    assert mp.evaluate('document.documentElement.scrollWidth <= window.innerWidth')
+    mp.screenshot(path=str(artifacts/'mobile.png'),full_page=True)
+    mp.get_by_role('button',name='Ouvrir le menu').click()
+    mp.get_by_role('button',name='Alphabet tifinagh',exact=True).click()
+    expect(mp.locator('.letter-card')).to_have_count(8)
+    assert mp.evaluate('document.documentElement.scrollWidth <= window.innerWidth')
+    print('Mobile: responsive layout and menu navigation: PASS')
+    browser.close()

@@ -1,0 +1,29 @@
+# Validation — 2 novembre 2026
+
+Vérifications réalisées dans l’instance cloud courante, contre PostgreSQL 17 réel.
+
+| Vérification | Résultat |
+|---|---|
+| Installation complète `bash scripts/install.sh` | Réussie : dépendances verrouillées, base, migration, import et build |
+| Migration Alembic `upgrade head` et double import | Réussis, huit lettres sans doublons |
+| Tests API `python -m pytest -q` | 7 tests passés ; 1 avertissement de dépréciation Starlette/AnyIO, aucune erreur |
+| TypeScript `npm run typecheck` | Réussi |
+| Production `npm run build` | Réussi, dernière version modulaire avec association de cartes |
+| Démarrage puis arrêt/redémarrage avec `scripts/start.sh` | Réussis, contrôle `/api/health` via Next.js et requête PostgreSQL |
+| Chromium ordinateur 1440 px | Navigation, association, quiz, persistance après rechargement, canvas et export PNG, effacement du tracé, état lexical vide et admin protégée : réussis ; aucune erreur JavaScript relevée |
+| Chromium mobile 390 px | Menu et huit fiches accessibles, aucune largeur débordante détectée |
+| Captures | `artifacts/desktop.png`, `artifacts/mobile.png` (générées, ignorées par Git) |
+
+Les tests API couvrent calcul serveur de réponse, erreurs et progression, répétition d’une tentative sans double comptage, isolation entre deux navigateurs anonymes, suppression, import atomique, accès admin, exclusion des brouillons, rejet des publications incomplètes et indisponibilité IA explicite.
+
+Le lancement Next.js doit disposer des permissions réseau et de sous-processus de cet environnement cloud. Un premier build en bac à sable restreint ne pouvait pas analyser la sortie d’un sous-processus TypeScript ; le build autorisé avec les permissions nécessaires a réussi, sans désactiver les contrôles TypeScript.
+
+## Non vérifié / absent
+
+- Aucun entraînement ou benchmark IA ; voir `ml/EVALUATION.md`.
+- Aucun test sur microphone physique ni sur gestes tactiles d’un téléphone physique. Le canvas a été exercé avec des événements pointeur Chromium.
+- Aucun contenu lexical/audio exploitable publié : les objectifs de 30 mots, photo-quiz avec lexique réel et audio ne sont pas satisfaits.
+- Pas de test de charge, de déploiement public ou de restauration dans une nouvelle tâche cloud.
+- La publication de l’environnement cloud est distincte de l’envoi du code sur GitHub ; elle n’a pas été effectuée lors de cette validation.
+
+La fonctionnalité d’enregistrement est implémentée mais ne reçoit pas de certificat de qualité ASR : aucune transcription automatique n’est réalisée. La comparaison de textes est testée séparément.
