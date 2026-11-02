@@ -2615,3 +2615,330 @@ footer > span:last-child {
     min-height: 48px;
   }
 }
+
+.sidebar {
+  overflow-y: auto;
+}
+.reading-tabs {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 24px 0;
+}
+.reading-tabs button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font: 700 16px var(--serif);
+  min-height: 52px;
+  padding: 13px 20px;
+  border: 2px solid #dfd8ed;
+  border-bottom-width: 4px;
+  border-radius: 15px;
+  background: white;
+  color: #6b528f;
+}
+.reading-tabs button.active {
+  background: #e9e1fa;
+  border-color: #aa8dd7;
+  color: #5c3e94;
+}
+.reading-tabs button > span {
+  font-size: 12px;
+  background: #fff9;
+  padding: 5px 8px;
+  border-radius: 12px;
+  min-width: 24px;
+}
+.reading-filters {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  align-items: end;
+  gap: 18px;
+  margin-bottom: 20px;
+}
+.reading-filters .library-search {
+  margin: 0 !important;
+}
+.category-select {
+  font-size: 13px;
+  color: #5b6480;
+}
+.reading-filters select,
+.admin-library-filters select {
+  display: block;
+  width: 100%;
+  font: inherit;
+  font-size: 14px;
+  color: #44516d;
+  background: #fff;
+  border: 2px solid #dfddeb;
+  border-radius: 12px;
+  padding: 12px;
+  min-height: 46px;
+  margin-top: 7px;
+}
+.reading-count {
+  font-size: 13px;
+  color: #626a81;
+  margin: 22px 0;
+}
+.reading-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+.reading-card {
+  position: relative;
+  background: #fff;
+  border: 2px solid #e3deef;
+  border-bottom-width: 5px;
+  border-radius: 22px;
+  padding: 22px;
+  overflow-wrap: anywhere;
+}
+.reading-category {
+  display: inline-block;
+  border-radius: 12px;
+  background: #eee9f8;
+  color: #71568e;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 7px 10px;
+  line-height: 1.5;
+}
+.reading-card .library-badge {
+  display: inline-block;
+  margin: 8px;
+  font-size: 10px;
+}
+.reading-letter {
+  font-size: 76px;
+  color: #7051ab;
+  min-height: 125px;
+  display: grid;
+  place-items: center;
+  margin: 15px 0;
+}
+.reading-letter:lang(kab-Tfng) {
+  font-family: Tifinagh, Arial, sans-serif;
+}
+.reading-card h2 {
+  font: 800 25px/1.6 var(--serif);
+  margin: 14px 0 8px;
+  color: #44355e;
+}
+.reading-letter + h2 {
+  text-align: center;
+  font-size: 30px;
+}
+.reading-letter ~ .reading-french {
+  text-align: center;
+}
+.reading-french {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #586682;
+  margin: 12px 0 20px;
+}
+.reading-tifinagh {
+  font-size: 28px;
+  line-height: 1.8;
+  color: #7958af;
+}
+.reading-photo {
+  display: block;
+  height: 140px;
+  max-width: 100%;
+  object-fit: contain;
+  margin: 20px auto;
+}
+.reading-image-credit {
+  display: block;
+  font-size: 10px;
+  color: #646b7e;
+  line-height: 1.8;
+  margin: 12px 0;
+}
+.reading-sources {
+  border-top: 1px solid #e9e5f0;
+  padding-top: 12px;
+  margin-top: 18px;
+  font-size: 12px;
+  color: #59647e;
+}
+.reading-sources summary {
+  cursor: pointer;
+  min-height: 30px;
+  line-height: 1.7;
+}
+.reading-sources p {
+  line-height: 1.8;
+}
+.reading-card audio {
+  width: 100%;
+  max-width: 100%;
+  margin: 10px 0;
+}
+.phrase-reading-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.reading-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin: 30px 0;
+  font-size: 13px;
+  color: #586682;
+}
+.admin-library-filters {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 15px;
+  align-items: end;
+  margin: 20px 0;
+}
+.admin-library-filters label {
+  margin: 0 !important;
+}
+.admin-library-filters .library-search {
+  align-self: end;
+}
+.library-word-list small {
+  font-size: 11px;
+  color: #786294;
+  line-height: 1.7;
+}
+.category-edit {
+  padding: 17px;
+  border: 1px solid #ddd4ed;
+  border-radius: 15px;
+  background: white;
+  margin: 22px 0;
+}
+.category-edit .secondary {
+  font-size: 13px;
+  min-height: 44px;
+}
+.category-edit label {
+  margin-top: 0 !important;
+}
+@media (max-width: 1100px) {
+  .reading-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .admin-library-filters {
+    grid-template-columns: 1fr 1fr;
+  }
+  .admin-library-filters > .library-search {
+    grid-column: 1/-1;
+  }
+}
+@media (max-width: 600px) {
+  .reading-tabs {
+    gap: 8px;
+  }
+  .reading-tabs button {
+    padding: 11px 12px;
+    font-size: 14px;
+    gap: 8px;
+    flex: 1;
+    justify-content: center;
+  }
+  .reading-tabs button > span {
+    font-size: 11px;
+    padding: 5px 6px;
+  }
+  .reading-filters {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .reading-filters input {
+    font-size: 14px;
+  }
+  .reading-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .reading-card {
+    padding: 16px 12px;
+    border-radius: 19px;
+  }
+  .reading-letter {
+    font-size: 60px;
+    min-height: 90px;
+    margin: 15px 0;
+  }
+  .reading-card h2 {
+    font-size: 20px;
+  }
+  .reading-letter + h2 {
+    font-size: 26px;
+  }
+  .reading-french {
+    font-size: 14px;
+    margin: 9px 0 15px;
+  }
+  .reading-category {
+    font-size: 10px;
+    padding: 6px 8px;
+  }
+  .reading-sources {
+    font-size: 11px;
+  }
+  .reading-sources summary {
+    min-height: 44px;
+  }
+  .reading-sources .source {
+    font-size: 11px;
+  }
+  .phrase-reading-grid,
+  .reading-grid:has(.reading-word) {
+    grid-template-columns: 1fr;
+  }
+  .reading-pagination {
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .reading-pagination .secondary {
+    font-size: 13px;
+    min-height: 44px;
+    padding: 10px 13px;
+  }
+  .admin-library-filters {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .admin-library-filters > .library-search {
+    grid-column: auto;
+  }
+  .category-edit {
+    padding: 14px;
+  }
+  .category-edit .secondary {
+    font-size: 12px;
+    width: 100%;
+    line-height: 1.5;
+  }
+  .reading-tabs {
+    margin-top: 20px;
+  }
+  .library-tabs button {
+    font-size: 13px;
+    width: auto;
+    flex: 1;
+    white-space: nowrap;
+  }
+  .reading-library > .page-heading h1 {
+    font-size: 30px;
+  }
+}
+
+.library-search input {
+  min-width: 0;
+}
+.library-word-list > button > span:first-child {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}

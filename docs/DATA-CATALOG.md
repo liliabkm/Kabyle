@@ -72,3 +72,21 @@ Le script refuse une autre révision non auditée. Les noms exacts des six photo
 | Wiktionnaire et Wikimedia Commons | Requêtes HTTPS toujours refusées par le proxy cloud (403). Les ajouts de domaines déjà enregistrés au brouillon ne prouvent pas leur application à cette instance. Aucune image Google ou donnée de ces sites n’a été importée sans accès et audit. |
 
 L’entraînement et l’inférence IA sont sans rapport avec ce lot : aucun modèle, score de prononciation ou audio artificiel n’a été ajouté.
+
+## Inventaire complet et catégories
+
+Le catalogue comporte désormais 115 paires phrase kabyle–traduction française, en plus des 61 entrées lexicales. `content/catalog/phrases-librelingo.json` conserve texte, traduction, variantes, auteur, licence, fichier, révision et index source. Les phrases sont extraites telles quelles des fichiers YAML lisibles des modules actifs hors fichier test, puis dédupliquées sur la paire exacte. Les trois anciennes phrases d’aperçu réutilisent leur identifiant existant. `phrases-report.json` signale toujours le YAML invalide exclu ; aucune réparation implicite de traduction n’a été appliquée.
+
+Le seed insère les 112 autres phrases en brouillon. Toutes restent en relecture et sous les mêmes réserves de licence : elles ne deviennent pas des fiches publiques ni des leçons validées. L’interface admin affiche les 115 phrases, les 61 mots et les 8 lettres par type, catégorie et statut, avec une vue lecture privée paginée.
+
+Les catégories sont stockées dans le champ SQL `content.theme`. La proposition initiale, documentée par `category_status=suggested` et `category_scheme=topics-v1`, est appliquée seulement aux enregistrements sources inchangés. Les catégories déjà éditées, les contenus modifiés et les identifiants extérieurs au manifeste ne sont pas écrasés. Le changement éditorial via PATCH ajoute un marqueur temporel, conserve le statut de publication et ne modifie pas le texte. Les catégories et leurs libellés standards sont dans `backend/app/library.py` ; un identifiant supplémentaire déjà stocké est aussi reconnu.
+
+API de lecture : `/api/library` accepte `kind`, `category`, `q`, `offset`, `limit`. Seuls les contenus publiés sans blocage sont retournés. `/api/admin/library` exige le jeton et inclut les brouillons. Recherche insensible aux accents pour la consultation, sans modifier les réponses des exercices. Les variantes attestées sont conservées et consultables. L’ordre est latin pour les lettres, français pour les autres fiches. La lecture n’écrit pas dans la progression.
+
+Collecte optionnelle depuis le checkout source figé, après installation des outils de données :
+
+```bash
+.venv/bin/python scripts/collect_phrases.py --source-checkout /chemin/vers/LibreLingo-KAB-from-FR
+```
+
+La commande ne publie rien. Le démarrage importe les fichiers livrés sans téléchargement et sans écraser les corrections en base. Aucun nouveau service ou paquet serveur n’est requis.

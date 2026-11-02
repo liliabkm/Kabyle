@@ -54,3 +54,11 @@ Migration 003 appliquée, leçon stockée en base, trois mots existants référe
 `scripts/vocabulary_browser_smoke.py` passe sur une API réelle avec un jeton temporaire : carte masquée/révélée, trois contextes, erreur volontaire et réessai, reconnaissance, trois phrases reconstruites, complétion, rappel écrit, huit réponses correctes, bilan de séance et absence de progrès public. Affichage vérifié à 390 et 320 px. Les exercices libres existants passent aussi. Captures : artifacts/vocabulary-word.png, vocabulary-context.png, vocabulary-cloze-mobile.png. Le test utilise des réponses d’exercices réels, sans simuler une prédiction IA.
 
 Sifal/Kabyle-French : l’audit de métadonnées n’a pas pu accéder au serveur (tunnel proxy refusé HTTP 403). Aucune ligne importée, aucune licence ni qualité supposée. Rapport local ignoré par Git : artifacts/sifal-audit/report.json. Le collecteur de l’aperçu a été rejoué avec la révision source figée, sans changement des sorties.
+
+## Bibliothèques par catégories
+
+Import vérifié : 112 nouvelles phrases ajoutées aux 3 déjà présentes, total 115 ; 176 propositions de catégorie pour les mots/phrases sources non modifiés. Second seed : zéro ajout et zéro reclassification. Aucun brouillon publié.
+
+**22 tests API passent** : lecture publique sans progression, recherche exacte d’une lettre et en tifinagh, pagination, filtre de catégorie, tentatives de lecture publique de brouillons refusées, accès privé aux 115 phrases, changement de catégorie conservant texte/statut et catégorie conservée après seed. Compilation TypeScript/Next.js réussie.
+
+`scripts/library_browser_smoke.py` passe : 8 lettres lisibles sans jeu, recherche, états vides publics pour les brouillons, filtres administrateur par type/catégorie, édition de la catégorie d’une phrase sans changer son statut ni son texte, lecture privée paginée des 115 phrases et filtrage Fruits/fraises. Largeurs 390/320 px sans débordement. Le contenu de test est restauré. Les tests du dessin/exercices existants et de l’association des photos passent aussi. Captures : artifacts/reading-letters.png, reading-phrases-private.png.

@@ -108,3 +108,6 @@ def admin_media(s=Depends(db)):
 
 from .vocabulary import register_routes
 register_routes(app, db, admin)
+
+from .library import register_routes as register_library_routes
+register_library_routes(app, db, admin)

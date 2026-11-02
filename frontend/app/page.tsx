@@ -19,6 +19,7 @@ import {
   Target,
   X,
 } from "lucide-react";
+import ReadingLibrary from "../components/ReadingLibrary";
 import VocabularyPreview from "../components/VocabularyPreview";
 import GuidedLesson from "../components/GuidedLesson";
 import Mascot from "../components/Mascot";
@@ -30,6 +31,7 @@ import Drawing from "../components/Drawing";
 import Recorder from "../components/Recorder";
 import Admin from "../components/Admin";
 type View =
+  | "library"
   | "learn"
   | "alphabet"
   | "words"
@@ -150,6 +152,7 @@ export default function Home() {
   }
   const nav = [
     { id: "learn", label: "Accueil", icon: Compass },
+    { id: "library", label: "Ma bibliothèque", icon: BookOpen },
     { id: "alphabet", label: "Les lettres", icon: BookOpen },
     { id: "words", label: "Mots et phrases", icon: LayoutGrid },
     { id: "draw", label: "Dessiner", icon: PenLine },
@@ -509,6 +512,21 @@ export default function Home() {
               <div className="home-games">
                 <div>
                   <span className="game-icon">
+                    <BookOpen size={27} />
+                  </span>
+                  <div>
+                    <h3>Je consulte mes fiches</h3>
+                    <p>Lettres, mots et phrases, sans exercice.</p>
+                  </div>
+                  <button
+                    className="secondary"
+                    onClick={() => navigate("library")}
+                  >
+                    Ouvrir la bibliothèque <ArrowRight size={18} />
+                  </button>
+                </div>
+                <div>
+                  <span className="game-icon">
                     <LayoutGrid size={28} />
                   </span>
                   <div>
@@ -567,6 +585,8 @@ export default function Home() {
                 )}
               </div>
             </>
+          ) : view === "library" ? (
+            <ReadingLibrary />
           ) : view === "alphabet" ? (
             <>
               <PageTitle

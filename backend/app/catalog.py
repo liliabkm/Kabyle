@@ -56,3 +56,11 @@ def seed_lesson_previews(session):
         if session.get(Lesson, item["id"]) is None:
             session.add(Lesson(**item)); counts["lessons_added"] += 1
     return counts
+
+def seed_phrase_catalog(session):
+    phrases=json.loads((ROOT/'catalog/phrases-librelingo.json').read_text())
+    added=0
+    for item in phrases:
+        if item['status']!='draft' or not item['data'].get('publication_blockers'):raise ValueError('Imported phrases must remain drafts')
+        if session.get(Content,item['id']) is None:session.add(Content(**item));added+=1
+    return added

@@ -57,6 +57,16 @@ Le parcours enseigne pour l’instant **l’écriture de 8 lettres**, pas un cou
 
 Test du parcours complet, après démarrage : `.venv/bin/python scripts/guided_browser_smoke.py` (Playwright/Chromium requis comme pour les autres tests navigateur).
 
+## Consulter les contenus sans jouer
+
+Le menu **Ma bibliothèque** donne accès à trois onglets : Lettres, Mots et Phrases, avec recherche kabyle/français/tifinagh, catégories, pagination et fiches de lecture. Il n’y a pas d’exercice obligatoire et aucune réussite n’est ajoutée aux progrès lors de la consultation. Les utilisateurs voient uniquement les contenus publiés ; les 8 lettres le sont actuellement, les mots et phrases en brouillon ne sont pas rendus publics.
+
+Dans **Gestion des contenus → Ouvrir la bibliothèque**, l’administrateur voit **8 lettres, 61 mots, 115 phrases et 30 photos**. Il peut filtrer par catégorie et statut, ouvrir une fiche, lire ses variantes/sources et corriger ses champs. « Enregistrer uniquement la catégorie » conserve le texte et le statut existants. Modifier le texte et enregistrer en brouillon ne publie rien. Le bouton **Vue lecture privée** présente aussi les brouillons sous forme de fiches, sans jeu, dans un aperçu protégé.
+
+Les catégories initiales sont proposées à partir des métadonnées et du texte français de la source : animaux, fruits, alimentation, vêtements, nature, métiers, etc. Ce classement ne valide pas les traductions. Les décisions éditoriales sont gardées en base et ne sont pas réinitialisées au démarrage. La catégorie est stockée dans `content.theme`, le contenu et ses sources dans `content.data` (table PostgreSQL `content`). Les fichiers JSON servent de sources d’import ; le site lit la base.
+
+Les 115 paires phrase–traduction proviennent du même cours LibreLingo audité, hors fichiers invalides/inactifs. Elles n’ont pas été composées par une IA. Les trois phrases du premier aperçu sont incluses dans ce total, sans doublon. Voir `content/catalog/phrases-librelingo.json` et son rapport `phrases-report.json`.
+
 ## Mots et phrases : aperçu pédagogique privé
 
 Dans « Mots et phrases », ouvrir « Essayer la leçon privée (enseignant) » et saisir le jeton ADMIN_TOKEN local. Le jeton reste uniquement en mémoire dans cet écran. Le parcours utilise trois mots existants et trois phrases attestées du cours LibreLingo, sans traduction générée : chien (`aqjun`), cheval (`agmar`), fraises (`tizwal uṛumi`). Il montre d’abord les cartes illustrées, puis les phrases en contexte, et propose huit exercices : reconnaissance, reconstruction avec des jetons, phrase à compléter et rappel écrit.

@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
-import { BookOpen, Camera, Search, X } from "lucide-react";
+import { Search, X } from "lucide-react";
+import ReadingLibrary from "./ReadingLibrary";
 import { request } from "../lib/api";
 type PhotoData = {
   url: string;
@@ -12,16 +13,19 @@ type PhotoData = {
   [key: string]: unknown;
 };
 type Photo = { id: string; label_fr: string; theme: string; data: PhotoData };
-type Word = {
+type Item = {
   id: string;
-  kind: string;
+  kind: "letter" | "word" | "phrase";
   variety: string;
   script: string;
   theme: string;
   status: string;
   data: {
+    alternative_versions?: string[];
+    synonyms?: string[];
+    french_variants?: string[];
     latin: string;
-    french: string;
+    french?: string;
     tifinagh?: string;
     images?: PhotoData[];
     publication_blockers?: string[];
@@ -29,6 +33,7 @@ type Word = {
     [key: string]: unknown;
   };
 };
+type Category = { id: string; label: string };
 export default function ContentLibrary({
   token,
   onSaved,
@@ -36,19 +41,25 @@ export default function ContentLibrary({
   token: string;
   onSaved: () => void;
 }) {
-  const [words, setWords] = useState<Word[]>([]),
+  const [reading, setReading] = useState(false);
+  const [items, setItems] = useState<Item[]>([]),
     [photos, setPhotos] = useState<Photo[]>([]),
+    [categories, setCategories] = useState<Category[]>([]),
     [loaded, setLoaded] = useState(false),
     [busy, setBusy] = useState(false),
     [message, setMessage] = useState(""),
-    [tab, setTab] = useState<"words" | "photos">("words"),
+    [tab, setTab] = useState<"word" | "phrase" | "letter" | "photos">("word"),
     [search, setSearch] = useState(""),
-    [selected, setSelected] = useState<Word | null>(null),
+    [category, setCategory] = useState(""),
+    [status, setStatus] = useState(""),
+    [selected, setSelected] = useState<Item | null>(null),
     [picked, setPicked] = useState("");
+  const headers = { Authorization: "Bearer " + token };
   useEffect(() => {
     setLoaded(false);
-    setWords([]);
+    setItems([]);
     setPhotos([]);
+    setCategories([]);
     setSelected(null);
     setMessage("");
   }, [token]);
@@ -58,17 +69,18 @@ export default function ContentLibrary({
         .getElementById("catalog-word-editor")
         ?.scrollIntoView({ block: "start" });
   }, [selected?.id]);
-  const headers = { Authorization: "Bearer " + token };
   async function load() {
     setBusy(true);
     setMessage("");
     try {
-      const [all, media] = await Promise.all([
+      const [content, media, cats] = await Promise.all([
         request("admin/content", { headers }),
         request("admin/media", { headers }),
+        request("admin/categories", { headers }),
       ]);
-      setWords(all.filter((w: Word) => w.kind === "word"));
+      setItems(content);
       setPhotos(media);
+      setCategories(cats);
       setLoaded(true);
     } catch (e) {
       setMessage((e as Error).message);
@@ -76,18 +88,37 @@ export default function ContentLibrary({
       setBusy(false);
     }
   }
-  const normalize = (s: string) =>
+  const fold = (s: string) =>
     s
       .normalize("NFD")
       .replace(/[\u0300-\u036f]/g, "")
       .toLocaleLowerCase("fr");
-  const query = normalize(search);
+  const query = fold(search);
+  const label = (theme: string) =>
+    categories.find((c) => c.id === theme)?.label || theme;
+  const matches = items.filter(
+    (i) =>
+      i.kind === tab &&
+      (!category || i.theme === category) &&
+      (!status || i.status === status) &&
+      fold(
+        [
+          i.data.latin,
+          i.data.french || "",
+          i.data.tifinagh || "",
+          label(i.theme),
+          ...(i.data.french_variants || []),
+          ...(i.data.alternative_versions || []),
+          ...(i.data.synonyms || []),
+        ].join(" "),
+      ).includes(query),
+  );
   async function save() {
     if (!selected) return;
     setBusy(true);
     try {
-      const photo = photos.find((p) => p.id === picked);
-      const images = selected.data.images || [];
+      const photo = photos.find((p) => p.id === picked),
+        images = selected.data.images || [];
       const updated = {
         ...selected,
         status: "draft",
@@ -106,7 +137,7 @@ export default function ContentLibrary({
         headers,
         body: JSON.stringify([updated]),
       });
-      setWords(words.map((w) => (w.id === updated.id ? updated : w)));
+      setItems(items.map((i) => (i.id === updated.id ? updated : i)));
       setSelected(null);
       setPicked("");
       setMessage("Brouillon enregistré. Il reste exclu des leçons.");
@@ -117,12 +148,38 @@ export default function ContentLibrary({
       setBusy(false);
     }
   }
+  async function classify() {
+    if (!selected) return;
+    setBusy(true);
+    try {
+      const result = await request(`admin/content/${selected.id}/category`, {
+        method: "PATCH",
+        headers,
+        body: JSON.stringify({ theme: selected.theme }),
+      });
+      setItems(
+        items.map((i) =>
+          i.id === selected.id ? { ...i, theme: result.theme } : i,
+        ),
+      );
+      setMessage(
+        "Catégorie enregistrée. Le texte et le statut de publication sont conservés.",
+      );
+      onSaved();
+    } catch (e) {
+      setMessage((e as Error).message);
+    } finally {
+      setBusy(false);
+    }
+  }
+  if (reading)
+    return <ReadingLibrary token={token} onExit={() => setReading(false)} />;
   return (
     <section className="content-library">
       <div className="library-heading">
         <div>
-          <h2>Les mots et les photos</h2>
-          <p>Préparez les fiches avant de les publier.</p>
+          <h2>Tous les contenus</h2>
+          <p>Lettres, mots, phrases et photos, classés par catégorie.</p>
         </div>
         <button className="secondary" disabled={!token || busy} onClick={load}>
           {busy
@@ -133,81 +190,92 @@ export default function ContentLibrary({
         </button>
       </div>
       {message && (
-        <p className="info-note" role="status">
+        <p role="status" className="info-note">
           {message}
         </p>
       )}
       {loaded && (
         <>
+          <button className="secondary" onClick={() => setReading(true)}>
+            Vue lecture privée
+          </button>
           <div className="library-tabs">
-            <button
-              className={tab === "words" ? "active" : ""}
-              aria-pressed={tab === "words"}
-              onClick={() => setTab("words")}
-            >
-              <BookOpen size={18} />
-              {words.length} entrées kabyle–français
-            </button>
-            <button
-              className={tab === "photos" ? "active" : ""}
-              aria-pressed={tab === "photos"}
-              onClick={() => setTab("photos")}
-            >
-              <Camera size={18} />
-              {photos.length} photos
-            </button>
+            {(
+              [
+                { id: "letter", label: "Lettres" },
+                { id: "word", label: "Mots" },
+                { id: "phrase", label: "Phrases" },
+                { id: "photos", label: "Photos" },
+              ] as const
+            ).map((t) => (
+              <button
+                key={t.id}
+                className={tab === t.id ? "active" : ""}
+                aria-pressed={tab === t.id}
+                onClick={() => {
+                  setTab(t.id);
+                  setSelected(null);
+                  setCategory("");
+                  setStatus("");
+                  setSearch("");
+                }}
+              >
+                {t.label} (
+                {t.id === "photos"
+                  ? photos.length
+                  : items.filter((i) => i.kind === t.id).length}
+                )
+              </button>
+            ))}
           </div>
-          <label className="library-search">
-            <Search size={18} />
-            <input
-              aria-label="Rechercher dans la bibliothèque"
-              placeholder="Chercher un mot, une photo ou un thème…"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-            />
-          </label>
-          {tab === "words" ? (
-            <>
-              <p className="tiny">
-                Les mots importés ne sont pas encore validés. Le tifinagh est à
-                compléter. La licence du cours doit être clarifiée avant
-                publication ou usage commercial.
-              </p>
-              <div className="library-word-list">
-                {words
-                  .filter((w) =>
-                    normalize(
-                      [w.data.latin, w.data.french, w.theme].join(" "),
-                    ).includes(query),
-                  )
-                  .map((w) => (
-                    <button
-                      key={w.id}
-                      onClick={() => {
-                        setSelected(structuredClone(w));
-                        setPicked("");
-                      }}
-                    >
-                      <span>
-                        <b lang="kab-Latn">{w.data.latin}</b>
-                        <span>{w.data.french}</span>
-                      </span>
-                      <span className="library-badge">
-                        {w.status === "draft"
-                          ? "À vérifier"
-                          : w.status === "validated"
-                            ? "Publié"
-                            : "Rejeté"}
-                      </span>
-                    </button>
-                  ))}
-              </div>
-            </>
-          ) : (
+          <div className="admin-library-filters">
+            <label className="library-search">
+              <Search size={18} />
+              <input
+                aria-label="Rechercher dans la bibliothèque"
+                placeholder="Chercher en kabyle ou en français…"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+              />
+            </label>
+            <label>
+              Catégorie
+              <select
+                aria-label="Filtrer la catégorie"
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
+              >
+                <option value="">Toutes les catégories</option>
+                {categories.map((c) => (
+                  <option value={c.id} key={c.id}>
+                    {c.label}
+                  </option>
+                ))}
+              </select>
+            </label>
+            {tab !== "photos" && (
+              <label>
+                Statut
+                <select
+                  aria-label="Filtrer le statut"
+                  value={status}
+                  onChange={(e) => setStatus(e.target.value)}
+                >
+                  <option value="">Tous les statuts</option>
+                  <option value="draft">À vérifier</option>
+                  <option value="validated">Publié</option>
+                  <option value="rejected">Rejeté</option>
+                </select>
+              </label>
+            )}
+          </div>
+          {tab === "photos" ? (
             <div className="library-photo-grid">
               {photos
-                .filter((p) =>
-                  normalize(p.label_fr + " " + p.theme).includes(query),
+                .filter(
+                  (p) =>
+                    (!category || p.theme === category) &&
+                    fold(p.label_fr + " " + label(p.theme)).includes(query),
                 )
                 .map((p) => (
                   <article className="library-photo" key={p.id}>
@@ -219,6 +287,7 @@ export default function ContentLibrary({
                       loading="lazy"
                     />
                     <h3>{p.label_fr}</h3>
+                    <span className="reading-category">{label(p.theme)}</span>
                     <p>{p.data.author}</p>
                     <a
                       href={p.data.license_url}
@@ -234,6 +303,47 @@ export default function ContentLibrary({
                   </article>
                 ))}
             </div>
+          ) : (
+            <>
+              <p className="tiny" role="status">
+                {matches.length} fiche(s) affichée(s). Les contenus en brouillon
+                restent privés. Le classement initial proposé ne valide pas leur
+                traduction.
+              </p>
+              <div className="library-word-list">
+                {matches.map((i) => (
+                  <button
+                    key={i.id}
+                    onClick={() => {
+                      setSelected(structuredClone(i));
+                      setPicked("");
+                    }}
+                  >
+                    <span>
+                      <b lang={i.kind === "letter" ? "kab-Tfng" : "kab-Latn"}>
+                        {i.kind === "letter"
+                          ? `${i.data.tifinagh} · ${i.data.latin}`
+                          : i.data.latin}
+                      </b>
+                      <span>{i.data.french}</span>
+                      <small>{label(i.theme)}</small>
+                    </span>
+                    <span className="library-badge">
+                      {i.status === "draft"
+                        ? "À vérifier"
+                        : i.status === "validated"
+                          ? "Publié"
+                          : "Rejeté"}
+                    </span>
+                  </button>
+                ))}
+              </div>
+              {!matches.length && (
+                <p className="info-note">
+                  Aucune fiche ne correspond à ces filtres.
+                </p>
+              )}
+            </>
           )}
           {selected && (
             <form
@@ -255,11 +365,42 @@ export default function ContentLibrary({
                   <X size={21} />
                 </button>
               </div>
+              <div className="category-edit">
+                <label>
+                  Catégorie de la fiche
+                  <select
+                    aria-label="Catégorie de la fiche"
+                    value={selected.theme}
+                    onChange={(e) =>
+                      setSelected({ ...selected, theme: e.target.value })
+                    }
+                  >
+                    {categories.map((c) => (
+                      <option key={c.id} value={c.id}>
+                        {c.label}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+                <button
+                  type="button"
+                  className="secondary"
+                  disabled={busy}
+                  onClick={classify}
+                >
+                  Enregistrer uniquement la catégorie
+                </button>
+                <p className="tiny">
+                  Cette action conserve le texte et son statut actuel.
+                </p>
+              </div>
               <label>
-                Mot kabyle (latin)
+                {selected.kind === "phrase"
+                  ? "Phrase kabyle (latin)"
+                  : "Mot ou lettre (latin)"}
                 <input
                   required
-                  maxLength={200}
+                  maxLength={2000}
                   value={selected.data.latin}
                   onChange={(e) =>
                     setSelected({
@@ -272,9 +413,8 @@ export default function ContentLibrary({
               <label>
                 Traduction française
                 <input
-                  required
-                  maxLength={200}
-                  value={selected.data.french}
+                  maxLength={2000}
+                  value={selected.data.french || ""}
                   onChange={(e) =>
                     setSelected({
                       ...selected,
@@ -296,36 +436,54 @@ export default function ContentLibrary({
                   }
                 />
               </label>
-              <label>
-                Ajouter une photo
-                <select
-                  aria-label="Ajouter une photo"
-                  value={picked}
-                  onChange={(e) => setPicked(e.target.value)}
-                >
-                  <option value="">Aucune nouvelle photo</option>
-                  {photos.map((p) => (
-                    <option key={p.id} value={p.id}>
-                      {p.label_fr} · {p.data.license}
-                    </option>
-                  ))}
-                </select>
-              </label>
-              {picked && (
-                <img
-                  className="library-picked-photo"
-                  src={photos.find((p) => p.id === picked)?.data.url}
-                  alt={photos.find((p) => p.id === picked)?.label_fr}
-                />
+              {selected.kind === "word" && (
+                <>
+                  <label>
+                    Ajouter une photo
+                    <select
+                      aria-label="Ajouter une photo"
+                      value={picked}
+                      onChange={(e) => setPicked(e.target.value)}
+                    >
+                      <option value="">Aucune nouvelle photo</option>
+                      {photos.map((p) => (
+                        <option key={p.id} value={p.id}>
+                          {p.label_fr} · {p.data.license}
+                        </option>
+                      ))}
+                    </select>
+                  </label>
+                  {picked && (
+                    <img
+                      className="library-picked-photo"
+                      src={photos.find((p) => p.id === picked)?.data.url}
+                      alt={photos.find((p) => p.id === picked)?.label_fr}
+                    />
+                  )}
+                </>
               )}
-              {selected.data.images?.length ? (
-                <p className="tiny">
-                  {selected.data.images.length} photo(s) déjà associée(s). Le
-                  nouvel ajout conserve les photos existantes et leurs crédits.
-                </p>
-              ) : null}
               <details>
                 <summary>Sources et points à vérifier</summary>
+                {(
+                  selected.data.alternative_versions ||
+                  selected.data.synonyms ||
+                  []
+                ).length > 0 && (
+                  <>
+                    <p>Variantes attestées :</p>
+                    <ul>
+                      {(
+                        selected.data.alternative_versions ||
+                        selected.data.synonyms ||
+                        []
+                      ).map((v, i) => (
+                        <li key={i} lang="kab-Latn">
+                          {v}
+                        </li>
+                      ))}
+                    </ul>
+                  </>
+                )}
                 <ul>
                   {selected.data.publication_blockers?.map((b) => (
                     <li key={b}>{b}</li>
@@ -344,9 +502,9 @@ export default function ContentLibrary({
                 ))}
               </details>
               <p className="tiny">
-                L’association d’une image ne valide ni la traduction, ni le
-                nombre grammatical, ni la transcription. L’enregistrement
-                conserve les blocages et remet la fiche en brouillon.
+                Modifier le texte ou une image demande une relecture.
+                L’enregistrement ci-dessous remet la fiche en brouillon ; il ne
+                la publie pas.
               </p>
               <button className="primary" disabled={busy} type="submit">
                 {busy ? "Enregistrement…" : "Enregistrer en brouillon"}

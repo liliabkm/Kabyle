@@ -1,0 +1,8 @@
+{
+  "phrases": 115,
+  "skipped_invalid_yaml": [
+    "course/basics/skills/verb_plurals.yaml"
+  ],
+  "source_revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+  "published": 0
+}
