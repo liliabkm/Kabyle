@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./playful.css";
 export const metadata: Metadata = {
   title: "Tifin · Un premier pas en kabyle",
   description:

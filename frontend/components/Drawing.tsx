@@ -15,7 +15,7 @@ export default function Drawing({ letters }: { letters: Entry[] }) {
     <>
       <div className="draw-layout">
         <div className="draw-reference">
-          <span className="eyebrow">VOTRE MODÈLE</span>
+          <span className="eyebrow">REGARDE CETTE LETTRE</span>
           <span className="model-glyph" lang="kab-Tfng">
             {letters[selected]?.tifinagh}
           </span>
@@ -40,7 +40,7 @@ export default function Drawing({ letters }: { letters: Entry[] }) {
         <div className="draw-panel">
           <div className="draw-toolbar">
             <span>
-              <PenLine size={16} /> Votre espace d’écriture
+              <PenLine size={16} /> Ton dessin
             </span>
             <button className="text-button" onClick={clear}>
               <RotateCcw size={15} /> Effacer
@@ -83,14 +83,10 @@ export default function Drawing({ letters }: { letters: Entry[] }) {
               onPointerUp={() => (drawing.current = false)}
               onPointerCancel={() => (drawing.current = false)}
             />
-            {!hasDrawn && (
-              <span className="canvas-hint">
-                Tracez ici avec la souris ou le doigt
-              </span>
-            )}
+            {!hasDrawn && <span className="canvas-hint">Dessine ici !</span>}
           </div>
           <div className="draw-bottom">
-            <span>Un espace libre, sans pression.</span>
+            <span>Prends ton temps.</span>
             <button
               className="secondary"
               disabled={!hasDrawn}
@@ -101,7 +97,7 @@ export default function Drawing({ letters }: { letters: Entry[] }) {
                 a.click();
               }}
             >
-              Enregistrer mon tracé
+              Garder mon dessin
             </button>
           </div>
         </div>
@@ -109,9 +105,8 @@ export default function Drawing({ letters }: { letters: Entry[] }) {
       <div className="info-note">
         <Sparkles size={20} />
         <span>
-          <b>Reconnaissance IA indisponible.</b> Aucun modèle évalué n’est
-          déployé. Comparez visuellement votre tracé au modèle ; aucune
-          prédiction n’est simulée.
+          <b>Ton dessin n’est pas noté.</b> Compare-le à la lettre. La
+          reconnaissance automatique n’est pas encore disponible.
         </span>
       </div>
     </>

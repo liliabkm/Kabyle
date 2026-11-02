@@ -7,12 +7,9 @@ import {
   ChevronLeft,
   ChevronRight,
   Compass,
-  Flame,
-  Flower2,
   Headphones,
   LayoutGrid,
   Leaf,
-  LockKeyhole,
   Menu,
   PenLine,
   RotateCcw,
@@ -20,9 +17,9 @@ import {
   ShieldCheck,
   Sparkles,
   Target,
-  Volume2,
   X,
 } from "lucide-react";
+import Mascot from "../components/Mascot";
 import Matching from "../components/Matching";
 import type { Entry, Progress } from "../lib/types";
 import { request } from "../lib/api";
@@ -68,6 +65,9 @@ export default function Home() {
       .catch((e) => setError(e.message))
       .finally(() => setLoading(false));
   }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [view, quiz, matching]);
   function navigate(v: View) {
     setMatching(null);
     setView(v);
@@ -126,11 +126,11 @@ export default function Home() {
     setAttempt(crypto.randomUUID());
   }
   const nav = [
-    { id: "learn", label: "Mon parcours", icon: Compass },
-    { id: "alphabet", label: "Alphabet tifinagh", icon: BookOpen },
-    { id: "words", label: "Les mots du quotidien", icon: LayoutGrid },
-    { id: "draw", label: "Atelier d’écriture", icon: PenLine },
-    { id: "oral", label: "Pratique orale", icon: Headphones },
+    { id: "learn", label: "Accueil", icon: Compass },
+    { id: "alphabet", label: "Les lettres", icon: BookOpen },
+    { id: "words", label: "Les mots", icon: LayoutGrid },
+    { id: "draw", label: "Dessiner", icon: PenLine },
+    { id: "oral", label: "Ma voix", icon: Headphones },
     { id: "progress", label: "Mes progrès", icon: Target },
   ] as const;
   return (
@@ -150,12 +150,13 @@ export default function Home() {
             <small>LE KABYLE, PAS À PAS</small>
           </span>
         </a>
-        <div className="workspace-label">MON ESPACE D’APPRENTISSAGE</div>
+        <div className="workspace-label">À TOI DE JOUER</div>
         <nav>
           {nav.map((n) => (
             <button
               key={n.id}
               className={view === n.id ? "nav-item selected" : "nav-item"}
+              aria-current={view === n.id ? "page" : undefined}
               onClick={() => navigate(n.id)}
             >
               <n.icon size={19} />
@@ -165,14 +166,9 @@ export default function Home() {
           ))}
         </nav>
         <div className="sidebar-note">
-          <Flower2 size={28} />
-          <b>
-            Une langue se transmet.
-            <br />
-            Un peu chaque jour.
-          </b>
-          <p>Chaque lettre est un nouveau lien avec la culture kabyle.</p>
-          <span>ⴰ ⵣ ⵓ ⵍ</span>
+          <Sparkles size={24} />
+          <b>Tu peux y arriver !</b>
+          <p>Une lettre à la fois.</p>
         </div>
         <button className="admin-nav" onClick={() => navigate("admin")}>
           <Settings size={17} /> Gestion des contenus
@@ -180,7 +176,7 @@ export default function Home() {
         <div className="guest">
           <div className="avatar">A</div>
           <div>
-            Apprenant curieux<small>Parcours sans compte</small>
+            Mon petit espace<small>Pas besoin de compte</small>
           </div>
           <Leaf size={17} />
         </div>
@@ -190,6 +186,7 @@ export default function Home() {
           <button
             className="mobile-menu icon-button"
             aria-label="Ouvrir le menu"
+            aria-expanded={mobile}
             onClick={() => setMobile(!mobile)}
           >
             <Menu />
@@ -202,7 +199,7 @@ export default function Home() {
           </div>
           <div className="header-right">
             <span className="level">
-              <span /> Niveau découverte
+              <span /> Je débute
             </span>
             <div className="header-divider" />
             <span className="header-avatar">A</span>
@@ -219,7 +216,7 @@ export default function Home() {
           )}
           {loading ? (
             <div className="empty">
-              <Sparkles /> Chargement de votre parcours…
+              <Sparkles /> On prépare les jeux…
             </div>
           ) : matching ? (
             <Matching
@@ -245,12 +242,10 @@ export default function Home() {
                 {active.kind === "word"
                   ? "Quel mot correspond à cette image ?"
                   : mode === "complete"
-                    ? "Complétez la transcription"
-                    : "Quelle transcription correspond ?"}
+                    ? "Écris la lettre correspondante"
+                    : "Quelle est cette lettre ?"}
               </h1>
-              <p className="muted">
-                Observez, puis retrouvez la transcription latine correspondante.
-              </p>
+              <p className="muted">Regarde la forme et trouve sa lettre.</p>
               <div
                 className="quiz-glyph"
                 lang={active.kind === "letter" ? "kab-Tfng" : undefined}
@@ -269,13 +264,13 @@ export default function Home() {
                   className={mode === "choice" ? "active" : ""}
                   onClick={() => setMode("choice")}
                 >
-                  Choisir une réponse
+                  Je choisis
                 </button>
                 <button
                   className={mode === "complete" ? "active" : ""}
                   onClick={() => setMode("complete")}
                 >
-                  Écrire la réponse
+                  J’écris
                 </button>
               </div>
               {mode === "choice" ? (
@@ -314,7 +309,7 @@ export default function Home() {
                 >
                   <input
                     key={active.id}
-                    aria-label="Transcription latine"
+                    aria-label="Ta réponse"
                     name="answer"
                     autoComplete="off"
                     required
@@ -333,195 +328,195 @@ export default function Home() {
                   className={feedback ? "feedback good" : "feedback"}
                   role="status"
                 >
-                  <b>{feedback ? "Très bien !" : "Continuons à apprendre."}</b>
+                  <b>
+                    {feedback
+                      ? "Bravo, bien joué !"
+                      : "Presque ! Voici la bonne lettre."}
+                  </b>
                   <p>
-                    {active.tifinagh} correspond à « {active.latin} ».{" "}
-                    {active.hint}
+                    {active.tifinagh} = {active.latin}
                   </p>
                   <button className="primary" onClick={next}>
-                    Continuer <ArrowRight size={16} />
+                    La suite <ArrowRight size={16} />
                   </button>
                 </div>
               )}
             </section>
           ) : view === "learn" ? (
             <>
-              <div className="page-heading">
+              <div className="page-heading home-heading">
                 <div>
-                  <div className="eyebrow">
-                    LE PLAISIR D’APPRENDRE · À VOTRE RYTHME
-                  </div>
-                  <h1>
-                    Un petit pas, un nouveau lien<span>.</span>
-                  </h1>
-                  <p>
-                    Découvrez le kabyle à votre rythme. Votre voyage commence
-                    ici.
-                  </p>
+                  <span className="hello-tag">
+                    <Sparkles size={17} /> Apprendre en s’amusant
+                  </span>
+                  <h1>Le kabyle, c’est parti !</h1>
+                  <p>Un petit jeu. Une nouvelle découverte.</p>
                 </div>
-                <span className="welcome-symbol">✳︎</span>
               </div>
               <section className="hero">
                 <div className="hero-content">
-                  <span className="pill">
-                    <span /> VOTRE PREMIÈRE AVENTURE
-                  </span>
+                  <span className="pill">TON PREMIER DÉFI</span>
                   <h2>
-                    Et si tout commençait
+                    On joue avec
                     <br />
-                    par une lettre ?
+                    les lettres ?
                   </h2>
-                  <p>
-                    Faites connaissance avec le tifinagh.
-                    <br />
-                    Des formes, des sons, et une culture à découvrir.
-                  </p>
+                  <p>Regarde la forme. Trouve la bonne lettre !</p>
                   <button
                     className="cream-button"
-                    onClick={() => {
-                      navigate("alphabet");
-                      setActive(letters[0] || null);
-                    }}
+                    onClick={() => begin(letters)}
                   >
-                    Découvrir l’alphabet <ArrowRight size={18} />
+                    C’est parti ! <ArrowRight size={22} />
                   </button>
                   <div className="hero-meta">
                     <span>
-                      <BookOpen size={14} /> 8 lettres pour commencer
+                      <BookOpen size={17} /> 8 lettres à découvrir
                     </span>
-                    <span>≈ 5 minutes</span>
                   </div>
                 </div>
-                <div className="hero-art" aria-hidden="true">
-                  <div className="orbit orbit-one" />
-                  <div className="orbit orbit-two" />
-                  <div className="art-glyph g1">ⴰ</div>
-                  <div className="art-glyph g2">ⵎ</div>
-                  <div className="art-glyph g3">ⵣ</div>
-                  <div className="art-star">✳︎</div>
-                  <span className="art-dot dot1" />
-                  <span className="art-dot dot2" />
-                  <svg className="hill" viewBox="0 0 600 220">
-                    <path
-                      d="M0 185 Q100 35 210 150 T440 110 T600 170 L600 220 L0 220Z"
-                      fill="#537665"
-                    />
-                    <path
-                      d="M0 220 Q140 105 260 180 T600 150 L600 220Z"
-                      fill="#638673"
-                    />
-                  </svg>
+                <div className="hero-art">
+                  <span className="letter-bubble bubble-a" lang="kab-Tfng">
+                    ⴰ
+                  </span>
+                  <span className="letter-bubble bubble-m" lang="kab-Tfng">
+                    ⵎ
+                  </span>
+                  <Mascot />
                 </div>
               </section>
-              <section className="stats-row">
+              <div className="discovery-progress">
+                <span className="progress-star" aria-hidden="true">
+                  ★
+                </span>
                 <div>
-                  <span className="stat-icon peach">
-                    <Flame size={20} />
-                  </span>
-                  <div>
-                    <b>
-                      {done}{" "}
-                      <small>
-                        lettre{done > 1 ? "s" : ""} explorée
-                        {done > 1 ? "s" : ""}
-                      </small>
-                    </b>
-                    <p>Chaque découverte compte</p>
+                  <b>
+                    {done
+                      ? `Bravo ! ${done} lettre${done > 1 ? "s" : ""} découverte${done > 1 ? "s" : ""}`
+                      : "Ta première étoile t’attend !"}
+                  </b>
+                  <div
+                    className="discovery-track"
+                    role="progressbar"
+                    aria-label="Lettres découvertes"
+                    aria-valuenow={
+                      progress.filter(
+                        (p) =>
+                          p.correct > 0 &&
+                          letters.some((l) => l.id === p.content_id),
+                      ).length
+                    }
+                    aria-valuemin={0}
+                    aria-valuemax={letters.length || 8}
+                  >
+                    <span
+                      style={{
+                        width: `${Math.min(100, (progress.filter((p) => p.correct > 0 && letters.some((l) => l.id === p.content_id)).length / Math.max(1, letters.length)) * 100)}%`,
+                      }}
+                    />
                   </div>
                 </div>
-                <div>
-                  <span className="stat-icon sage">
-                    <Target size={20} />
-                  </span>
-                  <div>
-                    <b>
-                      {due.length}{" "}
-                      <small>révision{due.length > 1 ? "s" : ""} à faire</small>
-                    </b>
-                    <p>Pour ancrer vos connaissances</p>
-                  </div>
-                </div>
-                <div>
-                  <span className="stat-icon lilac">
-                    <Leaf size={20} />
-                  </span>
-                  <div>
-                    <b>À votre rythme</b>
-                    <p>Aucune course, juste le plaisir</p>
-                  </div>
-                </div>
-              </section>
+                <button onClick={() => navigate("progress")}>
+                  Mes progrès <ArrowRight size={18} />
+                </button>
+              </div>
               <div className="section-heading">
-                <div>
-                  <h2>Votre chemin de découverte</h2>
-                  <p>Un peu de curiosité, beaucoup de possibilités.</p>
-                </div>
-                <span className="section-label">LES PREMIERS PAS</span>
+                <h2>Choisis ton activité</h2>
+                <span>À ton rythme !</span>
               </div>
               <div className="course-grid">
                 <Course
                   color="sand"
                   symbol="ⴰ"
-                  label="01 · LES FONDATIONS"
-                  title="Lire les premières lettres"
-                  text="Apprivoisez 8 lettres tifinaghes et leurs équivalents latins."
-                  footer="8 fiches · Exercices de reconnaissance"
+                  label="1"
+                  title="Les lettres"
+                  text="Regarde et reconnais."
+                  footer="Je découvre"
                   onClick={() => navigate("alphabet")}
                 />
                 <Course
                   color="sage"
                   symbol="✎"
-                  label="02 · LE GESTE"
-                  title="Donner forme aux lettres"
-                  text="Prenez un crayon virtuel et laissez votre main apprendre."
-                  footer="Atelier libre · Souris ou doigt"
+                  label="2"
+                  title="Je dessine"
+                  text="À toi de tracer !"
+                  footer="Je prends mon crayon"
                   onClick={() => navigate("draw")}
                 />
                 <Course
                   color="rose"
                   symbol="♧"
-                  label="03 · LE QUOTIDIEN"
-                  title="Des mots, tout un monde"
-                  text="Animaux, fruits, famille… Un vocabulaire qui prend vie."
-                  footer={
+                  label="3"
+                  title="Les mots"
+                  text={
                     words.length
-                      ? `${words.length} mots disponibles`
-                      : "Contenus en cours de validation"
+                      ? "Des images et des mots."
+                      : "De nouvelles aventures se préparent."
                   }
+                  footer={words.length ? "Je découvre" : "Bientôt disponible"}
                   onClick={() => navigate("words")}
                   pending={!words.length}
                 />
               </div>
-              <div className="bottom-note">
-                <span>ⵣ</span>
+              <div className="home-games">
                 <div>
-                  <b>
-                    Apprendre une langue, c’est aussi rencontrer une culture.
-                  </b>
-                  <p>
-                    Nous construisons ce parcours avec soin : les contenus
-                    lexicaux sont publiés après validation de leurs sources.
-                  </p>
+                  <span className="game-icon">
+                    <LayoutGrid size={28} />
+                  </span>
+                  <div>
+                    <h3>Le jeu des paires</h3>
+                    <p>Retrouve les cartes qui vont ensemble.</p>
+                  </div>
+                  <button
+                    className="secondary"
+                    onClick={() => setMatching(letters)}
+                  >
+                    Jouer <ArrowRight size={19} />
+                  </button>
                 </div>
-                <Leaf size={23} />
+                {due.length > 0 && (
+                  <div>
+                    <span className="game-icon">
+                      <RotateCcw size={27} />
+                    </span>
+                    <div>
+                      <h3>On révise ?</h3>
+                      <p>
+                        {due.length} carte{due.length > 1 ? "s" : ""} à
+                        retrouver.
+                      </p>
+                    </div>
+                    <button
+                      className="secondary"
+                      onClick={() =>
+                        begin(
+                          entries.filter((e) => due.includes(e.id)),
+                          true,
+                        )
+                      }
+                    >
+                      Réviser <ArrowRight size={19} />
+                    </button>
+                  </div>
+                )}
               </div>
             </>
           ) : view === "alphabet" ? (
             <>
               <PageTitle
-                tag="01 · LES FONDATIONS"
-                title="L’alphabet, lettre par lettre."
-                text="Huit formes à reconnaître. Le premier chapitre de votre découverte."
+                tag="JE DÉCOUVRE"
+                title="Touche une lettre !"
+                text="Regarde sa forme et découvre son nom."
               />
-              <div className="info-note">
-                <BookOpen size={19} />
-                <span>
-                  Convention d’initiation : correspondances de base communes au
-                  tifinagh Unicode. Les variantes et la spirantisation kabyles
-                  ne sont pas encore enseignées. Aucun audio n’est disponible
-                  pour ces fiches.
-                </span>
-              </div>
+              <details className="parent-note">
+                <summary>Pour les parents : alphabet et sources</summary>
+                <p>
+                  Ces 8 lettres utilisent les correspondances de base du
+                  tifinagh Unicode. Les variantes kabyles et la spirantisation
+                  ne sont pas encore enseignées. Les audios et les exemples de
+                  mots ne sont pas disponibles. Les sources sont indiquées sur
+                  les fiches.
+                </p>
+              </details>
               <div className="alphabet-grid">
                 {letters.map((e) => (
                   <button
@@ -550,14 +545,13 @@ export default function Home() {
                     {active.tifinagh}
                   </div>
                   <div>
-                    <div className="eyebrow">UNE LETTRE À DÉCOUVRIR</div>
+                    <div className="eyebrow">REGARDE BIEN</div>
                     <h2>
                       {active.latin.toUpperCase()} <small>{active.ipa}</small>
                     </h2>
                     <p>{active.hint}</p>
                     <p className="tiny">
-                      Correspondance graphique vérifiée dans Unicode ; exemples
-                      de mots en attente de validation.
+                      Pas encore d’exemple de mot pour cette lettre.
                     </p>
                     <a
                       className="source"
@@ -578,16 +572,16 @@ export default function Home() {
               )}
               <div className="action-bar">
                 <p>
-                  <Sparkles size={18} /> Prêt à reconnaître ces formes ?
+                  <Sparkles size={18} /> À toi de jouer !
                 </p>
                 <button
                   className="secondary"
                   onClick={() => setMatching(letters)}
                 >
-                  Associer les cartes
+                  Jouer aux paires
                 </button>
                 <button className="primary" onClick={() => begin(letters)}>
-                  Commencer les exercices <ArrowRight size={17} />
+                  Jouer avec les lettres <ArrowRight size={17} />
                 </button>
               </div>
             </>
@@ -595,8 +589,8 @@ export default function Home() {
             <>
               <PageTitle
                 tag="03 · LE QUOTIDIEN"
-                title="Un monde de mots."
-                text="Des images pour découvrir, des exercices pour mémoriser."
+                title="Les mots en images"
+                text="Regarde l’image et trouve le mot."
               />
               <div className="themes">
                 {[
@@ -640,7 +634,7 @@ export default function Home() {
                     className="secondary"
                     onClick={() => setMatching(words)}
                   >
-                    Associer les cartes
+                    Jouer aux paires
                   </button>
                   <button className="primary" onClick={() => begin(words)}>
                     Pratiquer les mots <ArrowRight size={17} />
@@ -649,15 +643,9 @@ export default function Home() {
               ) : (
                 <div className="empty">
                   <div className="empty-art">♧</div>
-                  <span className="pill light">
-                    LA QUALITÉ AVANT LA QUANTITÉ
-                  </span>
-                  <h2>Les premiers mots se préparent.</h2>
-                  <p>
-                    Les traductions, transcriptions tifinaghes et droits des
-                    images doivent être vérifiés avant publication. Aucun mot
-                    non validé n’est présenté comme une leçon.
-                  </p>
+                  <span className="pill light">À DÉCOUVRIR BIENTÔT</span>
+                  <h2>Les mots arrivent bientôt !</h2>
+                  <p>En attendant, viens jouer avec les lettres !</p>
                   <button
                     className="secondary"
                     onClick={() => navigate("alphabet")}
@@ -670,36 +658,34 @@ export default function Home() {
           ) : view === "draw" ? (
             <>
               <PageTitle
-                tag="02 · LE GESTE"
-                title="À vous de tracer."
-                text="Observez une lettre et redessinez-la. Prenez tout votre temps."
+                tag="MON ATELIER"
+                title="À toi de dessiner !"
+                text="Choisis une lettre, puis dessine-la avec ton doigt ou la souris."
               />
               <Drawing letters={letters} />
             </>
           ) : view === "oral" ? (
             <>
               <PageTitle
-                tag="LA LANGUE SE VIT AUSSI À L’ORAL"
-                title="Écouter. Essayer. Recommencer."
-                text="Un espace de pratique, sans note de prononciation."
+                tag="JE M’ÉCOUTE"
+                title="À toi de parler !"
+                text="Enregistre ta voix, puis écoute-toi."
               />
               <Recorder />
               <div className="info-note">
                 <ShieldCheck size={20} />
                 <span>
-                  Aucun audio pédagogique n’a encore été importé : une paire
-                  audio–texte doit être vérifiée. L’enregistrement personnel
-                  reste sur votre appareil et n’est jamais envoyé
-                  automatiquement.
+                  Ta voix reste sur cet appareil. Les audios à écouter et la
+                  transcription automatique ne sont pas encore disponibles.
                 </span>
               </div>
             </>
           ) : view === "progress" ? (
             <>
               <PageTitle
-                tag="CHAQUE PETIT PAS COMPTE"
-                title="Votre parcours prend forme."
-                text="Vos réponses sont sauvegardées sans compte, dans cet espace personnel."
+                tag="BRAVO POUR TES EFFORTS"
+                title="Mes petites victoires"
+                text="Chaque essai te fait avancer."
               />
               <div className="progress-summary">
                 <div>
@@ -707,7 +693,7 @@ export default function Home() {
                     {done}
                     <small>/{entries.length}</small>
                   </strong>
-                  <p>fiches pratiquées avec succès</p>
+                  <p>lettres découvertes</p>
                 </div>
                 <div>
                   <strong>{progress.reduce((n, p) => n + p.correct, 0)}</strong>
@@ -715,16 +701,16 @@ export default function Home() {
                 </div>
                 <div>
                   <strong>{progress.reduce((n, p) => n + p.errors, 0)}</strong>
-                  <p>occasions de réviser</p>
+                  <p>essais à revoir</p>
                 </div>
               </div>
               <div className="action-bar">
                 <div>
-                  <h2>Votre prochaine révision</h2>
+                  <h2>On essaie encore ?</h2>
                   <p>
                     {due.length
                       ? `${due.length} fiche(s) vous attendent.`
-                      : "Aucune révision en attente. Découvrez de nouvelles lettres !"}
+                      : "Tout est révisé. Tu peux découvrir une autre lettre !"}
                   </p>
                 </div>
                 <button
@@ -759,7 +745,7 @@ export default function Home() {
               {!progress.length && (
                 <div className="empty">
                   <Leaf />
-                  <h2>Votre première lettre vous attend.</h2>
+                  <h2>Ta première lettre t’attend !</h2>
                   <button
                     className="primary"
                     onClick={() => navigate("alphabet")}
@@ -769,9 +755,8 @@ export default function Home() {
                 </div>
               )}
               <p className="tiny">
-                Conservez les cookies de ce navigateur pour retrouver votre
-                progression. Les révisions s’espacent après chaque réussite ;
-                une erreur remet la fiche à réviser aujourd’hui.
+                Tes progrès sont gardés dans ce navigateur. Reviens demain pour
+                continuer !
               </p>
               <button
                 className="text-button"
@@ -802,9 +787,9 @@ export default function Home() {
         </main>
         <footer>
           <span className="footer-brand">tifin.</span>
-          <span>Une lettre après l’autre. Un lien qui grandit.</span>
+          <span>Un petit jeu chaque jour.</span>
           <span>
-            Fait pour les esprits curieux <Leaf size={13} />
+            Apprendre, jouer, recommencer <Leaf size={13} />
           </span>
         </footer>
       </div>

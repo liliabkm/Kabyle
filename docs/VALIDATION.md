@@ -27,3 +27,7 @@ Le lancement Next.js doit disposer des permissions réseau et de sous-processus 
 - La publication de l’environnement cloud est distincte de l’envoi du code sur GitHub ; elle n’a pas été effectuée lors de cette validation.
 
 La fonctionnalité d’enregistrement est implémentée mais ne reçoit pas de certificat de qualité ASR : aucune transcription automatique n’est réalisée. La comparaison de textes est testée séparément.
+
+## Refonte ludique
+
+Compilation TypeScript/Next.js réussie. Test Chromium réexécuté : bouton d’accueil vers le quiz, navigation simplifiée, association, réponses sauvegardées après rechargement, export/effacement du dessin, état de vocabulaire indisponible, administration protégée. Sur viewport mobile 390 px : navigation, affichage sans débordement, quatre réponses et cibles d’au moins 44 × 44 px vérifiées. Captures mises à jour dans artifacts/desktop.png, mobile.png et mobile-quiz.png. Mascotte SVG originale, sans image tierce ni nouvelle dépendance. Pas de test auprès d’enfants ni d’audit d’accessibilité exhaustif.

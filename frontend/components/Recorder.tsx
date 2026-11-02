@@ -61,15 +61,13 @@ export default function Recorder() {
         <span className="oral-symbol">
           <Headphones size={35} />
         </span>
-        <h2>Écoutez votre propre voix.</h2>
+        <h2>Écoute ta voix !</h2>
         <p>
-          Enregistrez un essai pour vous réécouter. La transcription automatique
-          kabyle n’est pas disponible.
+          Enregistre ta voix et écoute-toi. La transcription automatique kabyle
+          n’est pas disponible.
         </p>
         <button className="primary" onClick={toggle}>
-          {recording
-            ? "Arrêter l’enregistrement"
-            : "Commencer un enregistrement"}
+          {recording ? "Arrêter l’enregistrement" : "Enregistrer ma voix"}
         </button>
         {recording && <p role="status">● Enregistrement en cours…</p>}
         {message && <p role="alert">{message}</p>}

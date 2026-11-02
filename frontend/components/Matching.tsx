@@ -31,10 +31,10 @@ export default function Matching({
       });
       if (result.correct) {
         setMatched([...matched, selected.id]);
-        setMessage("Une nouvelle paire retrouvée !");
+        setMessage("Bravo, une paire trouvée !");
         setSelected(null);
       } else {
-        setMessage("Ces cartes ne vont pas ensemble. Essayez encore.");
+        setMessage("Pas cette carte. Essaie une autre !");
       }
       onSaved();
     } catch (e) {
@@ -48,10 +48,10 @@ export default function Matching({
       <button className="back" onClick={onExit}>
         <ChevronLeft size={16} /> Retour aux fiches
       </button>
-      <div className="eyebrow">LES CARTES QUI SE RENCONTRENT</div>
-      <h1>À chaque forme, son équivalent.</h1>
+      <div className="eyebrow">LE JEU DES PAIRES</div>
+      <h1>Trouve les bonnes paires !</h1>
       <p className="muted">
-        Choisissez une carte à gauche, puis sa transcription à droite.
+        Touche une forme à gauche, puis sa lettre à droite.
       </p>
       <div className="matching">
         <div>
@@ -88,7 +88,7 @@ export default function Matching({
       {matched.length === cards.length && (
         <div className="feedback good">
           <b>Toutes les paires sont réunies !</b>
-          <p>Vos réponses sont sauvegardées dans votre parcours.</p>
+          <p>Bravo, tu as tout trouvé !</p>
           <button className="primary" onClick={onExit}>
             Continuer <ArrowRight size={16} />
           </button>

@@ -28,6 +28,12 @@ cd backend
 
 Chaque tâche cloud est déjà isolée : utiliser le checkout existant, ne pas créer de worktree sauf demande explicite.
 
+## Interface ludique
+
+Accueil simplifié avec une mascotte originale, accès direct au jeu, grandes cartes colorées, consignes courtes et navigation « Les lettres », « Les mots », « Dessiner », « Ma voix ». Les précisions sur l’alphabet restent accessibles dans un volet pour les parents. Les boutons de réponse sont disposés sur deux colonnes sur téléphone ; les mouvements non nécessaires sont désactivés quand le navigateur demande une réduction des animations. Cette refonte a été vérifiée dans Chromium ordinateur/mobile, sans étude utilisateur auprès d’enfants.
+
+Pour récupérer une mise à jour de l’interface sur une installation existante : arrêter le site avec Ctrl+C, exécuter `git pull --ff-only`, puis `npm --prefix frontend run build` et `bash scripts/start.sh`. Cela conserve le `.env` local et ne réinstalle pas les dépendances Python.
+
 ## Ce qui fonctionne
 
 - Parcours de 8 lettres Unicode, fiches avec équivalent latin et indications de base.
