@@ -1,4 +1,6 @@
 import os, secrets
+from pathlib import Path
+from fastapi.staticfiles import StaticFiles
 from datetime import datetime, timedelta, timezone
 from dataclasses import asdict
 from typing import Literal
@@ -6,9 +8,10 @@ from fastapi import FastAPI, Depends, HTTPException, Header, Cookie, Response
 from pydantic import BaseModel, Field
 from sqlalchemy import select, text
 from .db import Session
-from .models import Content, Progress, Attempt
+from .models import Content, Progress, Attempt, MediaAsset
 from .services import UnavailableVision, UnavailableSpeech, compare_words
 app = FastAPI(title="Tifin · Kabyle", version="0.1.0")
+app.mount("/api/media", StaticFiles(directory=Path(__file__).resolve().parents[2] / "content/photos", check_dir=False), name="catalog-media")
 def db():
     with Session() as session: yield session
 def admin(authorization: str = Header(default="")):
@@ -75,6 +78,8 @@ def validate_content(item):
     d=item.data
     if not isinstance(d.get("latin"),str) or not d["latin"].strip(): raise HTTPException(422,"Transcription latine requise")
     if item.status != "validated": return
+    if d.get("publication_blockers") or d.get("license_conflict"):
+        raise HTTPException(422, "Lever les blocages de validation et de licence avant publication")
     sources=d.get("sources",[])
     if not sources or not all(isinstance(s,dict) and all(isinstance(s.get(k),str) and s[k].strip() for k in ("url","author","license")) for s in sources):
         raise HTTPException(422,"Chaque source exige URL, auteur et licence")
@@ -96,3 +101,7 @@ def import_content(items: list[ContentInput],s=Depends(db)):
             for key,value in item.model_dump().items(): setattr(c,key,value)
         else: s.add(Content(**item.model_dump()))
     s.commit();return {"imported":len(items)}
+
+@app.get("/api/admin/media", dependencies=[Depends(admin)])
+def admin_media(s=Depends(db)):
+    return [{"id": a.id, "kind": a.kind, "theme": a.theme, "label_fr": a.label_fr, "status": a.status, "data": a.data} for a in s.scalars(select(MediaAsset).order_by(MediaAsset.label_fr))]

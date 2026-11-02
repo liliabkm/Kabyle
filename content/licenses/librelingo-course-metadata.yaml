@@ -1,0 +1,51 @@
+# This file contains generic meta-data about the course
+
+Course:
+  Language:
+    Name: Kabyle
+    IETF BCP 47: kab
+  For speakers of:
+    Name: French
+    IETF BCP 47: fr
+  License:
+    Name: Attribution-ShareAlike 4.0 International
+    Short name: CC BY-SA 4.0
+    Link: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+  Repository: https://github.com/LibreLingo/LibreLingo-KAB-from-FR
+  Special characters:
+    - "č"
+    - "Č"
+    - "ḍ"
+    - "Ḍ"
+    - "ǧ"
+    - "Ǧ"
+    - "ḥ"
+    - "Ḥ"
+    - "ɣ"
+    - "Ɣ"
+    - "ṛ"
+    - "Ṛ"
+    - "ṣ"
+    - "Ṣ"
+    - "ṭ"
+    - "Ṭ"
+    - "ẓ"
+    - "Ẓ"
+    - "ɛ"
+    - "Ɛ"
+
+Modules:
+ # - juniors/
+  - basics/
+  - introduction/
+  - activities/
+  
+
+Settings:
+  Audio:
+    Enabled: False
+    TTS:
+      - Provider: Polly
+        Voice: Lucia
+        Engine: standard
+ 

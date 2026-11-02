@@ -18,3 +18,9 @@ Les attributions des contenus publiés sont accessibles depuis leurs fiches. Les
 2. Vérifier variété kabyle, latin, transcription tifinaghe suivant une convention étendue documentée, traduction, exemple et droits.
 3. Importer en `draft`, effectuer une relecture humaine, renseigner `reviewed_by` et `reviewed_at`, puis publier en `validated`.
 4. Les mots publiés doivent avoir au moins une illustration attribuée ; ne jamais utiliser une recherche Google comme justificatif de droits.
+
+## Nouveau catalogue lexical et photographique
+
+Un second audit a identifié le cours [LibreLingo-KAB-from-FR](https://github.com/LibreLingo/LibreLingo-KAB-from-FR) et les photos [Fruits-360](https://github.com/fruits-360/fruits-360-100x100). **61 entrées lexicales attestées, non relues, restent en brouillon ; 30 photos sont importées et attribuées dans une table distincte. Aucun mot supplémentaire n’est publié dans les leçons.**
+
+La licence du texte doit être clarifiée : le LICENSE racine du cours est CC BY-NC-SA 4.0 mais `course/course.yaml` annonce CC BY-SA 4.0. L’import conserve le signalement et les blocages. Les photos ont une licence CC BY-SA 4.0 explicite, auteur Mihai Oltean ; elles sont réutilisées sans modification des pixels, avec noms locaux et empreintes vérifiables. Les justifications et attributions sont dans content/licenses et dans chaque ligne du catalogue. Voir [DATA-CATALOG.md](DATA-CATALOG.md) pour les versions, les sources écartées et les commandes de collecte.

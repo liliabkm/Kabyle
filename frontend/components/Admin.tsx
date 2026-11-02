@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { LockKeyhole, ArrowRight } from "lucide-react";
+import ContentLibrary from "./ContentLibrary";
 import { request } from "../lib/api";
 export default function Admin({ onSaved }: { onSaved: () => void }) {
   const [token, setToken] = useState(""),
@@ -40,53 +41,57 @@ export default function Admin({ onSaved }: { onSaved: () => void }) {
           placeholder="ADMIN_TOKEN"
         />
       </label>
-      <button className="secondary" onClick={load} disabled={!token}>
-        Charger les contenus
-      </button>
-      <label>
-        Contenus JSON (liste d’entrées)
-        <textarea
-          spellCheck={false}
-          rows={22}
-          value={json}
-          onChange={(e) => setJson(e.target.value)}
-        />
-      </label>
-      <div className="admin-actions">
-        <button
-          className="primary"
-          disabled={!token}
-          onClick={async () => {
-            try {
-              const data = JSON.parse(json);
-              if (!Array.isArray(data))
-                throw Error("Une liste JSON est requise.");
-              const result = await request("admin/import", {
-                method: "POST",
-                headers,
-                body: JSON.stringify(data),
-              });
-              setMessage(`${result.imported} entrée(s) enregistrée(s).`);
-              onSaved();
-            } catch (e) {
-              setMessage((e as Error).message);
-            }
-          }}
-        >
-          Enregistrer / importer <ArrowRight size={16} />
+      <ContentLibrary token={token} onSaved={onSaved} />
+      <details className="advanced-editor">
+        <summary>Édition avancée et import JSON</summary>
+        <button className="secondary" onClick={load} disabled={!token}>
+          Charger les contenus
         </button>
-        <label className="file-import">
-          Ouvrir un fichier JSON
-          <input
-            type="file"
-            accept="application/json"
-            onChange={async (e) => {
-              const f = e.target.files?.[0];
-              if (f) setJson(await f.text());
-            }}
+        <label>
+          Contenus JSON (liste d’entrées)
+          <textarea
+            spellCheck={false}
+            rows={22}
+            value={json}
+            onChange={(e) => setJson(e.target.value)}
           />
         </label>
-      </div>
+        <div className="admin-actions">
+          <button
+            className="primary"
+            disabled={!token}
+            onClick={async () => {
+              try {
+                const data = JSON.parse(json);
+                if (!Array.isArray(data))
+                  throw Error("Une liste JSON est requise.");
+                const result = await request("admin/import", {
+                  method: "POST",
+                  headers,
+                  body: JSON.stringify(data),
+                });
+                setMessage(`${result.imported} entrée(s) enregistrée(s).`);
+                onSaved();
+              } catch (e) {
+                setMessage((e as Error).message);
+              }
+            }}
+          >
+            Enregistrer / importer <ArrowRight size={16} />
+          </button>
+          <label className="file-import">
+            Ouvrir un fichier JSON
+            <input
+              type="file"
+              accept="application/json"
+              onChange={async (e) => {
+                const f = e.target.files?.[0];
+                if (f) setJson(await f.text());
+              }}
+            />
+          </label>
+        </div>
+      </details>
       {message && (
         <p role="status" className="info-note">
           {message}

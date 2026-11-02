@@ -49,6 +49,8 @@ with sync_playwright() as p:
     page.get_by_role('button',name='Les mots').click()
     expect(page.get_by_role('heading',name='Les mots arrivent bientôt !')).to_be_visible()
     page.get_by_role('button',name='Gestion des contenus').click()
+    expect(page.get_by_role('button',name='Ouvrir la bibliothèque')).to_be_disabled()
+    page.get_by_text('Édition avancée et import JSON',exact=True).click()
     expect(page.get_by_role('button',name='Charger les contenus')).to_be_disabled()
     # Clean only the anonymous identity created by this run.
     assert context.request.delete('http://127.0.0.1:3000/api/progress').status==204

@@ -1437,3 +1437,243 @@ footer > span:last-child {
     box-shadow: none;
   }
 }
+
+/* Editorial catalog: isolated from children's learning activities. */
+.content-library {
+  margin: 28px 0;
+  padding: 24px;
+  background: #fff;
+  border: 2px solid #e4e3f0;
+  border-radius: 22px;
+}
+.library-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.library-heading h2 {
+  font-size: 24px;
+  margin: 0 0 8px;
+}
+.library-heading p {
+  font-size: 14px;
+  color: #586682;
+  margin: 0;
+  line-height: 1.7;
+}
+.library-tabs {
+  display: flex;
+  gap: 12px;
+  margin: 24px 0;
+  flex-wrap: wrap;
+}
+.library-tabs button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 2px solid #dfd9ef;
+  border-radius: 13px;
+  padding: 12px 15px;
+  background: #fff;
+  min-height: 48px;
+  font-weight: 700;
+}
+.library-tabs button.active {
+  background: #ede6ff;
+  color: #6441a1;
+}
+.library-search {
+  display: flex !important;
+  align-items: center;
+  gap: 10px;
+}
+.library-search input {
+  margin: 0;
+}
+.library-word-list {
+  max-height: 430px;
+  overflow: auto;
+  border: 1px solid #e6e4f0;
+  border-radius: 14px;
+}
+.library-word-list > button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border: 0;
+  border-bottom: 1px solid #eeebf6;
+  background: #fff;
+  padding: 16px;
+  width: 100%;
+  text-align: left;
+  min-height: 65px;
+}
+.library-word-list > button:hover {
+  background: #f7f4ff;
+}
+.library-word-list > button > span:first-child {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.library-word-list b {
+  font-size: 17px;
+  color: #413862;
+}
+.library-word-list span span {
+  font-size: 14px;
+  color: #586682;
+}
+.library-badge {
+  font-size: 12px;
+  color: #815a26;
+  background: #fff1d6;
+  border-radius: 20px;
+  padding: 7px 11px;
+  white-space: nowrap;
+}
+.library-photo-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 15px;
+}
+.library-photo {
+  border: 1px solid #e4e1ef;
+  border-radius: 16px;
+  padding: 15px;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+.library-photo img {
+  display: block;
+  margin: 0 auto 12px;
+  object-fit: contain;
+  background: #fff;
+  max-width: 100%;
+  image-rendering: auto;
+}
+.library-photo h3 {
+  font-size: 17px;
+  margin: 10px 0;
+}
+.library-photo p,
+.library-photo a,
+.library-photo small {
+  font-size: 11px;
+  color: #59637c;
+  display: block;
+  line-height: 1.7;
+  margin: 5px 0;
+}
+.library-photo a {
+  color: #65448e;
+}
+.library-photo small {
+  font-size: 10px;
+}
+.library-editor {
+  margin-top: 28px;
+  padding: 22px;
+  background: #f5f2fd;
+  border-radius: 18px;
+  border: 2px solid #e3d9f5;
+}
+.library-editor h3 {
+  font-size: 21px;
+  margin: 0;
+}
+.library-editor select {
+  font: inherit;
+  font-size: 14px;
+  width: 100%;
+  padding: 13px;
+  border: 2px solid #d9d3e8;
+  border-radius: 12px;
+  color: #35425b;
+  background: #fff;
+  margin-top: 10px;
+}
+.library-editor label {
+  font-size: 14px;
+}
+.library-picked-photo {
+  height: 100px;
+  width: 100px;
+  object-fit: contain;
+  border-radius: 12px;
+  display: block;
+  margin: 15px 0;
+}
+.library-editor summary,
+.advanced-editor summary {
+  cursor: pointer;
+  line-height: 1.7;
+  font-size: 15px;
+  font-weight: 700;
+  color: #5d458f;
+  min-height: 44px;
+  padding: 8px 0;
+}
+.library-editor li {
+  font-size: 13px;
+  line-height: 1.8;
+  color: #5b6178;
+}
+.advanced-editor {
+  background: #fff;
+  border: 1px solid #e4e1ef;
+  border-radius: 16px;
+  padding: 15px;
+  margin: 24px 0;
+}
+.advanced-editor textarea {
+  max-height: 600px;
+}
+@media (max-width: 800px) {
+  .library-photo-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (max-width: 540px) {
+  .content-library {
+    padding: 17px;
+  }
+  .library-heading h2 {
+    font-size: 22px;
+  }
+  .library-tabs button {
+    font-size: 13px;
+    width: 100%;
+    justify-content: center;
+  }
+  .library-photo-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .library-photo {
+    padding: 12px;
+  }
+  .library-editor {
+    padding: 17px;
+  }
+  .library-search input {
+    font-size: 14px;
+  }
+  .library-word-list > button {
+    padding: 13px;
+    gap: 10px;
+  }
+  .library-word-list b {
+    font-size: 16px;
+  }
+  .library-badge {
+    font-size: 10px;
+    padding: 7px;
+  }
+  .library-photo h3 {
+    font-size: 15px;
+  }
+}

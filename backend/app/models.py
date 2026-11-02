@@ -27,3 +27,12 @@ class Attempt(Base):
     learner: Mapped[str] = mapped_column(String)
     content_id: Mapped[str] = mapped_column(ForeignKey("content.id"))
     correct: Mapped[bool]
+
+class MediaAsset(Base):
+    __tablename__ = "media_asset"
+    id: Mapped[str] = mapped_column(String, primary_key=True)
+    kind: Mapped[str] = mapped_column(String, default="photo")
+    theme: Mapped[str] = mapped_column(String)
+    label_fr: Mapped[str] = mapped_column(String)
+    status: Mapped[str] = mapped_column(String, default="available")
+    data: Mapped[dict] = mapped_column(JSON)

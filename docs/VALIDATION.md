@@ -31,3 +31,12 @@ La fonctionnalité d’enregistrement est implémentée mais ne reçoit pas de c
 ## Refonte ludique
 
 Compilation TypeScript/Next.js réussie. Test Chromium réexécuté : bouton d’accueil vers le quiz, navigation simplifiée, association, réponses sauvegardées après rechargement, export/effacement du dessin, état de vocabulaire indisponible, administration protégée. Sur viewport mobile 390 px : navigation, affichage sans débordement, quatre réponses et cibles d’au moins 44 × 44 px vérifiées. Captures mises à jour dans artifacts/desktop.png, mobile.png et mobile-quiz.png. Mascotte SVG originale, sans image tierce ni nouvelle dépendance. Pas de test auprès d’enfants ni d’audit d’accessibilité exhaustif.
+
+## Catalogue lexical et photographique
+
+- Migration 002 appliquée sur PostgreSQL : table media_asset créée. Import réel : 61 brouillons, 30 photos ; second import et relance : zéro ajout, corrections conservées.
+- Tests API : 12 tests passés, dont intégrité SHA-256 des 30 JPEG servis, accès admin, refus de publication malgré des champs de relecture remplis si la licence reste bloquée, chemins hors du dossier média rejetés et conservation d’une correction lors du seed.
+- Test Chromium du catalogue : recherche, affichage des 30 images (dimensions naturelles 100 × 100 vérifiées), association à un brouillon avec crédits, conservation des blocages et exclusion de l’API publique. La fiche modifiée par ce test est restaurée. L’API d’administration de test utilise un jeton temporaire en mémoire, jamais celui du .env.
+- Bibliothèque vérifiée à 390 px sans débordement. Capture : artifacts/photo-library.png. La vignette doit rester petite : pas de prétention à la haute définition ni de test auprès d’enfants.
+- Collecte répétée avec les fichiers déjà contrôlés : aucun téléchargement nécessaire, mêmes 61/30, fichier YAML invalide toujours exclu et signalé.
+- Aucun mot supplémentaire publié dans les jeux, aucune conversion tifinaghe automatique, aucune inférence de traduction ou d’audio.

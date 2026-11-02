@@ -1,0 +1,3233 @@
+[
+  {
+    "id": "word-ll-1eab8b37b60faf6b",
+    "kind": "word",
+    "variety": "kab",
+    "script": "Latn",
+    "theme": "animaux",
+    "status": "draft",
+    "data": {
+      "latin": "aqjun",
+      "french": "chien",
+      "french_variants": [
+        "chien",
+        "le chien"
+      ],
+      "tifinagh": "",
+      "synonyms": [
+        "aydi"
+      ],
+      "sources": [
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/animals.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/animals.yaml",
+          "source_index": 0,
+          "source_sha256": "4be8d11803b86d966ce02cd9d47b5ca7fd5a6817dee107a21219ad744a43b201",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        },
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/animals.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/animals.yaml",
+          "source_index": 11,
+          "source_sha256": "4be8d11803b86d966ce02cd9d47b5ca7fd5a6817dee107a21219ad744a43b201",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        }
+      ],
+      "images": [],
+      "audios": [],
+      "examples": [],
+      "source_image_ids": [
+        "dog1",
+        "dog2",
+        "dog3"
+      ],
+      "validation_status": "source_attested_not_reviewed",
+      "license_conflict": true,
+      "publication_blockers": [
+        "Relecture linguistique kabyle requise",
+        "Transcription tifinaghe absente",
+        "Association photo à valider",
+        "Licence à clarifier : LICENSE indique BY-NC-SA, course.yaml indique BY-SA"
+      ],
+      "license_notice": "Usage commercial non autorisé sans clarification. Données extraites pour étude et relecture, non publiées dans les leçons."
+    }
+  },
+  {
+    "id": "word-ll-e83f7f1d967dd2d1",
+    "kind": "word",
+    "variety": "kab",
+    "script": "Latn",
+    "theme": "animaux",
+    "status": "draft",
+    "data": {
+      "latin": "amcic",
+      "french": "chat",
+      "french_variants": [
+        "chat",
+        "le chat"
+      ],
+      "tifinagh": "",
+      "synonyms": [],
+      "sources": [
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/animals.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/animals.yaml",
+          "source_index": 1,
+          "source_sha256": "4be8d11803b86d966ce02cd9d47b5ca7fd5a6817dee107a21219ad744a43b201",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        },
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/animals.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/animals.yaml",
+          "source_index": 6,
+          "source_sha256": "4be8d11803b86d966ce02cd9d47b5ca7fd5a6817dee107a21219ad744a43b201",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        }
+      ],
+      "images": [],
+      "audios": [],
+      "examples": [],
+      "source_image_ids": [
+        "cat1",
+        "cat2",
+        "cat3"
+      ],
+      "validation_status": "source_attested_not_reviewed",
+      "license_conflict": true,
+      "publication_blockers": [
+        "Relecture linguistique kabyle requise",
+        "Transcription tifinaghe absente",
+        "Association photo à valider",
+        "Licence à clarifier : LICENSE indique BY-NC-SA, course.yaml indique BY-SA"
+      ],
+      "license_notice": "Usage commercial non autorisé sans clarification. Données extraites pour étude et relecture, non publiées dans les leçons."
+    }
+  },
+  {
+    "id": "word-ll-26f4e67890021ea4",
+    "kind": "word",
+    "variety": "kab",
+    "script": "Latn",
+    "theme": "animaux",
+    "status": "draft",
+    "data": {
+      "latin": "lmerd",
+      "french": "ours",
+      "french_variants": [
+        "ours",
+        "un ours"
+      ],
+      "tifinagh": "",
+      "synonyms": [],
+      "sources": [
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/animals.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/animals.yaml",
+          "source_index": 2,
+          "source_sha256": "4be8d11803b86d966ce02cd9d47b5ca7fd5a6817dee107a21219ad744a43b201",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        },
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/animals.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/animals.yaml",
+          "source_index": 7,
+          "source_sha256": "4be8d11803b86d966ce02cd9d47b5ca7fd5a6817dee107a21219ad744a43b201",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        }
+      ],
+      "images": [],
+      "audios": [],
+      "examples": [],
+      "source_image_ids": [
+        "bear1",
+        "bear2"
+      ],
+      "validation_status": "source_attested_not_reviewed",
+      "license_conflict": true,
+      "publication_blockers": [
+        "Relecture linguistique kabyle requise",
+        "Transcription tifinaghe absente",
+        "Association photo à valider",
+        "Licence à clarifier : LICENSE indique BY-NC-SA, course.yaml indique BY-SA"
+      ],
+      "license_notice": "Usage commercial non autorisé sans clarification. Données extraites pour étude et relecture, non publiées dans les leçons."
+    }
+  },
+  {
+    "id": "word-ll-929f68f4d22d7c4a",
+    "kind": "word",
+    "variety": "kab",
+    "script": "Latn",
+    "theme": "animaux",
+    "status": "draft",
+    "data": {
+      "latin": "izem",
+      "french": "lion",
+      "french_variants": [
+        "lion",
+        "un lion"
+      ],
+      "tifinagh": "",
+      "synonyms": [],
+      "sources": [
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/animals.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/animals.yaml",
+          "source_index": 3,
+          "source_sha256": "4be8d11803b86d966ce02cd9d47b5ca7fd5a6817dee107a21219ad744a43b201",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        },
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/animals.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/animals.yaml",
+          "source_index": 8,
+          "source_sha256": "4be8d11803b86d966ce02cd9d47b5ca7fd5a6817dee107a21219ad744a43b201",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        }
+      ],
+      "images": [],
+      "audios": [],
+      "examples": [],
+      "source_image_ids": [
+        "lion1",
+        "lion2",
+        "lion3"
+      ],
+      "validation_status": "source_attested_not_reviewed",
+      "license_conflict": true,
+      "publication_blockers": [
+        "Relecture linguistique kabyle requise",
+        "Transcription tifinaghe absente",
+        "Association photo à valider",
+        "Licence à clarifier : LICENSE indique BY-NC-SA, course.yaml indique BY-SA"
+      ],
+      "license_notice": "Usage commercial non autorisé sans clarification. Données extraites pour étude et relecture, non publiées dans les leçons."
+    }
+  },
+  {
+    "id": "word-ll-7d37de0900f4f33b",
+    "kind": "word",
+    "variety": "kab",
+    "script": "Latn",
+    "theme": "animaux",
+    "status": "draft",
+    "data": {
+      "latin": "abṛik",
+      "french": "canard",
+      "french_variants": [
+        "canard",
+        "le canard"
+      ],
+      "tifinagh": "",
+      "synonyms": [],
+      "sources": [
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/animals.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/animals.yaml",
+          "source_index": 4,
+          "source_sha256": "4be8d11803b86d966ce02cd9d47b5ca7fd5a6817dee107a21219ad744a43b201",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        },
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/animals.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/animals.yaml",
+          "source_index": 9,
+          "source_sha256": "4be8d11803b86d966ce02cd9d47b5ca7fd5a6817dee107a21219ad744a43b201",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        }
+      ],
+      "images": [],
+      "audios": [],
+      "examples": [],
+      "source_image_ids": [
+        "duck1",
+        "duck2",
+        "duck3"
+      ],
+      "validation_status": "source_attested_not_reviewed",
+      "license_conflict": true,
+      "publication_blockers": [
+        "Relecture linguistique kabyle requise",
+        "Transcription tifinaghe absente",
+        "Association photo à valider",
+        "Licence à clarifier : LICENSE indique BY-NC-SA, course.yaml indique BY-SA"
+      ],
+      "license_notice": "Usage commercial non autorisé sans clarification. Données extraites pour étude et relecture, non publiées dans les leçons."
+    }
+  },
+  {
+    "id": "word-ll-744863bc359507d6",
+    "kind": "word",
+    "variety": "kab",
+    "script": "Latn",
+    "theme": "animaux",
+    "status": "draft",
+    "data": {
+      "latin": "agmar",
+      "french": "cheval",
+      "french_variants": [
+        "cheval"
+      ],
+      "tifinagh": "",
+      "synonyms": [
+        "aɛudiw"
+      ],
+      "sources": [
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/animals.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/animals.yaml",
+          "source_index": 5,
+          "source_sha256": "4be8d11803b86d966ce02cd9d47b5ca7fd5a6817dee107a21219ad744a43b201",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        }
+      ],
+      "images": [],
+      "audios": [],
+      "examples": [],
+      "source_image_ids": [
+        "horse1",
+        "horse2",
+        "horse3"
+      ],
+      "validation_status": "source_attested_not_reviewed",
+      "license_conflict": true,
+      "publication_blockers": [
+        "Relecture linguistique kabyle requise",
+        "Transcription tifinaghe absente",
+        "Association photo à valider",
+        "Licence à clarifier : LICENSE indique BY-NC-SA, course.yaml indique BY-SA"
+      ],
+      "license_notice": "Usage commercial non autorisé sans clarification. Données extraites pour étude et relecture, non publiées dans les leçons."
+    }
+  },
+  {
+    "id": "word-ll-3b46356abb280111",
+    "kind": "word",
+    "variety": "kab",
+    "script": "Latn",
+    "theme": "animaux",
+    "status": "draft",
+    "data": {
+      "latin": "aɛudiw",
+      "french": "un cheval",
+      "french_variants": [
+        "un cheval"
+      ],
+      "tifinagh": "",
+      "synonyms": [
+        "agmar"
+      ],
+      "sources": [
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/animals.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/animals.yaml",
+          "source_index": 10,
+          "source_sha256": "4be8d11803b86d966ce02cd9d47b5ca7fd5a6817dee107a21219ad744a43b201",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        }
+      ],
+      "images": [],
+      "audios": [],
+      "examples": [],
+      "source_image_ids": [
+        "horse1",
+        "horse2",
+        "horse3"
+      ],
+      "validation_status": "source_attested_not_reviewed",
+      "license_conflict": true,
+      "publication_blockers": [
+        "Relecture linguistique kabyle requise",
+        "Transcription tifinaghe absente",
+        "Association photo à valider",
+        "Licence à clarifier : LICENSE indique BY-NC-SA, course.yaml indique BY-SA"
+      ],
+      "license_notice": "Usage commercial non autorisé sans clarification. Données extraites pour étude et relecture, non publiées dans les leçons."
+    }
+  },
+  {
+    "id": "word-ll-d2ee67d6f8d4e0be",
+    "kind": "word",
+    "variety": "kab",
+    "script": "Latn",
+    "theme": "vetements",
+    "status": "draft",
+    "data": {
+      "latin": "taqenduṛt",
+      "french": "robe",
+      "french_variants": [
+        "robe",
+        "la robe"
+      ],
+      "tifinagh": "",
+      "synonyms": [],
+      "sources": [
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/clothes.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/clothes.yaml",
+          "source_index": 0,
+          "source_sha256": "c83c3ba68af304444c33e58ab7c376abdf89fe5398027920a1bb05e03b49537a",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        },
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/clothes.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/clothes.yaml",
+          "source_index": 7,
+          "source_sha256": "c83c3ba68af304444c33e58ab7c376abdf89fe5398027920a1bb05e03b49537a",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        }
+      ],
+      "images": [],
+      "audios": [],
+      "examples": [],
+      "source_image_ids": [
+        "dress1",
+        "dress2",
+        "dress3"
+      ],
+      "validation_status": "source_attested_not_reviewed",
+      "license_conflict": true,
+      "publication_blockers": [
+        "Relecture linguistique kabyle requise",
+        "Transcription tifinaghe absente",
+        "Association photo à valider",
+        "Licence à clarifier : LICENSE indique BY-NC-SA, course.yaml indique BY-SA"
+      ],
+      "license_notice": "Usage commercial non autorisé sans clarification. Données extraites pour étude et relecture, non publiées dans les leçons."
+    }
+  },
+  {
+    "id": "word-ll-d7a683872ac185e2",
+    "kind": "word",
+    "variety": "kab",
+    "script": "Latn",
+    "theme": "vetements",
+    "status": "draft",
+    "data": {
+      "latin": "atriku",
+      "french": "t-shirt",
+      "french_variants": [
+        "t-shirt",
+        "le t-shirt"
+      ],
+      "tifinagh": "",
+      "synonyms": [],
+      "sources": [
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/clothes.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/clothes.yaml",
+          "source_index": 1,
+          "source_sha256": "c83c3ba68af304444c33e58ab7c376abdf89fe5398027920a1bb05e03b49537a",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        },
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/clothes.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/clothes.yaml",
+          "source_index": 8,
+          "source_sha256": "c83c3ba68af304444c33e58ab7c376abdf89fe5398027920a1bb05e03b49537a",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        }
+      ],
+      "images": [],
+      "audios": [],
+      "examples": [],
+      "source_image_ids": [
+        "t-shirt1",
+        "t-shirt2",
+        "t-shirt3"
+      ],
+      "validation_status": "source_attested_not_reviewed",
+      "license_conflict": true,
+      "publication_blockers": [
+        "Relecture linguistique kabyle requise",
+        "Transcription tifinaghe absente",
+        "Association photo à valider",
+        "Licence à clarifier : LICENSE indique BY-NC-SA, course.yaml indique BY-SA"
+      ],
+      "license_notice": "Usage commercial non autorisé sans clarification. Données extraites pour étude et relecture, non publiées dans les leçons."
+    }
+  },
+  {
+    "id": "word-ll-46ac4048d5365a6d",
+    "kind": "word",
+    "variety": "kab",
+    "script": "Latn",
+    "theme": "vetements",
+    "status": "draft",
+    "data": {
+      "latin": "tamḍelliwt",
+      "french": "chapeau",
+      "french_variants": [
+        "chapeau",
+        "un chapeau"
+      ],
+      "tifinagh": "",
+      "synonyms": [],
+      "sources": [
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/clothes.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/clothes.yaml",
+          "source_index": 2,
+          "source_sha256": "c83c3ba68af304444c33e58ab7c376abdf89fe5398027920a1bb05e03b49537a",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        },
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/clothes.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/clothes.yaml",
+          "source_index": 9,
+          "source_sha256": "c83c3ba68af304444c33e58ab7c376abdf89fe5398027920a1bb05e03b49537a",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        }
+      ],
+      "images": [],
+      "audios": [],
+      "examples": [],
+      "source_image_ids": [
+        "hat1",
+        "hat2",
+        "hat3"
+      ],
+      "validation_status": "source_attested_not_reviewed",
+      "license_conflict": true,
+      "publication_blockers": [
+        "Relecture linguistique kabyle requise",
+        "Transcription tifinaghe absente",
+        "Association photo à valider",
+        "Licence à clarifier : LICENSE indique BY-NC-SA, course.yaml indique BY-SA"
+      ],
+      "license_notice": "Usage commercial non autorisé sans clarification. Données extraites pour étude et relecture, non publiées dans les leçons."
+    }
+  },
+  {
+    "id": "word-ll-1441dcf1e701da92",
+    "kind": "word",
+    "variety": "kab",
+    "script": "Latn",
+    "theme": "vetements",
+    "status": "draft",
+    "data": {
+      "latin": "isebbaḍen",
+      "french": "les chaussures",
+      "french_variants": [
+        "les chaussures"
+      ],
+      "tifinagh": "",
+      "synonyms": [],
+      "sources": [
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/clothes.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/clothes.yaml",
+          "source_index": 3,
+          "source_sha256": "c83c3ba68af304444c33e58ab7c376abdf89fe5398027920a1bb05e03b49537a",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        },
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/clothes.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/clothes.yaml",
+          "source_index": 10,
+          "source_sha256": "c83c3ba68af304444c33e58ab7c376abdf89fe5398027920a1bb05e03b49537a",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        }
+      ],
+      "images": [],
+      "audios": [],
+      "examples": [],
+      "source_image_ids": [
+        "shoes1",
+        "shoes2",
+        "shoes3"
+      ],
+      "validation_status": "source_attested_not_reviewed",
+      "license_conflict": true,
+      "publication_blockers": [
+        "Relecture linguistique kabyle requise",
+        "Transcription tifinaghe absente",
+        "Association photo à valider",
+        "Licence à clarifier : LICENSE indique BY-NC-SA, course.yaml indique BY-SA"
+      ],
+      "license_notice": "Usage commercial non autorisé sans clarification. Données extraites pour étude et relecture, non publiées dans les leçons."
+    }
+  },
+  {
+    "id": "word-ll-2b75543f33685807",
+    "kind": "word",
+    "variety": "kab",
+    "script": "Latn",
+    "theme": "vetements",
+    "status": "draft",
+    "data": {
+      "latin": "taseddrit",
+      "french": "chemise",
+      "french_variants": [
+        "chemise",
+        "une chemise"
+      ],
+      "tifinagh": "",
+      "synonyms": [],
+      "sources": [
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/clothes.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/clothes.yaml",
+          "source_index": 4,
+          "source_sha256": "c83c3ba68af304444c33e58ab7c376abdf89fe5398027920a1bb05e03b49537a",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        },
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/clothes.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/clothes.yaml",
+          "source_index": 11,
+          "source_sha256": "c83c3ba68af304444c33e58ab7c376abdf89fe5398027920a1bb05e03b49537a",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        }
+      ],
+      "images": [],
+      "audios": [],
+      "examples": [],
+      "source_image_ids": [
+        "shirt1",
+        "shirt2",
+        "shirt3"
+      ],
+      "validation_status": "source_attested_not_reviewed",
+      "license_conflict": true,
+      "publication_blockers": [
+        "Relecture linguistique kabyle requise",
+        "Transcription tifinaghe absente",
+        "Association photo à valider",
+        "Licence à clarifier : LICENSE indique BY-NC-SA, course.yaml indique BY-SA"
+      ],
+      "license_notice": "Usage commercial non autorisé sans clarification. Données extraites pour étude et relecture, non publiées dans les leçons."
+    }
+  },
+  {
+    "id": "word-ll-8d4512198593e6a3",
+    "kind": "word",
+    "variety": "kab",
+    "script": "Latn",
+    "theme": "vetements",
+    "status": "draft",
+    "data": {
+      "latin": "timeḥremt",
+      "french": "jupe",
+      "french_variants": [
+        "jupe",
+        "la jupe"
+      ],
+      "tifinagh": "",
+      "synonyms": [],
+      "sources": [
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/clothes.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/clothes.yaml",
+          "source_index": 5,
+          "source_sha256": "c83c3ba68af304444c33e58ab7c376abdf89fe5398027920a1bb05e03b49537a",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        },
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/clothes.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/clothes.yaml",
+          "source_index": 12,
+          "source_sha256": "c83c3ba68af304444c33e58ab7c376abdf89fe5398027920a1bb05e03b49537a",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        }
+      ],
+      "images": [],
+      "audios": [],
+      "examples": [],
+      "source_image_ids": [
+        "skirt1",
+        "skirt2",
+        "skirt3"
+      ],
+      "validation_status": "source_attested_not_reviewed",
+      "license_conflict": true,
+      "publication_blockers": [
+        "Relecture linguistique kabyle requise",
+        "Transcription tifinaghe absente",
+        "Association photo à valider",
+        "Licence à clarifier : LICENSE indique BY-NC-SA, course.yaml indique BY-SA"
+      ],
+      "license_notice": "Usage commercial non autorisé sans clarification. Données extraites pour étude et relecture, non publiées dans les leçons."
+    }
+  },
+  {
+    "id": "word-ll-2f3ffba74167458c",
+    "kind": "word",
+    "variety": "kab",
+    "script": "Latn",
+    "theme": "vetements",
+    "status": "draft",
+    "data": {
+      "latin": "iqaciṛen",
+      "french": "chaussettes",
+      "french_variants": [
+        "chaussettes"
+      ],
+      "tifinagh": "",
+      "synonyms": [],
+      "sources": [
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/clothes.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/clothes.yaml",
+          "source_index": 6,
+          "source_sha256": "c83c3ba68af304444c33e58ab7c376abdf89fe5398027920a1bb05e03b49537a",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        }
+      ],
+      "images": [],
+      "audios": [],
+      "examples": [],
+      "source_image_ids": [
+        "socks1",
+        "socks2",
+        "socks3"
+      ],
+      "validation_status": "source_attested_not_reviewed",
+      "license_conflict": true,
+      "publication_blockers": [
+        "Relecture linguistique kabyle requise",
+        "Transcription tifinaghe absente",
+        "Association photo à valider",
+        "Licence à clarifier : LICENSE indique BY-NC-SA, course.yaml indique BY-SA"
+      ],
+      "license_notice": "Usage commercial non autorisé sans clarification. Données extraites pour étude et relecture, non publiées dans les leçons."
+    }
+  },
+  {
+    "id": "word-ll-081ba7f09a5735b6",
+    "kind": "word",
+    "variety": "kab",
+    "script": "Latn",
+    "theme": "vetements",
+    "status": "draft",
+    "data": {
+      "latin": "aqaciṛ",
+      "french": "la chaussette",
+      "french_variants": [
+        "la chaussette"
+      ],
+      "tifinagh": "",
+      "synonyms": [],
+      "sources": [
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/clothes.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/clothes.yaml",
+          "source_index": 13,
+          "source_sha256": "c83c3ba68af304444c33e58ab7c376abdf89fe5398027920a1bb05e03b49537a",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        }
+      ],
+      "images": [],
+      "audios": [],
+      "examples": [],
+      "source_image_ids": [
+        "socks1",
+        "socks2",
+        "socks3"
+      ],
+      "validation_status": "source_attested_not_reviewed",
+      "license_conflict": true,
+      "publication_blockers": [
+        "Relecture linguistique kabyle requise",
+        "Transcription tifinaghe absente",
+        "Association photo à valider",
+        "Licence à clarifier : LICENSE indique BY-NC-SA, course.yaml indique BY-SA"
+      ],
+      "license_notice": "Usage commercial non autorisé sans clarification. Données extraites pour étude et relecture, non publiées dans les leçons."
+    }
+  },
+  {
+    "id": "word-ll-c9286ec537db320e",
+    "kind": "word",
+    "variety": "kab",
+    "script": "Latn",
+    "theme": "alimentation",
+    "status": "draft",
+    "data": {
+      "latin": "aɣrum",
+      "french": "pain",
+      "french_variants": [
+        "pain",
+        "le pain"
+      ],
+      "tifinagh": "",
+      "synonyms": [],
+      "sources": [
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/food.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/food.yaml",
+          "source_index": 0,
+          "source_sha256": "f75023d6afb84c4d4c8db4659ec5cad70870ab0a3ec99cc71ab8fc38348b4391",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        },
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/food.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/food.yaml",
+          "source_index": 4,
+          "source_sha256": "f75023d6afb84c4d4c8db4659ec5cad70870ab0a3ec99cc71ab8fc38348b4391",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        }
+      ],
+      "images": [],
+      "audios": [],
+      "examples": [],
+      "source_image_ids": [
+        "bread1",
+        "bread2",
+        "bread3"
+      ],
+      "validation_status": "source_attested_not_reviewed",
+      "license_conflict": true,
+      "publication_blockers": [
+        "Relecture linguistique kabyle requise",
+        "Transcription tifinaghe absente",
+        "Association photo à valider",
+        "Licence à clarifier : LICENSE indique BY-NC-SA, course.yaml indique BY-SA"
+      ],
+      "license_notice": "Usage commercial non autorisé sans clarification. Données extraites pour étude et relecture, non publiées dans les leçons."
+    }
+  },
+  {
+    "id": "word-ll-3ca3ece6d8522a03",
+    "kind": "word",
+    "variety": "kab",
+    "script": "Latn",
+    "theme": "alimentation",
+    "status": "draft",
+    "data": {
+      "latin": "ayefki",
+      "french": "lait",
+      "french_variants": [
+        "lait",
+        "le lait"
+      ],
+      "tifinagh": "",
+      "synonyms": [],
+      "sources": [
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/food.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/food.yaml",
+          "source_index": 1,
+          "source_sha256": "f75023d6afb84c4d4c8db4659ec5cad70870ab0a3ec99cc71ab8fc38348b4391",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        },
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/food.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/food.yaml",
+          "source_index": 5,
+          "source_sha256": "f75023d6afb84c4d4c8db4659ec5cad70870ab0a3ec99cc71ab8fc38348b4391",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        }
+      ],
+      "images": [],
+      "audios": [],
+      "examples": [],
+      "source_image_ids": [
+        "milk1",
+        "milk2",
+        "milk3"
+      ],
+      "validation_status": "source_attested_not_reviewed",
+      "license_conflict": true,
+      "publication_blockers": [
+        "Relecture linguistique kabyle requise",
+        "Transcription tifinaghe absente",
+        "Association photo à valider",
+        "Licence à clarifier : LICENSE indique BY-NC-SA, course.yaml indique BY-SA"
+      ],
+      "license_notice": "Usage commercial non autorisé sans clarification. Données extraites pour étude et relecture, non publiées dans les leçons."
+    }
+  },
+  {
+    "id": "word-ll-2f76a634f6336947",
+    "kind": "word",
+    "variety": "kab",
+    "script": "Latn",
+    "theme": "alimentation",
+    "status": "draft",
+    "data": {
+      "latin": "irektiyen",
+      "french": "pâtes",
+      "french_variants": [
+        "pâtes",
+        "les pâtes"
+      ],
+      "tifinagh": "",
+      "synonyms": [],
+      "sources": [
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/food.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/food.yaml",
+          "source_index": 2,
+          "source_sha256": "f75023d6afb84c4d4c8db4659ec5cad70870ab0a3ec99cc71ab8fc38348b4391",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        },
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/food.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/food.yaml",
+          "source_index": 6,
+          "source_sha256": "f75023d6afb84c4d4c8db4659ec5cad70870ab0a3ec99cc71ab8fc38348b4391",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        }
+      ],
+      "images": [],
+      "audios": [],
+      "examples": [],
+      "source_image_ids": [
+        "pasta1",
+        "pasta2",
+        "pasta3"
+      ],
+      "validation_status": "source_attested_not_reviewed",
+      "license_conflict": true,
+      "publication_blockers": [
+        "Relecture linguistique kabyle requise",
+        "Transcription tifinaghe absente",
+        "Association photo à valider",
+        "Licence à clarifier : LICENSE indique BY-NC-SA, course.yaml indique BY-SA"
+      ],
+      "license_notice": "Usage commercial non autorisé sans clarification. Données extraites pour étude et relecture, non publiées dans les leçons."
+    }
+  },
+  {
+    "id": "word-ll-05484a7906f799ed",
+    "kind": "word",
+    "variety": "kab",
+    "script": "Latn",
+    "theme": "alimentation",
+    "status": "draft",
+    "data": {
+      "latin": "imeddukal",
+      "french": "amis",
+      "french_variants": [
+        "amis",
+        "les amis"
+      ],
+      "tifinagh": "",
+      "synonyms": [],
+      "sources": [
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/food.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/food.yaml",
+          "source_index": 3,
+          "source_sha256": "f75023d6afb84c4d4c8db4659ec5cad70870ab0a3ec99cc71ab8fc38348b4391",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        },
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/food.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/food.yaml",
+          "source_index": 7,
+          "source_sha256": "f75023d6afb84c4d4c8db4659ec5cad70870ab0a3ec99cc71ab8fc38348b4391",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        }
+      ],
+      "images": [],
+      "audios": [],
+      "examples": [],
+      "source_image_ids": [
+        "couple1",
+        "couple2",
+        "couple3"
+      ],
+      "validation_status": "source_attested_not_reviewed",
+      "license_conflict": true,
+      "publication_blockers": [
+        "Relecture linguistique kabyle requise",
+        "Transcription tifinaghe absente",
+        "Association photo à valider",
+        "Licence à clarifier : LICENSE indique BY-NC-SA, course.yaml indique BY-SA"
+      ],
+      "license_notice": "Usage commercial non autorisé sans clarification. Données extraites pour étude et relecture, non publiées dans les leçons."
+    }
+  },
+  {
+    "id": "word-ll-f8c8c77c730a0d8a",
+    "kind": "word",
+    "variety": "kab",
+    "script": "Latn",
+    "theme": "nature",
+    "status": "draft",
+    "data": {
+      "latin": "igenni",
+      "french": "ciel",
+      "french_variants": [
+        "ciel"
+      ],
+      "tifinagh": "",
+      "synonyms": [],
+      "sources": [
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/nature.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/nature.yaml",
+          "source_index": 0,
+          "source_sha256": "8fbc0c1c98fccf174825dd9dc1d7683c91e5b44e2ee82505f0a00171376c0a55",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        }
+      ],
+      "images": [],
+      "audios": [],
+      "examples": [],
+      "source_image_ids": [
+        "sky1",
+        "sky2",
+        "sky3"
+      ],
+      "validation_status": "source_attested_not_reviewed",
+      "license_conflict": true,
+      "publication_blockers": [
+        "Relecture linguistique kabyle requise",
+        "Transcription tifinaghe absente",
+        "Association photo à valider",
+        "Licence à clarifier : LICENSE indique BY-NC-SA, course.yaml indique BY-SA"
+      ],
+      "license_notice": "Usage commercial non autorisé sans clarification. Données extraites pour étude et relecture, non publiées dans les leçons."
+    }
+  },
+  {
+    "id": "word-ll-5f8b94103b61ea6c",
+    "kind": "word",
+    "variety": "kab",
+    "script": "Latn",
+    "theme": "nature",
+    "status": "draft",
+    "data": {
+      "latin": "asif",
+      "french": "rivière",
+      "french_variants": [
+        "rivière"
+      ],
+      "tifinagh": "",
+      "synonyms": [],
+      "sources": [
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/nature.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/nature.yaml",
+          "source_index": 1,
+          "source_sha256": "8fbc0c1c98fccf174825dd9dc1d7683c91e5b44e2ee82505f0a00171376c0a55",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        }
+      ],
+      "images": [],
+      "audios": [],
+      "examples": [],
+      "source_image_ids": [
+        "river1",
+        "river2",
+        "river3"
+      ],
+      "validation_status": "source_attested_not_reviewed",
+      "license_conflict": true,
+      "publication_blockers": [
+        "Relecture linguistique kabyle requise",
+        "Transcription tifinaghe absente",
+        "Association photo à valider",
+        "Licence à clarifier : LICENSE indique BY-NC-SA, course.yaml indique BY-SA"
+      ],
+      "license_notice": "Usage commercial non autorisé sans clarification. Données extraites pour étude et relecture, non publiées dans les leçons."
+    }
+  },
+  {
+    "id": "word-ll-6a2f4b79612cc90c",
+    "kind": "word",
+    "variety": "kab",
+    "script": "Latn",
+    "theme": "nature",
+    "status": "draft",
+    "data": {
+      "latin": "itij",
+      "french": "soleil",
+      "french_variants": [
+        "soleil"
+      ],
+      "tifinagh": "",
+      "synonyms": [],
+      "sources": [
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/nature.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/nature.yaml",
+          "source_index": 2,
+          "source_sha256": "8fbc0c1c98fccf174825dd9dc1d7683c91e5b44e2ee82505f0a00171376c0a55",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        }
+      ],
+      "images": [],
+      "audios": [],
+      "examples": [],
+      "source_image_ids": [
+        "sun1",
+        "sun2",
+        "sun3"
+      ],
+      "validation_status": "source_attested_not_reviewed",
+      "license_conflict": true,
+      "publication_blockers": [
+        "Relecture linguistique kabyle requise",
+        "Transcription tifinaghe absente",
+        "Association photo à valider",
+        "Licence à clarifier : LICENSE indique BY-NC-SA, course.yaml indique BY-SA"
+      ],
+      "license_notice": "Usage commercial non autorisé sans clarification. Données extraites pour étude et relecture, non publiées dans les leçons."
+    }
+  },
+  {
+    "id": "word-ll-0517993477ab18fa",
+    "kind": "word",
+    "variety": "kab",
+    "script": "Latn",
+    "theme": "nature",
+    "status": "draft",
+    "data": {
+      "latin": "ilel",
+      "french": "mer",
+      "french_variants": [
+        "mer"
+      ],
+      "tifinagh": "",
+      "synonyms": [],
+      "sources": [
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/nature.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/nature.yaml",
+          "source_index": 3,
+          "source_sha256": "8fbc0c1c98fccf174825dd9dc1d7683c91e5b44e2ee82505f0a00171376c0a55",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        }
+      ],
+      "images": [],
+      "audios": [],
+      "examples": [],
+      "source_image_ids": [
+        "sea1",
+        "sea2",
+        "sea3"
+      ],
+      "validation_status": "source_attested_not_reviewed",
+      "license_conflict": true,
+      "publication_blockers": [
+        "Relecture linguistique kabyle requise",
+        "Transcription tifinaghe absente",
+        "Association photo à valider",
+        "Licence à clarifier : LICENSE indique BY-NC-SA, course.yaml indique BY-SA"
+      ],
+      "license_notice": "Usage commercial non autorisé sans clarification. Données extraites pour étude et relecture, non publiées dans les leçons."
+    }
+  },
+  {
+    "id": "word-ll-91568b856f300906",
+    "kind": "word",
+    "variety": "kab",
+    "script": "Latn",
+    "theme": "nature",
+    "status": "draft",
+    "data": {
+      "latin": "adrar",
+      "french": "montagne",
+      "french_variants": [
+        "montagne"
+      ],
+      "tifinagh": "",
+      "synonyms": [],
+      "sources": [
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/nature.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/nature.yaml",
+          "source_index": 4,
+          "source_sha256": "8fbc0c1c98fccf174825dd9dc1d7683c91e5b44e2ee82505f0a00171376c0a55",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        }
+      ],
+      "images": [],
+      "audios": [],
+      "examples": [],
+      "source_image_ids": [
+        "mountain1",
+        "mountain2",
+        "mountain3"
+      ],
+      "validation_status": "source_attested_not_reviewed",
+      "license_conflict": true,
+      "publication_blockers": [
+        "Relecture linguistique kabyle requise",
+        "Transcription tifinaghe absente",
+        "Association photo à valider",
+        "Licence à clarifier : LICENSE indique BY-NC-SA, course.yaml indique BY-SA"
+      ],
+      "license_notice": "Usage commercial non autorisé sans clarification. Données extraites pour étude et relecture, non publiées dans les leçons."
+    }
+  },
+  {
+    "id": "word-ll-e9809a18ac92c8ae",
+    "kind": "word",
+    "variety": "kab",
+    "script": "Latn",
+    "theme": "nature",
+    "status": "draft",
+    "data": {
+      "latin": "agelmim",
+      "french": "lac",
+      "french_variants": [
+        "lac"
+      ],
+      "tifinagh": "",
+      "synonyms": [],
+      "sources": [
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/nature.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/nature.yaml",
+          "source_index": 5,
+          "source_sha256": "8fbc0c1c98fccf174825dd9dc1d7683c91e5b44e2ee82505f0a00171376c0a55",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        }
+      ],
+      "images": [],
+      "audios": [],
+      "examples": [],
+      "source_image_ids": [
+        "lake1",
+        "lake2",
+        "lake3"
+      ],
+      "validation_status": "source_attested_not_reviewed",
+      "license_conflict": true,
+      "publication_blockers": [
+        "Relecture linguistique kabyle requise",
+        "Transcription tifinaghe absente",
+        "Association photo à valider",
+        "Licence à clarifier : LICENSE indique BY-NC-SA, course.yaml indique BY-SA"
+      ],
+      "license_notice": "Usage commercial non autorisé sans clarification. Données extraites pour étude et relecture, non publiées dans les leçons."
+    }
+  },
+  {
+    "id": "word-ll-6772188e09e9ba1b",
+    "kind": "word",
+    "variety": "kab",
+    "script": "Latn",
+    "theme": "nature",
+    "status": "draft",
+    "data": {
+      "latin": "taftist",
+      "french": "plage",
+      "french_variants": [
+        "plage"
+      ],
+      "tifinagh": "",
+      "synonyms": [],
+      "sources": [
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/nature.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/nature.yaml",
+          "source_index": 6,
+          "source_sha256": "8fbc0c1c98fccf174825dd9dc1d7683c91e5b44e2ee82505f0a00171376c0a55",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        }
+      ],
+      "images": [],
+      "audios": [],
+      "examples": [],
+      "source_image_ids": [
+        "beach1",
+        "beach2",
+        "beach3"
+      ],
+      "validation_status": "source_attested_not_reviewed",
+      "license_conflict": true,
+      "publication_blockers": [
+        "Relecture linguistique kabyle requise",
+        "Transcription tifinaghe absente",
+        "Association photo à valider",
+        "Licence à clarifier : LICENSE indique BY-NC-SA, course.yaml indique BY-SA"
+      ],
+      "license_notice": "Usage commercial non autorisé sans clarification. Données extraites pour étude et relecture, non publiées dans les leçons."
+    }
+  },
+  {
+    "id": "word-ll-192e9e05d19b3592",
+    "kind": "word",
+    "variety": "kab",
+    "script": "Latn",
+    "theme": "nature",
+    "status": "draft",
+    "data": {
+      "latin": "yiwen yigenni",
+      "french": "un ciel",
+      "french_variants": [
+        "un ciel"
+      ],
+      "tifinagh": "",
+      "synonyms": [],
+      "sources": [
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/nature.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/nature.yaml",
+          "source_index": 7,
+          "source_sha256": "8fbc0c1c98fccf174825dd9dc1d7683c91e5b44e2ee82505f0a00171376c0a55",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        }
+      ],
+      "images": [],
+      "audios": [],
+      "examples": [],
+      "source_image_ids": [
+        "sky1",
+        "sky2",
+        "sky3"
+      ],
+      "validation_status": "source_attested_not_reviewed",
+      "license_conflict": true,
+      "publication_blockers": [
+        "Relecture linguistique kabyle requise",
+        "Transcription tifinaghe absente",
+        "Association photo à valider",
+        "Licence à clarifier : LICENSE indique BY-NC-SA, course.yaml indique BY-SA"
+      ],
+      "license_notice": "Usage commercial non autorisé sans clarification. Données extraites pour étude et relecture, non publiées dans les leçons."
+    }
+  },
+  {
+    "id": "word-ll-4c273e757659dd77",
+    "kind": "word",
+    "variety": "kab",
+    "script": "Latn",
+    "theme": "nature",
+    "status": "draft",
+    "data": {
+      "latin": "yiwen wasif",
+      "french": "une rivière",
+      "french_variants": [
+        "une rivière"
+      ],
+      "tifinagh": "",
+      "synonyms": [],
+      "sources": [
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/nature.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/nature.yaml",
+          "source_index": 8,
+          "source_sha256": "8fbc0c1c98fccf174825dd9dc1d7683c91e5b44e2ee82505f0a00171376c0a55",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        }
+      ],
+      "images": [],
+      "audios": [],
+      "examples": [],
+      "source_image_ids": [
+        "river1",
+        "river2",
+        "river3"
+      ],
+      "validation_status": "source_attested_not_reviewed",
+      "license_conflict": true,
+      "publication_blockers": [
+        "Relecture linguistique kabyle requise",
+        "Transcription tifinaghe absente",
+        "Association photo à valider",
+        "Licence à clarifier : LICENSE indique BY-NC-SA, course.yaml indique BY-SA"
+      ],
+      "license_notice": "Usage commercial non autorisé sans clarification. Données extraites pour étude et relecture, non publiées dans les leçons."
+    }
+  },
+  {
+    "id": "word-ll-6148e1935427ab53",
+    "kind": "word",
+    "variety": "kab",
+    "script": "Latn",
+    "theme": "nature",
+    "status": "draft",
+    "data": {
+      "latin": "yiwen yitij",
+      "french": "un soleil",
+      "french_variants": [
+        "un soleil"
+      ],
+      "tifinagh": "",
+      "synonyms": [],
+      "sources": [
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/nature.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/nature.yaml",
+          "source_index": 9,
+          "source_sha256": "8fbc0c1c98fccf174825dd9dc1d7683c91e5b44e2ee82505f0a00171376c0a55",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        }
+      ],
+      "images": [],
+      "audios": [],
+      "examples": [],
+      "source_image_ids": [
+        "sun1",
+        "sun2",
+        "sun3"
+      ],
+      "validation_status": "source_attested_not_reviewed",
+      "license_conflict": true,
+      "publication_blockers": [
+        "Relecture linguistique kabyle requise",
+        "Transcription tifinaghe absente",
+        "Association photo à valider",
+        "Licence à clarifier : LICENSE indique BY-NC-SA, course.yaml indique BY-SA"
+      ],
+      "license_notice": "Usage commercial non autorisé sans clarification. Données extraites pour étude et relecture, non publiées dans les leçons."
+    }
+  },
+  {
+    "id": "word-ll-d2cbccf7da309a6f",
+    "kind": "word",
+    "variety": "kab",
+    "script": "Latn",
+    "theme": "nature",
+    "status": "draft",
+    "data": {
+      "latin": "yiwen yilel",
+      "french": "une mer",
+      "french_variants": [
+        "une mer"
+      ],
+      "tifinagh": "",
+      "synonyms": [],
+      "sources": [
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/nature.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/nature.yaml",
+          "source_index": 10,
+          "source_sha256": "8fbc0c1c98fccf174825dd9dc1d7683c91e5b44e2ee82505f0a00171376c0a55",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        }
+      ],
+      "images": [],
+      "audios": [],
+      "examples": [],
+      "source_image_ids": [
+        "sea1",
+        "sea2",
+        "sea3"
+      ],
+      "validation_status": "source_attested_not_reviewed",
+      "license_conflict": true,
+      "publication_blockers": [
+        "Relecture linguistique kabyle requise",
+        "Transcription tifinaghe absente",
+        "Association photo à valider",
+        "Licence à clarifier : LICENSE indique BY-NC-SA, course.yaml indique BY-SA"
+      ],
+      "license_notice": "Usage commercial non autorisé sans clarification. Données extraites pour étude et relecture, non publiées dans les leçons."
+    }
+  },
+  {
+    "id": "word-ll-43c17e2fe863be5f",
+    "kind": "word",
+    "variety": "kab",
+    "script": "Latn",
+    "theme": "nature",
+    "status": "draft",
+    "data": {
+      "latin": "yiwen udrar",
+      "french": "une montagne",
+      "french_variants": [
+        "une montagne"
+      ],
+      "tifinagh": "",
+      "synonyms": [],
+      "sources": [
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/nature.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/nature.yaml",
+          "source_index": 11,
+          "source_sha256": "8fbc0c1c98fccf174825dd9dc1d7683c91e5b44e2ee82505f0a00171376c0a55",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        }
+      ],
+      "images": [],
+      "audios": [],
+      "examples": [],
+      "source_image_ids": [
+        "mountain1",
+        "mountain2",
+        "mountain3"
+      ],
+      "validation_status": "source_attested_not_reviewed",
+      "license_conflict": true,
+      "publication_blockers": [
+        "Relecture linguistique kabyle requise",
+        "Transcription tifinaghe absente",
+        "Association photo à valider",
+        "Licence à clarifier : LICENSE indique BY-NC-SA, course.yaml indique BY-SA"
+      ],
+      "license_notice": "Usage commercial non autorisé sans clarification. Données extraites pour étude et relecture, non publiées dans les leçons."
+    }
+  },
+  {
+    "id": "word-ll-e22d76accbe97d11",
+    "kind": "word",
+    "variety": "kab",
+    "script": "Latn",
+    "theme": "nature",
+    "status": "draft",
+    "data": {
+      "latin": "yiwen ugelmim",
+      "french": "un lac",
+      "french_variants": [
+        "un lac"
+      ],
+      "tifinagh": "",
+      "synonyms": [],
+      "sources": [
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/nature.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/nature.yaml",
+          "source_index": 12,
+          "source_sha256": "8fbc0c1c98fccf174825dd9dc1d7683c91e5b44e2ee82505f0a00171376c0a55",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        }
+      ],
+      "images": [],
+      "audios": [],
+      "examples": [],
+      "source_image_ids": [
+        "lake1",
+        "lake2",
+        "lake3"
+      ],
+      "validation_status": "source_attested_not_reviewed",
+      "license_conflict": true,
+      "publication_blockers": [
+        "Relecture linguistique kabyle requise",
+        "Transcription tifinaghe absente",
+        "Association photo à valider",
+        "Licence à clarifier : LICENSE indique BY-NC-SA, course.yaml indique BY-SA"
+      ],
+      "license_notice": "Usage commercial non autorisé sans clarification. Données extraites pour étude et relecture, non publiées dans les leçons."
+    }
+  },
+  {
+    "id": "word-ll-168db3cc635146ba",
+    "kind": "word",
+    "variety": "kab",
+    "script": "Latn",
+    "theme": "nature",
+    "status": "draft",
+    "data": {
+      "latin": "yiwet teftist",
+      "french": "une plage",
+      "french_variants": [
+        "une plage"
+      ],
+      "tifinagh": "",
+      "synonyms": [],
+      "sources": [
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/nature.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/nature.yaml",
+          "source_index": 13,
+          "source_sha256": "8fbc0c1c98fccf174825dd9dc1d7683c91e5b44e2ee82505f0a00171376c0a55",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        }
+      ],
+      "images": [],
+      "audios": [],
+      "examples": [],
+      "source_image_ids": [
+        "beach1",
+        "beach2",
+        "beach3"
+      ],
+      "validation_status": "source_attested_not_reviewed",
+      "license_conflict": true,
+      "publication_blockers": [
+        "Relecture linguistique kabyle requise",
+        "Transcription tifinaghe absente",
+        "Association photo à valider",
+        "Licence à clarifier : LICENSE indique BY-NC-SA, course.yaml indique BY-SA"
+      ],
+      "license_notice": "Usage commercial non autorisé sans clarification. Données extraites pour étude et relecture, non publiées dans les leçons."
+    }
+  },
+  {
+    "id": "word-ll-9241d4e73e41e34d",
+    "kind": "word",
+    "variety": "kab",
+    "script": "Latn",
+    "theme": "pluriels",
+    "status": "draft",
+    "data": {
+      "latin": "imcac",
+      "french": "chats",
+      "french_variants": [
+        "chats",
+        "les chats"
+      ],
+      "tifinagh": "",
+      "synonyms": [],
+      "sources": [
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/plurals.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/plurals.yaml",
+          "source_index": 0,
+          "source_sha256": "06d3b474270cc91fac7b164295151156424b8a6c37a7448743ef6e50895c7b12",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        },
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/plurals.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/plurals.yaml",
+          "source_index": 8,
+          "source_sha256": "06d3b474270cc91fac7b164295151156424b8a6c37a7448743ef6e50895c7b12",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        }
+      ],
+      "images": [],
+      "audios": [],
+      "examples": [],
+      "source_image_ids": [
+        "cat1",
+        "cat2",
+        "cat3"
+      ],
+      "validation_status": "source_attested_not_reviewed",
+      "license_conflict": true,
+      "publication_blockers": [
+        "Relecture linguistique kabyle requise",
+        "Transcription tifinaghe absente",
+        "Association photo à valider",
+        "Licence à clarifier : LICENSE indique BY-NC-SA, course.yaml indique BY-SA"
+      ],
+      "license_notice": "Usage commercial non autorisé sans clarification. Données extraites pour étude et relecture, non publiées dans les leçons."
+    }
+  },
+  {
+    "id": "word-ll-768d7caa4408180c",
+    "kind": "word",
+    "variety": "kab",
+    "script": "Latn",
+    "theme": "pluriels",
+    "status": "draft",
+    "data": {
+      "latin": "tiftisin",
+      "french": "plages",
+      "french_variants": [
+        "plages",
+        "les plages"
+      ],
+      "tifinagh": "",
+      "synonyms": [],
+      "sources": [
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/plurals.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/plurals.yaml",
+          "source_index": 1,
+          "source_sha256": "06d3b474270cc91fac7b164295151156424b8a6c37a7448743ef6e50895c7b12",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        },
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/plurals.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/plurals.yaml",
+          "source_index": 9,
+          "source_sha256": "06d3b474270cc91fac7b164295151156424b8a6c37a7448743ef6e50895c7b12",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        }
+      ],
+      "images": [],
+      "audios": [],
+      "examples": [],
+      "source_image_ids": [
+        "beach1",
+        "beach2",
+        "beach3"
+      ],
+      "validation_status": "source_attested_not_reviewed",
+      "license_conflict": true,
+      "publication_blockers": [
+        "Relecture linguistique kabyle requise",
+        "Transcription tifinaghe absente",
+        "Association photo à valider",
+        "Licence à clarifier : LICENSE indique BY-NC-SA, course.yaml indique BY-SA"
+      ],
+      "license_notice": "Usage commercial non autorisé sans clarification. Données extraites pour étude et relecture, non publiées dans les leçons."
+    }
+  },
+  {
+    "id": "word-ll-15e5564507f777eb",
+    "kind": "word",
+    "variety": "kab",
+    "script": "Latn",
+    "theme": "pluriels",
+    "status": "draft",
+    "data": {
+      "latin": "ibṛiken",
+      "french": "canards",
+      "french_variants": [
+        "canards",
+        "les canards"
+      ],
+      "tifinagh": "",
+      "synonyms": [],
+      "sources": [
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/plurals.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/plurals.yaml",
+          "source_index": 2,
+          "source_sha256": "06d3b474270cc91fac7b164295151156424b8a6c37a7448743ef6e50895c7b12",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        },
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/plurals.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/plurals.yaml",
+          "source_index": 10,
+          "source_sha256": "06d3b474270cc91fac7b164295151156424b8a6c37a7448743ef6e50895c7b12",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        }
+      ],
+      "images": [],
+      "audios": [],
+      "examples": [],
+      "source_image_ids": [
+        "duck1",
+        "duck2",
+        "duck3"
+      ],
+      "validation_status": "source_attested_not_reviewed",
+      "license_conflict": true,
+      "publication_blockers": [
+        "Relecture linguistique kabyle requise",
+        "Transcription tifinaghe absente",
+        "Association photo à valider",
+        "Licence à clarifier : LICENSE indique BY-NC-SA, course.yaml indique BY-SA"
+      ],
+      "license_notice": "Usage commercial non autorisé sans clarification. Données extraites pour étude et relecture, non publiées dans les leçons."
+    }
+  },
+  {
+    "id": "word-ll-559f91e78a303fd9",
+    "kind": "word",
+    "variety": "kab",
+    "script": "Latn",
+    "theme": "pluriels",
+    "status": "draft",
+    "data": {
+      "latin": "tisedray",
+      "french": "chemises",
+      "french_variants": [
+        "chemises",
+        "les chemises"
+      ],
+      "tifinagh": "",
+      "synonyms": [],
+      "sources": [
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/plurals.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/plurals.yaml",
+          "source_index": 3,
+          "source_sha256": "06d3b474270cc91fac7b164295151156424b8a6c37a7448743ef6e50895c7b12",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        },
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/plurals.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/plurals.yaml",
+          "source_index": 11,
+          "source_sha256": "06d3b474270cc91fac7b164295151156424b8a6c37a7448743ef6e50895c7b12",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        }
+      ],
+      "images": [],
+      "audios": [],
+      "examples": [],
+      "source_image_ids": [
+        "shirt1",
+        "shirt2",
+        "shirt3"
+      ],
+      "validation_status": "source_attested_not_reviewed",
+      "license_conflict": true,
+      "publication_blockers": [
+        "Relecture linguistique kabyle requise",
+        "Transcription tifinaghe absente",
+        "Association photo à valider",
+        "Licence à clarifier : LICENSE indique BY-NC-SA, course.yaml indique BY-SA"
+      ],
+      "license_notice": "Usage commercial non autorisé sans clarification. Données extraites pour étude et relecture, non publiées dans les leçons."
+    }
+  },
+  {
+    "id": "word-ll-008518c0db4d871e",
+    "kind": "word",
+    "variety": "kab",
+    "script": "Latn",
+    "theme": "pluriels",
+    "status": "draft",
+    "data": {
+      "latin": "inelmaden",
+      "french": "étudiants",
+      "french_variants": [
+        "étudiants",
+        "les étudiants"
+      ],
+      "tifinagh": "",
+      "synonyms": [],
+      "sources": [
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/plurals.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/plurals.yaml",
+          "source_index": 4,
+          "source_sha256": "06d3b474270cc91fac7b164295151156424b8a6c37a7448743ef6e50895c7b12",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        },
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/plurals.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/plurals.yaml",
+          "source_index": 12,
+          "source_sha256": "06d3b474270cc91fac7b164295151156424b8a6c37a7448743ef6e50895c7b12",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        }
+      ],
+      "images": [],
+      "audios": [],
+      "examples": [],
+      "source_image_ids": [
+        "student1",
+        "student2",
+        "student3"
+      ],
+      "validation_status": "source_attested_not_reviewed",
+      "license_conflict": true,
+      "publication_blockers": [
+        "Relecture linguistique kabyle requise",
+        "Transcription tifinaghe absente",
+        "Association photo à valider",
+        "Licence à clarifier : LICENSE indique BY-NC-SA, course.yaml indique BY-SA"
+      ],
+      "license_notice": "Usage commercial non autorisé sans clarification. Données extraites pour étude et relecture, non publiées dans les leçons."
+    }
+  },
+  {
+    "id": "word-ll-61bc0cbd747688cf",
+    "kind": "word",
+    "variety": "kab",
+    "script": "Latn",
+    "theme": "pluriels",
+    "status": "draft",
+    "data": {
+      "latin": "tizwal uṛumi",
+      "french": "fraises",
+      "french_variants": [
+        "fraises"
+      ],
+      "tifinagh": "",
+      "synonyms": [],
+      "sources": [
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/plurals.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/plurals.yaml",
+          "source_index": 5,
+          "source_sha256": "06d3b474270cc91fac7b164295151156424b8a6c37a7448743ef6e50895c7b12",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        }
+      ],
+      "images": [],
+      "audios": [],
+      "examples": [],
+      "source_image_ids": [
+        "strawberry1",
+        "strawberry2",
+        "strawberry3"
+      ],
+      "validation_status": "source_attested_not_reviewed",
+      "license_conflict": true,
+      "publication_blockers": [
+        "Relecture linguistique kabyle requise",
+        "Transcription tifinaghe absente",
+        "Association photo à valider",
+        "Licence à clarifier : LICENSE indique BY-NC-SA, course.yaml indique BY-SA"
+      ],
+      "license_notice": "Usage commercial non autorisé sans clarification. Données extraites pour étude et relecture, non publiées dans les leçons."
+    }
+  },
+  {
+    "id": "word-ll-5b8accde5e0690b1",
+    "kind": "word",
+    "variety": "kab",
+    "script": "Latn",
+    "theme": "pluriels",
+    "status": "draft",
+    "data": {
+      "latin": "nnwaḍer",
+      "french": "lunettes",
+      "french_variants": [
+        "lunettes",
+        "les lunettes"
+      ],
+      "tifinagh": "",
+      "synonyms": [],
+      "sources": [
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/plurals.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/plurals.yaml",
+          "source_index": 6,
+          "source_sha256": "06d3b474270cc91fac7b164295151156424b8a6c37a7448743ef6e50895c7b12",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        },
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/plurals.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/plurals.yaml",
+          "source_index": 14,
+          "source_sha256": "06d3b474270cc91fac7b164295151156424b8a6c37a7448743ef6e50895c7b12",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        }
+      ],
+      "images": [],
+      "audios": [],
+      "examples": [],
+      "source_image_ids": [
+        "glasses1",
+        "glasses2",
+        "glasses3"
+      ],
+      "validation_status": "source_attested_not_reviewed",
+      "license_conflict": true,
+      "publication_blockers": [
+        "Relecture linguistique kabyle requise",
+        "Transcription tifinaghe absente",
+        "Association photo à valider",
+        "Licence à clarifier : LICENSE indique BY-NC-SA, course.yaml indique BY-SA"
+      ],
+      "license_notice": "Usage commercial non autorisé sans clarification. Données extraites pour étude et relecture, non publiées dans les leçons."
+    }
+  },
+  {
+    "id": "word-ll-ebbded3922710dbb",
+    "kind": "word",
+    "variety": "kab",
+    "script": "Latn",
+    "theme": "pluriels",
+    "status": "draft",
+    "data": {
+      "latin": "imsujiyen",
+      "french": "docteurs",
+      "french_variants": [
+        "docteurs",
+        "les docteurs"
+      ],
+      "tifinagh": "",
+      "synonyms": [],
+      "sources": [
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/plurals.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/plurals.yaml",
+          "source_index": 7,
+          "source_sha256": "06d3b474270cc91fac7b164295151156424b8a6c37a7448743ef6e50895c7b12",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        },
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/plurals.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/plurals.yaml",
+          "source_index": 15,
+          "source_sha256": "06d3b474270cc91fac7b164295151156424b8a6c37a7448743ef6e50895c7b12",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        }
+      ],
+      "images": [],
+      "audios": [],
+      "examples": [],
+      "source_image_ids": [
+        "doctor1",
+        "doctor2",
+        "doctor3"
+      ],
+      "validation_status": "source_attested_not_reviewed",
+      "license_conflict": true,
+      "publication_blockers": [
+        "Relecture linguistique kabyle requise",
+        "Transcription tifinaghe absente",
+        "Association photo à valider",
+        "Licence à clarifier : LICENSE indique BY-NC-SA, course.yaml indique BY-SA"
+      ],
+      "license_notice": "Usage commercial non autorisé sans clarification. Données extraites pour étude et relecture, non publiées dans les leçons."
+    }
+  },
+  {
+    "id": "word-ll-ee5ed5ada91f6011",
+    "kind": "word",
+    "variety": "kab",
+    "script": "Latn",
+    "theme": "pluriels",
+    "status": "draft",
+    "data": {
+      "latin": "tizwal-uṛumi",
+      "french": "les fraises",
+      "french_variants": [
+        "les fraises"
+      ],
+      "tifinagh": "",
+      "synonyms": [],
+      "sources": [
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/plurals.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/plurals.yaml",
+          "source_index": 13,
+          "source_sha256": "06d3b474270cc91fac7b164295151156424b8a6c37a7448743ef6e50895c7b12",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        }
+      ],
+      "images": [],
+      "audios": [],
+      "examples": [],
+      "source_image_ids": [
+        "strawberry1",
+        "strawberry2",
+        "strawberry3"
+      ],
+      "validation_status": "source_attested_not_reviewed",
+      "license_conflict": true,
+      "publication_blockers": [
+        "Relecture linguistique kabyle requise",
+        "Transcription tifinaghe absente",
+        "Association photo à valider",
+        "Licence à clarifier : LICENSE indique BY-NC-SA, course.yaml indique BY-SA"
+      ],
+      "license_notice": "Usage commercial non autorisé sans clarification. Données extraites pour étude et relecture, non publiées dans les leçons."
+    }
+  },
+  {
+    "id": "word-ll-7ab93fdeb161ffd1",
+    "kind": "word",
+    "variety": "kab",
+    "script": "Latn",
+    "theme": "metiers",
+    "status": "draft",
+    "data": {
+      "latin": "amsuji",
+      "french": "docteur",
+      "french_variants": [
+        "docteur"
+      ],
+      "tifinagh": "",
+      "synonyms": [],
+      "sources": [
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/professions.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/professions.yaml",
+          "source_index": 0,
+          "source_sha256": "fe9ed5081e6bcc0c411263a85c8da189a6ea6566b944bf6c3d01a6230537c120",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        }
+      ],
+      "images": [],
+      "audios": [],
+      "examples": [],
+      "source_image_ids": [
+        "doctor1",
+        "doctor2",
+        "doctor3"
+      ],
+      "validation_status": "source_attested_not_reviewed",
+      "license_conflict": true,
+      "publication_blockers": [
+        "Relecture linguistique kabyle requise",
+        "Transcription tifinaghe absente",
+        "Association photo à valider",
+        "Licence à clarifier : LICENSE indique BY-NC-SA, course.yaml indique BY-SA"
+      ],
+      "license_notice": "Usage commercial non autorisé sans clarification. Données extraites pour étude et relecture, non publiées dans les leçons."
+    }
+  },
+  {
+    "id": "word-ll-50474d210a481e69",
+    "kind": "word",
+    "variety": "kab",
+    "script": "Latn",
+    "theme": "metiers",
+    "status": "draft",
+    "data": {
+      "latin": "tamsujit",
+      "french": "docteure",
+      "french_variants": [
+        "docteure"
+      ],
+      "tifinagh": "",
+      "synonyms": [],
+      "sources": [
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/professions.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/professions.yaml",
+          "source_index": 1,
+          "source_sha256": "fe9ed5081e6bcc0c411263a85c8da189a6ea6566b944bf6c3d01a6230537c120",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        }
+      ],
+      "images": [],
+      "audios": [],
+      "examples": [],
+      "source_image_ids": [
+        "doctor1",
+        "doctor2",
+        "doctor3"
+      ],
+      "validation_status": "source_attested_not_reviewed",
+      "license_conflict": true,
+      "publication_blockers": [
+        "Relecture linguistique kabyle requise",
+        "Transcription tifinaghe absente",
+        "Association photo à valider",
+        "Licence à clarifier : LICENSE indique BY-NC-SA, course.yaml indique BY-SA"
+      ],
+      "license_notice": "Usage commercial non autorisé sans clarification. Données extraites pour étude et relecture, non publiées dans les leçons."
+    }
+  },
+  {
+    "id": "word-ll-71d8a78674eba8e9",
+    "kind": "word",
+    "variety": "kab",
+    "script": "Latn",
+    "theme": "metiers",
+    "status": "draft",
+    "data": {
+      "latin": "tasexsayt",
+      "french": "pompière",
+      "french_variants": [
+        "pompière"
+      ],
+      "tifinagh": "",
+      "synonyms": [],
+      "sources": [
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/professions.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/professions.yaml",
+          "source_index": 2,
+          "source_sha256": "fe9ed5081e6bcc0c411263a85c8da189a6ea6566b944bf6c3d01a6230537c120",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        }
+      ],
+      "images": [],
+      "audios": [],
+      "examples": [],
+      "source_image_ids": [
+        "firefighter1",
+        "firefighter2",
+        "firefighter3"
+      ],
+      "validation_status": "source_attested_not_reviewed",
+      "license_conflict": true,
+      "publication_blockers": [
+        "Relecture linguistique kabyle requise",
+        "Transcription tifinaghe absente",
+        "Association photo à valider",
+        "Licence à clarifier : LICENSE indique BY-NC-SA, course.yaml indique BY-SA"
+      ],
+      "license_notice": "Usage commercial non autorisé sans clarification. Données extraites pour étude et relecture, non publiées dans les leçons."
+    }
+  },
+  {
+    "id": "word-ll-4f762460652f4b7a",
+    "kind": "word",
+    "variety": "kab",
+    "script": "Latn",
+    "theme": "metiers",
+    "status": "draft",
+    "data": {
+      "latin": "asexsay",
+      "french": "pompier",
+      "french_variants": [
+        "pompier"
+      ],
+      "tifinagh": "",
+      "synonyms": [],
+      "sources": [
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/professions.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/professions.yaml",
+          "source_index": 3,
+          "source_sha256": "fe9ed5081e6bcc0c411263a85c8da189a6ea6566b944bf6c3d01a6230537c120",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        }
+      ],
+      "images": [],
+      "audios": [],
+      "examples": [],
+      "source_image_ids": [
+        "firefighter1",
+        "firefighter2",
+        "firefighter3"
+      ],
+      "validation_status": "source_attested_not_reviewed",
+      "license_conflict": true,
+      "publication_blockers": [
+        "Relecture linguistique kabyle requise",
+        "Transcription tifinaghe absente",
+        "Association photo à valider",
+        "Licence à clarifier : LICENSE indique BY-NC-SA, course.yaml indique BY-SA"
+      ],
+      "license_notice": "Usage commercial non autorisé sans clarification. Données extraites pour étude et relecture, non publiées dans les leçons."
+    }
+  },
+  {
+    "id": "word-ll-d1f1ebbb7bb7c739",
+    "kind": "word",
+    "variety": "kab",
+    "script": "Latn",
+    "theme": "metiers",
+    "status": "draft",
+    "data": {
+      "latin": "tafellaḥt",
+      "french": "fermière",
+      "french_variants": [
+        "fermière"
+      ],
+      "tifinagh": "",
+      "synonyms": [],
+      "sources": [
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/professions.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/professions.yaml",
+          "source_index": 4,
+          "source_sha256": "fe9ed5081e6bcc0c411263a85c8da189a6ea6566b944bf6c3d01a6230537c120",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        }
+      ],
+      "images": [],
+      "audios": [],
+      "examples": [],
+      "source_image_ids": [
+        "farmer1",
+        "farmer2",
+        "farmer3"
+      ],
+      "validation_status": "source_attested_not_reviewed",
+      "license_conflict": true,
+      "publication_blockers": [
+        "Relecture linguistique kabyle requise",
+        "Transcription tifinaghe absente",
+        "Association photo à valider",
+        "Licence à clarifier : LICENSE indique BY-NC-SA, course.yaml indique BY-SA"
+      ],
+      "license_notice": "Usage commercial non autorisé sans clarification. Données extraites pour étude et relecture, non publiées dans les leçons."
+    }
+  },
+  {
+    "id": "word-ll-da611c7c600b1ae6",
+    "kind": "word",
+    "variety": "kab",
+    "script": "Latn",
+    "theme": "metiers",
+    "status": "draft",
+    "data": {
+      "latin": "afellaḥ",
+      "french": "fermier",
+      "french_variants": [
+        "fermier"
+      ],
+      "tifinagh": "",
+      "synonyms": [],
+      "sources": [
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/professions.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/professions.yaml",
+          "source_index": 5,
+          "source_sha256": "fe9ed5081e6bcc0c411263a85c8da189a6ea6566b944bf6c3d01a6230537c120",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        }
+      ],
+      "images": [],
+      "audios": [],
+      "examples": [],
+      "source_image_ids": [
+        "farmer1",
+        "farmer2",
+        "farmer3"
+      ],
+      "validation_status": "source_attested_not_reviewed",
+      "license_conflict": true,
+      "publication_blockers": [
+        "Relecture linguistique kabyle requise",
+        "Transcription tifinaghe absente",
+        "Association photo à valider",
+        "Licence à clarifier : LICENSE indique BY-NC-SA, course.yaml indique BY-SA"
+      ],
+      "license_notice": "Usage commercial non autorisé sans clarification. Données extraites pour étude et relecture, non publiées dans les leçons."
+    }
+  },
+  {
+    "id": "word-ll-d95f94b008f2e3c7",
+    "kind": "word",
+    "variety": "kab",
+    "script": "Latn",
+    "theme": "metiers",
+    "status": "draft",
+    "data": {
+      "latin": "yiwet temsujit",
+      "french": "une docteure",
+      "french_variants": [
+        "une docteure"
+      ],
+      "tifinagh": "",
+      "synonyms": [],
+      "sources": [
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/professions.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/professions.yaml",
+          "source_index": 6,
+          "source_sha256": "fe9ed5081e6bcc0c411263a85c8da189a6ea6566b944bf6c3d01a6230537c120",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        }
+      ],
+      "images": [],
+      "audios": [],
+      "examples": [],
+      "source_image_ids": [
+        "doctor1",
+        "doctor2",
+        "doctor3"
+      ],
+      "validation_status": "source_attested_not_reviewed",
+      "license_conflict": true,
+      "publication_blockers": [
+        "Relecture linguistique kabyle requise",
+        "Transcription tifinaghe absente",
+        "Association photo à valider",
+        "Licence à clarifier : LICENSE indique BY-NC-SA, course.yaml indique BY-SA"
+      ],
+      "license_notice": "Usage commercial non autorisé sans clarification. Données extraites pour étude et relecture, non publiées dans les leçons."
+    }
+  },
+  {
+    "id": "word-ll-7ff6f6b424c15ac7",
+    "kind": "word",
+    "variety": "kab",
+    "script": "Latn",
+    "theme": "metiers",
+    "status": "draft",
+    "data": {
+      "latin": "ifellaḥen",
+      "french": "fermiers",
+      "french_variants": [
+        "fermiers"
+      ],
+      "tifinagh": "",
+      "synonyms": [],
+      "sources": [
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/professions.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/professions.yaml",
+          "source_index": 7,
+          "source_sha256": "fe9ed5081e6bcc0c411263a85c8da189a6ea6566b944bf6c3d01a6230537c120",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        }
+      ],
+      "images": [],
+      "audios": [],
+      "examples": [],
+      "source_image_ids": [
+        "farmer1",
+        "farmer2",
+        "farmer3"
+      ],
+      "validation_status": "source_attested_not_reviewed",
+      "license_conflict": true,
+      "publication_blockers": [
+        "Relecture linguistique kabyle requise",
+        "Transcription tifinaghe absente",
+        "Association photo à valider",
+        "Licence à clarifier : LICENSE indique BY-NC-SA, course.yaml indique BY-SA"
+      ],
+      "license_notice": "Usage commercial non autorisé sans clarification. Données extraites pour étude et relecture, non publiées dans les leçons."
+    }
+  },
+  {
+    "id": "word-ll-ec5f0f3830187919",
+    "kind": "word",
+    "variety": "kab",
+    "script": "Latn",
+    "theme": "metiers",
+    "status": "draft",
+    "data": {
+      "latin": "tifellaḥin",
+      "french": "fermières",
+      "french_variants": [
+        "fermières"
+      ],
+      "tifinagh": "",
+      "synonyms": [],
+      "sources": [
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/professions.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/basics/skills/professions.yaml",
+          "source_index": 8,
+          "source_sha256": "fe9ed5081e6bcc0c411263a85c8da189a6ea6566b944bf6c3d01a6230537c120",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        }
+      ],
+      "images": [],
+      "audios": [],
+      "examples": [],
+      "source_image_ids": [
+        "farmer1",
+        "farmer2",
+        "farmer3"
+      ],
+      "validation_status": "source_attested_not_reviewed",
+      "license_conflict": true,
+      "publication_blockers": [
+        "Relecture linguistique kabyle requise",
+        "Transcription tifinaghe absente",
+        "Association photo à valider",
+        "Licence à clarifier : LICENSE indique BY-NC-SA, course.yaml indique BY-SA"
+      ],
+      "license_notice": "Usage commercial non autorisé sans clarification. Données extraites pour étude et relecture, non publiées dans les leçons."
+    }
+  },
+  {
+    "id": "word-ll-1693fefb57f9ce83",
+    "kind": "word",
+    "variety": "kab",
+    "script": "Latn",
+    "theme": "adjectifs",
+    "status": "draft",
+    "data": {
+      "latin": "aɣerda",
+      "french": "souris",
+      "french_variants": [
+        "souris"
+      ],
+      "tifinagh": "",
+      "synonyms": [],
+      "sources": [
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/introduction/skills/adjectives.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/introduction/skills/adjectives.yaml",
+          "source_index": 0,
+          "source_sha256": "5e4cc1f460882fb09200cfa7b09ee783d62827764c61e9ddd45fa24a0cff66a7",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        }
+      ],
+      "images": [],
+      "audios": [],
+      "examples": [],
+      "source_image_ids": [
+        "mouse1",
+        "mouse2",
+        "mouse3"
+      ],
+      "validation_status": "source_attested_not_reviewed",
+      "license_conflict": true,
+      "publication_blockers": [
+        "Relecture linguistique kabyle requise",
+        "Transcription tifinaghe absente",
+        "Association photo à valider",
+        "Licence à clarifier : LICENSE indique BY-NC-SA, course.yaml indique BY-SA"
+      ],
+      "license_notice": "Usage commercial non autorisé sans clarification. Données extraites pour étude et relecture, non publiées dans les leçons."
+    }
+  },
+  {
+    "id": "word-ll-e2271452a0e156f1",
+    "kind": "word",
+    "variety": "kab",
+    "script": "Latn",
+    "theme": "adjectifs",
+    "status": "draft",
+    "data": {
+      "latin": "lfil",
+      "french": "éléphant",
+      "french_variants": [
+        "éléphant"
+      ],
+      "tifinagh": "",
+      "synonyms": [],
+      "sources": [
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/introduction/skills/adjectives.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/introduction/skills/adjectives.yaml",
+          "source_index": 1,
+          "source_sha256": "5e4cc1f460882fb09200cfa7b09ee783d62827764c61e9ddd45fa24a0cff66a7",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        }
+      ],
+      "images": [],
+      "audios": [],
+      "examples": [],
+      "source_image_ids": [
+        "elephant1",
+        "elephant2",
+        "elephant3"
+      ],
+      "validation_status": "source_attested_not_reviewed",
+      "license_conflict": true,
+      "publication_blockers": [
+        "Relecture linguistique kabyle requise",
+        "Transcription tifinaghe absente",
+        "Association photo à valider",
+        "Licence à clarifier : LICENSE indique BY-NC-SA, course.yaml indique BY-SA"
+      ],
+      "license_notice": "Usage commercial non autorisé sans clarification. Données extraites pour étude et relecture, non publiées dans les leçons."
+    }
+  },
+  {
+    "id": "word-ll-b259ab22a2dd9641",
+    "kind": "word",
+    "variety": "kab",
+    "script": "Latn",
+    "theme": "adjectifs",
+    "status": "draft",
+    "data": {
+      "latin": "lejnan",
+      "french": "parque",
+      "french_variants": [
+        "parque"
+      ],
+      "tifinagh": "",
+      "synonyms": [],
+      "sources": [
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/introduction/skills/adjectives.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/introduction/skills/adjectives.yaml",
+          "source_index": 2,
+          "source_sha256": "5e4cc1f460882fb09200cfa7b09ee783d62827764c61e9ddd45fa24a0cff66a7",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        }
+      ],
+      "images": [],
+      "audios": [],
+      "examples": [],
+      "source_image_ids": [
+        "park1",
+        "park2",
+        "park3"
+      ],
+      "validation_status": "source_attested_not_reviewed",
+      "license_conflict": true,
+      "publication_blockers": [
+        "Relecture linguistique kabyle requise",
+        "Transcription tifinaghe absente",
+        "Association photo à valider",
+        "Licence à clarifier : LICENSE indique BY-NC-SA, course.yaml indique BY-SA"
+      ],
+      "license_notice": "Usage commercial non autorisé sans clarification. Données extraites pour étude et relecture, non publiées dans les leçons."
+    }
+  },
+  {
+    "id": "word-ll-cefd7530d411bf80",
+    "kind": "word",
+    "variety": "kab",
+    "script": "Latn",
+    "theme": "adjectifs",
+    "status": "draft",
+    "data": {
+      "latin": "iɣerdayen",
+      "french": "les souris",
+      "french_variants": [
+        "les souris"
+      ],
+      "tifinagh": "",
+      "synonyms": [],
+      "sources": [
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/introduction/skills/adjectives.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/introduction/skills/adjectives.yaml",
+          "source_index": 3,
+          "source_sha256": "5e4cc1f460882fb09200cfa7b09ee783d62827764c61e9ddd45fa24a0cff66a7",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        }
+      ],
+      "images": [],
+      "audios": [],
+      "examples": [],
+      "source_image_ids": [
+        "mouse1",
+        "mouse2",
+        "mouse3"
+      ],
+      "validation_status": "source_attested_not_reviewed",
+      "license_conflict": true,
+      "publication_blockers": [
+        "Relecture linguistique kabyle requise",
+        "Transcription tifinaghe absente",
+        "Association photo à valider",
+        "Licence à clarifier : LICENSE indique BY-NC-SA, course.yaml indique BY-SA"
+      ],
+      "license_notice": "Usage commercial non autorisé sans clarification. Données extraites pour étude et relecture, non publiées dans les leçons."
+    }
+  },
+  {
+    "id": "word-ll-bcfed0584edf9df0",
+    "kind": "word",
+    "variety": "kab",
+    "script": "Latn",
+    "theme": "adjectifs",
+    "status": "draft",
+    "data": {
+      "latin": "lfilat",
+      "french": "les éléphants",
+      "french_variants": [
+        "les éléphants"
+      ],
+      "tifinagh": "",
+      "synonyms": [],
+      "sources": [
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/introduction/skills/adjectives.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/introduction/skills/adjectives.yaml",
+          "source_index": 4,
+          "source_sha256": "5e4cc1f460882fb09200cfa7b09ee783d62827764c61e9ddd45fa24a0cff66a7",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        }
+      ],
+      "images": [],
+      "audios": [],
+      "examples": [],
+      "source_image_ids": [
+        "elephant1",
+        "elephant2",
+        "elephant3"
+      ],
+      "validation_status": "source_attested_not_reviewed",
+      "license_conflict": true,
+      "publication_blockers": [
+        "Relecture linguistique kabyle requise",
+        "Transcription tifinaghe absente",
+        "Association photo à valider",
+        "Licence à clarifier : LICENSE indique BY-NC-SA, course.yaml indique BY-SA"
+      ],
+      "license_notice": "Usage commercial non autorisé sans clarification. Données extraites pour étude et relecture, non publiées dans les leçons."
+    }
+  },
+  {
+    "id": "word-ll-4c803b6e629f8bb7",
+    "kind": "word",
+    "variety": "kab",
+    "script": "Latn",
+    "theme": "adjectifs",
+    "status": "draft",
+    "data": {
+      "latin": "lejnanat",
+      "french": "les parques",
+      "french_variants": [
+        "les parques"
+      ],
+      "tifinagh": "",
+      "synonyms": [],
+      "sources": [
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/introduction/skills/adjectives.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/introduction/skills/adjectives.yaml",
+          "source_index": 5,
+          "source_sha256": "5e4cc1f460882fb09200cfa7b09ee783d62827764c61e9ddd45fa24a0cff66a7",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        }
+      ],
+      "images": [],
+      "audios": [],
+      "examples": [],
+      "source_image_ids": [
+        "park1",
+        "park2",
+        "park3"
+      ],
+      "validation_status": "source_attested_not_reviewed",
+      "license_conflict": true,
+      "publication_blockers": [
+        "Relecture linguistique kabyle requise",
+        "Transcription tifinaghe absente",
+        "Association photo à valider",
+        "Licence à clarifier : LICENSE indique BY-NC-SA, course.yaml indique BY-SA"
+      ],
+      "license_notice": "Usage commercial non autorisé sans clarification. Données extraites pour étude et relecture, non publiées dans les leçons."
+    }
+  },
+  {
+    "id": "word-ll-99a6d03e7cf7af66",
+    "kind": "word",
+    "variety": "kab",
+    "script": "Latn",
+    "theme": "vie-quotidienne",
+    "status": "draft",
+    "data": {
+      "latin": "lqahwa",
+      "french": "café",
+      "french_variants": [
+        "café"
+      ],
+      "tifinagh": "",
+      "synonyms": [],
+      "sources": [
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/introduction/skills/preferences.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/introduction/skills/preferences.yaml",
+          "source_index": 0,
+          "source_sha256": "206c059364275c8eb036f4a8f3ef1d10d47fad3351cd6009f069cd304396f889",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        }
+      ],
+      "images": [],
+      "audios": [],
+      "examples": [],
+      "source_image_ids": [
+        "coffee1",
+        "coffee2",
+        "coffee3"
+      ],
+      "validation_status": "source_attested_not_reviewed",
+      "license_conflict": true,
+      "publication_blockers": [
+        "Relecture linguistique kabyle requise",
+        "Transcription tifinaghe absente",
+        "Association photo à valider",
+        "Licence à clarifier : LICENSE indique BY-NC-SA, course.yaml indique BY-SA"
+      ],
+      "license_notice": "Usage commercial non autorisé sans clarification. Données extraites pour étude et relecture, non publiées dans les leçons."
+    }
+  },
+  {
+    "id": "word-ll-dc4770b2486cc97e",
+    "kind": "word",
+    "variety": "kab",
+    "script": "Latn",
+    "theme": "vie-quotidienne",
+    "status": "draft",
+    "data": {
+      "latin": "ccṛab",
+      "french": "vin",
+      "french_variants": [
+        "vin",
+        "le vin"
+      ],
+      "tifinagh": "",
+      "synonyms": [],
+      "sources": [
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/introduction/skills/preferences.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/introduction/skills/preferences.yaml",
+          "source_index": 1,
+          "source_sha256": "206c059364275c8eb036f4a8f3ef1d10d47fad3351cd6009f069cd304396f889",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        },
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/introduction/skills/preferences.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/introduction/skills/preferences.yaml",
+          "source_index": 4,
+          "source_sha256": "206c059364275c8eb036f4a8f3ef1d10d47fad3351cd6009f069cd304396f889",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        }
+      ],
+      "images": [],
+      "audios": [],
+      "examples": [],
+      "source_image_ids": [
+        "wine1",
+        "wine2",
+        "wine3"
+      ],
+      "validation_status": "source_attested_not_reviewed",
+      "license_conflict": true,
+      "publication_blockers": [
+        "Relecture linguistique kabyle requise",
+        "Transcription tifinaghe absente",
+        "Association photo à valider",
+        "Licence à clarifier : LICENSE indique BY-NC-SA, course.yaml indique BY-SA"
+      ],
+      "license_notice": "Usage commercial non autorisé sans clarification. Données extraites pour étude et relecture, non publiées dans les leçons."
+    }
+  },
+  {
+    "id": "word-ll-6f9a049022c4dd34",
+    "kind": "word",
+    "variety": "kab",
+    "script": "Latn",
+    "theme": "vie-quotidienne",
+    "status": "draft",
+    "data": {
+      "latin": "tabyirt",
+      "french": "bière",
+      "french_variants": [
+        "bière"
+      ],
+      "tifinagh": "",
+      "synonyms": [],
+      "sources": [
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/introduction/skills/preferences.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/introduction/skills/preferences.yaml",
+          "source_index": 2,
+          "source_sha256": "206c059364275c8eb036f4a8f3ef1d10d47fad3351cd6009f069cd304396f889",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        }
+      ],
+      "images": [],
+      "audios": [],
+      "examples": [],
+      "source_image_ids": [
+        "beer1",
+        "beer2",
+        "beer3"
+      ],
+      "validation_status": "source_attested_not_reviewed",
+      "license_conflict": true,
+      "publication_blockers": [
+        "Relecture linguistique kabyle requise",
+        "Transcription tifinaghe absente",
+        "Association photo à valider",
+        "Licence à clarifier : LICENSE indique BY-NC-SA, course.yaml indique BY-SA"
+      ],
+      "license_notice": "Usage commercial non autorisé sans clarification. Données extraites pour étude et relecture, non publiées dans les leçons."
+    }
+  },
+  {
+    "id": "word-ll-a5fb5b454a71cab1",
+    "kind": "word",
+    "variety": "kab",
+    "script": "Latn",
+    "theme": "vie-quotidienne",
+    "status": "draft",
+    "data": {
+      "latin": "yiwet lqahwa",
+      "french": "un café",
+      "french_variants": [
+        "un café"
+      ],
+      "tifinagh": "",
+      "synonyms": [],
+      "sources": [
+        {
+          "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/introduction/skills/preferences.yaml",
+          "author": "Bouaziz Ait Driss et contributeurs LibreLingo-KAB-from-FR",
+          "license": "CC-BY-NC-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "license_evidence": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/LICENSE",
+          "revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+          "source_path": "course/introduction/skills/preferences.yaml",
+          "source_index": 3,
+          "source_sha256": "206c059364275c8eb036f4a8f3ef1d10d47fad3351cd6009f069cd304396f889",
+          "changes": "Extraction et regroupement des entrées par graphie latine ; traductions conservées sans réécriture."
+        }
+      ],
+      "images": [],
+      "audios": [],
+      "examples": [],
+      "source_image_ids": [
+        "coffee1",
+        "coffee2",
+        "coffee3"
+      ],
+      "validation_status": "source_attested_not_reviewed",
+      "license_conflict": true,
+      "publication_blockers": [
+        "Relecture linguistique kabyle requise",
+        "Transcription tifinaghe absente",
+        "Association photo à valider",
+        "Licence à clarifier : LICENSE indique BY-NC-SA, course.yaml indique BY-SA"
+      ],
+      "license_notice": "Usage commercial non autorisé sans clarification. Données extraites pour étude et relecture, non publiées dans les leçons."
+    }
+  }
+]

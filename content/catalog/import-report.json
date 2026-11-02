@@ -1,0 +1,11 @@
+{
+  "words": 61,
+  "photos": 30,
+  "skipped_invalid_yaml": [
+    "course/basics/skills/verb_plurals.yaml"
+  ],
+  "photo_failures": [],
+  "published_words": 0,
+  "word_source_revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+  "photo_source_revision": "bed1c24ee70de1569272de3882fbde88211c08b5"
+}

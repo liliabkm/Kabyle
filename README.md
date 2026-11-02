@@ -47,6 +47,14 @@ Pour récupérer une mise à jour de l’interface sur une installation existant
 
 Les 30 mots illustrés, les exemples kabyles validés, les exercices photo avec vocabulaire réel, les paires audio–texte, le modèle visuel et la transcription vocale ne sont pas livrés. Les écrans les présentent honnêtement en attente ou indisponibles. L’audit a identifié des licences/mappings manquants et des destinations réseau bloquées ; voir [les sources](docs/SOURCES.md) et [l’état IA](ml/EVALUATION.md). Le stockage S3 est prévu par séparation de service mais pas implémenté. Ne pas présenter cette tranche comme la totalité du cahier des charges.
 
+## Base de mots et de photos
+
+Le démarrage importe maintenant **61 entrées kabyle–français en brouillon** et **30 photos réelles de fruits/légumes** dans PostgreSQL, en plus des 8 lettres. Dans « Gestion des contenus », saisir le jeton administrateur local, puis « Ouvrir la bibliothèque ». Les onglets permettent de rechercher un mot, voir ses sources, corriger une fiche et lui associer une photo en brouillon. L’éditeur JSON reste disponible dans « Édition avancée ».
+
+Les mots proviennent du cours LibreLingo-KAB-from-FR : ils sont attestés dans ses fichiers mais n’ont pas été relus par un locuteur pour ce projet. Le tifinagh n’est pas inventé ; il reste vide. Deux déclarations de licence divergent dans la source (BY-NC-SA / BY-SA) : le catalogue le signale et bloque la publication. Ne pas utiliser ces textes commercialement sans clarification des droits. Les photos de Mihai Oltean / Fruits-360 sont sous CC BY-SA 4.0, conservées sans modification des pixels, avec crédits, lien de licence, révision et SHA-256. Elles mesurent seulement **100 × 100 px**, adaptées aux petites vignettes, pas à de grands visuels. Les 30 photos ne sont pas 30 paires mot–photo validées.
+
+Les sources et images sont incluses dans le dépôt : pas de téléchargement externe nécessaire au démarrage. La migration Alembic 002 crée la table `media_asset`. Le seed est insérant uniquement : une mise à jour ne remplace pas les corrections faites dans la base. Voir [l’inventaire et la collecte reproductible](docs/DATA-CATALOG.md).
+
 ## Administration et import
 
 Saisir le jeton de votre `.env` dans « Gestion des contenus ». Ne pas le partager ni le versionner. Charger les entrées, modifier le JSON ou ouvrir un fichier, puis enregistrer. Un import en `draft` doit précéder la relecture humaine ; les contrôles techniques ne remplacent pas cette relecture.
