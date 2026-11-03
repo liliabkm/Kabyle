@@ -36,9 +36,13 @@ def classify(french):
     from .organization import organize
     return organize('phrase',{'french':french,'latin':''})['topics'][0]
 
-def import_file(session,path,kab_column,fr_column,has_header=False):
+def import_file(session,path,kab_column,fr_column,has_header=False,progress=None):
     if kab_column==fr_column:raise ValueError('Choisir deux colonnes différentes')
-    digest=hashlib.sha256(Path(path).read_bytes()).hexdigest()
+    hasher=hashlib.sha256()
+    with Path(path).open('rb') as source:
+        for chunk in iter(lambda:source.read(1024*1024),b''):
+            hasher.update(chunk)
+    digest=hasher.hexdigest()
     report={'rows_seen':0,'inserted':0,'duplicates':0,'invalid_rows':0,'categories':{},'source_sha256':digest}
     batch=[]
     def flush():
@@ -61,6 +65,7 @@ def import_file(session,path,kab_column,fr_column,has_header=False):
             result=session.execute(insert(Content).values(list(unique.values())).on_conflict_do_nothing(index_elements=['id']).returning(Content.id))
             count=len(result.all());report['inserted']+=count;report['duplicates']+=len(unique)-count
         session.commit();batch.clear()
+        if progress:progress(dict(report))
     first=True
     for line,cells in rows(path):
         if not any(x.strip() for x in cells):continue
@@ -70,9 +75,10 @@ def import_file(session,path,kab_column,fr_column,has_header=False):
         kab,fr=cells[kab_column-1].strip(),cells[fr_column-1].strip()
         if not kab or not fr or len(kab)>10000 or len(fr)>10000:report['invalid_rows']+=1;continue
         data={'latin':kab,'french':fr,'category_status':'suggested','category_scheme':'sifal-topics-v1','validation_status':'pending_review','sources':[{'url':SOURCE,'author':'Sifal (diffuseur du jeu de données)','license':'Non renseignée dans le fichier TSV','sha256':digest,'record':line}]}
-        theme=classify(fr);key=pair_key('phrase',data)
+        derived=features('phrase',data)
+        theme=derived['topic_keys'][0];key=pair_key('phrase',data)
         report['categories'][theme]=report['categories'].get(theme,0)+1
-        batch.append(dict(id='phrase-sifal-'+key[:24],kind='phrase',variety='kab',script='Latn',theme=theme,status='draft',data=data,search_text=searchable(data),pair_key=key,**features('phrase',data)))
+        batch.append(dict(id='phrase-sifal-'+key[:24],kind='phrase',variety='kab',script='Latn',theme=theme,status='draft',data=data,search_text=searchable(data),pair_key=key,**derived))
         if len(batch)>=500:flush()
     flush();return report
 

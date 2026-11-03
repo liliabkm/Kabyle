@@ -10,4 +10,14 @@ info=preview(args.file)
 if args.preview:print(json.dumps(info,ensure_ascii=False,indent=2));sys.exit()
 kab=args.kab_column or info['kab_column'];fr=args.fr_column or info['fr_column']
 if not kab or not fr:p.error('Colonnes ambiguës : consulter --preview puis préciser --kab-column et --fr-column (à partir de 1).')
-with Session() as s:print(json.dumps(import_file(s,args.file,kab,fr,args.has_header or info['has_header']),ensure_ascii=False,indent=2))
+def progress(report):
+    print(f"{report['rows_seen']} lignes lues — {report['inserted']} phrases ajoutées, {report['duplicates']} doublons (lots enregistrés).",flush=True)
+
+print(f"Import de {args.file.name} : kabyle colonne {kab}, français colonne {fr}. Progression après chaque lot de 500 phrases.",flush=True)
+try:
+    with Session() as s:
+        report=import_file(s,args.file,kab,fr,args.has_header or info['has_header'],progress=progress)
+    print(json.dumps(report,ensure_ascii=False,indent=2),flush=True)
+except KeyboardInterrupt:
+    print("\nImport interrompu. Les lots déjà enregistrés sont conservés. Relancez la même commande pour reprendre ; les doublons seront ignorés.",file=sys.stderr,flush=True)
+    sys.exit(130)
