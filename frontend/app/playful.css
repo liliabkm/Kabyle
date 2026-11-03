@@ -3752,3 +3752,11 @@ footer > span:last-child {
 
 .alphabet-example { border-top: 1px solid #ddd; margin-top: 1rem; padding-top: .75rem; overflow-wrap: anywhere; }
 .alphabet-example .reading-tifinagh { font-family: Tifinagh, sans-serif; font-size: 1.6rem; line-height: 1.6; }
+
+.alphabet-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 1rem; margin: 1.25rem 0; }
+.alphabet-letter { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .35rem; min-height: 140px; background: white; color: #193558; border: 2px solid #e5dff2; border-radius: 22px; cursor: pointer; font-size: 1.4rem; }
+.alphabet-letter:hover { border-color: #8456c9; background: #f7f2ff; }
+.alphabet-letter:focus-visible { outline: 3px solid #8456c9; outline-offset: 3px; }
+.alphabet-letter .topic-glyph { font-size: 3.2rem; }
+.alphabet-detail h2 .topic-glyph { display: block; margin: .75rem 0; }
+.alphabet-detail .alphabet-example { margin-top: 0; }

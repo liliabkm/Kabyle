@@ -29,11 +29,18 @@ def test_letter_coverage_sources_and_no_claim_of_attested_tifinagh():
         catalog.update({x['id']: x for x in json.loads((ROOT / f'content/catalog/{name}.json').read_text())})
     for letter in letters:
         d = letter['data']
-        assert d['examples'], d['latin']
         for e in d['examples']:
             source = catalog[e['content_id']]['data']
             assert (e['latin'], e['french']) == (source['latin'], source['french'])
-            assert d['latin'] in e['latin'].casefold()
+            assert e['kind'] == 'word'
+            assert e['latin'].casefold().startswith(d['latin'])
             assert e['tifinagh_status'] == 'generated_pending_review'
             assert e['sources'] == source['sources']
             assert 'ⴰ' <= e['tifinagh'][0] <= '⵿' or not e['tifinagh'][0].isalpha()
+
+
+def test_missing_initials_never_fall_back_to_containing_words():
+    letters = {x['data']['latin']: x['data'] for x in json.loads((ROOT / 'content/alphabet.json').read_text())}
+    assert letters['č']['examples'] == []  # ečč contains č, but starts with e.
+    assert all(e['latin'].casefold().startswith('c') for e in letters['c']['examples'])
+    assert 'ulac' not in [e['latin'] for e in letters['c']['examples']]

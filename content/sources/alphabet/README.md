@@ -22,8 +22,8 @@ tifinagh sont générés mécaniquement et portent `generated_pending_review`.
 Ils n’ajoutent aucune phrase fabriquée ni traduction mot à mot déduite.
 Convention e → ⴻ et h → ⵀ ; ⵁ existe dans d’autres usages du h kabyle.
 Les caractères latins inconnus entraînent l’exclusion de l’exemple, sans
-substitution silencieuse. Les phrases sont choisies dans une liste accessible
-aux débutants ; certaines lettres n’ont pas encore d’exemple de phrase.
+substitution silencieuse. Seuls les mots commençant par la lettre choisie sont proposés ; certaines
+lettres n’ont pas encore de mot dans le catalogue correspondant à ce critère.
 
 Régénération : `.venv/bin/python scripts/build_alphabet.py` depuis la racine.
 Les fiches publiées peuvent être relues et modifiées dans l’espace admin ;

@@ -139,8 +139,8 @@ Playwright et Chromium sont nécessaires aux tests navigateur, ainsi que le site
 
 ### Alphabet et exemples tifinagh
 
-La bibliothèque contient 33 lettres de base et 93 exemples liés aux textes du
-cours LibreLingo. Les exemples affichent tifinagh, kabyle latin et français.
+La bibliothèque contient 33 lettres de base et 110 exemples liés aux textes du
+cours LibreLingo. Les mots sont affichés après sélection d’une lettre, en tifinagh, kabyle latin et français. Seuls les mots commençant par cette lettre sont proposés ; il n’y a aucun remplacement par un mot qui la contient seulement.
 Le tifinagh est une translittération générée selon une convention documentée,
 avec mention « à vérifier », et non une orthographe attestée dans le corpus.
 Les sources téléchargées et leurs limites figurent dans

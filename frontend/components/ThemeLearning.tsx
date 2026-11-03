@@ -10,6 +10,7 @@ import {
 import { request } from "../lib/api";
 import { TopicArt, WordArt, PhotoCredit } from "./TopicArt";
 import PhrasePractice from "./PhrasePractice";
+import AlphabetExplorer, { type AlphabetLetter } from "./AlphabetExplorer";
 type Topic = {
   id: string;
   title: string;
@@ -74,16 +75,7 @@ export default function ThemeLearning({
     [wordOffset, setWordOffset] = useState(0),
     [phraseOffset, setPhraseOffset] = useState(0),
     [exercise, setExercise] = useState<string | null>(null),
-    [letters, setLetters] = useState<
-      {
-        id: string;
-        latin: string;
-        tifinagh: string;
-        french?: string;
-        hint?: string;
-        examples?: {content_id: string; kind: string; latin: string; french: string; tifinagh: string; sources: {url: string; author: string}[]}[];
-      }[]
-    >([]),
+    [letters, setLetters] = useState<AlphabetLetter[]>([]),
     [loading, setLoading] = useState(true),
     [error, setError] = useState("");
   useEffect(() => {
@@ -337,34 +329,7 @@ export default function ThemeLearning({
       {loading ? (
         <p role="status">On ouvre les fiches…</p>
       ) : topic.id === "alphabet" ? (
-        <div>
-          <p>33 lettres de base à explorer. Le signe de labialisation ʷ / ⵯ accompagne certaines consonnes.</p>
-          <p>Les exemples viennent du cours kabyle. Leur écriture tifinagh est générée et reste à vérifier. Convention : e → ⴻ, h → ⵀ ; d’autres usages existent.</p>
-          <div className="topic-word-grid">
-          {letters.map((l) => (
-            <article className="topic-word-card" key={l.id}>
-              <div className="topic-glyph" lang="kab-Tfng">
-                {l.tifinagh}
-              </div>
-              <h2 lang="kab-Latn">{l.latin}</h2>
-              <p>{l.french}</p>
-              {l.examples?.map((example) => (
-                <div className="alphabet-example" key={example.content_id}>
-                  <p className="reading-tifinagh" lang="kab-Tfng">{example.tifinagh}</p>
-                  <p lang="kab-Latn">{example.latin}</p>
-                  <p>{example.french}</p>
-                  <small>{example.kind === "word" ? "Mot" : "Phrase"} · Tifinagh à vérifier</small>
-                  {example.sources[0] && <p><a href={example.sources[0].url} target="_blank" rel="noreferrer">Voir la source du texte latin</a></p>}
-                </div>
-              ))}
-              <details>
-                <summary>En savoir plus</summary>
-                <p>{l.hint}</p>
-              </details>
-            </article>
-          ))}
-          </div>
-        </div>
+        <AlphabetExplorer letters={letters} />
       ) : stage === "words" ? (
         <>
           <div className="topic-section-title">

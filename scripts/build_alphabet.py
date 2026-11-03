@@ -34,9 +34,8 @@ def transliterate(text):
 def build():
     old = {c['data']['latin']: c for c in json.loads((ROOT / 'content/alphabet.json').read_text())}
     words = json.loads((ROOT / 'content/catalog/course-words.json').read_text())
-    phrases = json.loads((ROOT / 'content/catalog/course-phrases.json').read_text())
     eligible = []
-    for item in words + phrases:
+    for item in words:
         d = item['data']
         if item['kind'] == 'word' and organize('word', d)['role'] != 'word':
             continue
@@ -51,23 +50,14 @@ def build():
             'convention': CONVENTION, 'sources': d['sources'],
             'entry_origin': d.get('entry_origin'),
         })
-    # Keep the first alphabet examples concrete and accessible to children.
-    phrase_choices = {
-        'Azul!', 'Tanemmirt', 'D agmar', 'Agmar iderreɛ', 'Agmar itess aman',
-        'Taqenduṛt tecbeḥ', 'Timeḥremt meẓẓiyet', 'Tizwal uṛumi d tizeggaɣin',
-        'Tisedray d tiẓerwalin', 'Nekni ntett seksu', 'Kunwi ttettem aḍil',
-        'Nutenti tessent ayefki', 'Kečč ttetteḍ irektiyen', 'Kemm tdesseḍ',
-        'Tlemmdeḍ aṭas', 'Ass ameggaz!', 'Isem-ik?', 'Inig ameggaz!',
-        'Ilel neɣ adrar?', 'Itij yettali deg yigenni', 'Aɣrum, txil-k',
-    }
-    eligible = [e for e in eligible if (e['kind'] == 'word' and e['french'] not in ('vin', 'bière')) or (e['kind'] == 'phrase' and e['latin'] in phrase_choices)]
+    eligible = [e for e in eligible if e['french'] not in ('vin', 'bière')]
     letters = []
     for i, (latin, glyph) in enumerate(zip(LATIN, GLYPHS)):
         item = old.get(latin, {'id': f'letter-u{ord(glyph):04x}', 'kind': 'letter',
             'variety': 'kab', 'script': 'Tfng', 'theme': 'alphabet', 'status': 'draft', 'data': {}})
         examples = []
-        for kind, count in [('word', 2), ('phrase', 1)]:
-            candidates = [e for e in eligible if e['kind'] == kind and latin in unicodedata.normalize('NFC', e['latin']).casefold()]
+        for kind, count in [('word', 8)]:
+            candidates = [e for e in eligible if e['kind'] == kind and unicodedata.normalize('NFC', e['latin']).casefold().startswith(latin)]
             candidates.sort(key=lambda e: (e.get('entry_origin') != 'new_words' if kind == 'word' else False, not e['latin'].casefold().startswith(latin), len(e['latin'].split()), len(e['latin']), e['content_id']))
             examples.extend(candidates[:count])
         d = item['data']
