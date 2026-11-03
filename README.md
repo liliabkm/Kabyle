@@ -136,3 +136,24 @@ cd ..
 ```
 
 Playwright et Chromium sont nécessaires aux tests navigateur, ainsi que le site démarré. Les tests utilisent une base de développement, jamais une base de production, et nettoient leurs données d’essai. Les anciens points d’entrée `library_browser_smoke.py` et `vocabulary_browser_smoke.py` exécutent désormais le parcours commun par thèmes. Les anciens documents d’audit décrivent des versions historiques ; le fonctionnement actuel est celui-ci.
+
+### Alphabet et exemples tifinagh
+
+La bibliothèque contient 33 lettres de base et 93 exemples liés aux textes du
+cours LibreLingo. Les exemples affichent tifinagh, kabyle latin et français.
+Le tifinagh est une translittération générée selon une convention documentée,
+avec mention « à vérifier », et non une orthographe attestée dans le corpus.
+Les sources téléchargées et leurs limites figurent dans
+[content/sources/alphabet/README.md](content/sources/alphabet/README.md).
+
+Après récupération d’une mise à jour de l’interface :
+
+```bash
+npm --prefix frontend run build
+bash scripts/start.sh
+```
+
+Le démarrage ajoute les nouvelles lettres et enrichit les anciennes fiches
+inchangées, en conservant leur statut éditorial. Les fiches modifiées dans
+l’administration sont préservées. Le générateur reproductible est
+`scripts/build_alphabet.py` ; il ne modifie pas les phrases importées.

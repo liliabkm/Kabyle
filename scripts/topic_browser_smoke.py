@@ -79,7 +79,7 @@ with sync_playwright() as p:
     assert mp.evaluate("document.documentElement.scrollWidth<=window.innerWidth")
     mp.get_by_role("button", name="Tous les thèmes", exact=True).click()
     mp.locator('[data-topic="alphabet"]').click()
-    expect(mp.locator(".topic-word-card")).to_have_count(8)
+    expect(mp.locator(".topic-word-card")).to_have_count(33)
     assert mobile.request.get("http://127.0.0.1:3000/api/progress").json() == []
     assert not errors, errors
     browser.close()

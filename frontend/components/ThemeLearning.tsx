@@ -81,6 +81,7 @@ export default function ThemeLearning({
         tifinagh: string;
         french?: string;
         hint?: string;
+        examples?: {content_id: string; kind: string; latin: string; french: string; tifinagh: string; sources: {url: string; author: string}[]}[];
       }[]
     >([]),
     [loading, setLoading] = useState(true),
@@ -108,7 +109,7 @@ export default function ThemeLearning({
     setError("");
     const path =
       topic.id === "alphabet"
-        ? "library?kind=letter&limit=24"
+        ? "library?kind=letter&limit=72"
         : stage === "words"
           ? `topics/${topic.id}/words?offset=${wordOffset}`
           : `topics/${topic.id}/phrases?` +
@@ -336,7 +337,10 @@ export default function ThemeLearning({
       {loading ? (
         <p role="status">On ouvre les fiches…</p>
       ) : topic.id === "alphabet" ? (
-        <div className="topic-word-grid">
+        <div>
+          <p>33 lettres de base à explorer. Le signe de labialisation ʷ / ⵯ accompagne certaines consonnes.</p>
+          <p>Les exemples viennent du cours kabyle. Leur écriture tifinagh est générée et reste à vérifier. Convention : e → ⴻ, h → ⵀ ; d’autres usages existent.</p>
+          <div className="topic-word-grid">
           {letters.map((l) => (
             <article className="topic-word-card" key={l.id}>
               <div className="topic-glyph" lang="kab-Tfng">
@@ -344,12 +348,22 @@ export default function ThemeLearning({
               </div>
               <h2 lang="kab-Latn">{l.latin}</h2>
               <p>{l.french}</p>
+              {l.examples?.map((example) => (
+                <div className="alphabet-example" key={example.content_id}>
+                  <p className="reading-tifinagh" lang="kab-Tfng">{example.tifinagh}</p>
+                  <p lang="kab-Latn">{example.latin}</p>
+                  <p>{example.french}</p>
+                  <small>{example.kind === "word" ? "Mot" : "Phrase"} · Tifinagh à vérifier</small>
+                  {example.sources[0] && <p><a href={example.sources[0].url} target="_blank" rel="noreferrer">Voir la source du texte latin</a></p>}
+                </div>
+              ))}
               <details>
                 <summary>En savoir plus</summary>
                 <p>{l.hint}</p>
               </details>
             </article>
           ))}
+          </div>
         </div>
       ) : stage === "words" ? (
         <>

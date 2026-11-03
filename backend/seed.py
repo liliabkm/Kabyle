@@ -27,8 +27,15 @@ def seed():
         for data in json.loads(path.read_text()):
             item = ContentInput(**data)
             validate_content(item)
-            if not session.get(Content, item.id):
+            existing = session.get(Content, item.id)
+            if not existing:
                 session.add(Content(**item.model_dump()))
+            elif not existing.data.get('edited_at') and existing.data.get('latin') == item.data['latin'] and existing.data.get('tifinagh') == item.data['tifinagh']:
+                # Enrich shipped letters without resetting editorial status or spelling.
+                keys = ('alphabet_order', 'convention', 'examples', 'example_notice', 'unicode_name', 'unicode_codepoint')
+                additions = {k: item.data[k] for k in keys}
+                if any(existing.data.get(k) != v for k, v in additions.items()):
+                    existing.data = {**existing.data, **additions}
         counts = seed_catalog(session)
         counts.update(seed_lesson_previews(session))
         counts["other_phrases_added"] = seed_phrase_catalog(session)

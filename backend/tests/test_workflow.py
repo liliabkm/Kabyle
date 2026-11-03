@@ -26,7 +26,7 @@ def answer(client,value,attempt=None):
 def test_health_and_public_content(client):
     assert client.get('/api/health').json()=={'status':'ok'}
     entries=client.get('/api/content').json()
-    assert len([e for e in entries if e['kind']=='letter'])==8
+    assert len([e for e in entries if e['kind']=='letter'])==33
     assert all(e['status']!='rejected' for e in entries)
     assert any(e['kind']=='word' and e['status']=='draft' for e in entries)
 

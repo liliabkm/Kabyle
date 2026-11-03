@@ -1,0 +1,10 @@
+{
+  "unicode_source": "https://raw.githubusercontent.com/unicode-org/unicodetools/main/unicodetools/data/ucd/16.0.0/UnicodeData.txt",
+  "unicode_full_sha256": "ff58e5823bd095166564a006e47d111130813dcf8bf234ef79fa51a870edb48f",
+  "downloaded_at": "2026-11-03",
+  "files": {
+    "anir-readme.md": "080a1de435477e20efa452a49ff1865ecd34ec8da1103496d3e58847b36f3e39",
+    "transliterator-readme.md": "574e5afcaab4a1024278c262705175bc4728ec231b32a7994de97c006f8c8f99",
+    "UnicodeData-Tifinagh-16.0.0.txt": "c91b2f44af0c1c4f67d02a79e2fb4437ecb12c4056b3ef5a4734506a30f73195"
+  }
+}

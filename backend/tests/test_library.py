@@ -15,9 +15,9 @@ def client(monkeypatch):
 def test_public_library_includes_pending_and_is_read_only(client):
     assert client.get('/api/progress').json()==[]
     result=client.get('/api/library').json()
-    assert result['counts']=={'letter':8,'word':442,'phrase':133}
-    assert result['total']==8 and len(result['items'])==8
-    assert result['categories']==[{'id':'alphabet','label':'Alphabet','count':8}]
+    assert result['counts']=={'letter':33,'word':442,'phrase':133}
+    assert result['total']==33 and len(result['items'])==24
+    assert result['categories']==[{'id':'alphabet','label':'Alphabet','count':33}]
     assert len(client.get('/api/library?kind=word&private=true').json()['items'])==24
     assert len(client.get('/api/library?kind=phrase&status=draft').json()['items'])==24
     assert client.get('/api/progress').json()==[]
@@ -37,7 +37,7 @@ def test_admin_can_read_all_source_phrases_by_topic(client):
     assert client.get('/api/admin/library?kind=phrase').status_code==401
     data=client.get('/api/admin/library?kind=phrase&limit=72',headers=AUTH).json()
     assert data['private'] and data['total']==133
-    assert data['counts']=={'letter':8,'word':442,'phrase':133}
+    assert data['counts']=={'letter':33,'word':442,'phrase':133}
     assert len(data['items'])==72
     found=client.get('/api/admin/library',params={'kind':'phrase','category':'fruits','q':'fraises'},headers=AUTH).json()
     assert any(p['latin']=='Tizwal uṛumi d tizeggaɣin' for p in found['items'])

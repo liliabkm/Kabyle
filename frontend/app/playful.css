@@ -3749,3 +3749,6 @@ footer > span:last-child {
     font-size: 0.9rem;
   }
 }
+
+.alphabet-example { border-top: 1px solid #ddd; margin-top: 1rem; padding-top: .75rem; overflow-wrap: anywhere; }
+.alphabet-example .reading-tifinagh { font-family: Tifinagh, sans-serif; font-size: 1.6rem; line-height: 1.6; }
