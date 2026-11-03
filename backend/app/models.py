@@ -66,7 +66,7 @@ from .search import searchable, pair_key
 def update_search_text(mapper, connection, target):
     target.search_text=searchable(target.data)
     target.pair_key=pair_key(target.kind,target.data)
-    from .learning import features
+    from .learning import features, editorial_features
     from .organization import VERSION
     state=inspect(target)
     previous_role=target.learning_role
@@ -76,14 +76,8 @@ def update_search_text(mapper, connection, target):
     explicit_theme_change=state.persistent and state.attrs.theme.history.has_changes()
     auto_category=target.data.get('category_status')=='suggested' or target.data.get('complete_course_revision')
     implicit_category=target.theme in (None,'alphabet')
-    for key,value in features(target.kind,target.data).items():setattr(target,key,value)
+    values=features(target.kind,target.data)
+    for key,value in values.items():setattr(target,key,value)
     if target.kind in ('word','phrase') and not target.data.get('category_reviewed_at') and not explicit_theme_change and (first_organization or state.pending or french_changed or previous_role!=target.learning_role) and (auto_category or implicit_category):
         target.theme=target.topic_keys[0]
-    if target.kind in ('word','phrase') and target.data.get('category_reviewed_at') and target.learning_role not in ('review','fragment'):
-        from .organization import TOPICS,norm
-        if target.theme:
-            target.topic_keys=[target.theme]
-            if target.kind=='word' and target.concept_key is None:
-                import hashlib
-                target.concept_key='manual-'+hashlib.sha256(norm(target.data.get('french','')).encode()).hexdigest()[:16]
-                target.learning_role='word'
+    for key,value in editorial_features(target.kind,target.data,target.theme,values).items():setattr(target,key,value)

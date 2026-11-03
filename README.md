@@ -17,6 +17,10 @@ Ouvrir **http://localhost:3000 → Mots et phrases**. Le démarrage applique la 
 
 Première installation : `bash scripts/install.sh`, puis `bash scripts/start.sh`. Prérequis : Node.js 22+, Python avec `uv`, Docker actif et accessible. Le cloud utilise Python 3.12 ; l’installation Python 3.10 doit conserver son verrou compatible. Les serveurs restent au premier plan ; Ctrl+C les arrête. Journaux : `artifacts/`. PostgreSQL conserve ses données dans le volume Docker.
 
+### Si le premier démarrage prend du temps
+
+Le classement affiche sa progression : `Classement : 500/… fiches enregistrées`. Les lots de 500 sont enregistrés séparément ; après Ctrl+C, une relance reprend les fiches restantes. Une base déjà classée affiche `Classement déjà à jour.` avant le lancement du site. Le reclassement ne modifie ni les textes, ni les sources, ni les validations.
+
 ## Le parcours par images
 
 Les utilisateurs choisissent des **cartes illustrées**, sans menus de filtres : animaux, fruits, vêtements, nature, personnes, école, métiers, nombres, couleurs, etc.

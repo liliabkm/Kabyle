@@ -23,8 +23,9 @@ def tokens(text):
 def features(kind, data):
     count = len(tokens(data.get("latin", ""))) if kind == "phrase" else 0
     from .organization import fields
+
     return {
-        **fields(kind,data),
+        **fields(kind, data),
         "learning_band": (
             ("short" if count <= 4 else "medium" if count <= 8 else "long")
             if kind == "phrase"
@@ -57,3 +58,24 @@ def learning_info(data):
         "cefr_level": data.get("cefr_level") or None,
         "grammar_note": data.get("grammar_note") or None,
     }
+
+
+def editorial_features(kind, data, theme, values):
+    """Apply the same explicit editorial overrides to ORM and bulk backfills."""
+    if (
+        kind not in ("word", "phrase")
+        or not data.get("category_reviewed_at")
+        or values["learning_role"] in ("review", "fragment")
+        or not theme
+    ):
+        return values
+    values = dict(values)
+    values["topic_keys"] = [theme]
+    if kind == "word" and values["concept_key"] is None:
+        from .organization import norm
+
+        values["concept_key"] = (
+            "manual-" + hashlib.sha256(norm(data.get("french", "")).encode()).hexdigest()[:16]
+        )
+        values["learning_role"] = "word"
+    return values

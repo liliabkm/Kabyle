@@ -8,9 +8,12 @@ fi
 set -a
 source .env
 set +a
+echo "Démarrage de PostgreSQL…"
 bash scripts/db.sh
 # Reapply idempotent initialization if the local database volume is new.
-(cd backend && "$PROJECT_ROOT/.venv/bin/alembic" upgrade head && "$PROJECT_ROOT/.venv/bin/python" seed.py)
+echo "Mise à jour de la base et du classement…"
+(cd backend && "$PROJECT_ROOT/.venv/bin/alembic" upgrade head && "$PROJECT_ROOT/.venv/bin/python" -u seed.py)
+echo "Lancement du site…"
 mkdir -p artifacts
 (cd backend && exec "$PROJECT_ROOT/.venv/bin/uvicorn" app.main:app --host 127.0.0.1 --port 8000) >artifacts/api.log 2>&1 &
 API_PID=$!

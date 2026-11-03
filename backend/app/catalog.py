@@ -88,7 +88,5 @@ def seed_complete_course(session):
                     current.theme=organize(item['kind'],item['data'])['topics'][0]
                 counts['source_metadata_refreshed']+=1
     session.flush()
-    # Backfill only old rows. Bulk TSV imports fill this field at insertion.
-    for current in session.scalars(select(Content).where(Content.search_text=='')):
-        current.search_text=searchable(current.data)
+    # Existing-corpus backfills run in app.reindex, with per-batch checkpoints.
     return counts

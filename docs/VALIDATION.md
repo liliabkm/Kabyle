@@ -1,3 +1,12 @@
+# Correctif de démarrage et reprise du classement — 3 novembre 2026
+
+- **48 tests passent**, dont cinq régressions sur des schémas PostgreSQL isolés : plusieurs lots de lignes anciennes, absence de travail au deuxième passage, conservation des textes/validations/catégories manuelles, arrêt d’un lot invalide et véritable interruption SIGINT du script `seed.py` suivie d’une reprise réussie.
+- Le classement utilise un curseur de clé primaire, des mises à jour groupées et un commit par lot. Les anciennes mises à jour de recherche sont incluses dans cette étape reprise, au lieu d’une boucle ORM préalable sans checkpoint.
+- Corpus de performance **synthétique**, isolé et supprimé après vérification : 20 000 fiches avec index GIN, classement en 3,67 s ; deuxième passage sans modification en 0,021 s sur cette machine cloud. Ces durées ne préjugent pas de celles du PC utilisateur.
+- Progression et étapes de démarrage affichées immédiatement. Ctrl+C conserve les lots terminés et produit un message de reprise sans traceback. L’attente de verrou du classement est limitée à dix secondes avec un message explicite.
+
+---
+
 # Parcours par thèmes illustrés — 3 novembre 2026
 
 - Audit exhaustif des 442 entrées lexicales et 133 phrases livrées : 310 reclassements, regroupements par sens, 13 éléments techniques/incohérents distingués du vocabulaire. Rapport reproductible : `content/catalog/organization-report.json`.
