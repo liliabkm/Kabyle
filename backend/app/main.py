@@ -77,6 +77,8 @@ class ContentInput(BaseModel):
 
 def validate_content(item):
     d=item.data
+    if d.get('cefr_level') not in (None,'','A1','A2','B1','B2','C1','C2'):raise HTTPException(422,'Niveau CECR inconnu')
+    if d.get('grammar_note') is not None and (not isinstance(d['grammar_note'],str) or len(d['grammar_note'])>4000):raise HTTPException(422,'Note grammaticale : texte de 4 000 caractères maximum')
     if not isinstance(d.get("latin"),str) or not d["latin"].strip(): raise HTTPException(422,"Transcription latine requise")
     if item.status != "validated": return
     sources=d.get("sources",[])
@@ -112,3 +114,8 @@ register_library_routes(app, db, admin)
 
 from .tsv_import import register_routes as register_tsv_routes
 register_tsv_routes(app,db,admin)
+
+from .tatoeba import register_routes as register_tatoeba_routes
+register_tatoeba_routes(app,db,admin)
+from .phrase_practice import register_routes as register_phrase_routes
+register_phrase_routes(app,db,learner)

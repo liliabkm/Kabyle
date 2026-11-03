@@ -1,4 +1,4 @@
-from sqlalchemy import String, JSON, ForeignKey, DateTime, UniqueConstraint, Text, event
+from sqlalchemy import String, JSON, ForeignKey, DateTime, UniqueConstraint, Text, event, Boolean
 from sqlalchemy.orm import Mapped, mapped_column
 from datetime import datetime, timezone
 from .db import Base
@@ -13,6 +13,9 @@ class Content(Base):
     data: Mapped[dict] = mapped_column(JSON)
     search_text: Mapped[str] = mapped_column(Text, nullable=False, default="", server_default="")
     pair_key: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    learning_band: Mapped[str | None] = mapped_column(String(16),nullable=True)
+    has_audio: Mapped[bool] = mapped_column(Boolean,nullable=False,default=False,server_default="false")
+    lexeme_key: Mapped[str | None] = mapped_column(String(64),nullable=True)
 class Progress(Base):
     __tablename__ = "progress"
     __table_args__ = (UniqueConstraint("learner", "content_id"),)
@@ -55,3 +58,5 @@ from .search import searchable, pair_key
 def update_search_text(mapper, connection, target):
     target.search_text=searchable(target.data)
     target.pair_key=pair_key(target.kind,target.data)
+    from .learning import features
+    for key,value in features(target.kind,target.data).items():setattr(target,key,value)

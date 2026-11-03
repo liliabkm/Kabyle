@@ -1,3 +1,17 @@
+# Tatoeba et activités de phrases — 3 novembre 2026
+
+- **38 tests API passent** contre PostgreSQL réel : alignement direct, archives compressées, voix multiples, dédoublonnage, conservation des textes/catégories/validations, identité de source après correction des deux textes, lexique exact et variantes, exercices corrigés côté serveur et progression idempotente.
+- Une base temporaire vierge a reçu les migrations **001 à 005** et le catalogue complet. Les index de difficulté/audio/lexique sont alimentés. Le schéma de vérification a été supprimé ensuite.
+- Compilation Next.js/TypeScript réussie.
+- `scripts/tatoeba_browser_smoke.py` passe : import avec aperçu, attribution de niveau A1 et note grammaticale dans l’éditeur, carte retournée, lexique, plusieurs métadonnées de voix, lecture HTML audio, dictée, QCM, puzzle, erreur/réessai et progression réelle. Les trois phrases sont des fixtures temporaires ; le son est un signal de test généré, pas un enregistrement Tatoeba réel. Les données de test sont nettoyées.
+- `scripts/phrase_public_mobile_smoke.py` passe à 320 px : une vraie phrase LibreLingo déjà livrée s’ouvre depuis la bibliothèque publique, propose la construction, puis revient à la lecture. Aucun jeton, son inventé ou progrès de lecture n’est requis.
+- Régressions navigateur : accueil/jeux/dessin, leçons de lettres, ancien parcours de mots et bibliothèque par catégories passent, sur ordinateur et téléphone.
+- Les téléchargements `tatoeba.org` et `downloads.tatoeba.org` renvoient **403 depuis ce cloud**. Le nombre réel de phrases/audio Tatoeba n’a donc pas été vérifié et aucun corpus réel n’a été importé. Le script `--download` et le téléversement sont disponibles pour une machine autorisant ces destinations. La lecture des véritables MP3 doit encore être vérifiée avec ces fichiers.
+
+Les vérifications ci-dessous concernent les versions précédentes.
+
+---
+
 # Validation actuelle — 3 novembre 2026
 
 - 28 tests API passent contre PostgreSQL réel : catalogue public à vérifier, authentification des écritures, validation en un clic, catégories, variantes, pagination SQL, import TSV, dédoublonnage et conservation des corrections/validations.

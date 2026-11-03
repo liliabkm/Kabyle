@@ -9,6 +9,7 @@ from sqlalchemy import select
 from sqlalchemy.dialects.postgresql import insert
 from .models import Content
 from .search import pair_key, searchable
+from .learning import features
 from .library import fold, suggested_category
 SOURCE='https://huggingface.co/datasets/Sifal/Kabyle-French/blob/main/Sentence%20pairs%20in%20Kabyle-French%20-%202023-07-18.tsv'
 DOWNLOAD=SOURCE.replace('/blob/','/resolve/')+'?download=true'
@@ -73,7 +74,7 @@ def import_file(session,path,kab_column,fr_column,has_header=False):
         data={'latin':kab,'french':fr,'category_status':'suggested','category_scheme':'sifal-topics-v1','validation_status':'pending_review','sources':[{'url':SOURCE,'author':'Sifal (diffuseur du jeu de données)','license':'Non renseignée dans le fichier TSV','sha256':digest,'record':line}]}
         theme=classify(fr);key=pair_key('phrase',data)
         report['categories'][theme]=report['categories'].get(theme,0)+1
-        batch.append(dict(id='phrase-sifal-'+key[:24],kind='phrase',variety='kab',script='Latn',theme=theme,status='draft',data=data,search_text=searchable(data),pair_key=key))
+        batch.append(dict(id='phrase-sifal-'+key[:24],kind='phrase',variety='kab',script='Latn',theme=theme,status='draft',data=data,search_text=searchable(data),pair_key=key,**features('phrase',data)))
         if len(batch)>=500:flush()
     flush();return report
 

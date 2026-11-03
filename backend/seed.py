@@ -16,5 +16,14 @@ with Session() as s:
     s.flush()
     counts["categories_initialized"] = seed_categories(s)
     counts.update(seed_complete_course(s))
+    from sqlalchemy import select,or_
+    from app.learning import features
+    # Backfill existing large corpora in bounded batches after migration 005.
+    while True:
+        rows=list(s.scalars(select(Content).where(or_((Content.kind=="phrase") & Content.learning_band.is_(None),(Content.kind=="word") & Content.lexeme_key.is_(None))).order_by(Content.id).limit(500)))
+        if not rows:break
+        for row in rows:
+            for key,value in features(row.kind,row.data).items():setattr(row,key,value)
+        s.flush()
     s.commit()
 print("Import idempotent terminé : alphabet et catalogue.", counts)

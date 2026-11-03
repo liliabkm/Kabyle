@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState, useRef } from "react";
 import { Search, X } from "lucide-react";
+import TatoebaImport from "./TatoebaImport";
 import TsvImport from "./TsvImport";
 import ReadingLibrary from "./ReadingLibrary";
 import { request } from "../lib/api";
@@ -243,6 +244,14 @@ export default function ContentLibrary({
           {message}
         </p>
       )}
+      <TatoebaImport
+        token={token}
+        onDone={() => {
+          setOffset(0);
+          setRefresh((n) => n + 1);
+          onSaved();
+        }}
+      />
       <TsvImport
         token={token}
         onDone={() => {
@@ -560,6 +569,48 @@ export default function ContentLibrary({
                   {issue}
                 </p>
               ))}
+              {selected.kind === "phrase" && (
+                <>
+                  <label>
+                    Niveau CECR attribué
+                    <select
+                      aria-label="Niveau CECR attribué"
+                      value={String(selected.data.cefr_level || "")}
+                      onChange={(e) =>
+                        setSelected({
+                          ...selected,
+                          data: {
+                            ...selected.data,
+                            cefr_level: e.target.value,
+                          },
+                        })
+                      }
+                    >
+                      <option value="">Non évalué</option>
+                      {["A1", "A2", "B1", "B2", "C1", "C2"].map((level) => (
+                        <option key={level}>{level}</option>
+                      ))}
+                    </select>
+                  </label>
+                  <label>
+                    Note grammaticale
+                    <textarea
+                      maxLength={4000}
+                      value={String(selected.data.grammar_note || "")}
+                      onChange={(e) =>
+                        setSelected({
+                          ...selected,
+                          data: {
+                            ...selected.data,
+                            grammar_note: e.target.value,
+                          },
+                        })
+                      }
+                      placeholder="Une explication relue pour cette phrase"
+                    />
+                  </label>
+                </>
+              )}
               <details>
                 <summary>Sources et points à vérifier</summary>
                 {(

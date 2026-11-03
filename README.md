@@ -13,9 +13,61 @@ npm --prefix frontend run build
 bash scripts/start.sh
 ```
 
-Ouvrir **http://localhost:3000**. Le démarrage applique la migration 004 et importe les nouveaux contenus sans écraser les corrections ni les validations de l’administrateur. Le `.env`, le port PostgreSQL local et les dépendances verrouillées restent ceux de ton installation. Si `scripts/db.sh` a été adapté au port 5433, conserver cette adaptation et la même valeur dans `DATABASE_URL`.
+Ouvrir **http://localhost:3000**. Le démarrage applique les migrations jusqu’à 005 et importe les nouveaux contenus sans écraser les corrections ni les validations de l’administrateur. Le `.env`, le port PostgreSQL local et les dépendances verrouillées restent ceux de ton installation. Si `scripts/db.sh` a été adapté au port 5433, conserver cette adaptation et la même valeur dans `DATABASE_URL`.
 
 Première installation : `bash scripts/install.sh`, puis `bash scripts/start.sh`. Il faut Node.js 22+, Python avec `uv`, Docker actif et accessible. Le cloud utilise Python 3.12 ; pour Python 3.10, conserver le verrou de dépendances compatible déjà généré sur ton PC. Les journaux sont dans `artifacts/`. Ctrl+C arrête les serveurs ; PostgreSQL conserve ses données dans le volume Docker.
+
+## Tatoeba : importer et apprendre avec des enregistrements
+
+Après la mise à jour et le démarrage du site, ouvrir un deuxième terminal :
+
+```bash
+cd ~/Documents/projet_kabyle/Kabyle
+bash scripts/import_tatoeba.sh --download
+```
+
+Cette commande télécharge les quatre exports hebdomadaires utiles depuis `downloads.tatoeba.org` : phrases kabyles détaillées, phrases françaises détaillées, liens kabyle–français et métadonnées audio kabyles. Elle applique les migrations, aligne les identifiants, garde uniquement les traductions directement reliées et importe les paires en PostgreSQL. Aucun texte kabyle ou français n’est généré. La collecte peut prendre quelques minutes selon la connexion. Le rapport annonce les quantités réellement importées.
+
+**Dans ce cloud, le site Tatoeba et son serveur de téléchargement sont refusés par le proxy (403). Aucun millier de phrases Tatoeba ni enregistrement réel n’est donc annoncé comme déjà chargé.** Le pipeline et les exercices sont disponibles ; le téléchargement doit être exécuté sur une machine ayant accès à Tatoeba, ou remplacé par un téléversement des exports officiels.
+
+Dans **Gestion des contenus → Importer Tatoeba : phrases et enregistrements**, on peut choisir un export de paires `kab → fra` et le fichier de métadonnées `sentences_with_audio`. Un aperçu affiche les textes, identifiants et nombres d’enregistrements avant **Importer Tatoeba et rendre public**. Les formats sont vérifiés contre le code officiel [Tatoeba/tatoeba2 à la révision f2c80b8](https://github.com/Tatoeba/tatoeba2/tree/f2c80b81032630648f7896182174a9f5784ccde2).
+
+Formats pris en charge :
+
+- Paires TSV à quatre colonnes : `id_kab`, `texte_kab`, `id_fra`, `texte_fra`. Les exports à six colonnes avec codes langue sont aussi reconnus.
+- Ou, via le script, fichiers de phrases `id / langue / texte` (détaillés à six colonnes également acceptés) et fichier de liens `id / id`.
+- Audio : **cinq colonnes**, `sentence_id / audio_id / auteur / licence / attribution_url`. Plusieurs voix peuvent correspondre à une phrase. L’URL est construite avec l’**identifiant audio**, selon le format officiel ; elle n’est jamais déduite du seul identifiant de phrase.
+- TSV/CSV séparés par tabulations, `.bz2`, `.gz` et archives `.tar.bz2`/`.tar.gz`. Les archives sont lues sans extraire leurs chemins sur le disque. L’interface accepte 128 Mo au total ; le script convient aux exports plus grands.
+
+Import de fichiers déjà téléchargés :
+
+```bash
+bash scripts/import_tatoeba.sh --pairs "/chemin/paires-kab-fra.tsv" --audio "/chemin/sentences_with_audio.tar.bz2"
+# Ou les fichiers bruts, alignés sur leurs identifiants :
+bash scripts/import_tatoeba.sh --sentences "/chemin/kab_sentences_detailed.tsv.bz2" "/chemin/fra_sentences_detailed.tsv.bz2" --links "/chemin/kab-fra_links.tsv.bz2" --audio "/chemin/kab_sentences_with_audio.tsv.bz2"
+```
+
+Ajouter `--preview` prépare le rapport sans écrire dans PostgreSQL. Les empreintes des fichiers et les identifiants des phrases/enregistrements sont conservés. Une réimportation dédoublonne les paires et enrichit leurs sources/voix en conservant textes édités, catégories et validations. Les fichiers de travail et rapports sont dans `artifacts/tatoeba-imports/`, exclus de Git et non servis publiquement.
+
+### Les quatre activités
+
+Dans **Mots et phrases → Je choisis mon thème**, filtrer par catégorie, difficulté, présence d’audio ou source Tatoeba. Une séance propose jusqu’à cinq phrases ; on peut aussi choisir une phrase seule. Dans **Ma bibliothèque → Phrases**, **M’entraîner avec cette phrase** ouvre directement ses activités. Les phrases déjà présentes sont utilisables sans attendre Tatoeba.
+
+1. **Je découvre** : carte à retourner, traduction, mots cliquables, note grammaticale si renseignée et voix disponibles.
+2. **Je construis** : étiquettes mélangées, reconstruction, correction serveur et nouvelle tentative. Les mots répétés conservent chacun leur position.
+3. **Je fais la dictée** : écouter un enregistrement puis saisir la phrase kabyle, avec clavier des caractères particuliers.
+4. **J’écoute et je choisis** : trois traductions provenant de vraies fiches de la bibliothèque ; le serveur vérifie la réponse. Les autres traductions d’une même phrase kabyle ne servent pas de mauvaises réponses.
+
+La dictée et le QCM audio sont désactivés sans métadonnées d’enregistrement attribué. Un échec de lecture est affiché ; aucun son synthétique ni texte parlé artificiellement n’est substitué. Les MP3 sont lus à la demande depuis Tatoeba, sans être copiés dans Git. Les crédits de chaque voix sont conservés. Le fait qu’un enregistrement soit dans Tatoeba n’est pas présenté comme une preuve indépendante que son auteur est natif. Les réponses, erreurs et révisions sont enregistrées dans la progression anonyme ; retourner une carte ne crée pas une réussite.
+
+### Lexique, niveaux et grammaire
+
+Le découpage lexical conserve les formes telles que `Axxam-a` ; il ne prétend pas analyser automatiquement l’annexion. Les mots cliquables cherchent une forme ou un synonyme attesté dans le lexique existant. Si une traduction individuelle manque, le site le dit : l’alignement de deux phrases ne suffit pas à inventer l’alignement de leurs mots.
+
+La difficulté proposée est **une estimation par longueur** : jusqu’à quatre mots, cinq à huit mots, neuf mots ou plus. Ce classement ne constitue pas une évaluation CECR. Dans l’éditeur d’une phrase, l’administrateur peut attribuer **A1 à C2** et ajouter une **note grammaticale**. Ces champs apparaissent sur la carte ; les niveaux attribués A1/A2 sont filtrables. Les fiches restent publiques et le bouton **Valider** garde son rôle de relecture humaine.
+
+La migration 005 ajoute les index de difficulté, présence d’audio et recherche exacte du lexique. Les imports Sifal remplissent également ces champs, afin que leurs phrases puissent utiliser les mêmes activités.
+
 
 ## Bibliothèque publique et catégories
 
@@ -62,7 +114,7 @@ bash scripts/import_sifal.sh "/chemin/vers/phrases.tsv"
 
 Les trois petites leçons de lettres suivent découverte, rappel, jeu et bilan. Dans **Mots et phrases → Je commence !**, la leçon publique propose trois mots illustrés, trois phrases de la source et huit défis : reconnaissance, ordre des mots, phrase à compléter et rappel. Les réponses sont vérifiées par le serveur ; réussites et erreurs sont enregistrées dans la progression anonyme de l’appareil. La lecture seule ne crée aucun progrès.
 
-Le reste du catalogue se consulte par catégories dans la bibliothèque. Il n’est pas transformé artificiellement en centaines de leçons validées. Le dessin et l’enregistrement/écoute locale sont disponibles ; aucun audio kabyle ni score de prononciation n’est simulé.
+Les autres phrases disposent également de cartes et d’exercices de construction dans les séances par thème. Les activités audio dépendent des enregistrements importés ; ces exercices ne constituent pas une validation linguistique automatique. Le dessin et l’enregistrement/écoute locale sont disponibles ; aucun audio kabyle ni score de prononciation n’est simulé.
 
 ## Où sont les données ?
 

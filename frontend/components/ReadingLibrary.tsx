@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { BookOpen, Search, ChevronLeft, ChevronRight } from "lucide-react";
+import PhrasePractice from "./PhrasePractice";
 import { request } from "../lib/api";
 type Kind = "letter" | "word" | "phrase";
 type Citation = {
@@ -40,6 +41,7 @@ export default function ReadingLibrary({
   token,
   onExit,
 }: { token?: string; onExit?: () => void } = {}) {
+  const [practiceId, setPracticeId] = useState<string | null>(null);
   const [kind, setKind] = useState<Kind>(token ? "word" : "letter"),
     [category, setCategory] = useState(""),
     [query, setQuery] = useState(""),
@@ -81,6 +83,13 @@ export default function ReadingLibrary({
       controller.abort();
     };
   }, [kind, category, query, offset, token]);
+  if (practiceId)
+    return (
+      <PhrasePractice
+        initialId={practiceId}
+        onExit={() => setPracticeId(null)}
+      />
+    );
   return (
     <section className="reading-library">
       {onExit && (
@@ -238,6 +247,14 @@ export default function ReadingLibrary({
                     <small className="reading-image-credit">
                       Image : {c.images[0].author} · {c.images[0].license}
                     </small>
+                  )}
+                  {c.kind === "phrase" && (
+                    <button
+                      className="secondary"
+                      onClick={() => setPracticeId(c.id)}
+                    >
+                      M’entraîner avec cette phrase
+                    </button>
                   )}
                   <details className="reading-sources">
                     <summary>En savoir plus et sources</summary>
