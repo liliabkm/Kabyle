@@ -78,9 +78,15 @@ export default function Home() {
     setMobile(false);
     setError("");
   }
-  const done = progress.filter((p) => p.correct > 0).length;
+  const done = progress.filter(
+    (p) => p.correct > 0 && letters.some((l) => l.id === p.content_id),
+  ).length;
   const due = progress
-    .filter((p) => new Date(p.due) <= new Date())
+    .filter(
+      (p) =>
+        new Date(p.due) <= new Date() &&
+        entries.some((e) => e.id === p.content_id),
+    )
     .map((p) => p.content_id);
   const refresh = () => request("progress").then(setProgress);
   useEffect(() => {
@@ -91,6 +97,9 @@ export default function Home() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [view, quiz, matching, lessonIndex]);
+  useEffect(() => {
+    if (view === "progress") refresh().catch((e) => setError(e.message));
+  }, [view]);
   function navigate(v: View) {
     setLessonIndex(null);
     setDrawingLetters(null);
@@ -548,7 +557,7 @@ export default function Home() {
                     <h3>Des mots aux phrases</h3>
                     <p>Cartes, mots à replacer et phrases à compléter.</p>
                     <span className="private-preview-label">
-                      Aperçu privé en relecture
+                      Accessible à tous
                     </span>
                   </div>
                   <button
@@ -680,57 +689,10 @@ export default function Home() {
                 text="Une image pour comprendre. Une phrase pour utiliser le mot."
               />
               <VocabularyPreview />
-              {words.length > 0 && (
-                <div className="themes">
-                  {[
-                    "Tous les thèmes",
-                    "Animaux",
-                    "Fruits",
-                    "Légumes",
-                    "Famille",
-                    "Maison",
-                    "Vie quotidienne",
-                  ].map((t) => (
-                    <span key={t}>{t}</span>
-                  ))}
-                </div>
-              )}
-              {words.length ? (
-                <>
-                  <div className="course-grid">
-                    {words.map((w) => (
-                      <div className="word-card" key={w.id}>
-                        {w.images?.[0] && (
-                          <img alt={w.french} src={w.images[0].url} />
-                        )}
-                        <h2>{w.latin}</h2>
-                        <span lang="kab-Tfng">{w.tifinagh}</span>
-                        <p>{w.french}</p>
-                        {[...w.sources, ...(w.images || [])].map((s) => (
-                          <a
-                            className="source"
-                            key={s.url}
-                            href={s.url}
-                            target="_blank"
-                            rel="noreferrer"
-                          >
-                            {s.author} · {s.license} ↗
-                          </a>
-                        ))}
-                      </div>
-                    ))}
-                  </div>
-                  <button
-                    className="secondary"
-                    onClick={() => setMatching(words)}
-                  >
-                    Jouer aux paires
-                  </button>
-                  <button className="primary" onClick={() => begin(words)}>
-                    Pratiquer les mots <ArrowRight size={17} />
-                  </button>
-                </>
-              ) : null}
+              <button className="secondary" onClick={() => setView("library")}>
+                Voir tous les mots et phrases par catégorie{" "}
+                <BookOpen size={18} />
+              </button>
             </>
           ) : view === "draw" ? (
             <>
@@ -809,7 +771,10 @@ export default function Home() {
                     <span className="mini-glyph">
                       {entries.find((e) => e.id === p.content_id)?.tifinagh}
                     </span>
-                    <b>{entries.find((e) => e.id === p.content_id)?.latin}</b>
+                    <b>
+                      {entries.find((e) => e.id === p.content_id)?.latin ||
+                        p.latin}
+                    </b>
                     <span>
                       {p.correct} réussite(s) · {p.errors} erreur(s)
                     </span>
@@ -856,7 +821,7 @@ export default function Home() {
               <PageTitle
                 tag="ESPACE ÉDITORIAL"
                 title="Des contenus de confiance."
-                text="Importez, corrigez et validez les ressources avant leur publication."
+                text="Consulte, classe et valide les ressources publiques."
               />
               <Admin onSaved={() => request("content").then(setEntries)} />
             </>

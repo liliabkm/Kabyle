@@ -29,10 +29,11 @@ def health(s=Depends(db)):
 def serialize(c): return {**c.data,"id":c.id,"kind":c.kind,"variety":c.variety,"script":c.script,"theme":c.theme,"status":c.status}
 @app.get("/api/content")
 def contents(s=Depends(db)):
-    return [serialize(c) for c in s.scalars(select(Content).where(Content.status == "validated").order_by(Content.id))]
+    return [serialize(c) for c in s.scalars(select(Content).where(Content.status != "rejected", Content.kind.in_(["letter","word"])).order_by(Content.id))]
 @app.get("/api/progress")
 def progress(who=Depends(learner), s=Depends(db)):
-    return [{"content_id":p.content_id,"correct":p.correct,"errors":p.errors,"streak":p.streak,"due":p.due.isoformat()} for p in s.scalars(select(Progress).where(Progress.learner == who))]
+    return [{"content_id":p.content_id,"latin":c.data.get('latin',''),"kind":c.kind,"correct":p.correct,"errors":p.errors,"streak":p.streak,"due":p.due.isoformat()} for p,c in s.execute(select(Progress,Content).join(Content,Content.id==Progress.content_id).where(Progress.learner==who))]
+
 class Answer(BaseModel):
     content_id: str
     answer: str = Field(max_length=200)
@@ -40,7 +41,7 @@ class Answer(BaseModel):
 @app.post("/api/answers")
 def answer(body: Answer, who=Depends(learner), s=Depends(db)):
     c=s.get(Content,body.content_id)
-    if not c or c.status != "validated": raise HTTPException(404,"Contenu indisponible")
+    if not c or c.status == "rejected": raise HTTPException(404,"Contenu indisponible")
     previous=s.get(Attempt,body.attempt_id)
     if previous:
         if previous.learner != who or previous.content_id != c.id: raise HTTPException(409,"Identifiant déjà utilisé")
@@ -78,19 +79,16 @@ def validate_content(item):
     d=item.data
     if not isinstance(d.get("latin"),str) or not d["latin"].strip(): raise HTTPException(422,"Transcription latine requise")
     if item.status != "validated": return
-    if d.get("publication_blockers") or d.get("license_conflict"):
-        raise HTTPException(422, "Lever les blocages de validation et de licence avant publication")
     sources=d.get("sources",[])
     if not sources or not all(isinstance(s,dict) and all(isinstance(s.get(k),str) and s[k].strip() for k in ("url","author","license")) for s in sources):
         raise HTTPException(422,"Chaque source exige URL, auteur et licence")
-    if not d.get("reviewed_by") or not d.get("reviewed_at"): raise HTTPException(422,"Validation nominative et datée requise")
     if item.variety != "kab": raise HTTPException(422,"Le parcours actuel publie uniquement la variété kab")
-    if item.kind == "word" and (not d.get("french") or not d.get("tifinagh") or not d.get("images")):
-        raise HTTPException(422,"Mot publié : traduction, tifinagh et illustration requis")
+    if item.kind in ('word','phrase') and not d.get('french'):
+        raise HTTPException(422,'Traduction française requise')
     for media in d.get("images",[])+d.get("audios",[]):
         if not isinstance(media,dict) or not all(media.get(k) for k in ("url","author","license")): raise HTTPException(422,"Attributions média incomplètes")
 @app.get("/api/admin/content",dependencies=[Depends(admin)])
-def admin_content(s=Depends(db)): return [{"id":c.id,"kind":c.kind,"variety":c.variety,"script":c.script,"theme":c.theme,"status":c.status,"data":c.data} for c in s.scalars(select(Content).order_by(Content.id))]
+def admin_content(s=Depends(db)): return [{"id":c.id,"kind":c.kind,"variety":c.variety,"script":c.script,"theme":c.theme,"status":c.status,"data":c.data} for c in s.scalars(select(Content).order_by(Content.id).limit(1000))]
 @app.post("/api/admin/import",dependencies=[Depends(admin)])
 def import_content(items: list[ContentInput],s=Depends(db)):
     if len(items)>500: raise HTTPException(422,"Maximum 500 entrées")
@@ -107,7 +105,10 @@ def admin_media(s=Depends(db)):
     return [{"id": a.id, "kind": a.kind, "theme": a.theme, "label_fr": a.label_fr, "status": a.status, "data": a.data} for a in s.scalars(select(MediaAsset).order_by(MediaAsset.label_fr))]
 
 from .vocabulary import register_routes
-register_routes(app, db, admin)
+register_routes(app, db, admin, learner)
 
 from .library import register_routes as register_library_routes
 register_library_routes(app, db, admin)
+
+from .tsv_import import register_routes as register_tsv_routes
+register_tsv_routes(app,db,admin)

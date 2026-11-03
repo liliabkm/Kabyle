@@ -1,6 +1,7 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Search, X } from "lucide-react";
+import TsvImport from "./TsvImport";
 import ReadingLibrary from "./ReadingLibrary";
 import { request } from "../lib/api";
 type PhotoData = {
@@ -29,6 +30,7 @@ type Item = {
     tifinagh?: string;
     images?: PhotoData[];
     publication_blockers?: string[];
+    source_issues?: string[];
     sources?: { url: string; author: string; license: string }[];
     [key: string]: unknown;
   };
@@ -42,6 +44,10 @@ export default function ContentLibrary({
   onSaved: () => void;
 }) {
   const [reading, setReading] = useState(false);
+  const [offset, setOffset] = useState(0),
+    [total, setTotal] = useState(0),
+    [counts, setCounts] = useState<Record<string, number>>({}),
+    [refresh, setRefresh] = useState(0);
   const [items, setItems] = useState<Item[]>([]),
     [photos, setPhotos] = useState<Photo[]>([]),
     [categories, setCategories] = useState<Category[]>([]),
@@ -54,9 +60,12 @@ export default function ContentLibrary({
     [status, setStatus] = useState(""),
     [selected, setSelected] = useState<Item | null>(null),
     [picked, setPicked] = useState("");
+  const loadVersion = useRef(0);
   const headers = { Authorization: "Bearer " + token };
   useEffect(() => {
+    loadVersion.current++;
     setLoaded(false);
+    setBusy(false);
     setItems([]);
     setPhotos([]);
     setCategories([]);
@@ -70,22 +79,57 @@ export default function ContentLibrary({
         ?.scrollIntoView({ block: "start" });
   }, [selected?.id]);
   async function load() {
+    const version = ++loadVersion.current;
     setBusy(true);
     setMessage("");
     try {
       const [content, media, cats] = await Promise.all([
-        request("admin/content", { headers }),
+        request(
+          "admin/library?" +
+            new URLSearchParams({
+              kind: tab === "photos" ? "word" : tab,
+              category,
+              q: search,
+              status,
+              offset: String(offset),
+              limit: "24",
+            }),
+          { headers },
+        ),
         request("admin/media", { headers }),
         request("admin/categories", { headers }),
       ]);
-      setItems(content);
+      if (version !== loadVersion.current) return;
+      setItems(
+        content.items.map(
+          ({
+            id,
+            kind,
+            variety,
+            script,
+            theme,
+            status,
+            ...data
+          }: Omit<Item, "data"> & Item["data"]) => ({
+            id,
+            kind,
+            theme,
+            status,
+            variety,
+            script,
+            data,
+          }),
+        ),
+      );
+      setTotal(content.total);
+      setCounts(content.counts);
       setPhotos(media);
       setCategories(cats);
       setLoaded(true);
     } catch (e) {
-      setMessage((e as Error).message);
+      if (version === loadVersion.current) setMessage((e as Error).message);
     } finally {
-      setBusy(false);
+      if (version === loadVersion.current) setBusy(false);
     }
   }
   const fold = (s: string) =>
@@ -96,23 +140,26 @@ export default function ContentLibrary({
   const query = fold(search);
   const label = (theme: string) =>
     categories.find((c) => c.id === theme)?.label || theme;
-  const matches = items.filter(
-    (i) =>
-      i.kind === tab &&
-      (!category || i.theme === category) &&
-      (!status || i.status === status) &&
-      fold(
-        [
-          i.data.latin,
-          i.data.french || "",
-          i.data.tifinagh || "",
-          label(i.theme),
-          ...(i.data.french_variants || []),
-          ...(i.data.alternative_versions || []),
-          ...(i.data.synonyms || []),
-        ].join(" "),
-      ).includes(query),
-  );
+  const matches = items;
+  useEffect(() => {
+    if (loaded) load();
+  }, [tab, category, search, status, offset, refresh]);
+  async function validate(id: string) {
+    setBusy(true);
+    try {
+      await request(`admin/content/${id}/validate`, {
+        method: "POST",
+        headers,
+      });
+      setRefresh((n) => n + 1);
+      setMessage("Fiche validée.");
+      onSaved();
+    } catch (e) {
+      setMessage((e as Error).message);
+    } finally {
+      setBusy(false);
+    }
+  }
   async function save() {
     if (!selected) return;
     setBusy(true);
@@ -140,7 +187,9 @@ export default function ContentLibrary({
       setItems(items.map((i) => (i.id === updated.id ? updated : i)));
       setSelected(null);
       setPicked("");
-      setMessage("Brouillon enregistré. Il reste exclu des leçons.");
+      setMessage(
+        "Modifications enregistrées. La fiche est visible et à vérifier.",
+      );
       onSaved();
     } catch (e) {
       setMessage((e as Error).message);
@@ -194,10 +243,18 @@ export default function ContentLibrary({
           {message}
         </p>
       )}
+      <TsvImport
+        token={token}
+        onDone={() => {
+          setOffset(0);
+          setRefresh((n) => n + 1);
+          onSaved();
+        }}
+      />
       {loaded && (
         <>
           <button className="secondary" onClick={() => setReading(true)}>
-            Vue lecture privée
+            Vue lecture
           </button>
           <div className="library-tabs">
             {(
@@ -214,6 +271,7 @@ export default function ContentLibrary({
                 aria-pressed={tab === t.id}
                 onClick={() => {
                   setTab(t.id);
+                  setOffset(0);
                   setSelected(null);
                   setCategory("");
                   setStatus("");
@@ -221,10 +279,7 @@ export default function ContentLibrary({
                 }}
               >
                 {t.label} (
-                {t.id === "photos"
-                  ? photos.length
-                  : items.filter((i) => i.kind === t.id).length}
-                )
+                {t.id === "photos" ? photos.length : (counts[t.id] ?? 0)})
               </button>
             ))}
           </div>
@@ -235,7 +290,10 @@ export default function ContentLibrary({
                 aria-label="Rechercher dans la bibliothèque"
                 placeholder="Chercher en kabyle ou en français…"
                 value={search}
-                onChange={(e) => setSearch(e.target.value)}
+                onChange={(e) => {
+                  setSearch(e.target.value);
+                  setOffset(0);
+                }}
               />
             </label>
             <label>
@@ -243,7 +301,10 @@ export default function ContentLibrary({
               <select
                 aria-label="Filtrer la catégorie"
                 value={category}
-                onChange={(e) => setCategory(e.target.value)}
+                onChange={(e) => {
+                  setCategory(e.target.value);
+                  setOffset(0);
+                }}
               >
                 <option value="">Toutes les catégories</option>
                 {categories.map((c) => (
@@ -259,11 +320,14 @@ export default function ContentLibrary({
                 <select
                   aria-label="Filtrer le statut"
                   value={status}
-                  onChange={(e) => setStatus(e.target.value)}
+                  onChange={(e) => {
+                    setStatus(e.target.value);
+                    setOffset(0);
+                  }}
                 >
                   <option value="">Tous les statuts</option>
                   <option value="draft">À vérifier</option>
-                  <option value="validated">Publié</option>
+                  <option value="validated">Validé</option>
                   <option value="rejected">Rejeté</option>
                 </select>
               </label>
@@ -306,36 +370,44 @@ export default function ContentLibrary({
           ) : (
             <>
               <p className="tiny" role="status">
-                {matches.length} fiche(s) affichée(s). Les contenus en brouillon
-                restent privés. Le classement initial proposé ne valide pas leur
-                traduction.
+                {total} fiche(s). Les fiches à vérifier sont publiques. Valide
+                une fiche après avoir relu son texte et sa traduction.
               </p>
               <div className="library-word-list">
                 {matches.map((i) => (
-                  <button
-                    key={i.id}
-                    onClick={() => {
-                      setSelected(structuredClone(i));
-                      setPicked("");
-                    }}
-                  >
-                    <span>
-                      <b lang={i.kind === "letter" ? "kab-Tfng" : "kab-Latn"}>
-                        {i.kind === "letter"
-                          ? `${i.data.tifinagh} · ${i.data.latin}`
-                          : i.data.latin}
-                      </b>
-                      <span>{i.data.french}</span>
-                      <small>{label(i.theme)}</small>
-                    </span>
-                    <span className="library-badge">
-                      {i.status === "draft"
-                        ? "À vérifier"
-                        : i.status === "validated"
-                          ? "Publié"
-                          : "Rejeté"}
-                    </span>
-                  </button>
+                  <div className="catalog-row" key={i.id}>
+                    <button
+                      className="catalog-open"
+                      onClick={() => {
+                        setSelected(structuredClone(i));
+                        setPicked("");
+                      }}
+                    >
+                      <span>
+                        <b lang={i.kind === "letter" ? "kab-Tfng" : "kab-Latn"}>
+                          {i.kind === "letter"
+                            ? `${i.data.tifinagh} · ${i.data.latin}`
+                            : i.data.latin}
+                        </b>
+                        <span>{i.data.french}</span>
+                        <small>{label(i.theme)}</small>
+                      </span>
+                      <span className="library-badge">
+                        {i.status === "draft"
+                          ? "À vérifier"
+                          : i.status === "validated"
+                            ? "Validé"
+                            : "Rejeté"}
+                      </span>
+                    </button>
+                    <button
+                      className="secondary"
+                      disabled={busy || i.status === "validated"}
+                      onClick={() => validate(i.id)}
+                    >
+                      {i.status === "validated" ? "Validé" : "Valider"}
+                    </button>
+                  </div>
                 ))}
               </div>
               {!matches.length && (
@@ -344,6 +416,27 @@ export default function ContentLibrary({
                 </p>
               )}
             </>
+          )}
+          {tab !== "photos" && total > 24 && (
+            <div className="reading-pagination">
+              <button
+                className="secondary"
+                disabled={busy || offset === 0}
+                onClick={() => setOffset(Math.max(0, offset - 24))}
+              >
+                Avant
+              </button>
+              <span>
+                {offset + 1}–{Math.min(offset + 24, total)} / {total}
+              </span>
+              <button
+                className="secondary"
+                disabled={busy || offset + 24 >= total}
+                onClick={() => setOffset(offset + 24)}
+              >
+                Après
+              </button>
+            </div>
           )}
           {selected && (
             <form
@@ -462,6 +555,11 @@ export default function ContentLibrary({
                   )}
                 </>
               )}
+              {selected.data.source_issues?.map((issue, n) => (
+                <p className="info-note" key={n}>
+                  {issue}
+                </p>
+              ))}
               <details>
                 <summary>Sources et points à vérifier</summary>
                 {(
@@ -503,11 +601,11 @@ export default function ContentLibrary({
               </details>
               <p className="tiny">
                 Modifier le texte ou une image demande une relecture.
-                L’enregistrement ci-dessous remet la fiche en brouillon ; il ne
-                la publie pas.
+                L’enregistrement ci-dessous remet la fiche à vérifier et la
+                garde visible.
               </p>
               <button className="primary" disabled={busy} type="submit">
-                {busy ? "Enregistrement…" : "Enregistrer en brouillon"}
+                {busy ? "Enregistrement…" : "Enregistrer les modifications"}
               </button>
             </form>
           )}

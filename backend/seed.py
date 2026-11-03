@@ -3,7 +3,7 @@ from pathlib import Path
 from app.db import Session
 from app.models import Content
 from app.main import ContentInput, validate_content
-from app.catalog import seed_catalog, seed_lesson_previews, seed_phrase_catalog
+from app.catalog import seed_catalog, seed_lesson_previews, seed_phrase_catalog, seed_complete_course
 from app.library import seed_categories
 path=Path(__file__).resolve().parent.parent / "content/alphabet.json"
 with Session() as s:
@@ -15,5 +15,6 @@ with Session() as s:
     counts["other_phrases_added"] = seed_phrase_catalog(s)
     s.flush()
     counts["categories_initialized"] = seed_categories(s)
+    counts.update(seed_complete_course(s))
     s.commit()
 print("Import idempotent terminé : alphabet et catalogue.", counts)

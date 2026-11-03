@@ -12,6 +12,8 @@ export type Entry = {
   images?: Source[];
 };
 export type Progress = {
+  latin?: string;
+  kind?: string;
   content_id: string;
   correct: number;
   errors: number;

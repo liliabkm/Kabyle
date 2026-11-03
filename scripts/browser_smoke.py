@@ -47,11 +47,11 @@ with sync_playwright() as p:
     page.get_by_role('button',name='Gestion des contenus').click()
     expect(page.get_by_role('button',name='Ouvrir la bibliothèque')).to_be_disabled()
     page.get_by_text('Édition avancée et import JSON',exact=True).click()
-    expect(page.get_by_role('button',name='Charger les contenus')).to_be_disabled()
+    expect(page.get_by_role('button',name='Charger les 500 premières fiches')).to_be_disabled()
     # Clean only the anonymous identity created by this run.
     assert context.request.delete('http://127.0.0.1:3000/api/progress').status==204
     assert not errors,errors
-    print('Desktop: navigation, quiz, persistence, canvas/export, unavailable vocabulary, admin: PASS')
+    print('Desktop: navigation, quiz, persistence, canvas/export, public vocabulary, admin: PASS')
     mobile=browser.new_context(viewport={'width':390,'height':844},is_mobile=True,has_touch=True)
     mp=mobile.new_page()
     mp.goto('http://127.0.0.1:3000')

@@ -1,11 +1,11 @@
 "use client";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import {
   ArrowRight,
   BookOpen,
   ChevronLeft,
   Check,
-  LockKeyhole,
+  BookOpenCheck,
   RotateCcw,
   Star,
   X,
@@ -48,20 +48,14 @@ type Bundle = {
   exercises: Exercise[];
 };
 export default function VocabularyPreview() {
-  const [token, setToken] = useState(""),
-    [bundle, setBundle] = useState<Bundle | null>(null),
+  const [bundle, setBundle] = useState<Bundle | null>(null),
     [error, setError] = useState(""),
     [busy, setBusy] = useState(false);
-  async function open(e: React.FormEvent) {
-    e.preventDefault();
+  async function open() {
     setBusy(true);
     setError("");
     try {
-      setBundle(
-        await request("admin/learning-lessons/premiers-mots", {
-          headers: { Authorization: "Bearer " + token },
-        }),
-      );
+      setBundle(await request("learning-lessons/premiers-mots"));
     } catch (e) {
       setError((e as Error).message);
     } finally {
@@ -69,13 +63,7 @@ export default function VocabularyPreview() {
     }
   }
   if (bundle)
-    return (
-      <WordLesson
-        bundle={bundle}
-        token={token}
-        onExit={() => setBundle(null)}
-      />
-    );
+    return <WordLesson bundle={bundle} onExit={() => setBundle(null)} />;
   return (
     <section className="vocabulary-entry">
       <div className="vocabulary-entry-icon">
@@ -91,48 +79,22 @@ export default function VocabularyPreview() {
         <span>2 · Je comprends</span>
         <span>3 · Je retrouve</span>
       </div>
-      <details className="teacher-preview-gate">
-        <summary>
-          <LockKeyhole size={17} /> Essayer la leçon privée (enseignant)
-        </summary>
-        <p>
-          Un aperçu pédagogique utilise des mots déjà récupérés. Ils restent en
-          relecture : cet essai n’est pas un cours publié, ni une validation
-          linguistique. Usage privé et non commercial ; aucun audio généré.
+      <button className="primary" disabled={busy} onClick={open}>
+        {busy ? "Chargement…" : "Je commence !"} <ArrowRight size={18} />
+      </button>
+      {error && (
+        <p className="error" role="alert">
+          {error}
         </p>
-        <form onSubmit={open}>
-          <label htmlFor="word-preview-token">
-            Jeton enseignant (ADMIN_TOKEN du fichier .env)
-          </label>
-          <input
-            id="word-preview-token"
-            type="password"
-            autoComplete="off"
-            value={token}
-            onChange={(e) => setToken(e.target.value)}
-            required
-          />
-          <button className="primary" disabled={busy || !token}>
-            {busy ? "Chargement…" : "Lancer l’aperçu privé"}{" "}
-            <ArrowRight size={18} />
-          </button>
-        </form>
-        {error && (
-          <p className="error" role="alert">
-            {error}
-          </p>
-        )}
-      </details>
+      )}
     </section>
   );
 }
 function WordLesson({
   bundle,
-  token,
   onExit,
 }: {
   bundle: Bundle;
-  token: string;
   onExit: () => void;
 }) {
   const [phase, setPhase] = useState<
@@ -151,10 +113,12 @@ function WordLesson({
     [errors, setErrors] = useState(0),
     [successes, setSuccesses] = useState(0),
     [revealed, setRevealed] = useState(true);
+  const attemptId = useRef<string | null>(null);
   const exercise = bundle.exercises[index],
     word = bundle.words[index],
     phrase = bundle.phrases[index];
   const clear = () => {
+    attemptId.current = null;
     setAnswer("");
     setChips([]);
     setFeedback(null);
@@ -165,14 +129,15 @@ function WordLesson({
     setBusy(true);
     setError("");
     try {
-      const result = await request(
-        `admin/learning-lessons/${bundle.id}/answers`,
-        {
-          method: "POST",
-          headers: { Authorization: "Bearer " + token },
-          body: JSON.stringify({ exercise_id: exercise.id, answer: value }),
-        },
-      );
+      const result = await request(`learning-lessons/${bundle.id}/answers`, {
+        method: "POST",
+        body: JSON.stringify({
+          exercise_id: exercise.id,
+          answer: value,
+          attempt_id:
+            attemptId.current ?? (attemptId.current = crypto.randomUUID()),
+        }),
+      });
       setFeedback(result);
       if (result.correct) setSuccesses((n) => n + 1);
       else setErrors((n) => n + 1);
@@ -208,11 +173,11 @@ function WordLesson({
   return (
     <section className="word-lesson">
       <button className="back" disabled={busy} onClick={onExit}>
-        <ChevronLeft size={18} /> Quitter l’aperçu
+        <ChevronLeft size={18} /> Retour aux mots
       </button>
       <p className="word-preview-notice">
-        <LockKeyhole size={16} />
-        <span>Aperçu privé · contenus en relecture · sans audio</span>
+        <BookOpenCheck size={16} />
+        <span>Accessible à tous · contenus à vérifier</span>
       </p>
       <div className="lesson-topline">
         <span>{bundle.title}</span>
@@ -489,8 +454,7 @@ function WordLesson({
             ))}
           </div>
           <p className="tiny">
-            Bilan de cet essai privé : il n’est pas ajouté aux progrès des
-            leçons publiées. Les textes restent à relire.
+            Tes réponses sont enregistrées dans tes progrès sur cet appareil.
           </p>
           <button
             className="primary"
@@ -509,12 +473,7 @@ function WordLesson({
       )}
       <details className="parent-note word-source-note">
         <summary>Textes, illustrations et droits</summary>
-        <p>
-          {bundle.notice} Textes du cours LibreLingo-KAB-from-FR, dont la
-          licence racine est BY-NC-SA 4.0 et la licence de cours annoncée BY-SA
-          4.0 : cette divergence reste à clarifier. Aucun texte n’a été traduit
-          par une IA pour cet aperçu.
-        </p>
+        <p>{bundle.notice}</p>
         {bundle.words.map((w) => (
           <div key={w.id}>
             <b>{w.latin}</b>

@@ -16,14 +16,14 @@ def editor(monkeypatch):
 
 AUTH={'Authorization':'Bearer catalog-test-only'}
 
-def test_catalog_is_loaded_but_words_are_not_public(editor):
+def test_catalog_is_public_without_fabricating_human_validation(editor):
     words, photos = catalog.read_catalog()
     data=editor.get('/api/admin/content',headers=AUTH).json()
     known={w['id'] for w in words}
     imported=[w for w in data if w['id'] in known]
     assert len(imported)==len(words)==61
     assert all(w['status']=='draft' and w['data']['sources'] for w in imported)
-    assert not known.intersection({w['id'] for w in editor.get('/api/content').json()})
+    assert known.issubset({w['id'] for w in editor.get('/api/content').json()})
     assert editor.get('/api/admin/media').status_code==401
     assets=editor.get('/api/admin/media',headers=AUTH).json()
     assert len(assets)==len(photos)==30
@@ -38,14 +38,20 @@ def test_photos_are_real_and_checksum_matches(editor):
         assert hashlib.sha256(r.content).hexdigest()==asset['data']['sha256']
     assert editor.get('/api/media/%2e%2e/%2e%2e/.env').status_code==404
 
-def test_license_block_prevents_publication(editor):
-    words,photos=catalog.read_catalog()
-    item=copy.deepcopy(words[0])
-    item['status']='validated'
-    item['data'].update(tifinagh='ⴰ',reviewed_by='Test only',reviewed_at='2026-11-02',images=[photos[0]['data']])
-    r=editor.post('/api/admin/import',headers=AUTH,json=[item])
-    assert r.status_code==422
-    assert 'licence' in r.json()['detail']
+def test_admin_has_simple_validation_button_endpoint(editor):
+    words,_=catalog.read_catalog();key=words[0]['id']
+    with Session() as s:
+        c=s.get(Content,key);status=c.status;data=copy.deepcopy(c.data)
+    try:
+        assert editor.post(f'/api/admin/content/{key}/validate').status_code==401
+        result=editor.post(f'/api/admin/content/{key}/validate',headers=AUTH)
+        assert result.status_code==200 and result.json()['status']=='validated'
+        public=editor.get('/api/library',params={'kind':'word','q':data['latin']}).json()
+        item=next(x for x in public['items'] if x['id']==key)
+        assert item['status']=='validated' and item['sources']==data['sources']
+    finally:
+        with Session() as s:
+            c=s.get(Content,key);c.status=status;c.data=data;s.commit()
 
 def test_seed_preserves_editorial_changes():
     with Session() as s:

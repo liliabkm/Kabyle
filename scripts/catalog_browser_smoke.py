@@ -43,7 +43,7 @@ try:
         page.get_by_role('button',name='Gestion des contenus').click()
         page.get_by_label('Jeton administrateur',exact=True).fill(token)
         page.get_by_role('button',name='Ouvrir la bibliothèque').click()
-        expect(page.get_by_role('button',name='Mots (61)')).to_be_visible()
+        expect(page.get_by_role('button',name='Mots (442)')).to_be_visible()
         page.get_by_role('button',name='Photos (30)',exact=True).click()
         expect(page.locator('.library-photo')).to_have_count(30)
         page.locator('.library-photo img').evaluate_all("imgs => imgs.forEach(img => img.loading = 'eager')")
@@ -51,16 +51,17 @@ try:
         page.screenshot(path=str(ROOT/'artifacts/photo-library.png'),full_page=True)
         page.get_by_label('Rechercher dans la bibliothèque').fill('fraise')
         expect(page.locator('.library-photo')).to_have_count(1)
-        page.get_by_role('button',name='Mots (61)').click()
-        page.locator('.library-word-list button').filter(has_text=original['data']['latin']).first.click()
+        page.get_by_role('button',name='Mots (442)').click()
+        page.get_by_label('Rechercher dans la bibliothèque').fill('fraises')
+        page.locator('.catalog-open').filter(has_text=original['data']['latin']).first.click()
         expect(page.get_by_role('heading',name='Modifier « '+original['data']['latin']+' »')).to_be_visible()
         page.get_by_label('Ajouter une photo',exact=True).select_option('photo-fruits360-fraise')
-        page.get_by_role('button',name='Enregistrer en brouillon').click()
-        expect(page.get_by_text('Brouillon enregistré. Il reste exclu des leçons.')).to_be_visible()
+        page.get_by_role('button',name='Enregistrer les modifications').click()
+        expect(page.get_by_text('Modifications enregistrées. La fiche est visible et à vérifier.')).to_be_visible()
         stored=next(w for w in call('admin/content') if w['id']==original['id'])
         assert stored['status']=='draft' and stored['data']['license_conflict'] is True
         assert any(i.get('asset_id')=='photo-fruits360-fraise' for i in stored['data']['images'])
-        assert original['id'] not in {c['id'] for c in call('content')}
+        assert original['id'] in {c['id'] for c in call('content')}
         assert not errors,errors
         page.set_viewport_size({'width':390,'height':844})
         page.get_by_label('Rechercher dans la bibliothèque').fill('')
@@ -68,7 +69,7 @@ try:
         expect(page.locator('.library-photo')).to_have_count(30)
         assert page.evaluate('document.documentElement.scrollWidth <= window.innerWidth')
         browser.close()
-    print('Catalog: 61 drafts, 30 real attributed photos, search, draft photo association, public exclusion, mobile width: PASS')
+    print('Catalog: 442 public entries, 30 real attributed photos, search, draft photo association, public availability, mobile width: PASS')
 finally:
     try:
         if original is not None:call('admin/import',[original])

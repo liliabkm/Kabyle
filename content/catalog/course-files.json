@@ -1,0 +1,128 @@
+[
+  {
+    "path": "course/activities/module.yaml",
+    "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/activities/module.yaml",
+    "sha256": "ef1ed835e48659a106935d313bffdb1539fc300b0e63c5f4640c253ca759f245",
+    "type": "documentation_or_module"
+  },
+  {
+    "path": "course/activities/skills/continuous.yaml",
+    "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/activities/skills/continuous.yaml",
+    "sha256": "352530bb97b559fe64beae000380029d320c41602c71b318f5139b2762a020db",
+    "type": "skill"
+  },
+  {
+    "path": "course/activities/skills/ser_estar.yaml",
+    "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/activities/skills/ser_estar.yaml",
+    "sha256": "b011d09b5044fc32468b483d9254f6796d422352b7d0f779ed29fa1f5ae13357",
+    "type": "skill"
+  },
+  {
+    "path": "course/activities/skills/test_jr.yaml",
+    "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/activities/skills/test_jr.yaml",
+    "sha256": "23ad026975b073d9ddb706ae2dbc1fc43def4a7b5e4e6922f08c05722cafeaac",
+    "type": "skill"
+  },
+  {
+    "path": "course/basics/module.yaml",
+    "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/module.yaml",
+    "sha256": "42b1dcbedea0b14165ea8ccf9fe920a5af777ca0cc660f80a1be4db52cadcbdc",
+    "type": "documentation_or_module"
+  },
+  {
+    "path": "course/basics/skills/animals.md",
+    "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/animals.md",
+    "sha256": "77395324316dbdf3ab582e81377006028cf2563f79b1821c4aadac0b82faac77",
+    "type": "documentation_or_module"
+  },
+  {
+    "path": "course/basics/skills/animals.yaml",
+    "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/animals.yaml",
+    "sha256": "4be8d11803b86d966ce02cd9d47b5ca7fd5a6817dee107a21219ad744a43b201",
+    "type": "skill"
+  },
+  {
+    "path": "course/basics/skills/clothes.yaml",
+    "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/clothes.yaml",
+    "sha256": "c83c3ba68af304444c33e58ab7c376abdf89fe5398027920a1bb05e03b49537a",
+    "type": "skill"
+  },
+  {
+    "path": "course/basics/skills/food.yaml",
+    "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/food.yaml",
+    "sha256": "f75023d6afb84c4d4c8db4659ec5cad70870ab0a3ec99cc71ab8fc38348b4391",
+    "type": "skill"
+  },
+  {
+    "path": "course/basics/skills/nature.yaml",
+    "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/nature.yaml",
+    "sha256": "8fbc0c1c98fccf174825dd9dc1d7683c91e5b44e2ee82505f0a00171376c0a55",
+    "type": "skill"
+  },
+  {
+    "path": "course/basics/skills/plurals.yaml",
+    "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/plurals.yaml",
+    "sha256": "06d3b474270cc91fac7b164295151156424b8a6c37a7448743ef6e50895c7b12",
+    "type": "skill"
+  },
+  {
+    "path": "course/basics/skills/professions.yaml",
+    "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/professions.yaml",
+    "sha256": "fe9ed5081e6bcc0c411263a85c8da189a6ea6566b944bf6c3d01a6230537c120",
+    "type": "skill"
+  },
+  {
+    "path": "course/basics/skills/verb_plurals.yaml",
+    "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/verb_plurals.yaml",
+    "sha256": "47f445ff3ad26a723452a8cd12404c1ef454a4dd2d8552c317c580401b7bedb6",
+    "type": "skill"
+  },
+  {
+    "path": "course/basics/skills/verbs.yaml",
+    "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/basics/skills/verbs.yaml",
+    "sha256": "e58ff832dac84414891cfd9b845a99261723ba1fc4dc02d4a491771fcf065759",
+    "type": "skill"
+  },
+  {
+    "path": "course/course.yaml",
+    "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/course.yaml",
+    "sha256": "ee3941fe810364009c370604734018451c6da8f3c9d3e2c2a81b10967e10d125",
+    "type": "documentation_or_module"
+  },
+  {
+    "path": "course/introduction/module.yaml",
+    "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/introduction/module.yaml",
+    "sha256": "e6d09b89cda0aaf9b28f1c7960e6327df7a94460bbb55662bd993df477e16015",
+    "type": "documentation_or_module"
+  },
+  {
+    "path": "course/introduction/skills/adjectives.yaml",
+    "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/introduction/skills/adjectives.yaml",
+    "sha256": "5e4cc1f460882fb09200cfa7b09ee783d62827764c61e9ddd45fa24a0cff66a7",
+    "type": "skill"
+  },
+  {
+    "path": "course/introduction/skills/phrases.yaml",
+    "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/introduction/skills/phrases.yaml",
+    "sha256": "699e36df904732321ead9af5c073c5ac32fa560acc2152b8f6e6758a86c07feb",
+    "type": "skill"
+  },
+  {
+    "path": "course/introduction/skills/preferences.yaml",
+    "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/introduction/skills/preferences.yaml",
+    "sha256": "206c059364275c8eb036f4a8f3ef1d10d47fad3351cd6009f069cd304396f889",
+    "type": "skill"
+  },
+  {
+    "path": "course/juniors/module.yaml",
+    "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/juniors/module.yaml",
+    "sha256": "8eb2c18d16e63e5055b8b1f922594590ba982aeb4e07b1e98b7d8ac847fa9ad8",
+    "type": "documentation_or_module"
+  },
+  {
+    "path": "course/juniors/skills/nombres_jr.yaml",
+    "url": "https://github.com/LibreLingo/LibreLingo-KAB-from-FR/blob/e426e0fa052da1c91b6efd800d8469e6940757d5/course/juniors/skills/nombres_jr.yaml",
+    "sha256": "b5643d736af29d37d5ec1a437b2cd90212c8090419d212ae1657519ff614d90e",
+    "type": "skill"
+  }
+]

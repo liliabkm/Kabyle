@@ -2942,3 +2942,84 @@ footer > span:last-child {
   min-width: 0;
   overflow-wrap: anywhere;
 }
+/* Public catalog and one-click editorial review. */
+.catalog-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 12px;
+  border: 1px solid var(--line, #ddd);
+  border-radius: 18px;
+  background: white;
+}
+.catalog-row .catalog-open {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  border: 0;
+  background: transparent;
+  padding: 10px;
+  min-width: 0;
+}
+.catalog-open > span:first-child {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.catalog-open b {
+  font-size: 1.2rem;
+}
+.catalog-open small {
+  color: #52616c;
+}
+.tsv-import {
+  margin: 24px 0;
+  padding: 20px;
+  border: 1px solid #d5e5e0;
+  border-radius: 18px;
+  background: #f6fbf8;
+}
+.tsv-import summary {
+  cursor: pointer;
+  font-weight: 700;
+}
+.tsv-import label {
+  display: block;
+  margin: 12px 0;
+}
+.tsv-import input[type="number"] {
+  max-width: 90px;
+}
+.tsv-sample {
+  max-width: 100%;
+  overflow: auto;
+  margin: 18px 0;
+}
+.tsv-sample td,
+.tsv-sample th {
+  padding: 10px;
+  border: 1px solid #dae3df;
+  min-width: 180px;
+}
+.tsv-sample table {
+  border-collapse: collapse;
+}
+.reading-card .library-badge {
+  display: inline-block;
+  margin: 8px 0;
+  font-size: 0.75rem;
+}
+@media (max-width: 600px) {
+  .catalog-row {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .catalog-row .catalog-open {
+    gap: 8px;
+  }
+  .catalog-row > .secondary {
+    align-self: flex-end;
+  }
+}

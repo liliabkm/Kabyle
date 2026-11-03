@@ -55,6 +55,10 @@ def seed_lesson_previews(session):
             raise ValueError('Source preview lesson cannot be published by the seed')
         if session.get(Lesson, item["id"]) is None:
             session.add(Lesson(**item)); counts["lessons_added"] += 1
+        else:
+            existing=session.get(Lesson,item['id'])
+            if existing.data.get('scope')=='private_noncommercial_preview':
+                existing.data={**existing.data,'scope':'public','notice':item['data']['notice']}
     return counts
 
 def seed_phrase_catalog(session):
@@ -64,3 +68,26 @@ def seed_phrase_catalog(session):
         if item['status']!='draft' or not item['data'].get('publication_blockers'):raise ValueError('Imported phrases must remain drafts')
         if session.get(Content,item['id']) is None:session.add(Content(**item));added+=1
     return added
+
+def seed_complete_course(session):
+    """Include juniors, all skills and mini-dictionaries; preserve human edits/reviews."""
+    from sqlalchemy import select
+    from .search import searchable
+    counts={'course_words_added':0,'course_phrases_added':0,'source_metadata_refreshed':0}
+    for filename,key in [('course-words.json','course_words_added'),('course-phrases.json','course_phrases_added')]:
+        for item in json.loads((ROOT/'catalog'/filename).read_text()):
+            current=session.get(Content,item['id'])
+            if current is None:
+                item['data']={**item['data'],'complete_course_revision':'e426e0fa-topics-v2'}
+                session.add(Content(**item));counts[key]+=1
+            elif current.status=='draft' and not current.data.get('edited_at') and current.data.get('complete_course_revision')!='e426e0fa-topics-v2':
+                editorial={k:current.data[k] for k in ('category_reviewed_at','category_status','category_scheme') if k in current.data}
+                current.data={**item['data'],**editorial,'complete_course_revision':'e426e0fa-topics-v2'}
+                if not editorial.get('category_reviewed_at'):
+                    current.theme=item['theme']
+                counts['source_metadata_refreshed']+=1
+    session.flush()
+    # Backfill only old rows. Bulk TSV imports fill this field at insertion.
+    for current in session.scalars(select(Content).where(Content.search_text=='')):
+        current.search_text=searchable(current.data)
+    return counts

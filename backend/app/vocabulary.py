@@ -1,4 +1,4 @@
-"""Private, source-backed lesson previews. Drafts never enter the public course."""
+"""Public source-backed practice; validation is separate from visibility."""
 import re
 import unicodedata
 from fastapi import Depends, HTTPException
@@ -17,8 +17,8 @@ def load_lesson(session, lesson_id, preview=False):
     content = {key: session.get(Content, key) for key in ids}
     if any(c is None or c.variety != 'kab' for c in content.values()):
         raise HTTPException(409, 'Les sources de cette leçon sont incomplètes')
-    if not preview and (lesson.status != 'validated' or lesson.data.get('scope') == 'private_noncommercial_preview' or any(c.status != 'validated' or c.data.get('publication_blockers') or c.data.get('license_conflict') for c in content.values())):
-        raise HTTPException(404, 'Leçon non publiée')
+    if lesson.status=='rejected' or any(c.status=='rejected' for c in content.values()):
+        raise HTTPException(404,'Leçon indisponible')
     return lesson, content
 
 def make_bundle(session, lesson_id, preview=False):
@@ -54,11 +54,12 @@ def make_bundle(session, lesson_id, preview=False):
         elif e['type']=='recall':item['keyboard']=sorted(set(ch for ch in c.data['latin'] if ord(ch)>127))
         else:raise HTTPException(409,'Type d’exercice inconnu')
         exercises.append(item)
-    return {'id':lesson.id,'title':lesson.title,'preview':preview,'notice':lesson.data['notice'],'words':words,'phrases':phrases,'exercises':exercises,'progress_scope':'session_only' if preview else 'not_started','method_sources':lesson.data.get('method_sources',[])}
+    return {'id':lesson.id,'title':lesson.title,'preview':preview,'notice':'Textes et traductions issus des sources citées. Les fiches non validées restent à vérifier.','words':words,'phrases':phrases,'exercises':exercises,'progress_scope':'learner','method_sources':lesson.data.get('method_sources',[])}
 
 class LessonAnswer(BaseModel):
     exercise_id: str = Field(max_length=100)
     answer: str = Field(max_length=500)
+    attempt_id: str = Field(min_length=10,max_length=100)
 
 def evaluate(session,lesson_id,body):
     lesson,content=load_lesson(session,lesson_id,preview=True)
@@ -70,11 +71,11 @@ def evaluate(session,lesson_id,body):
     correct=normalized(body.answer) in {normalized(v) for v in variants if isinstance(v,str)}
     return {'correct':correct,'expected':expected,'french':target.data['french'],'recorded':False,'scope':'private_preview_session','source_url':target.data['sources'][0]['url']}
 
-def register_routes(app,db,admin):
+def register_routes(app,db,admin,learner):
     @app.get('/api/learning-lessons')
     def published(s=Depends(db)):
         ready=[]
-        for lesson in s.scalars(select(Lesson).where(Lesson.status=='validated')):
+        for lesson in s.scalars(select(Lesson).where(Lesson.status!='rejected')):
             try:load_lesson(s,lesson.id)
             except HTTPException:continue
             ready.append({'id':lesson.id,'title':lesson.title})
@@ -88,3 +89,23 @@ def register_routes(app,db,admin):
     @app.post('/api/admin/learning-lessons/{lesson_id}/answers',dependencies=[Depends(admin)])
     def preview_answer(lesson_id:str,body:LessonAnswer,s=Depends(db)):
         return evaluate(s,lesson_id,body)
+
+    @app.post('/api/learning-lessons/{lesson_id}/answers')
+    def public_answer(lesson_id:str,body:LessonAnswer,who=Depends(learner),s=Depends(db)):
+        from datetime import datetime,timedelta,timezone
+        from .models import Progress,Attempt
+        result=evaluate(s,lesson_id,body)
+        lesson,content=load_lesson(s,lesson_id)
+        e=next(e for e in lesson.data['exercises'] if e['id']==body.exercise_id)
+        target=content[e.get('word_id') or e['content_id']]
+        old=s.get(Attempt,body.attempt_id)
+        if old:
+            if old.learner!=who or old.content_id!=target.id:raise HTTPException(409,'Identifiant déjà utilisé')
+            return {**result,'correct':old.correct,'recorded':True,'duplicate':True,'scope':'learner'}
+        p=s.scalar(select(Progress).where(Progress.learner==who,Progress.content_id==target.id).with_for_update())
+        if p is None:
+            p=Progress(learner=who,content_id=target.id,correct=0,errors=0,streak=0);s.add(p)
+        correct=result['correct'];p.correct+=int(correct);p.errors+=int(not correct);p.streak=p.streak+1 if correct else 0
+        p.due=datetime.now(timezone.utc)+timedelta(days=min(30,2**min(p.streak-1,5)) if correct else 0)
+        s.add(Attempt(id=body.attempt_id,learner=who,content_id=target.id,correct=correct));s.commit()
+        return {**result,'recorded':True,'scope':'learner'}

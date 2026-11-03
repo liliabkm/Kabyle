@@ -1,117 +1,95 @@
 # Tifin · apprendre le kabyle
 
-Une première application fonctionnelle Next.js + FastAPI + PostgreSQL, destinée aux débutants francophones. Le dépôt a été initialisé à partir du cahier des charges.
+Application Next.js + FastAPI + PostgreSQL pour des débutants francophones.
 
-## Démarrer
+## Voir la mise à jour sur ton ordinateur
 
-Prérequis : Node.js 22+ (testé 24), Python 3.12, `uv`, Docker local actif et accessible. Dans le cloud géré, conserver le proxy et les certificats injectés ; ne pas désactiver TLS.
+Arrêter le serveur avec Ctrl+C, puis :
 
 ```bash
-cd /workspace/Kabyle
-bash scripts/install.sh
+cd ~/Documents/projet_kabyle/Kabyle
+git pull --ff-only
+npm --prefix frontend run build
 bash scripts/start.sh
 ```
 
-Le setup crée un environnement Python, installe les versions verrouillées, démarre PostgreSQL 17 sur la boucle locale, génère `.env` avec un jeton admin aléatoire, applique les migrations, importe les lettres et compile Next.js. Réexécutable ; ne remplace pas un `.env` existant. Les mots de passe de développement dans `.env.example` ne sont pas destinés à la production.
+Ouvrir **http://localhost:3000**. Le démarrage applique la migration 004 et importe les nouveaux contenus sans écraser les corrections ni les validations de l’administrateur. Le `.env`, le port PostgreSQL local et les dépendances verrouillées restent ceux de ton installation. Si `scripts/db.sh` a été adapté au port 5433, conserver cette adaptation et la même valeur dans `DATABASE_URL`.
 
-Web : port 3000 ; API : port 8000 ; documentation OpenAPI : chemin `/docs` de l’API. Les appels frontend `/api/*` sont réécrits vers FastAPI. `scripts/start.sh` garde les processus au premier plan, les arrête avec Ctrl+C et écrit les journaux dans `artifacts/`. PostgreSQL utilise le volume Docker `kabyle-postgres-data`. Les processus ne survivent pas à une nouvelle machine : relancer le script.
+Première installation : `bash scripts/install.sh`, puis `bash scripts/start.sh`. Il faut Node.js 22+, Python avec `uv`, Docker actif et accessible. Le cloud utilise Python 3.12 ; pour Python 3.10, conserver le verrou de dépendances compatible déjà généré sur ton PC. Les journaux sont dans `artifacts/`. Ctrl+C arrête les serveurs ; PostgreSQL conserve ses données dans le volume Docker.
 
-Pour développer avec rechargement, dans deux terminaux après installation :
+## Bibliothèque publique et catégories
+
+**Ma bibliothèque** affiche les lettres, mots et phrases sans jeu obligatoire ni connexion. Elle propose une recherche en kabyle/français/tifinagh, des catégories et une pagination.
+
+Le catalogue livré contient **8 lettres, 442 entrées lexicales, 133 paires de phrases et 30 photos**. Les entrées lexicales incluent les mots des leçons et les formes des mini-dictionnaires : ce ne sont pas toutes des noms isolés. Les 15 fichiers de compétences LibreLingo sont traités, y compris `juniors/skills/nombres_jr.yaml`, `test_jr.yaml` et `verb_plurals.yaml`. Ce dernier comportait une tabulation YAML : seule sa mise en forme a été réparée. Aucun fichier de compétences n’est exclu. Les 21 fichiers de cours/configuration/documentation sont référencés dans l’inventaire.
+
+**La visibilité ne dépend plus de la validation humaine.** Les fiches `draft` sont publiques avec le badge **À vérifier** ; les fiches `validated` portent **Validé**. Les fiches retirées (`rejected`) restent masquées au public. Les catégories proposées peuvent être corrigées. Les catégories et chapitres d’origine sont également conservés dans les métadonnées.
+
+## Administration
+
+Dans **Gestion des contenus**, saisir `ADMIN_TOKEN` depuis ton `.env`, puis **Ouvrir la bibliothèque**. Le jeton reste en mémoire dans l’onglet.
+
+- Consulter toutes les lettres, tous les mots et toutes les phrases par pages ; rechercher et filtrer par catégorie et validation.
+- Cliquer sur **Valider** à côté d’une fiche après relecture. Le serveur mémorise la validation et sa date ; aucune transcription tifinagh ni photo n’est exigée pour valider une paire kabyle/français.
+- Ouvrir une fiche pour modifier le texte, la traduction, la catégorie ou ajouter une photo. Enregistrer une modification remet la fiche **À vérifier**, en la gardant publique.
+- **Enregistrer uniquement la catégorie** conserve le texte et son état de validation.
+
+Une incohérence de la source est signalée sur `ṭam` : dans le chapitre Nombres, les images indiquent 8 mais la traduction est « un ours ». Le texte d’origine est conservé pour correction humaine. Le bouton de validation ne corrige aucune traduction automatiquement.
+
+## Importer le TSV Sifal
+
+Source demandée : [Kabyle-French / Sentence pairs in Kabyle-French - 2023-07-18.tsv](https://huggingface.co/datasets/Sifal/Kabyle-French/blob/main/Sentence%20pairs%20in%20Kabyle-French%20-%202023-07-18.tsv).
+
+Dans **Gestion des contenus → Importer les phrases Kabyle–Français (Sifal)** :
+
+1. Cliquer sur **Télécharger depuis Hugging Face**, ou télécharger le fichier sur ton ordinateur puis **Choisir le fichier TSV**.
+2. Vérifier l’aperçu : choisir les colonnes kabyle/français et préciser si la première ligne est un titre.
+3. Cliquer sur **Importer et rendre public**.
+
+Les paires sont enregistrées en PostgreSQL et deviennent consultables dans **Ma bibliothèque → Phrases**. Leur catégorie est proposée à partir du français (salutations, famille, alimentation, voyages, temps, etc.), avec **Autres phrases** comme catégorie de repli. Ces propositions restent modifiables. Les nouvelles fiches sont **À vérifier**. Les traductions ne sont pas générées ou réécrites. Le rapport donne les ajouts, doublons et lignes incomplètes ; réimporter le même fichier préserve les corrections et validations existantes. L’origine et l’empreinte SHA-256 du fichier sont conservées.
+
+**État du cloud :** le téléchargement du TSV exact renvoie HTTP 403 dans cet environnement. Il n’est donc pas inclus dans les 133 phrases livrées. Le téléversement local et l’import sont disponibles pour ce fichier ; aucune quantité issue de Sifal n’est annoncée comme déjà importée.
+
+Alternative en terminal, après avoir téléchargé le TSV :
 
 ```bash
-cd /workspace/Kabyle
-set -a; source .env; set +a
+bash scripts/import_sifal.sh "/chemin/vers/phrases.tsv" --preview
+bash scripts/import_sifal.sh "/chemin/vers/phrases.tsv"
+# Si nécessaire : --kab-column 2 --fr-column 4
+```
+
+## Apprendre
+
+Les trois petites leçons de lettres suivent découverte, rappel, jeu et bilan. Dans **Mots et phrases → Je commence !**, la leçon publique propose trois mots illustrés, trois phrases de la source et huit défis : reconnaissance, ordre des mots, phrase à compléter et rappel. Les réponses sont vérifiées par le serveur ; réussites et erreurs sont enregistrées dans la progression anonyme de l’appareil. La lecture seule ne crée aucun progrès.
+
+Le reste du catalogue se consulte par catégories dans la bibliothèque. Il n’est pas transformé artificiellement en centaines de leçons validées. Le dessin et l’enregistrement/écoute locale sont disponibles ; aucun audio kabyle ni score de prononciation n’est simulé.
+
+## Où sont les données ?
+
+- **PostgreSQL**, table `content` : `kind` distingue lettre/mot/phrase ; `theme` est la catégorie ; `status` indique la validation ; `data` contient textes, variantes, sources et corrections.
+- `content/catalog/course-words.json` et `course-phrases.json` : données de départ livrées avec le dépôt.
+- `course-files.json` et `course-report.json` : fichiers, empreintes, quantités et anomalies de collecte.
+- `content/photos/` et table `media_asset` : 30 photos Fruits-360 attribuées à Mihai Oltean, 100 × 100 px, pixels inchangés. Elles ne constituent pas 30 associations mot–photo validées.
+- `artifacts/tsv-imports/` : fichiers TSV téléversés, exclus de Git et non servis publiquement.
+
+Les sources LibreLingo, leurs révisions et les déclarations de licence sont conservées, sans en faire une condition de visibilité. Les mots sans tifinagh ou audio n’en reçoivent pas de version inventée.
+
+Collecte reproductible avec PyYAML (`scripts/requirements-data.txt`) et les dépendances de l’application :
+
+```bash
+.venv/bin/python scripts/collect_course.py --source-checkout /chemin/LibreLingo-KAB-from-FR
+```
+
+Le checkout source doit être à la révision `e426e0fa052da1c91b6efd800d8469e6940757d5`.
+
+## Vérifications
+
+```bash
 cd backend
-../.venv/bin/uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
-# Autre terminal : cd /workspace/Kabyle/frontend && npm run dev
-```
-
-Chaque tâche cloud est déjà isolée : utiliser le checkout existant, ne pas créer de worktree sauf demande explicite.
-
-## Interface ludique
-
-Accueil simplifié avec une mascotte originale, accès direct au jeu, grandes cartes colorées, consignes courtes et navigation « Les lettres », « Les mots », « Dessiner », « Ma voix ». Les précisions sur l’alphabet restent accessibles dans un volet pour les parents. Les boutons de réponse sont disposés sur deux colonnes sur téléphone ; les mouvements non nécessaires sont désactivés quand le navigateur demande une réduction des animations. Cette refonte a été vérifiée dans Chromium ordinateur/mobile, sans étude utilisateur auprès d’enfants.
-
-Pour récupérer une mise à jour de l’interface sur une installation existante : arrêter le site avec Ctrl+C, exécuter `git pull --ff-only`, puis `npm --prefix frontend run build` et `bash scripts/start.sh`. Cela conserve le `.env` local et ne réinstalle pas les dépendances Python.
-
-## Ce qui fonctionne
-
-- Parcours de 8 lettres Unicode, fiches avec équivalent latin et indications de base.
-- Exercices choix multiple, association de cartes ou saisie, vérification serveur, erreurs, progression anonyme et révisions espacées en PostgreSQL.
-- Atelier de tracé à la souris/au doigt et export PNG.
-- Enregistrement et écoute dans le navigateur, suppression ; pas de téléversement ni conservation serveur.
-- Administration par jeton : import JSON, correction et passage brouillon/validé avec garde-fous d’attribution ; import batch atomique.
-- Fiches lexicales alimentées par l’API, disponibles après import et validation ; aucun mot non validé publié.
-
-## Ce qui reste à livrer
-
-Les 30 mots illustrés, les exemples kabyles validés, les parcours illustrés publiés pour ce vocabulaire, les paires audio–texte, le modèle visuel et la transcription vocale ne sont pas livrés. Les écrans les présentent honnêtement en attente ou indisponibles. L’audit a identifié des licences/mappings manquants et des destinations réseau bloquées ; voir [les sources](docs/SOURCES.md) et [l’état IA](ml/EVALUATION.md). Le stockage S3 est prévu par séparation de service mais pas implémenté. Ne pas présenter cette tranche comme la totalité du cahier des charges.
-
-## Parcours pour apprendre
-
-L’accueil propose désormais trois mini-leçons regroupant les 8 lettres publiées (3 + 3 + 2). Le bouton « Commencer ma leçon » ouvre la première dont toutes les lettres n’ont pas encore été reconnues. Chaque leçon suit la séquence : objectif court, découverte des correspondances tifinagh–latin, rappel en cachant la réponse, reconnaissance à choix multiple, correction avec nouvelle tentative après une erreur, puis bilan. Aucune réussite n’est affichée avant une réponse correcte à chaque question. Les réponses et erreurs utilisent l’API et la progression PostgreSQL existantes ; pas de points ou de résultats simulés.
-
-Après le défi, l’apprenant peut tracer uniquement les lettres qu’il vient de découvrir, passer à la suite ou revoir ses progrès. Les exercices libres et les révisions restent disponibles. Les cartes de leçon marquent les lettres déjà reconnues, ce qui ne constitue pas une certification de maîtrise ni une preuve de rétention à long terme. L’état exact de l’écran de découverte n’est pas conservé après rechargement ; les réponses enregistrées le sont.
-
-Le parcours enseigne pour l’instant **l’écriture de 8 lettres**, pas un cours complet de conversation kabyle. Aucun audio n’est simulé. Le vocabulaire non validé n’entre pas dans les cours publiés. L’entrée « Mots et phrases » propose désormais un aperçu privé pour préparer les contenus, protégé par le jeton enseignant. Les questions techniques ne sont pas nécessaires pour suivre la leçon : les sources et précisions restent dans le volet parents.
-
-Test du parcours complet, après démarrage : `.venv/bin/python scripts/guided_browser_smoke.py` (Playwright/Chromium requis comme pour les autres tests navigateur).
-
-## Consulter les contenus sans jouer
-
-Le menu **Ma bibliothèque** donne accès à trois onglets : Lettres, Mots et Phrases, avec recherche kabyle/français/tifinagh, catégories, pagination et fiches de lecture. Il n’y a pas d’exercice obligatoire et aucune réussite n’est ajoutée aux progrès lors de la consultation. Les utilisateurs voient uniquement les contenus publiés ; les 8 lettres le sont actuellement, les mots et phrases en brouillon ne sont pas rendus publics.
-
-Dans **Gestion des contenus → Ouvrir la bibliothèque**, l’administrateur voit **8 lettres, 61 mots, 115 phrases et 30 photos**. Il peut filtrer par catégorie et statut, ouvrir une fiche, lire ses variantes/sources et corriger ses champs. « Enregistrer uniquement la catégorie » conserve le texte et le statut existants. Modifier le texte et enregistrer en brouillon ne publie rien. Le bouton **Vue lecture privée** présente aussi les brouillons sous forme de fiches, sans jeu, dans un aperçu protégé.
-
-Les catégories initiales sont proposées à partir des métadonnées et du texte français de la source : animaux, fruits, alimentation, vêtements, nature, métiers, etc. Ce classement ne valide pas les traductions. Les décisions éditoriales sont gardées en base et ne sont pas réinitialisées au démarrage. La catégorie est stockée dans `content.theme`, le contenu et ses sources dans `content.data` (table PostgreSQL `content`). Les fichiers JSON servent de sources d’import ; le site lit la base.
-
-Les 115 paires phrase–traduction proviennent du même cours LibreLingo audité, hors fichiers invalides/inactifs. Elles n’ont pas été composées par une IA. Les trois phrases du premier aperçu sont incluses dans ce total, sans doublon. Voir `content/catalog/phrases-librelingo.json` et son rapport `phrases-report.json`.
-
-## Mots et phrases : aperçu pédagogique privé
-
-Dans « Mots et phrases », ouvrir « Essayer la leçon privée (enseignant) » et saisir le jeton ADMIN_TOKEN local. Le jeton reste uniquement en mémoire dans cet écran. Le parcours utilise trois mots existants et trois phrases attestées du cours LibreLingo, sans traduction générée : chien (`aqjun`), cheval (`agmar`), fraises (`tizwal uṛumi`). Il montre d’abord les cartes illustrées, puis les phrases en contexte, et propose huit exercices : reconnaissance, reconstruction avec des jetons, phrase à compléter et rappel écrit.
-
-Cet aperçu n’est **pas un cours publié** : sources et licences restent en relecture. Les textes sont utilisés dans le cadre du prototype privé non commercial, sous les restrictions déjà documentées. Aucun tifinagh ou audio n’est inventé. Les résultats sont corrigés par le serveur mais le bilan reste celui de la séance ; il ne crée pas de faux progrès dans les leçons validées. L’accès public à cette leçon renvoie 404. La migration Alembic 003 conserve sa définition en base et le seed ajoute les trois phrases en brouillon sans écraser les corrections.
-
-Les principes ont été étudiés dans les formats publics de LibreLingo, le manuel Anki et la recherche HLR de Duolingo, pas en prétendant reproduire leurs algorithmes ou avoir visité leurs interfaces actuelles. Voir [la méthode, les exercices et le dataset Sifal](docs/WORDS-AND-PHRASES.md).
-
-## Base de mots et de photos
-
-Le démarrage importe maintenant **61 entrées kabyle–français en brouillon** et **30 photos réelles de fruits/légumes** dans PostgreSQL, en plus des 8 lettres. Dans « Gestion des contenus », saisir le jeton administrateur local, puis « Ouvrir la bibliothèque ». Les onglets permettent de rechercher un mot, voir ses sources, corriger une fiche et lui associer une photo en brouillon. L’éditeur JSON reste disponible dans « Édition avancée ».
-
-Les mots proviennent du cours LibreLingo-KAB-from-FR : ils sont attestés dans ses fichiers mais n’ont pas été relus par un locuteur pour ce projet. Le tifinagh n’est pas inventé ; il reste vide. Deux déclarations de licence divergent dans la source (BY-NC-SA / BY-SA) : le catalogue le signale et bloque la publication. Ne pas utiliser ces textes commercialement sans clarification des droits. Les photos de Mihai Oltean / Fruits-360 sont sous CC BY-SA 4.0, conservées sans modification des pixels, avec crédits, lien de licence, révision et SHA-256. Elles mesurent seulement **100 × 100 px**, adaptées aux petites vignettes, pas à de grands visuels. Les 30 photos ne sont pas 30 paires mot–photo validées.
-
-Les sources et images sont incluses dans le dépôt : pas de téléchargement externe nécessaire au démarrage. La migration Alembic 002 crée la table `media_asset`. Le seed est insérant uniquement : une mise à jour ne remplace pas les corrections faites dans la base. Voir [l’inventaire et la collecte reproductible](docs/DATA-CATALOG.md).
-
-## Administration et import
-
-Saisir le jeton de votre `.env` dans « Gestion des contenus ». Ne pas le partager ni le versionner. Charger les entrées, modifier le JSON ou ouvrir un fichier, puis enregistrer. Un import en `draft` doit précéder la relecture humaine ; les contrôles techniques ne remplacent pas cette relecture.
-
-```bash
-set -a; source .env; set +a
-.venv/bin/python scripts/import_content.py chemin/lot-valide.json
-```
-
-Exemple d’une entrée (schéma indicatif, non une traduction à importer) :
-
-```json
-[{"id":"identifiant-stable","kind":"word","variety":"kab","script":"Tfng","theme":"animaux","status":"draft","data":{"latin":"À vérifier","tifinagh":"","french":"","sources":[],"images":[],"audios":[],"examples":[]}}]
-```
-
-Pour publier : remplir sources (url/author/license), reviewed_by, reviewed_at ; pour les mots, traduction, tifinagh et au moins une image attribuée. Les photos sont des URL HTTPS sourcées, aucun scraping automatique ni transfert S3 dans cette version.
-
-## Validation
-
-```bash
-cd /workspace/Kabyle/backend
 ../.venv/bin/python -m pytest -q
 cd ../frontend
 npm run typecheck
 npm run build
-cd ..
-.venv/bin/python scripts/browser_smoke.py
 ```
 
-Le test navigateur nécessite `uv pip install --python .venv/bin/python playwright==1.56.0` et Chromium (`/usr/bin/chromium` dans ce cloud), ainsi que l’application démarrée. Les tests API utilisent la base locale initialisée ; ils nettoient uniquement leurs entrées `test-*` et identités anonymes de test. Ne pas utiliser ces tests sur une base de production.
-
-Voir [architecture et convention d’écriture](docs/ARCHITECTURE.md), [inventaire des sources](docs/SOURCES.md) et [résultats de validation](docs/VALIDATION.md).
+Les tests utilisent la base locale initialisée, jamais une base de production. Les tests navigateur nécessitent Playwright et Chromium ainsi que l’application démarrée. Les documents d’audits plus anciens décrivent l’ancienne politique de brouillons privés ; la politique actuelle est celle décrite ici.

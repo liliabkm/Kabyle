@@ -1,4 +1,5 @@
 import pytest
+import uuid
 from fastapi.testclient import TestClient
 from app.main import app
 
@@ -10,17 +11,17 @@ def editor(monkeypatch):
     with TestClient(app) as c:yield c
 
 def grade(c,exercise,value,headers=AUTH):
-    return c.post('/api/admin/learning-lessons/premiers-mots/answers',headers=headers,json={'exercise_id':exercise,'answer':value})
+    return c.post('/api/admin/learning-lessons/premiers-mots/answers',headers=headers,json={'exercise_id':exercise,'answer':value,'attempt_id':str(uuid.uuid4())})
 
-def test_preview_is_private_and_not_a_published_course(editor):
-    assert editor.get('/api/learning-lessons').json()==[]
-    assert editor.get('/api/learning-lessons/premiers-mots').status_code==404
+def test_lesson_is_public_and_admin_writes_remain_protected(editor):
+    assert editor.get('/api/learning-lessons').json()[0]['id']=='premiers-mots'
+    assert editor.get('/api/learning-lessons/premiers-mots').status_code==200
     assert editor.get('/api/admin/learning-lessons/premiers-mots').status_code==401
     assert grade(editor,'recognize-0','aqjun',{}).status_code==401
 
 def test_bundle_uses_existing_words_exact_phrases_and_real_photo(editor):
     b=editor.get('/api/admin/learning-lessons/premiers-mots',headers=AUTH).json()
-    assert b['preview'] and b['progress_scope']=='session_only'
+    assert b['preview'] and b['progress_scope']=='learner'
     assert [w['latin'] for w in b['words']]==['aqjun','agmar','tizwal uṛumi']
     assert [p['latin'] for p in b['phrases']]==['Max d aqjun','D agmar','Tizwal uṛumi d tizeggaɣin']
     assert len(b['exercises'])==8
@@ -45,8 +46,18 @@ def test_preview_results_do_not_pollute_public_progress(editor):
     r=grade(editor,'recognize-0','aqjun').json()
     assert r['correct'] and r['recorded'] is False
     assert editor.get('/api/progress').json()==[]
-    assert all(c['kind']=='letter' for c in editor.get('/api/content').json())
+    assert any(c['kind']=='word' for c in editor.get('/api/content').json())
 
 def test_invalid_exercise_and_oversized_input(editor):
     assert grade(editor,'invented-exercise','anything').status_code==404
     assert grade(editor,'recall-dog','a'*501).status_code==422
+
+
+def test_public_practice_records_real_progress_idempotently(editor):
+    editor.delete('/api/progress')
+    body={'exercise_id':'recognize-0','answer':'aqjun','attempt_id':str(uuid.uuid4())}
+    first=editor.post('/api/learning-lessons/premiers-mots/answers',json=body)
+    assert first.status_code==200 and first.json()['recorded'] is True
+    assert editor.post('/api/learning-lessons/premiers-mots/answers',json=body).json()['duplicate'] is True
+    assert sum(p['correct'] for p in editor.get('/api/progress').json())==1
+    editor.delete('/api/progress')

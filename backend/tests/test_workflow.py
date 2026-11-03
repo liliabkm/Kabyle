@@ -27,7 +27,8 @@ def test_health_and_public_content(client):
     assert client.get('/api/health').json()=={'status':'ok'}
     entries=client.get('/api/content').json()
     assert len([e for e in entries if e['kind']=='letter'])==8
-    assert all(e['status']=='validated' for e in entries)
+    assert all(e['status']!='rejected' for e in entries)
+    assert any(e['kind']=='word' and e['status']=='draft' for e in entries)
 
 def test_server_checks_answer_and_tracks_errors(client):
     assert answer(client,'wrong').json()['correct'] is False
@@ -56,12 +57,16 @@ def test_admin_protection_and_publication_guard(client):
     h={'Authorization':'Bearer test-admin-token'}
     content={'id':'test-word','kind':'word','status':'draft','data':{'latin':'test'}}
     assert client.post('/api/admin/import',headers=h,json=[content]).status_code==200
-    assert 'test-word' not in [e['id'] for e in client.get('/api/content').json()]
-    assert client.post('/api/answers',json={'content_id':'test-word','answer':'test','attempt_id':str(uuid.uuid4())}).status_code==404
+    assert 'test-word' in [e['id'] for e in client.get('/api/content').json()]
+    assert client.post('/api/answers',json={'content_id':'test-word','answer':'test','attempt_id':str(uuid.uuid4())}).status_code==200
     content['status']='validated'
     assert client.post('/api/admin/import',headers=h,json=[content]).status_code==422
     content['data'].update(sources=[{'url':'https://example.org','author':'Test','license':'CC0'}],reviewed_by='Test',reviewed_at='2026-11-02')
     assert client.post('/api/admin/import',headers=h,json=[content]).status_code==422
+    assert client.post('/api/admin/content/test-word/validate',headers=h).status_code==422
+    content['status']='rejected'
+    assert client.post('/api/admin/import',headers=h,json=[content]).status_code==200
+    assert 'test-word' not in [e['id'] for e in client.get('/api/content').json()]
 
 def test_import_is_atomic(client):
     h={'Authorization':'Bearer test-admin-token'}

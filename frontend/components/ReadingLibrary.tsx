@@ -21,6 +21,7 @@ type Card = {
   french?: string;
   tifinagh?: string;
   hint?: string;
+  source_issues?: string[];
   sources?: Citation[];
   images?: Citation[];
   audios?: Citation[];
@@ -89,8 +90,7 @@ export default function ReadingLibrary({
       )}
       {token && (
         <p className="info-note">
-          Vue lecture privée : brouillons et fiches publiées. Rien n’est publié
-          par cette consultation.
+          Vue administrateur : toutes les fiches, avec leur état de validation.
         </p>
       )}
       <div className="page-heading">
@@ -184,15 +184,15 @@ export default function ReadingLibrary({
                   className={"reading-card reading-" + c.kind}
                 >
                   <span className="reading-category">{c.category_label}</span>
-                  {token && (
+                  {
                     <span className="library-badge">
                       {c.status === "validated"
-                        ? "Publié"
+                        ? "Validé"
                         : c.status === "draft"
                           ? "À vérifier"
                           : "Rejeté"}
                     </span>
-                  )}
+                  }
                   {c.kind === "letter" ? (
                     <div className="reading-letter" lang="kab-Tfng">
                       {c.tifinagh}
@@ -211,6 +211,11 @@ export default function ReadingLibrary({
                       {c.tifinagh}
                     </p>
                   )}
+                  {c.source_issues?.map((issue, n) => (
+                    <p className="info-note" key={n}>
+                      {issue}
+                    </p>
+                  ))}
                   <p className="reading-french">
                     {c.french || "Traduction non disponible"}
                   </p>
@@ -328,10 +333,9 @@ export default function ReadingLibrary({
         </>
       )}
       <p className="tiny">
-        La consultation ne compte pas comme un exercice réussi.{" "}
-        {token
-          ? "Les brouillons sont visibles uniquement dans cette vue privée."
-          : "Seules les fiches publiées sont affichées."}
+        La consultation ne compte pas comme un exercice réussi. Les fiches à
+        vérifier sont aussi accessibles. La validation est indiquée sur chaque
+        fiche.
       </p>
     </section>
   );

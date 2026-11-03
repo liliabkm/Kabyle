@@ -1,4 +1,4 @@
-from sqlalchemy import String, JSON, ForeignKey, DateTime, UniqueConstraint
+from sqlalchemy import String, JSON, ForeignKey, DateTime, UniqueConstraint, Text, event
 from sqlalchemy.orm import Mapped, mapped_column
 from datetime import datetime, timezone
 from .db import Base
@@ -11,6 +11,8 @@ class Content(Base):
     theme: Mapped[str] = mapped_column(String, default="alphabet")
     status: Mapped[str] = mapped_column(String, default="draft")
     data: Mapped[dict] = mapped_column(JSON)
+    search_text: Mapped[str] = mapped_column(Text, nullable=False, default="", server_default="")
+    pair_key: Mapped[str | None] = mapped_column(String(64), nullable=True)
 class Progress(Base):
     __tablename__ = "progress"
     __table_args__ = (UniqueConstraint("learner", "content_id"),)
@@ -44,3 +46,12 @@ class Lesson(Base):
     theme: Mapped[str] = mapped_column(String)
     status: Mapped[str] = mapped_column(String, default="draft")
     data: Mapped[dict] = mapped_column(JSON)
+
+# Maintain a folded search field so large TSV catalogs are filtered in SQL.
+from .search import searchable, pair_key
+
+@event.listens_for(Content, 'before_insert')
+@event.listens_for(Content, 'before_update')
+def update_search_text(mapper, connection, target):
+    target.search_text=searchable(target.data)
+    target.pair_key=pair_key(target.kind,target.data)

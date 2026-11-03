@@ -1,13 +1,12 @@
 """Read-only learner catalog and editorial category management."""
 import re
 import unicodedata
-from collections import Counter
 from fastapi import Depends, HTTPException, Query
 from pydantic import BaseModel, Field
-from sqlalchemy import select
+from sqlalchemy import select, func, or_
 from .models import Content
 
-CATEGORIES={'alphabet':'Alphabet','animaux':'Animaux','fruits':'Fruits','legumes':'Légumes','alimentation':'À table','famille':'Famille et amis','maison':'Maison','vetements':'Vêtements','nature':'Nature','metiers':'Métiers et école','actions':'Actions du quotidien','salutations':'Salutations','nombres':'Nombres','description':'Couleurs et descriptions','vie-quotidienne':'Vie quotidienne','grammaire':'Petits mots et grammaire','pluriels':'Pluriels','adjectifs':'Descriptions','premiers-mots':'Premiers mots'}
+CATEGORIES={'alphabet':'Alphabet','animaux':'Animaux','fruits':'Fruits','legumes':'Légumes','alimentation':'À table','famille':'Famille et amis','maison':'Maison','vetements':'Vêtements','nature':'Nature','metiers':'Métiers et école','actions':'Actions du quotidien','salutations':'Salutations','nombres':'Nombres','description':'Couleurs et descriptions','vie-quotidienne':'Vie quotidienne','grammaire':'Petits mots et grammaire','pluriels':'Pluriels','adjectifs':'Descriptions','premiers-mots':'Premiers mots','etats':'États et sensations','gouts':'Goûts et préférences','voyages':'Voyages et déplacements','sante':'Santé','temps':'Temps et météo','questions':'Questions','autres-phrases':'Autres phrases'}
 
 def fold(value):
     return ''.join(c for c in unicodedata.normalize('NFKD',value).casefold() if not unicodedata.combining(c))
@@ -15,7 +14,8 @@ def fold(value):
 def category_label(theme):return CATEGORIES.get(theme,theme.replace('-',' ').replace('_',' ').capitalize())
 
 def is_published(c):
-    return c.status=='validated' and not c.data.get('publication_blockers') and not c.data.get('license_conflict')
+    # Visibility and human validation are now independent, as requested.
+    return c.status!='rejected'
 
 def suggested_category(item):
     if item['kind']=='letter':return 'alphabet'
@@ -35,7 +35,7 @@ def seed_categories(session):
     root=Path(__file__).resolve().parents[2]/'content/catalog'
     defaults={item['id']:item for filename in ('words-librelingo.json','phrases-librelingo.json') for item in json.loads((root/filename).read_text())}
     changed=0
-    for c in session.scalars(select(Content)):
+    for c in session.scalars(select(Content).where(Content.id.in_(list(defaults)))):
         d=c.data
         if c.id.startswith('test-') or d.get('category_scheme') or d.get('edited_at') or d.get('category_reviewed_at'):continue
         # Only classify unchanged imported records, never unknown user-created entries.
@@ -50,31 +50,33 @@ def seed_categories(session):
 class CategoryChange(BaseModel):
     theme:str=Field(pattern=r'^[a-z0-9][a-z0-9-]{0,59}$')
 
-def library_payload(s,kind,category,q,offset,limit,private=False):
-    rows=list(s.scalars(select(Content).order_by(Content.id)))
-    visible=rows if private else [c for c in rows if is_published(c)]
-    counts=Counter(c.kind for c in visible)
-    selected=sorted((c for c in visible if c.kind==kind),key=lambda c:fold(c.data.get('latin','') if kind=='letter' else c.data.get('french','') or c.data.get('latin','')))
-    categories=Counter(c.theme for c in selected)
-    def matches(c):
-        if category and c.theme!=category:return False
-        if not q.strip():return True
+def library_payload(s,kind,category,q,offset,limit,private=False,status=""):
+    base=[] if private else [Content.status!='rejected']
+    counts=dict(s.execute(select(Content.kind,func.count()).where(*base).group_by(Content.kind)).all())
+    selected=base+[Content.kind==kind]
+    if status:selected.append(Content.status==status)
+    categories=s.execute(select(Content.theme,func.count()).where(*selected).group_by(Content.theme)).all()
+    filters=list(selected)
+    if category:filters.append(Content.theme==category)
+    if q.strip():
         if kind=='letter' and len(q.strip())==1:
-            return fold(q.strip())==fold(c.data.get('latin','')) or q.strip()==c.data.get('tifinagh')
-        return fold(q.strip()) in fold(' '.join([c.data.get('latin',''),c.data.get('french',''),c.data.get('tifinagh','')]+c.data.get('french_variants',[])+c.data.get('alternative_versions',[])+c.data.get('synonyms',[])))
-    filtered=[c for c in selected if matches(c)]
-    return {'private':private,'counts':{k:counts[k] for k in ('letter','word','phrase')},'categories':[{'id':k,'label':category_label(k),'count':v} for k,v in sorted(categories.items(),key=lambda x:category_label(x[0]))],'total':len(filtered),'offset':offset,'limit':limit,'items':[{**c.data,'id':c.id,'kind':c.kind,'theme':c.theme,'category_label':category_label(c.theme),'status':c.status} for c in filtered[offset:offset+limit]]}
+            filters.append(or_(func.lower(Content.data['latin'].as_string())==q.strip().casefold(),Content.data['tifinagh'].as_string()==q.strip()))
+        else:filters.append(Content.search_text.contains(fold(q.strip()),autoescape=True))
+    total=s.scalar(select(func.count()).select_from(Content).where(*filters))
+    sort=Content.data['latin'].as_string() if kind=='letter' else func.coalesce(Content.data['french'].as_string(),Content.data['latin'].as_string())
+    page=s.scalars(select(Content).where(*filters).order_by(func.lower(sort),Content.id).offset(offset).limit(limit))
+    return {'private':private,'counts':{k:counts.get(k,0) for k in ('letter','word','phrase')},'categories':[{'id':k,'label':category_label(k),'count':v} for k,v in sorted(categories,key=lambda x:category_label(x[0]))],'total':total,'offset':offset,'limit':limit,'items':[{**c.data,'id':c.id,'kind':c.kind,'variety':c.variety,'script':c.script,'theme':c.theme,'category_label':category_label(c.theme),'status':c.status} for c in page]}
 
 def register_routes(app,db,admin):
     @app.get('/api/library')
     def library(kind:str=Query('letter',pattern='^(letter|word|phrase)$'),category:str='',q:str=Query('',max_length=200),offset:int=Query(0,ge=0),limit:int=Query(24,ge=1,le=72),s=Depends(db)):
         return library_payload(s,kind,category,q,offset,limit,private=False)
     @app.get('/api/admin/library',dependencies=[Depends(admin)])
-    def private_library(kind:str=Query('word',pattern='^(letter|word|phrase)$'),category:str='',q:str=Query('',max_length=200),offset:int=Query(0,ge=0),limit:int=Query(24,ge=1,le=72),s=Depends(db)):
-        return library_payload(s,kind,category,q,offset,limit,private=True)
+    def private_library(status:str=Query('',pattern='^(|draft|validated|rejected)$'),kind:str=Query('word',pattern='^(letter|word|phrase)$'),category:str='',q:str=Query('',max_length=200),offset:int=Query(0,ge=0),limit:int=Query(24,ge=1,le=72),s=Depends(db)):
+        return library_payload(s,kind,category,q,offset,limit,private=True,status=status)
     @app.get('/api/admin/categories',dependencies=[Depends(admin)])
     def categories(s=Depends(db)):
-        themes={c.theme for c in s.scalars(select(Content))}
+        themes=set(s.scalars(select(Content.theme).distinct()))
         return [{'id':t,'label':category_label(t)} for t in sorted(set(CATEGORIES)|themes,key=category_label)]
     @app.patch('/api/admin/content/{content_id}/category',dependencies=[Depends(admin)])
     def change_category(content_id:str,body:CategoryChange,s=Depends(db)):
@@ -84,3 +86,13 @@ def register_routes(app,db,admin):
         c.theme=body.theme;c.data={**c.data,'category_status':'editorial','category_reviewed_at':datetime.now(timezone.utc).isoformat(),'category_scheme':'topics-v1'}
         s.commit()
         return {'id':c.id,'theme':c.theme,'label':category_label(c.theme),'status':c.status}
+
+    @app.post('/api/admin/content/{content_id}/validate',dependencies=[Depends(admin)])
+    def validate_one(content_id:str,s=Depends(db)):
+        from datetime import datetime,timezone
+        c=s.get(Content,content_id)
+        if c is None:raise HTTPException(404,'Fiche introuvable')
+        if not isinstance(c.data.get('latin'),str) or not c.data['latin'].strip():raise HTTPException(422,'Texte kabyle requis')
+        if c.kind in ('word','phrase') and (not isinstance(c.data.get('french'),str) or not c.data['french'].strip()):raise HTTPException(422,'Traduction française requise')
+        c.status='validated';c.data={**c.data,'reviewed_by':'Administrateur','reviewed_at':datetime.now(timezone.utc).isoformat(),'validation_status':'reviewed_by_admin','source_issues_reviewed':bool(c.data.get('source_issues'))}
+        s.commit();return {'id':c.id,'status':c.status,'reviewed_at':c.data['reviewed_at']}

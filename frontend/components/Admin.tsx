@@ -14,10 +14,16 @@ export default function Admin({ onSaved }: { onSaved: () => void }) {
   async function load() {
     try {
       setJson(
-        JSON.stringify(await request("admin/content", { headers }), null, 2),
+        JSON.stringify(
+          (await request("admin/content", { headers })).slice(0, 500),
+          null,
+          2,
+        ),
       );
       setConnected(true);
-      setMessage("Contenus chargés. Modifiez le JSON puis enregistrez.");
+      setMessage(
+        "Premières fiches chargées. Pour rechercher dans toute la base, utilise la bibliothèque.",
+      );
     } catch (e) {
       setMessage((e as Error).message);
     }
@@ -45,7 +51,7 @@ export default function Admin({ onSaved }: { onSaved: () => void }) {
       <details className="advanced-editor">
         <summary>Édition avancée et import JSON</summary>
         <button className="secondary" onClick={load} disabled={!token}>
-          Charger les contenus
+          Charger les 500 premières fiches
         </button>
         <label>
           Contenus JSON (liste d’entrées)
@@ -98,10 +104,8 @@ export default function Admin({ onSaved }: { onSaved: () => void }) {
         </p>
       )}
       <p className="tiny">
-        Pour publier : status « validated », sources complètes (url, author,
-        license), reviewed_by et reviewed_at. Un mot doit également avoir
-        french, tifinagh et images avec attributions. La validation linguistique
-        reste une responsabilité humaine.
+        Tous les contenus à vérifier sont publics. Le bouton « Valider »
+        confirme ta relecture du mot ou de la phrase.
       </p>
     </div>
   );

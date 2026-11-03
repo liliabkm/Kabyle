@@ -1,0 +1,125 @@
+{
+  "source_revision": "e426e0fa052da1c91b6efd800d8469e6940757d5",
+  "files": [
+    {
+      "path": "course/juniors/skills/nombres_jr.yaml",
+      "skill": "Nombres",
+      "category": "nombres",
+      "new_words": 11,
+      "phrases": 3
+    },
+    {
+      "path": "course/activities/skills/continuous.yaml",
+      "skill": "Continuons",
+      "category": "actions",
+      "new_words": 0,
+      "phrases": 12
+    },
+    {
+      "path": "course/activities/skills/ser_estar.yaml",
+      "skill": "État",
+      "category": "etats",
+      "new_words": 0,
+      "phrases": 14
+    },
+    {
+      "path": "course/activities/skills/test_jr.yaml",
+      "skill": "Test_JR",
+      "category": "animaux",
+      "new_words": 12,
+      "phrases": 3
+    },
+    {
+      "path": "course/basics/skills/animals.yaml",
+      "skill": "Animaux",
+      "category": "animaux",
+      "new_words": 12,
+      "phrases": 3
+    },
+    {
+      "path": "course/basics/skills/clothes.yaml",
+      "skill": "Habits",
+      "category": "vetements",
+      "new_words": 14,
+      "phrases": 7
+    },
+    {
+      "path": "course/basics/skills/food.yaml",
+      "skill": "Aliments",
+      "category": "alimentation",
+      "new_words": 8,
+      "phrases": 8
+    },
+    {
+      "path": "course/basics/skills/nature.yaml",
+      "skill": "Nature",
+      "category": "nature",
+      "new_words": 14,
+      "phrases": 6
+    },
+    {
+      "path": "course/basics/skills/plurals.yaml",
+      "skill": "Pluriels",
+      "category": "pluriels",
+      "new_words": 16,
+      "phrases": 7
+    },
+    {
+      "path": "course/basics/skills/professions.yaml",
+      "skill": "Professions",
+      "category": "metiers",
+      "new_words": 9,
+      "phrases": 7
+    },
+    {
+      "path": "course/basics/skills/verb_plurals.yaml",
+      "skill": "Verbes pluriels",
+      "category": "actions",
+      "new_words": 0,
+      "phrases": 15
+    },
+    {
+      "path": "course/basics/skills/verbs.yaml",
+      "skill": "Verbes",
+      "category": "actions",
+      "new_words": 0,
+      "phrases": 11
+    },
+    {
+      "path": "course/introduction/skills/adjectives.yaml",
+      "skill": "Adjectifs",
+      "category": "description",
+      "new_words": 6,
+      "phrases": 19
+    },
+    {
+      "path": "course/introduction/skills/phrases.yaml",
+      "skill": "Phrases",
+      "category": "salutations",
+      "new_words": 0,
+      "phrases": 11
+    },
+    {
+      "path": "course/introduction/skills/preferences.yaml",
+      "skill": "Préférences",
+      "category": "gouts",
+      "new_words": 5,
+      "phrases": 10
+    }
+  ],
+  "failed_files": [],
+  "format_repairs": [
+    {
+      "file": "course/basics/skills/verb_plurals.yaml",
+      "repairs": [
+        "YAML formatting tabs replaced by spaces; linguistic text not rewritten"
+      ]
+    }
+  ],
+  "ignored_entries": 0,
+  "mini_dictionary_pairs": 986,
+  "words": 442,
+  "phrases": 133,
+  "course_files": 21,
+  "source_issues": 1
+}

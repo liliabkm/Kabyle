@@ -1,3 +1,5 @@
+> Historique : ce document décrit une étape antérieure. Depuis le 3 novembre 2026, les brouillons sont publics et le catalogue complet contient 442 entrées lexicales et 133 phrases. Voir le [README actuel](../README.md) pour la validation en un clic et l’import TSV Sifal.
+
 # Catalogue de données : mots et photographies
 
 Le catalogue courant contient **61 graphies lexicales kabyles distinctes**, regroupant les traductions/variantes françaises présentes dans les fichiers source, et **30 photographies** indépendantes. Il ne contient pas 61 leçons publiées, ni 30 paires mot–photo validées. Il n’inclut aucun audio. Les termes et variantes viennent de la source ; aucun mot kabyle ou tifinagh n’a été généré.

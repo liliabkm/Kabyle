@@ -1,3 +1,5 @@
+> Historique : ce document décrit une étape antérieure. Depuis le 3 novembre 2026, les brouillons sont publics et le catalogue complet contient 442 entrées lexicales et 133 phrases. Voir le [README actuel](../README.md) pour la validation en un clic et l’import TSV Sifal.
+
 # Utiliser les mots et les phrases pour apprendre
 
 Le catalogue de 61 entrées sert de réserve éditoriale, pas de liste à mémoriser d’un seul coup. Le premier parcours d’essai sélectionne trois unités déjà attestées dans cette réserve et les rattache à des phrases sources exactes. Les mots et les phrases ne sont ni traduits ni réécrits par un modèle.

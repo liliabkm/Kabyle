@@ -1,4 +1,4 @@
-"""Exercise real private word/phrase activities without reading an admin secret."""
+"""Exercise public word/phrase activities without reading an admin secret."""
 from pathlib import Path
 import json,os,secrets,subprocess,time,urllib.request
 from playwright.sync_api import sync_playwright,expect
@@ -24,9 +24,7 @@ try:
   page.get_by_role('navigation').get_by_role('button',name='Mots et phrases',exact=True).click()
   expect(page.get_by_role('heading',name='Des mots, puis des phrases.')).to_be_visible()
   assert page.locator('.word-discovery-card').count()==0
-  page.get_by_text('Essayer la leçon privée (enseignant)',exact=True).click()
-  page.get_by_label('Jeton enseignant (ADMIN_TOKEN du fichier .env)',exact=True).fill(token)
-  page.get_by_role('button',name='Lancer l’aperçu privé').click()
+  page.get_by_role('button',name='Je commence !',exact=True).click()
   expect(page.get_by_role('heading',name='Regarde et retiens le mot.')).to_be_visible()
   page.get_by_role('button',name='Je cache le mot').click()
   expect(page.locator('.word-discovery-card h2')).to_have_text('?')
@@ -66,13 +64,15 @@ try:
   page.get_by_role('button',name='Voir mon bilan').click()
   expect(page.get_by_role('heading',name='Tu as retrouvé les mots !')).to_be_visible()
   expect(page.locator('.lesson-finished')).to_contain_text('8 défis réussis')
-  assert context.request.get('http://127.0.0.1:3000/api/progress').json()==[]
-  assert context.request.get('http://127.0.0.1:3000/api/learning-lessons/premiers-mots').status==404
+  progress=context.request.get('http://127.0.0.1:3000/api/progress').json()
+  assert sum(p['correct'] for p in progress)==8 and sum(p['errors'] for p in progress)==1
+  context.request.delete('http://127.0.0.1:3000/api/progress')
+  assert context.request.get('http://127.0.0.1:3000/api/learning-lessons/premiers-mots').status==200
   assert not errors,errors
   page.set_viewport_size({'width':320,'height':740})
   assert page.evaluate('document.documentElement.scrollWidth <= window.innerWidth')
   browser.close()
-  print('Private vocabulary: cards, 3 attested contexts, error/retry, image choice, phrase chips, cloze, recall, 8 graded successes, no public progress, mobile: PASS')
+  print('Public vocabulary: cards, 3 attested contexts, error/retry, image choice, phrase chips, cloze, recall, 8 graded successes, real saved progress, no teacher token, mobile: PASS')
 finally:
  server.terminate()
  try:server.wait(timeout=5)

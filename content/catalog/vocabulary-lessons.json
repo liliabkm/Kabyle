@@ -70,8 +70,8 @@
           "content_id": "word-ll-1eab8b37b60faf6b"
         }
       ],
-      "scope": "private_noncommercial_preview",
-      "notice": "Aperçu privé en relecture. Les textes ne sont pas publiés dans les leçons apprenants. Aucun audio ni tifinagh généré.",
+      "scope": "public",
+      "notice": "Textes et traductions issus des sources citées. Les fiches non validées restent à vérifier.",
       "learning_objectives": [
         "Associer une image et un mot",
         "Retrouver un mot dans une phrase",

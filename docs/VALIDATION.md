@@ -1,3 +1,17 @@
+# Validation actuelle — 3 novembre 2026
+
+- 28 tests API passent contre PostgreSQL réel : catalogue public à vérifier, authentification des écritures, validation en un clic, catégories, variantes, pagination SQL, import TSV, dédoublonnage et conservation des corrections/validations.
+- Schéma PostgreSQL temporaire vierge : migrations 001 à 004 et seed réussis, 8 lettres, 442 entrées lexicales, 133 phrases. Recherche et empreintes de paires renseignées. Schéma de vérification supprimé ensuite.
+- Compilation Next.js/TypeScript réussie.
+- Tests Chromium : navigation/jeux libres, parcours guidé, leçon publique de mots et phrases avec huit réussites et une erreur enregistrées, bibliothèque publique par catégories, validation et classement admin, affichage des 30 photos réelles. Affichages ordinateur, 390 et 320 px vérifiés selon les parcours.
+- Test TSV navigateur : téléversement supérieur à 1 Mo, aperçu et sélection des colonnes, 25 000 lignes **synthétiques** donnant un ajout et 24 999 doublons, classement proposé et visibilité publique sans validation. Entrée de test supprimée après vérification. Ce test n’est pas un import du vrai corpus Sifal.
+- L’URL du TSV Sifal demandé renvoie HTTP 403 depuis ce cloud. Le corpus réel reste à importer via le téléchargement serveur ou le téléversement local disponible dans l’administration.
+- Une dépréciation Starlette/AnyIO est émise par les tests ; aucune erreur de test. Aucun benchmark linguistique ni étude auprès d’enfants n’est revendiqué.
+
+Les résultats ci-dessous sont historiques et décrivent notamment l’ancienne politique de brouillons privés, remplacée par la visibilité publique avec badge de validation.
+
+---
+
 # Validation — 2 novembre 2026
 
 Vérifications réalisées dans l’instance cloud courante, contre PostgreSQL 17 réel.
