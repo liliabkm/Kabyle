@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { BookOpen, Search, ChevronLeft, ChevronRight } from "lucide-react";
+import ThemeLearning from "./ThemeLearning";
 import PhrasePractice from "./PhrasePractice";
 import { request } from "../lib/api";
 type Kind = "letter" | "word" | "phrase";
@@ -37,7 +38,7 @@ type Result = {
 };
 const allowed = (url: string) =>
   /^https?:\/\//.test(url) || url.startsWith("/api/media/");
-export default function ReadingLibrary({
+function EditorialReadingLibrary({
   token,
   onExit,
 }: { token?: string; onExit?: () => void } = {}) {
@@ -355,5 +356,15 @@ export default function ReadingLibrary({
         fiche.
       </p>
     </section>
+  );
+}
+
+export default function ReadingLibrary(
+  props: { token?: string; onExit?: () => void } = {},
+) {
+  return props.token ? (
+    <EditorialReadingLibrary {...props} />
+  ) : (
+    <ThemeLearning showAlphabet title="Ma bibliothèque" />
   );
 }

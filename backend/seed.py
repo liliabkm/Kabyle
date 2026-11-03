@@ -18,11 +18,15 @@ with Session() as s:
     counts.update(seed_complete_course(s))
     from sqlalchemy import select,or_
     from app.learning import features
+    from app.organization import VERSION
     # Backfill existing large corpora in bounded batches after migration 005.
     while True:
-        rows=list(s.scalars(select(Content).where(or_((Content.kind=="phrase") & Content.learning_band.is_(None),(Content.kind=="word") & Content.lexeme_key.is_(None))).order_by(Content.id).limit(500)))
+        rows=list(s.scalars(select(Content).where(or_((Content.kind=="phrase") & Content.learning_band.is_(None),(Content.kind=="word") & Content.lexeme_key.is_(None),Content.organization_version.is_(None),Content.organization_version!=VERSION)).order_by(Content.id).limit(500)))
         if not rows:break
         for row in rows:
+            if row.kind in ("word","phrase") and not row.data.get("category_reviewed_at"):
+                from app.organization import organize
+                row.theme=organize(row.kind,row.data)["topics"][0]
             for key,value in features(row.kind,row.data).items():setattr(row,key,value)
         s.flush()
     s.commit()

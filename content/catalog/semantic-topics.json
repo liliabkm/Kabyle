@@ -1,0 +1,3855 @@
+{
+  "version": "semantic-fr-v3",
+  "concepts": [
+    {
+      "key": "chien",
+      "theme": "animaux",
+      "label": "Chien",
+      "aliases": [
+        "chien",
+        "chiens"
+      ],
+      "preferred": [
+        "aqjun",
+        "aydi"
+      ],
+      "art": "chien",
+      "role": "word",
+      "topics": [
+        "animaux"
+      ]
+    },
+    {
+      "key": "chat",
+      "theme": "animaux",
+      "label": "Chat",
+      "aliases": [
+        "chat",
+        "chats"
+      ],
+      "preferred": [
+        "amcic"
+      ],
+      "art": "chat",
+      "role": "word",
+      "topics": [
+        "animaux"
+      ]
+    },
+    {
+      "key": "ours",
+      "theme": "animaux",
+      "label": "Ours",
+      "aliases": [
+        "ours"
+      ],
+      "preferred": [
+        "lmerd"
+      ],
+      "art": "ours",
+      "role": "word",
+      "topics": [
+        "animaux"
+      ]
+    },
+    {
+      "key": "lion",
+      "theme": "animaux",
+      "label": "Lion",
+      "aliases": [
+        "lion",
+        "lions"
+      ],
+      "preferred": [
+        "izem"
+      ],
+      "art": "lion",
+      "role": "word",
+      "topics": [
+        "animaux"
+      ]
+    },
+    {
+      "key": "canard",
+      "theme": "animaux",
+      "label": "Canard",
+      "aliases": [
+        "canard",
+        "canards"
+      ],
+      "preferred": [
+        "abṛik"
+      ],
+      "art": "canard",
+      "role": "word",
+      "topics": [
+        "animaux"
+      ]
+    },
+    {
+      "key": "cheval",
+      "theme": "animaux",
+      "label": "Cheval",
+      "aliases": [
+        "cheval",
+        "chevaux"
+      ],
+      "preferred": [
+        "agmar",
+        "aɛudiw"
+      ],
+      "art": "cheval",
+      "role": "word",
+      "topics": [
+        "animaux"
+      ]
+    },
+    {
+      "key": "ane",
+      "theme": "animaux",
+      "label": "Âne",
+      "aliases": [
+        "âne",
+        "ânes"
+      ],
+      "preferred": [
+        "aɣyul"
+      ],
+      "art": "ane",
+      "role": "word",
+      "topics": [
+        "animaux"
+      ]
+    },
+    {
+      "key": "souris",
+      "theme": "animaux",
+      "label": "Souris",
+      "aliases": [
+        "souris"
+      ],
+      "preferred": [
+        "aɣerda"
+      ],
+      "art": "souris",
+      "role": "word",
+      "topics": [
+        "animaux"
+      ]
+    },
+    {
+      "key": "elephant",
+      "theme": "animaux",
+      "label": "Éléphant",
+      "aliases": [
+        "éléphant",
+        "éléphants"
+      ],
+      "preferred": [
+        "lfil"
+      ],
+      "art": "elephant",
+      "role": "word",
+      "topics": [
+        "animaux"
+      ]
+    },
+    {
+      "key": "animal",
+      "theme": "animaux",
+      "label": "Animaux",
+      "aliases": [
+        "animal",
+        "animaux"
+      ],
+      "preferred": [
+        "iɣersiwen"
+      ],
+      "art": "animal",
+      "role": "word",
+      "topics": [
+        "animaux"
+      ]
+    },
+    {
+      "key": "patte",
+      "theme": "animaux",
+      "label": "Patte",
+      "aliases": [
+        "patte",
+        "pattes"
+      ],
+      "preferred": [
+        "taqejjirt"
+      ],
+      "art": "patte",
+      "role": "word",
+      "topics": [
+        "animaux"
+      ]
+    },
+    {
+      "key": "fraise",
+      "theme": "fruits",
+      "label": "Fraises",
+      "aliases": [
+        "fraise",
+        "fraises"
+      ],
+      "preferred": [
+        "tizwal uṛumi",
+        "tizwal-uṛumi"
+      ],
+      "art": "fraise",
+      "role": "word",
+      "topics": [
+        "fruits"
+      ]
+    },
+    {
+      "key": "raisin",
+      "theme": "fruits",
+      "label": "Raisin",
+      "aliases": [
+        "raisin",
+        "raisins"
+      ],
+      "preferred": [
+        "aḍil",
+        "tiẓuṛin"
+      ],
+      "art": "raisin",
+      "role": "word",
+      "topics": [
+        "fruits"
+      ]
+    },
+    {
+      "key": "figue",
+      "theme": "fruits",
+      "label": "Figues",
+      "aliases": [
+        "figue",
+        "figues"
+      ],
+      "preferred": [
+        "tibexsisin"
+      ],
+      "art": "figue",
+      "role": "word",
+      "topics": [
+        "fruits"
+      ]
+    },
+    {
+      "key": "pomme",
+      "theme": "fruits",
+      "label": "Pomme",
+      "aliases": [
+        "pomme",
+        "pommes"
+      ],
+      "preferred": [],
+      "art": "pomme",
+      "role": "word",
+      "topics": [
+        "fruits"
+      ]
+    },
+    {
+      "key": "banane",
+      "theme": "fruits",
+      "label": "Banane",
+      "aliases": [
+        "banane",
+        "bananes"
+      ],
+      "preferred": [],
+      "art": "banane",
+      "role": "word",
+      "topics": [
+        "fruits"
+      ]
+    },
+    {
+      "key": "orange",
+      "theme": "fruits",
+      "label": "Orange",
+      "aliases": [
+        "orange",
+        "oranges"
+      ],
+      "preferred": [],
+      "art": "orange",
+      "role": "word",
+      "topics": [
+        "fruits"
+      ]
+    },
+    {
+      "key": "poire",
+      "theme": "fruits",
+      "label": "Poire",
+      "aliases": [
+        "poire",
+        "poires"
+      ],
+      "preferred": [],
+      "art": "poire",
+      "role": "word",
+      "topics": [
+        "fruits"
+      ]
+    },
+    {
+      "key": "cerise",
+      "theme": "fruits",
+      "label": "Cerise",
+      "aliases": [
+        "cerise",
+        "cerises"
+      ],
+      "preferred": [],
+      "art": "cerise",
+      "role": "word",
+      "topics": [
+        "fruits"
+      ]
+    },
+    {
+      "key": "fruit",
+      "theme": "fruits",
+      "label": "Fruit",
+      "aliases": [
+        "fruit",
+        "fruits"
+      ],
+      "preferred": [],
+      "art": "fruit",
+      "role": "word",
+      "topics": [
+        "fruits"
+      ]
+    },
+    {
+      "key": "pomme-de-terre",
+      "theme": "legumes",
+      "label": "Pomme de terre",
+      "aliases": [
+        "pomme de terre",
+        "pommes de terre"
+      ],
+      "preferred": [],
+      "art": "pomme-de-terre",
+      "role": "word",
+      "topics": [
+        "legumes"
+      ]
+    },
+    {
+      "key": "carotte",
+      "theme": "legumes",
+      "label": "Carotte",
+      "aliases": [
+        "carotte",
+        "carottes"
+      ],
+      "preferred": [],
+      "art": "carotte",
+      "role": "word",
+      "topics": [
+        "legumes"
+      ]
+    },
+    {
+      "key": "tomate",
+      "theme": "legumes",
+      "label": "Tomate",
+      "aliases": [
+        "tomate",
+        "tomates"
+      ],
+      "preferred": [],
+      "art": "tomate",
+      "role": "word",
+      "topics": [
+        "legumes"
+      ]
+    },
+    {
+      "key": "oignon",
+      "theme": "legumes",
+      "label": "Oignon",
+      "aliases": [
+        "oignon",
+        "oignons"
+      ],
+      "preferred": [],
+      "art": "oignon",
+      "role": "word",
+      "topics": [
+        "legumes"
+      ]
+    },
+    {
+      "key": "legume",
+      "theme": "legumes",
+      "label": "Légume",
+      "aliases": [
+        "légume",
+        "légumes"
+      ],
+      "preferred": [],
+      "art": "legume",
+      "role": "word",
+      "topics": [
+        "legumes"
+      ]
+    },
+    {
+      "key": "pain",
+      "theme": "alimentation",
+      "label": "Pain",
+      "aliases": [
+        "pain",
+        "pains"
+      ],
+      "preferred": [
+        "aɣrum"
+      ],
+      "art": "pain",
+      "role": "word",
+      "topics": [
+        "alimentation"
+      ]
+    },
+    {
+      "key": "pates",
+      "theme": "alimentation",
+      "label": "Pâtes",
+      "aliases": [
+        "pâtes"
+      ],
+      "preferred": [
+        "irektiyen"
+      ],
+      "art": "pates",
+      "role": "word",
+      "topics": [
+        "alimentation"
+      ]
+    },
+    {
+      "key": "couscous",
+      "theme": "alimentation",
+      "label": "Couscous",
+      "aliases": [
+        "couscous"
+      ],
+      "preferred": [
+        "seksu"
+      ],
+      "art": "couscous",
+      "role": "word",
+      "topics": [
+        "alimentation"
+      ]
+    },
+    {
+      "key": "pizza",
+      "theme": "alimentation",
+      "label": "Pizza",
+      "aliases": [
+        "pizza",
+        "pizzas"
+      ],
+      "preferred": [
+        "pizza"
+      ],
+      "art": "pizza",
+      "role": "word",
+      "topics": [
+        "alimentation"
+      ]
+    },
+    {
+      "key": "crepe",
+      "theme": "alimentation",
+      "label": "Crêpes",
+      "aliases": [
+        "crêpe",
+        "crêpes"
+      ],
+      "preferred": [
+        "tiɣrifin"
+      ],
+      "art": "crepe",
+      "role": "word",
+      "topics": [
+        "alimentation"
+      ]
+    },
+    {
+      "key": "viande",
+      "theme": "alimentation",
+      "label": "Viande",
+      "aliases": [
+        "viande",
+        "viandes"
+      ],
+      "preferred": [
+        "aksum",
+        "tacriḥt"
+      ],
+      "art": "viande",
+      "role": "word",
+      "topics": [
+        "alimentation"
+      ]
+    },
+    {
+      "key": "sucrerie",
+      "theme": "alimentation",
+      "label": "Sucreries",
+      "aliases": [
+        "sucrerie",
+        "sucreries"
+      ],
+      "preferred": [
+        "tiẓidanin"
+      ],
+      "art": "sucrerie",
+      "role": "word",
+      "topics": [
+        "alimentation"
+      ]
+    },
+    {
+      "key": "repas",
+      "theme": "alimentation",
+      "label": "Repas",
+      "aliases": [
+        "repas"
+      ],
+      "preferred": [
+        "tanalt"
+      ],
+      "art": "repas",
+      "role": "word",
+      "topics": [
+        "alimentation"
+      ]
+    },
+    {
+      "key": "appetit",
+      "theme": "alimentation",
+      "label": "Appétit",
+      "aliases": [
+        "appétit"
+      ],
+      "preferred": [
+        "učči"
+      ],
+      "art": "appetit",
+      "role": "word",
+      "topics": [
+        "alimentation"
+      ]
+    },
+    {
+      "key": "eau",
+      "theme": "boissons",
+      "label": "Eau",
+      "aliases": [
+        "eau",
+        "eaux"
+      ],
+      "preferred": [
+        "aman"
+      ],
+      "art": "eau",
+      "role": "word",
+      "topics": [
+        "boissons"
+      ]
+    },
+    {
+      "key": "lait",
+      "theme": "boissons",
+      "label": "Lait",
+      "aliases": [
+        "lait"
+      ],
+      "preferred": [
+        "ayefki"
+      ],
+      "art": "lait",
+      "role": "word",
+      "topics": [
+        "boissons"
+      ]
+    },
+    {
+      "key": "cafe",
+      "theme": "boissons",
+      "label": "Café",
+      "aliases": [
+        "café",
+        "cafés"
+      ],
+      "preferred": [
+        "lqahwa"
+      ],
+      "art": "cafe",
+      "role": "word",
+      "topics": [
+        "boissons"
+      ]
+    },
+    {
+      "key": "the",
+      "theme": "boissons",
+      "label": "Thé",
+      "aliases": [
+        "thé",
+        "thés"
+      ],
+      "preferred": [
+        "llatay"
+      ],
+      "art": "the",
+      "role": "word",
+      "topics": [
+        "boissons"
+      ]
+    },
+    {
+      "key": "biere",
+      "theme": "boissons",
+      "label": "Bière",
+      "aliases": [
+        "bière",
+        "bières"
+      ],
+      "preferred": [
+        "tabyirt",
+        "tebyirt"
+      ],
+      "art": "biere",
+      "role": "word",
+      "topics": [
+        "boissons"
+      ]
+    },
+    {
+      "key": "vin",
+      "theme": "boissons",
+      "label": "Vin",
+      "aliases": [
+        "vin",
+        "vins"
+      ],
+      "preferred": [
+        "ccṛab"
+      ],
+      "art": "vin",
+      "role": "word",
+      "topics": [
+        "boissons"
+      ]
+    },
+    {
+      "key": "goutte",
+      "theme": "boissons",
+      "label": "Goutte",
+      "aliases": [
+        "goutte",
+        "gouttes"
+      ],
+      "preferred": [
+        "tiqit"
+      ],
+      "art": "goutte",
+      "role": "word",
+      "topics": [
+        "boissons"
+      ]
+    },
+    {
+      "key": "robe",
+      "theme": "vetements",
+      "label": "Robe",
+      "aliases": [
+        "robe",
+        "robes"
+      ],
+      "preferred": [
+        "taqenduṛt"
+      ],
+      "art": "robe",
+      "role": "word",
+      "topics": [
+        "vetements"
+      ]
+    },
+    {
+      "key": "tshirt",
+      "theme": "vetements",
+      "label": "T-shirt",
+      "aliases": [
+        "t-shirt",
+        "t-shirts"
+      ],
+      "preferred": [
+        "atriku"
+      ],
+      "art": "tshirt",
+      "role": "word",
+      "topics": [
+        "vetements"
+      ]
+    },
+    {
+      "key": "chapeau",
+      "theme": "vetements",
+      "label": "Chapeau",
+      "aliases": [
+        "chapeau",
+        "chapeaux"
+      ],
+      "preferred": [
+        "tamḍelliwt"
+      ],
+      "art": "chapeau",
+      "role": "word",
+      "topics": [
+        "vetements"
+      ]
+    },
+    {
+      "key": "chaussure",
+      "theme": "vetements",
+      "label": "Chaussures",
+      "aliases": [
+        "chaussure",
+        "chaussures",
+        "souliers"
+      ],
+      "preferred": [
+        "isebbaḍen"
+      ],
+      "art": "chaussure",
+      "role": "word",
+      "topics": [
+        "vetements"
+      ]
+    },
+    {
+      "key": "chemise",
+      "theme": "vetements",
+      "label": "Chemise",
+      "aliases": [
+        "chemise",
+        "chemises"
+      ],
+      "preferred": [
+        "taseddrit"
+      ],
+      "art": "chemise",
+      "role": "word",
+      "topics": [
+        "vetements"
+      ]
+    },
+    {
+      "key": "jupe",
+      "theme": "vetements",
+      "label": "Jupe",
+      "aliases": [
+        "jupe",
+        "jupes"
+      ],
+      "preferred": [
+        "timeḥremt"
+      ],
+      "art": "jupe",
+      "role": "word",
+      "topics": [
+        "vetements"
+      ]
+    },
+    {
+      "key": "chaussette",
+      "theme": "vetements",
+      "label": "Chaussettes",
+      "aliases": [
+        "chaussette",
+        "chaussettes"
+      ],
+      "preferred": [
+        "iqaciṛen",
+        "aqaciṛ"
+      ],
+      "art": "chaussette",
+      "role": "word",
+      "topics": [
+        "vetements"
+      ]
+    },
+    {
+      "key": "lunettes",
+      "theme": "vetements",
+      "label": "Lunettes",
+      "aliases": [
+        "lunettes"
+      ],
+      "preferred": [
+        "nnwaḍer"
+      ],
+      "art": "lunettes",
+      "role": "word",
+      "topics": [
+        "vetements"
+      ]
+    },
+    {
+      "key": "ciel",
+      "theme": "nature",
+      "label": "Ciel",
+      "aliases": [
+        "ciel",
+        "cieux"
+      ],
+      "preferred": [
+        "igenni"
+      ],
+      "art": "ciel",
+      "role": "word",
+      "topics": [
+        "nature"
+      ]
+    },
+    {
+      "key": "riviere",
+      "theme": "nature",
+      "label": "Rivière",
+      "aliases": [
+        "rivière",
+        "rivières"
+      ],
+      "preferred": [
+        "asif"
+      ],
+      "art": "riviere",
+      "role": "word",
+      "topics": [
+        "nature"
+      ]
+    },
+    {
+      "key": "soleil",
+      "theme": "nature",
+      "label": "Soleil",
+      "aliases": [
+        "soleil",
+        "soleils"
+      ],
+      "preferred": [
+        "itij"
+      ],
+      "art": "soleil",
+      "role": "word",
+      "topics": [
+        "nature"
+      ]
+    },
+    {
+      "key": "mer",
+      "theme": "nature",
+      "label": "Mer",
+      "aliases": [
+        "mer",
+        "mers"
+      ],
+      "preferred": [
+        "ilel"
+      ],
+      "art": "mer",
+      "role": "word",
+      "topics": [
+        "nature"
+      ]
+    },
+    {
+      "key": "montagne",
+      "theme": "nature",
+      "label": "Montagne",
+      "aliases": [
+        "montagne",
+        "montagnes"
+      ],
+      "preferred": [
+        "adrar"
+      ],
+      "art": "montagne",
+      "role": "word",
+      "topics": [
+        "nature"
+      ]
+    },
+    {
+      "key": "lac",
+      "theme": "nature",
+      "label": "Lac",
+      "aliases": [
+        "lac",
+        "lacs"
+      ],
+      "preferred": [
+        "agelmim"
+      ],
+      "art": "lac",
+      "role": "word",
+      "topics": [
+        "nature"
+      ]
+    },
+    {
+      "key": "plage",
+      "theme": "nature",
+      "label": "Plage",
+      "aliases": [
+        "plage",
+        "plages"
+      ],
+      "preferred": [
+        "taftist"
+      ],
+      "art": "plage",
+      "role": "word",
+      "topics": [
+        "nature"
+      ]
+    },
+    {
+      "key": "jardin",
+      "theme": "nature",
+      "label": "Jardin et parc",
+      "aliases": [
+        "parc",
+        "parcs",
+        "parque",
+        "parques",
+        "jardin",
+        "jardins"
+      ],
+      "preferred": [
+        "lejnan"
+      ],
+      "art": "jardin",
+      "role": "word",
+      "topics": [
+        "nature"
+      ]
+    },
+    {
+      "key": "champ",
+      "theme": "nature",
+      "label": "Champs",
+      "aliases": [
+        "champ",
+        "champs"
+      ],
+      "preferred": [
+        "lexla"
+      ],
+      "art": "champ",
+      "role": "word",
+      "topics": [
+        "nature"
+      ]
+    },
+    {
+      "key": "poussiere",
+      "theme": "nature",
+      "label": "Poussière",
+      "aliases": [
+        "poussière"
+      ],
+      "preferred": [
+        "aɣebbar"
+      ],
+      "art": "poussiere",
+      "role": "word",
+      "topics": [
+        "nature"
+      ]
+    },
+    {
+      "key": "suie",
+      "theme": "nature",
+      "label": "Suie",
+      "aliases": [
+        "suie"
+      ],
+      "preferred": [
+        "timulin",
+        "tibuxin"
+      ],
+      "art": "suie",
+      "role": "word",
+      "topics": [
+        "nature"
+      ]
+    },
+    {
+      "key": "feu",
+      "theme": "nature",
+      "label": "Feu",
+      "aliases": [
+        "feu",
+        "feux"
+      ],
+      "preferred": [
+        "times",
+        "tmes"
+      ],
+      "art": "feu",
+      "role": "word",
+      "topics": [
+        "nature"
+      ]
+    },
+    {
+      "key": "ami",
+      "theme": "famille",
+      "label": "Amis",
+      "aliases": [
+        "ami",
+        "amis",
+        "amie",
+        "amies"
+      ],
+      "preferred": [
+        "imeddukal"
+      ],
+      "art": "ami",
+      "role": "word",
+      "topics": [
+        "famille"
+      ]
+    },
+    {
+      "key": "fille",
+      "theme": "famille",
+      "label": "Fille",
+      "aliases": [
+        "fille",
+        "filles"
+      ],
+      "preferred": [
+        "taqcict"
+      ],
+      "art": "fille",
+      "role": "word",
+      "topics": [
+        "famille"
+      ]
+    },
+    {
+      "key": "garcon",
+      "theme": "famille",
+      "label": "Garçon",
+      "aliases": [
+        "garçon",
+        "garçons"
+      ],
+      "preferred": [
+        "aqcic"
+      ],
+      "art": "garcon",
+      "role": "word",
+      "topics": [
+        "famille"
+      ]
+    },
+    {
+      "key": "femme",
+      "theme": "famille",
+      "label": "Femme",
+      "aliases": [
+        "femme",
+        "femmes"
+      ],
+      "preferred": [
+        "tameṭṭut"
+      ],
+      "art": "femme",
+      "role": "word",
+      "topics": [
+        "famille"
+      ]
+    },
+    {
+      "key": "homme",
+      "theme": "famille",
+      "label": "Homme",
+      "aliases": [
+        "homme",
+        "hommes"
+      ],
+      "preferred": [
+        "argaz"
+      ],
+      "art": "homme",
+      "role": "word",
+      "topics": [
+        "famille"
+      ]
+    },
+    {
+      "key": "mere",
+      "theme": "famille",
+      "label": "Mère",
+      "aliases": [
+        "mère",
+        "mères",
+        "maman"
+      ],
+      "preferred": [],
+      "art": "mere",
+      "role": "word",
+      "topics": [
+        "famille"
+      ]
+    },
+    {
+      "key": "pere",
+      "theme": "famille",
+      "label": "Père",
+      "aliases": [
+        "père",
+        "pères",
+        "papa"
+      ],
+      "preferred": [],
+      "art": "pere",
+      "role": "word",
+      "topics": [
+        "famille"
+      ]
+    },
+    {
+      "key": "famille",
+      "theme": "famille",
+      "label": "Famille",
+      "aliases": [
+        "famille",
+        "familles",
+        "parents",
+        "frère",
+        "frères",
+        "sœur",
+        "sœurs"
+      ],
+      "preferred": [],
+      "art": "famille",
+      "role": "word",
+      "topics": [
+        "famille"
+      ]
+    },
+    {
+      "key": "ecole",
+      "theme": "ecole",
+      "label": "École",
+      "aliases": [
+        "école",
+        "écoles"
+      ],
+      "preferred": [
+        "aɣerbaz",
+        "llakul"
+      ],
+      "art": "ecole",
+      "role": "word",
+      "topics": [
+        "ecole"
+      ]
+    },
+    {
+      "key": "etudiant",
+      "theme": "ecole",
+      "label": "Étudiants",
+      "aliases": [
+        "étudiant",
+        "étudiants",
+        "étudiante",
+        "étudiantes"
+      ],
+      "preferred": [
+        "inelmaden"
+      ],
+      "art": "etudiant",
+      "role": "word",
+      "topics": [
+        "ecole"
+      ]
+    },
+    {
+      "key": "exercice",
+      "theme": "ecole",
+      "label": "Exercice",
+      "aliases": [
+        "exercice",
+        "exercices"
+      ],
+      "preferred": [
+        "alaɣmu"
+      ],
+      "art": "exercice",
+      "role": "word",
+      "topics": [
+        "ecole"
+      ]
+    },
+    {
+      "key": "lettre",
+      "theme": "ecole",
+      "label": "Lettre",
+      "aliases": [
+        "lettre",
+        "lettres"
+      ],
+      "preferred": [
+        "tabṛat",
+        "tebṛat"
+      ],
+      "art": "lettre",
+      "role": "word",
+      "topics": [
+        "ecole"
+      ]
+    },
+    {
+      "key": "docteur",
+      "theme": "metiers",
+      "label": "Docteur et médecin",
+      "aliases": [
+        "docteur",
+        "docteurs",
+        "docteure",
+        "médecin",
+        "médecins"
+      ],
+      "preferred": [
+        "amsuji",
+        "tamsujit"
+      ],
+      "art": "docteur",
+      "role": "word",
+      "topics": [
+        "metiers"
+      ]
+    },
+    {
+      "key": "pompier",
+      "theme": "metiers",
+      "label": "Pompier et pompière",
+      "aliases": [
+        "pompier",
+        "pompiers",
+        "pompière",
+        "pompières"
+      ],
+      "preferred": [
+        "asexsay",
+        "tasexsayt"
+      ],
+      "art": "pompier",
+      "role": "word",
+      "topics": [
+        "metiers"
+      ]
+    },
+    {
+      "key": "fermier",
+      "theme": "metiers",
+      "label": "Fermier et fermière",
+      "aliases": [
+        "fermier",
+        "fermiers",
+        "fermière",
+        "fermières"
+      ],
+      "preferred": [
+        "afellaḥ",
+        "tafellaḥt"
+      ],
+      "art": "fermier",
+      "role": "word",
+      "topics": [
+        "metiers"
+      ]
+    },
+    {
+      "key": "valet",
+      "theme": "metiers",
+      "label": "Valet",
+      "aliases": [
+        "valet",
+        "valets"
+      ],
+      "preferred": [
+        "aqeddac"
+      ],
+      "art": "valet",
+      "role": "word",
+      "topics": [
+        "metiers"
+      ]
+    },
+    {
+      "key": "infirmiere",
+      "theme": "metiers",
+      "label": "Infirmières",
+      "aliases": [
+        "infirmière",
+        "infirmières"
+      ],
+      "preferred": [
+        "timaragin n umsuji"
+      ],
+      "art": "infirmiere",
+      "role": "word",
+      "topics": [
+        "metiers"
+      ]
+    },
+    {
+      "key": "chanteur",
+      "theme": "metiers",
+      "label": "Chanteur et chanteuse",
+      "aliases": [
+        "chanteur",
+        "chanteurs",
+        "chanteuse",
+        "chanteuses"
+      ],
+      "preferred": [
+        "acennay",
+        "tacennayt"
+      ],
+      "art": "chanteur",
+      "role": "word",
+      "topics": [
+        "metiers"
+      ]
+    },
+    {
+      "key": "artiste",
+      "theme": "metiers",
+      "label": "Artistes",
+      "aliases": [
+        "artiste",
+        "artistes"
+      ],
+      "preferred": [
+        "inaẓuren"
+      ],
+      "art": "artiste",
+      "role": "word",
+      "topics": [
+        "metiers"
+      ]
+    },
+    {
+      "key": "maison",
+      "theme": "maison",
+      "label": "Maison",
+      "aliases": [
+        "maison",
+        "maisons"
+      ],
+      "preferred": [
+        "axxam"
+      ],
+      "art": "maison",
+      "role": "word",
+      "topics": [
+        "maison"
+      ]
+    },
+    {
+      "key": "porte",
+      "theme": "maison",
+      "label": "Porte",
+      "aliases": [
+        "porte",
+        "portes"
+      ],
+      "preferred": [],
+      "art": "porte",
+      "role": "word",
+      "topics": [
+        "maison"
+      ]
+    },
+    {
+      "key": "chambre",
+      "theme": "maison",
+      "label": "Chambre",
+      "aliases": [
+        "chambre",
+        "chambres"
+      ],
+      "preferred": [],
+      "art": "chambre",
+      "role": "word",
+      "topics": [
+        "maison"
+      ]
+    },
+    {
+      "key": "cuisine",
+      "theme": "maison",
+      "label": "Cuisine",
+      "aliases": [
+        "cuisine",
+        "cuisines"
+      ],
+      "preferred": [],
+      "art": "cuisine",
+      "role": "word",
+      "topics": [
+        "maison"
+      ]
+    },
+    {
+      "key": "lit",
+      "theme": "maison",
+      "label": "Lit",
+      "aliases": [
+        "lit",
+        "lits"
+      ],
+      "preferred": [],
+      "art": "lit",
+      "role": "word",
+      "topics": [
+        "maison"
+      ]
+    },
+    {
+      "key": "fenetre",
+      "theme": "maison",
+      "label": "Fenêtre",
+      "aliases": [
+        "fenêtre",
+        "fenêtres"
+      ],
+      "preferred": [],
+      "art": "fenetre",
+      "role": "word",
+      "topics": [
+        "maison"
+      ]
+    },
+    {
+      "key": "grand",
+      "theme": "description",
+      "label": "Grand et grande",
+      "aliases": [
+        "grand",
+        "grande",
+        "grands",
+        "grandes"
+      ],
+      "preferred": [
+        "ameqran",
+        "tameqrant"
+      ],
+      "art": "grand",
+      "role": "word",
+      "topics": [
+        "description"
+      ]
+    },
+    {
+      "key": "petit",
+      "theme": "description",
+      "label": "Petit et petite",
+      "aliases": [
+        "petit",
+        "petite",
+        "petits",
+        "petites"
+      ],
+      "preferred": [
+        "meẓẓi"
+      ],
+      "art": "petit",
+      "role": "word",
+      "topics": [
+        "description"
+      ]
+    },
+    {
+      "key": "long",
+      "theme": "description",
+      "label": "Long et longue",
+      "aliases": [
+        "long",
+        "longue",
+        "longs",
+        "longues"
+      ],
+      "preferred": [
+        "aɣezfan",
+        "taɣezfant"
+      ],
+      "art": "long",
+      "role": "word",
+      "topics": [
+        "description"
+      ]
+    },
+    {
+      "key": "vieux",
+      "theme": "description",
+      "label": "Vieux et vieille",
+      "aliases": [
+        "vieux",
+        "vieille",
+        "vieilles",
+        "vielle",
+        "vielle",
+        "vieux"
+      ],
+      "preferred": [
+        "amɣar",
+        "tamɣart"
+      ],
+      "art": "vieux",
+      "role": "word",
+      "topics": [
+        "description"
+      ]
+    },
+    {
+      "key": "gros",
+      "theme": "description",
+      "label": "Gros et grosse",
+      "aliases": [
+        "gros",
+        "grosse",
+        "grosses"
+      ],
+      "preferred": [
+        "azuran",
+        "tazurant"
+      ],
+      "art": "gros",
+      "role": "word",
+      "topics": [
+        "description"
+      ]
+    },
+    {
+      "key": "beau",
+      "theme": "description",
+      "label": "Beau et belle",
+      "aliases": [
+        "beau",
+        "beaux",
+        "belle",
+        "belles"
+      ],
+      "preferred": [
+        "yecbeḥ",
+        "tecbeḥ"
+      ],
+      "art": "beau",
+      "role": "word",
+      "topics": [
+        "description"
+      ]
+    },
+    {
+      "key": "bon",
+      "theme": "description",
+      "label": "Bon et bonne",
+      "aliases": [
+        "bon",
+        "bons",
+        "bonne",
+        "bonnes"
+      ],
+      "preferred": [
+        "ilha",
+        "ameggaz"
+      ],
+      "art": "bon",
+      "role": "word",
+      "topics": [
+        "description"
+      ]
+    },
+    {
+      "key": "large",
+      "theme": "description",
+      "label": "Large",
+      "aliases": [
+        "large",
+        "larges"
+      ],
+      "preferred": [
+        "hraw"
+      ],
+      "art": "large",
+      "role": "word",
+      "topics": [
+        "description"
+      ]
+    },
+    {
+      "key": "propre",
+      "theme": "description",
+      "label": "Propre",
+      "aliases": [
+        "propre",
+        "propres"
+      ],
+      "preferred": [
+        "zeddig",
+        "weddig"
+      ],
+      "art": "propre",
+      "role": "word",
+      "topics": [
+        "description"
+      ]
+    },
+    {
+      "key": "sale",
+      "theme": "description",
+      "label": "Sale",
+      "aliases": [
+        "sali",
+        "souillé",
+        "souillée",
+        "sale"
+      ],
+      "preferred": [
+        "yumes"
+      ],
+      "art": "sale",
+      "role": "word",
+      "topics": [
+        "description"
+      ]
+    },
+    {
+      "key": "mouille",
+      "theme": "description",
+      "label": "Mouillés",
+      "aliases": [
+        "mouillé",
+        "mouillés",
+        "mouillées"
+      ],
+      "preferred": [
+        "llexsen"
+      ],
+      "art": "mouille",
+      "role": "word",
+      "topics": [
+        "description"
+      ]
+    },
+    {
+      "key": "jeune",
+      "theme": "description",
+      "label": "Jeunes",
+      "aliases": [
+        "jeune",
+        "jeunes"
+      ],
+      "preferred": [],
+      "art": "jeune",
+      "role": "word",
+      "topics": [
+        "description"
+      ]
+    },
+    {
+      "key": "vert",
+      "theme": "couleurs",
+      "label": "Vert",
+      "aliases": [
+        "vert",
+        "verts",
+        "verte",
+        "vertes"
+      ],
+      "preferred": [
+        "zegzaw"
+      ],
+      "art": "vert",
+      "role": "word",
+      "topics": [
+        "couleurs"
+      ]
+    },
+    {
+      "key": "bleu",
+      "theme": "couleurs",
+      "label": "Bleues",
+      "aliases": [
+        "bleu",
+        "bleus",
+        "bleue",
+        "bleues"
+      ],
+      "preferred": [
+        "tiẓerwalin"
+      ],
+      "art": "bleu",
+      "role": "word",
+      "topics": [
+        "couleurs"
+      ]
+    },
+    {
+      "key": "rouge",
+      "theme": "couleurs",
+      "label": "Rouges",
+      "aliases": [
+        "rouge",
+        "rouges"
+      ],
+      "preferred": [
+        "tizeggaɣin",
+        "izeggaɣen"
+      ],
+      "art": "rouge",
+      "role": "word",
+      "topics": [
+        "couleurs"
+      ]
+    },
+    {
+      "key": "blanc",
+      "theme": "couleurs",
+      "label": "Blancs",
+      "aliases": [
+        "blanc",
+        "blancs",
+        "blanche",
+        "blanches"
+      ],
+      "preferred": [
+        "imellalen",
+        "mellulit"
+      ],
+      "art": "blanc",
+      "role": "word",
+      "topics": [
+        "couleurs"
+      ]
+    },
+    {
+      "key": "roux",
+      "theme": "couleurs",
+      "label": "Roux",
+      "aliases": [
+        "roux",
+        "rousse",
+        "rousses"
+      ],
+      "preferred": [
+        "azubaɣ"
+      ],
+      "art": "roux",
+      "role": "word",
+      "topics": [
+        "couleurs"
+      ]
+    },
+    {
+      "key": "gris",
+      "theme": "couleurs",
+      "label": "Grisonnant",
+      "aliases": [
+        "gris",
+        "grise",
+        "grisonnant",
+        "grisonnante"
+      ],
+      "preferred": [
+        "azerzaɣ",
+        "tazerzaɣt"
+      ],
+      "art": "gris",
+      "role": "word",
+      "topics": [
+        "couleurs"
+      ]
+    },
+    {
+      "key": "faim",
+      "theme": "etats",
+      "label": "Faim",
+      "aliases": [
+        "faim",
+        "j’ai faim"
+      ],
+      "preferred": [
+        "laẓ",
+        "lluẓeɣ"
+      ],
+      "art": "faim",
+      "role": "word",
+      "topics": [
+        "etats"
+      ]
+    },
+    {
+      "key": "soif",
+      "theme": "etats",
+      "label": "Soif",
+      "aliases": [
+        "soif"
+      ],
+      "preferred": [
+        "fad",
+        "neffud"
+      ],
+      "art": "soif",
+      "role": "word",
+      "topics": [
+        "etats"
+      ]
+    },
+    {
+      "key": "fatigue",
+      "theme": "etats",
+      "label": "Fatigués",
+      "aliases": [
+        "fatigué",
+        "fatigués",
+        "exténué",
+        "exténués"
+      ],
+      "preferred": [
+        "ɛyan",
+        "serden"
+      ],
+      "art": "fatigue",
+      "role": "word",
+      "topics": [
+        "etats"
+      ]
+    },
+    {
+      "key": "somnolent",
+      "theme": "etats",
+      "label": "Somnolent",
+      "aliases": [
+        "somnolent",
+        "somnole"
+      ],
+      "preferred": [
+        "yeqlundem"
+      ],
+      "art": "somnolent",
+      "role": "word",
+      "topics": [
+        "etats"
+      ]
+    },
+    {
+      "key": "heureux",
+      "theme": "etats",
+      "label": "Heureux et heureuse",
+      "aliases": [
+        "heureux",
+        "heureuse",
+        "heureuses"
+      ],
+      "preferred": [
+        "ferḥeɣ",
+        "nnecrahent"
+      ],
+      "art": "heureux",
+      "role": "word",
+      "topics": [
+        "etats"
+      ]
+    },
+    {
+      "key": "triste",
+      "theme": "etats",
+      "label": "Triste",
+      "aliases": [
+        "triste",
+        "tristes"
+      ],
+      "preferred": [
+        "yenneɣni",
+        "tenneɣni"
+      ],
+      "art": "triste",
+      "role": "word",
+      "topics": [
+        "etats"
+      ]
+    },
+    {
+      "key": "froid",
+      "theme": "etats",
+      "label": "Froid",
+      "aliases": [
+        "froid",
+        "froide"
+      ],
+      "preferred": [
+        "asemmiḍ"
+      ],
+      "art": "froid",
+      "role": "word",
+      "topics": [
+        "etats"
+      ]
+    },
+    {
+      "key": "fievre",
+      "theme": "sante",
+      "label": "Fièvre",
+      "aliases": [
+        "fièvre",
+        "fièvres"
+      ],
+      "preferred": [
+        "tawla"
+      ],
+      "art": "fievre",
+      "role": "word",
+      "topics": [
+        "sante"
+      ]
+    },
+    {
+      "key": "sante",
+      "theme": "sante",
+      "label": "Santé",
+      "aliases": [
+        "santé"
+      ],
+      "preferred": [
+        "tazmert",
+        "tezmert"
+      ],
+      "art": "sante",
+      "role": "word",
+      "topics": [
+        "sante"
+      ]
+    },
+    {
+      "key": "chanson",
+      "theme": "musique",
+      "label": "Chanson",
+      "aliases": [
+        "chanson",
+        "chansons"
+      ],
+      "preferred": [
+        "taɣect"
+      ],
+      "art": "chanson",
+      "role": "word",
+      "topics": [
+        "musique"
+      ]
+    },
+    {
+      "key": "prix",
+      "theme": "achats",
+      "label": "Prix",
+      "aliases": [
+        "prix"
+      ],
+      "preferred": [
+        "azal-is"
+      ],
+      "art": "prix",
+      "role": "word",
+      "topics": [
+        "achats"
+      ]
+    },
+    {
+      "key": "couter",
+      "theme": "achats",
+      "label": "Coûter",
+      "aliases": [
+        "coûte",
+        "coûter"
+      ],
+      "preferred": [
+        "azal"
+      ],
+      "art": "couter",
+      "role": "word",
+      "topics": [
+        "achats"
+      ]
+    },
+    {
+      "key": "voyage",
+      "theme": "voyages",
+      "label": "Voyage",
+      "aliases": [
+        "voyage",
+        "voyages"
+      ],
+      "preferred": [
+        "inig"
+      ],
+      "art": "voyage",
+      "role": "word",
+      "topics": [
+        "voyages"
+      ]
+    },
+    {
+      "key": "aller",
+      "theme": "voyages",
+      "label": "Aller",
+      "aliases": [
+        "aller",
+        "allons-y",
+        "vas",
+        "vas-tu",
+        "allons",
+        "irons"
+      ],
+      "preferred": [
+        "ruḥ",
+        "iyyaw"
+      ],
+      "art": "aller",
+      "role": "word",
+      "topics": [
+        "voyages"
+      ]
+    },
+    {
+      "key": "bonjour",
+      "theme": "salutations",
+      "label": "Bonjour",
+      "aliases": [
+        "bonjour",
+        "salut",
+        "bienvenue"
+      ],
+      "preferred": [
+        "azul"
+      ],
+      "art": "bonjour",
+      "role": "word",
+      "topics": [
+        "salutations"
+      ]
+    },
+    {
+      "key": "merci",
+      "theme": "salutations",
+      "label": "Merci",
+      "aliases": [
+        "merci"
+      ],
+      "preferred": [
+        "tanemmirt"
+      ],
+      "art": "merci",
+      "role": "word",
+      "topics": [
+        "salutations"
+      ]
+    },
+    {
+      "key": "revoir",
+      "theme": "salutations",
+      "label": "Au revoir",
+      "aliases": [
+        "revoir",
+        "au revoir"
+      ],
+      "preferred": [
+        "tufat"
+      ],
+      "art": "revoir",
+      "role": "word",
+      "topics": [
+        "salutations"
+      ]
+    },
+    {
+      "key": "sil-vous-plait",
+      "theme": "salutations",
+      "label": "S’il vous plaît",
+      "aliases": [
+        "s'il vous plaît",
+        "s'il vous plait"
+      ],
+      "preferred": [
+        "txil-k",
+        "txil-m",
+        "txil-nwen",
+        "txil-nkent"
+      ],
+      "art": "sil-vous-plait",
+      "role": "word",
+      "topics": [
+        "salutations"
+      ]
+    },
+    {
+      "key": "nom",
+      "theme": "salutations",
+      "label": "Nom",
+      "aliases": [
+        "nom",
+        "nom de famille",
+        "mon nom",
+        "ton nom"
+      ],
+      "preferred": [
+        "isem"
+      ],
+      "art": "nom",
+      "role": "word",
+      "topics": [
+        "salutations"
+      ]
+    },
+    {
+      "key": "combien",
+      "theme": "questions",
+      "label": "Combien",
+      "aliases": [
+        "combien"
+      ],
+      "preferred": [
+        "acḥal"
+      ],
+      "art": "combien",
+      "role": "word",
+      "topics": [
+        "questions"
+      ]
+    },
+    {
+      "key": "comment",
+      "theme": "questions",
+      "label": "Comment",
+      "aliases": [
+        "comment"
+      ],
+      "preferred": [
+        "amek"
+      ],
+      "art": "comment",
+      "role": "word",
+      "topics": [
+        "questions"
+      ]
+    },
+    {
+      "key": "quoi",
+      "theme": "questions",
+      "label": "Quoi et quel",
+      "aliases": [
+        "quoi",
+        "quel",
+        "quelle",
+        "quels",
+        "quelles"
+      ],
+      "preferred": [
+        "dacu"
+      ],
+      "art": "quoi",
+      "role": "word",
+      "topics": [
+        "questions"
+      ]
+    },
+    {
+      "key": "aimer",
+      "theme": "gouts",
+      "label": "Aimer",
+      "aliases": [
+        "aime",
+        "aimes",
+        "aimons",
+        "aimez",
+        "aiment",
+        "j'aime",
+        "n'aime",
+        "n'aimes"
+      ],
+      "preferred": [
+        "ḥemmleɣ",
+        "tḥemmleḍ"
+      ],
+      "art": "aimer",
+      "role": "word",
+      "topics": [
+        "gouts"
+      ]
+    },
+    {
+      "key": "plaire",
+      "theme": "gouts",
+      "label": "Plaire",
+      "aliases": [
+        "plaît",
+        "plait",
+        "me plaît",
+        "plaire"
+      ],
+      "preferred": [
+        "yeɛjeb",
+        "yeɛǧeb"
+      ],
+      "art": "plaire",
+      "role": "word",
+      "topics": [
+        "gouts"
+      ]
+    },
+    {
+      "key": "cuisiner",
+      "theme": "actions",
+      "label": "Cuisiner",
+      "aliases": [
+        "cuisiner",
+        "cuisinons",
+        "cuisons"
+      ],
+      "preferred": [
+        "sseww"
+      ],
+      "art": "cuisiner",
+      "role": "word",
+      "topics": [
+        "actions"
+      ]
+    },
+    {
+      "key": "corriger",
+      "theme": "actions",
+      "label": "Corriger",
+      "aliases": [
+        "corrige",
+        "corriger"
+      ],
+      "preferred": [
+        "seɣtayeɣ"
+      ],
+      "art": "corriger",
+      "role": "word",
+      "topics": [
+        "actions"
+      ]
+    },
+    {
+      "key": "jouer",
+      "theme": "actions",
+      "label": "Jouer",
+      "aliases": [
+        "jouent",
+        "jouez",
+        "jouer"
+      ],
+      "preferred": [
+        "tturarent"
+      ],
+      "art": "jouer",
+      "role": "word",
+      "topics": [
+        "actions"
+      ]
+    },
+    {
+      "key": "ecouter",
+      "theme": "actions",
+      "label": "Écouter",
+      "aliases": [
+        "écouter",
+        "d'écouter",
+        "écoutes"
+      ],
+      "preferred": [
+        "smuzget"
+      ],
+      "art": "ecouter",
+      "role": "word",
+      "topics": [
+        "actions"
+      ]
+    },
+    {
+      "key": "apprendre",
+      "theme": "actions",
+      "label": "Apprendre",
+      "aliases": [
+        "apprendre",
+        "d'apprendre",
+        "apprends"
+      ],
+      "preferred": [
+        "lmed"
+      ],
+      "art": "apprendre",
+      "role": "word",
+      "topics": [
+        "actions"
+      ]
+    },
+    {
+      "key": "caresser",
+      "theme": "actions",
+      "label": "Caresser",
+      "aliases": [
+        "caresser",
+        "caresse"
+      ],
+      "preferred": [
+        "self"
+      ],
+      "art": "caresser",
+      "role": "word",
+      "topics": [
+        "actions"
+      ]
+    },
+    {
+      "key": "nager",
+      "theme": "actions",
+      "label": "Nager",
+      "aliases": [
+        "nager",
+        "nage"
+      ],
+      "preferred": [
+        "ɛumm"
+      ],
+      "art": "nager",
+      "role": "word",
+      "topics": [
+        "actions"
+      ]
+    },
+    {
+      "key": "manger",
+      "theme": "actions",
+      "label": "Manger",
+      "aliases": [
+        "manger",
+        "mange",
+        "manges",
+        "mangeons",
+        "mangez",
+        "mangent"
+      ],
+      "preferred": [
+        "ečč"
+      ],
+      "art": "manger",
+      "role": "word",
+      "topics": [
+        "actions"
+      ]
+    },
+    {
+      "key": "ecrire",
+      "theme": "actions",
+      "label": "Écrire",
+      "aliases": [
+        "écrire",
+        "d'écrire",
+        "écrivent-ils",
+        "écrivent"
+      ],
+      "preferred": [
+        "aru"
+      ],
+      "art": "ecrire",
+      "role": "word",
+      "topics": [
+        "actions"
+      ]
+    },
+    {
+      "key": "marcher",
+      "theme": "actions",
+      "label": "Marcher",
+      "aliases": [
+        "marcher",
+        "marchons",
+        "marche"
+      ],
+      "preferred": [
+        "ddu",
+        "lḥu"
+      ],
+      "art": "marcher",
+      "role": "word",
+      "topics": [
+        "actions"
+      ]
+    },
+    {
+      "key": "chanter",
+      "theme": "actions",
+      "label": "Chanter",
+      "aliases": [
+        "chanter",
+        "chante",
+        "chanté"
+      ],
+      "preferred": [
+        "cnu"
+      ],
+      "art": "chanter",
+      "role": "word",
+      "topics": [
+        "actions"
+      ]
+    },
+    {
+      "key": "becqueter",
+      "theme": "actions",
+      "label": "Becqueter",
+      "aliases": [
+        "becquette",
+        "becqueter"
+      ],
+      "preferred": [
+        "ineqqeb"
+      ],
+      "art": "becqueter",
+      "role": "word",
+      "topics": [
+        "actions"
+      ]
+    },
+    {
+      "key": "griffer",
+      "theme": "actions",
+      "label": "Griffer",
+      "aliases": [
+        "griffe",
+        "griffer"
+      ],
+      "preferred": [
+        "ixebbec"
+      ],
+      "art": "griffer",
+      "role": "word",
+      "topics": [
+        "actions"
+      ]
+    },
+    {
+      "key": "rouler",
+      "theme": "actions",
+      "label": "Se rouler",
+      "aliases": [
+        "roulé",
+        "s'est roulé"
+      ],
+      "preferred": [
+        "yeglalez"
+      ],
+      "art": "rouler",
+      "role": "word",
+      "topics": [
+        "actions"
+      ]
+    },
+    {
+      "key": "trembler",
+      "theme": "actions",
+      "label": "Trembler",
+      "aliases": [
+        "tremble",
+        "trembler"
+      ],
+      "preferred": [
+        "yettergigi"
+      ],
+      "art": "trembler",
+      "role": "word",
+      "topics": [
+        "actions"
+      ]
+    },
+    {
+      "key": "frissonner",
+      "theme": "actions",
+      "label": "Frissonner",
+      "aliases": [
+        "frissonne",
+        "frisonne"
+      ],
+      "preferred": [
+        "yetcirriw"
+      ],
+      "art": "frissonner",
+      "role": "word",
+      "topics": [
+        "actions"
+      ]
+    },
+    {
+      "key": "travailler",
+      "theme": "actions",
+      "label": "Travailler",
+      "aliases": [
+        "travaille",
+        "travaillent",
+        "travailler"
+      ],
+      "preferred": [
+        "ittmahil",
+        "yettmahal"
+      ],
+      "art": "travailler",
+      "role": "word",
+      "topics": [
+        "actions"
+      ]
+    },
+    {
+      "key": "voir",
+      "theme": "actions",
+      "label": "Voir",
+      "aliases": [
+        "voit",
+        "voir"
+      ],
+      "preferred": [
+        "yettwali",
+        "ittwali"
+      ],
+      "art": "voir",
+      "role": "word",
+      "topics": [
+        "actions"
+      ]
+    },
+    {
+      "key": "habiter",
+      "theme": "actions",
+      "label": "Habiter",
+      "aliases": [
+        "habitent",
+        "habiter"
+      ],
+      "preferred": [
+        "zedɣen"
+      ],
+      "art": "habiter",
+      "role": "word",
+      "topics": [
+        "actions"
+      ]
+    },
+    {
+      "key": "boire",
+      "theme": "actions",
+      "label": "Boire",
+      "aliases": [
+        "boire",
+        "bois",
+        "boit",
+        "boivent",
+        "buvons",
+        "buvez",
+        "boirai",
+        "boiras"
+      ],
+      "preferred": [
+        "itess",
+        "ttess"
+      ],
+      "art": "boire",
+      "role": "word",
+      "topics": [
+        "actions"
+      ]
+    },
+    {
+      "key": "monter",
+      "theme": "actions",
+      "label": "Monter",
+      "aliases": [
+        "montons",
+        "monte",
+        "monter"
+      ],
+      "preferred": [
+        "nrekkeb"
+      ],
+      "art": "monter",
+      "role": "word",
+      "topics": [
+        "actions"
+      ]
+    },
+    {
+      "key": "courir",
+      "theme": "actions",
+      "label": "Courir",
+      "aliases": [
+        "courrez",
+        "courez",
+        "courir"
+      ],
+      "preferred": [
+        "tettazzalem"
+      ],
+      "art": "courir",
+      "role": "word",
+      "topics": [
+        "actions"
+      ]
+    },
+    {
+      "key": "trainer",
+      "theme": "actions",
+      "label": "Traîner",
+      "aliases": [
+        "trainent",
+        "traînent",
+        "traîner"
+      ],
+      "preferred": [
+        "zzuɣurent"
+      ],
+      "art": "trainer",
+      "role": "word",
+      "topics": [
+        "actions"
+      ]
+    },
+    {
+      "key": "conduire",
+      "theme": "actions",
+      "label": "Conduire",
+      "aliases": [
+        "conduisent",
+        "conduire"
+      ],
+      "preferred": [
+        "nehhren"
+      ],
+      "art": "conduire",
+      "role": "word",
+      "topics": [
+        "actions"
+      ]
+    },
+    {
+      "key": "rire",
+      "theme": "actions",
+      "label": "Rire",
+      "aliases": [
+        "ris",
+        "rire"
+      ],
+      "preferred": [
+        "desseɣ"
+      ],
+      "art": "rire",
+      "role": "word",
+      "topics": [
+        "actions"
+      ]
+    },
+    {
+      "key": "galoper",
+      "theme": "actions",
+      "label": "Galoper",
+      "aliases": [
+        "galope",
+        "galoper"
+      ],
+      "preferred": [
+        "iderreɛ"
+      ],
+      "art": "galoper",
+      "role": "word",
+      "topics": [
+        "actions"
+      ]
+    },
+    {
+      "key": "connaitre",
+      "theme": "actions",
+      "label": "Connaître",
+      "aliases": [
+        "connaitre",
+        "connaître",
+        "connais",
+        "te connais"
+      ],
+      "preferred": [
+        "issin",
+        "sneɣ"
+      ],
+      "art": "connaitre",
+      "role": "word",
+      "topics": [
+        "actions"
+      ]
+    },
+    {
+      "key": "cache-cache",
+      "theme": "jeux",
+      "label": "Cache-cache",
+      "aliases": [
+        "cache",
+        "cache cache",
+        "cache-cache"
+      ],
+      "preferred": [
+        "tuffra"
+      ],
+      "art": "cache-cache",
+      "role": "word",
+      "topics": [
+        "jeux"
+      ]
+    },
+    {
+      "key": "je",
+      "theme": "grammaire",
+      "label": "Je et moi",
+      "aliases": [
+        "je",
+        "moi"
+      ],
+      "preferred": [
+        "nekk",
+        "nekkini",
+        "nekkenti"
+      ],
+      "art": "je",
+      "role": "function",
+      "topics": [
+        "grammaire"
+      ]
+    },
+    {
+      "key": "tu",
+      "theme": "grammaire",
+      "label": "Tu et toi",
+      "aliases": [
+        "tu",
+        "toi"
+      ],
+      "preferred": [
+        "kečč",
+        "kemm",
+        "kem"
+      ],
+      "art": "tu",
+      "role": "function",
+      "topics": [
+        "grammaire"
+      ]
+    },
+    {
+      "key": "il",
+      "theme": "grammaire",
+      "label": "Il et lui",
+      "aliases": [
+        "il",
+        "lui",
+        "s'il"
+      ],
+      "preferred": [
+        "netta"
+      ],
+      "art": "il",
+      "role": "function",
+      "topics": [
+        "grammaire"
+      ]
+    },
+    {
+      "key": "elle",
+      "theme": "grammaire",
+      "label": "Elle",
+      "aliases": [
+        "elle"
+      ],
+      "preferred": [
+        "nettat"
+      ],
+      "art": "elle",
+      "role": "function",
+      "topics": [
+        "grammaire"
+      ]
+    },
+    {
+      "key": "nous",
+      "theme": "grammaire",
+      "label": "Nous",
+      "aliases": [
+        "nous"
+      ],
+      "preferred": [
+        "nekkni",
+        "nekni",
+        "nekkenti"
+      ],
+      "art": "nous",
+      "role": "function",
+      "topics": [
+        "grammaire"
+      ]
+    },
+    {
+      "key": "vous",
+      "theme": "grammaire",
+      "label": "Vous",
+      "aliases": [
+        "vous"
+      ],
+      "preferred": [
+        "kunwi",
+        "kunnemti",
+        "awen",
+        "akent"
+      ],
+      "art": "vous",
+      "role": "function",
+      "topics": [
+        "grammaire"
+      ]
+    },
+    {
+      "key": "ils",
+      "theme": "grammaire",
+      "label": "Ils",
+      "aliases": [
+        "ils"
+      ],
+      "preferred": [
+        "nutni"
+      ],
+      "art": "ils",
+      "role": "function",
+      "topics": [
+        "grammaire"
+      ]
+    },
+    {
+      "key": "elles",
+      "theme": "grammaire",
+      "label": "Elles",
+      "aliases": [
+        "elles"
+      ],
+      "preferred": [
+        "nutenti"
+      ],
+      "art": "elles",
+      "role": "function",
+      "topics": [
+        "grammaire"
+      ]
+    },
+    {
+      "key": "etre",
+      "theme": "grammaire",
+      "label": "Être",
+      "aliases": [
+        "suis",
+        "je suis",
+        "es",
+        "es-tu",
+        "est",
+        "sont",
+        "sommes",
+        "s’est"
+      ],
+      "preferred": [
+        "aql-i",
+        "llan",
+        "yella"
+      ],
+      "art": "etre",
+      "role": "function",
+      "topics": [
+        "grammaire"
+      ]
+    },
+    {
+      "key": "avoir",
+      "theme": "grammaire",
+      "label": "Avoir",
+      "aliases": [
+        "a",
+        "j'ai",
+        "avons"
+      ],
+      "preferred": [
+        "sɛiɣ",
+        "nesɛa"
+      ],
+      "art": "avoir",
+      "role": "function",
+      "topics": [
+        "grammaire"
+      ]
+    },
+    {
+      "key": "et",
+      "theme": "grammaire",
+      "label": "Et",
+      "aliases": [
+        "et"
+      ],
+      "preferred": [
+        "d",
+        "u"
+      ],
+      "art": "et",
+      "role": "function",
+      "topics": [
+        "grammaire"
+      ]
+    },
+    {
+      "key": "avec",
+      "theme": "grammaire",
+      "label": "Avec",
+      "aliases": [
+        "avec"
+      ],
+      "preferred": [
+        "s"
+      ],
+      "art": "avec",
+      "role": "function",
+      "topics": [
+        "grammaire"
+      ]
+    },
+    {
+      "key": "de",
+      "theme": "grammaire",
+      "label": "De",
+      "aliases": [
+        "de",
+        "du"
+      ],
+      "preferred": [
+        "n",
+        "seg",
+        "si"
+      ],
+      "art": "de",
+      "role": "function",
+      "topics": [
+        "grammaire"
+      ]
+    },
+    {
+      "key": "a",
+      "theme": "grammaire",
+      "label": "À",
+      "aliases": [
+        "à",
+        "au"
+      ],
+      "preferred": [
+        "i",
+        "ar"
+      ],
+      "art": "a",
+      "role": "function",
+      "topics": [
+        "grammaire"
+      ]
+    },
+    {
+      "key": "dans",
+      "theme": "grammaire",
+      "label": "Dans",
+      "aliases": [
+        "dans",
+        "en"
+      ],
+      "preferred": [
+        "deg",
+        "di"
+      ],
+      "art": "dans",
+      "role": "function",
+      "topics": [
+        "grammaire"
+      ]
+    },
+    {
+      "key": "vers",
+      "theme": "grammaire",
+      "label": "Vers",
+      "aliases": [
+        "vers"
+      ],
+      "preferred": [
+        "ɣer"
+      ],
+      "art": "vers",
+      "role": "function",
+      "topics": [
+        "grammaire"
+      ]
+    },
+    {
+      "key": "mon",
+      "theme": "grammaire",
+      "label": "Mon et ma",
+      "aliases": [
+        "mon",
+        "ma",
+        "mes"
+      ],
+      "preferred": [
+        "inu",
+        "iw"
+      ],
+      "art": "mon",
+      "role": "function",
+      "topics": [
+        "grammaire"
+      ]
+    },
+    {
+      "key": "ton",
+      "theme": "grammaire",
+      "label": "Ton et ta",
+      "aliases": [
+        "ton",
+        "ta",
+        "tes"
+      ],
+      "preferred": [
+        "inek",
+        "inem",
+        "ik"
+      ],
+      "art": "ton",
+      "role": "function",
+      "topics": [
+        "grammaire"
+      ]
+    },
+    {
+      "key": "son",
+      "theme": "grammaire",
+      "label": "Son et sa",
+      "aliases": [
+        "son",
+        "sa",
+        "ses"
+      ],
+      "preferred": [
+        "is",
+        "ines"
+      ],
+      "art": "son",
+      "role": "function",
+      "topics": [
+        "grammaire"
+      ]
+    },
+    {
+      "key": "ce",
+      "theme": "grammaire",
+      "label": "Ce et cette",
+      "aliases": [
+        "cet",
+        "ce",
+        "cette",
+        "ces",
+        "ça"
+      ],
+      "preferred": [
+        "wagi",
+        "tagi",
+        "a",
+        "agi"
+      ],
+      "art": "ce",
+      "role": "function",
+      "topics": [
+        "grammaire"
+      ]
+    },
+    {
+      "key": "un-article",
+      "theme": "grammaire",
+      "label": "Un et une",
+      "aliases": [
+        "un",
+        "une"
+      ],
+      "preferred": [
+        "yiwet"
+      ],
+      "art": "un-article",
+      "role": "function",
+      "topics": [
+        "grammaire"
+      ]
+    },
+    {
+      "key": "articles",
+      "theme": "grammaire",
+      "label": "Les articles",
+      "aliases": [
+        "le",
+        "la",
+        "les",
+        "des"
+      ],
+      "preferred": [],
+      "art": "articles",
+      "role": "function",
+      "topics": [
+        "grammaire"
+      ]
+    },
+    {
+      "key": "ou",
+      "theme": "grammaire",
+      "label": "Ou",
+      "aliases": [
+        "ou"
+      ],
+      "preferred": [
+        "neɣ"
+      ],
+      "art": "ou",
+      "role": "function",
+      "topics": [
+        "grammaire"
+      ]
+    },
+    {
+      "key": "ne",
+      "theme": "grammaire",
+      "label": "Ne et pas",
+      "aliases": [
+        "ne",
+        "pas"
+      ],
+      "preferred": [
+        "ur",
+        "ara"
+      ],
+      "art": "ne",
+      "role": "function",
+      "topics": [
+        "grammaire"
+      ]
+    },
+    {
+      "key": "parce-que",
+      "theme": "grammaire",
+      "label": "Parce que",
+      "aliases": [
+        "parceque",
+        "parce que"
+      ],
+      "preferred": [
+        "imi"
+      ],
+      "art": "parce-que",
+      "role": "function",
+      "topics": [
+        "grammaire"
+      ]
+    },
+    {
+      "key": "beaucoup",
+      "theme": "grammaire",
+      "label": "Beaucoup",
+      "aliases": [
+        "beaucoup"
+      ],
+      "preferred": [
+        "aṭas",
+        "xilla"
+      ],
+      "art": "beaucoup",
+      "role": "function",
+      "topics": [
+        "grammaire"
+      ]
+    },
+    {
+      "key": "particule",
+      "theme": "grammaire",
+      "label": "Particule",
+      "aliases": [
+        "particule"
+      ],
+      "preferred": [
+        "ad"
+      ],
+      "art": "particule",
+      "role": "function",
+      "topics": [
+        "grammaire"
+      ]
+    },
+    {
+      "key": "en-train",
+      "theme": "grammaire",
+      "label": "En train de",
+      "aliases": [
+        "entrain",
+        "en train"
+      ],
+      "preferred": [
+        "la"
+      ],
+      "art": "en-train",
+      "role": "function",
+      "topics": [
+        "grammaire"
+      ]
+    },
+    {
+      "key": "ici",
+      "theme": "grammaire",
+      "label": "Ici",
+      "aliases": [
+        "ici"
+      ],
+      "preferred": [
+        "dagi"
+      ],
+      "art": "ici",
+      "role": "function",
+      "topics": [
+        "grammaire"
+      ]
+    },
+    {
+      "key": "annexion",
+      "theme": "grammaire",
+      "label": "Annexion",
+      "aliases": [
+        "annexion"
+      ],
+      "preferred": [],
+      "art": "annexion",
+      "role": "function",
+      "topics": [
+        "grammaire"
+      ]
+    },
+    {
+      "key": "romain",
+      "theme": "origines",
+      "label": "Romain",
+      "aliases": [
+        "romain"
+      ],
+      "preferred": [
+        "uṛumi"
+      ],
+      "art": "romain",
+      "role": "word",
+      "topics": [
+        "origines"
+      ]
+    },
+    {
+      "key": "paix",
+      "theme": "paix",
+      "label": "Paix",
+      "aliases": [
+        "paix"
+      ],
+      "preferred": [
+        "talwit"
+      ],
+      "art": "paix",
+      "role": "word",
+      "topics": [
+        "paix"
+      ]
+    },
+    {
+      "key": "journee",
+      "theme": "jours",
+      "label": "Journée",
+      "aliases": [
+        "journée",
+        "jour",
+        "jours"
+      ],
+      "preferred": [
+        "ass"
+      ],
+      "art": "journee",
+      "role": "word",
+      "topics": [
+        "jours"
+      ]
+    },
+    {
+      "key": "nuit",
+      "theme": "jours",
+      "label": "Nuit",
+      "aliases": [
+        "nuit",
+        "nuits"
+      ],
+      "preferred": [
+        "iḍ"
+      ],
+      "art": "nuit",
+      "role": "word",
+      "topics": [
+        "jours"
+      ]
+    },
+    {
+      "key": "poisson",
+      "theme": "animaux",
+      "label": "Poisson",
+      "aliases": [
+        "poisson",
+        "poissons"
+      ],
+      "preferred": [
+        "aslem"
+      ],
+      "art": "poisson",
+      "role": "word",
+      "topics": [
+        "animaux",
+        "alimentation"
+      ]
+    },
+    {
+      "key": "nombre-0",
+      "theme": "nombres",
+      "label": "Zéro",
+      "aliases": [
+        "zéro"
+      ],
+      "preferred": [
+        "ulac"
+      ],
+      "art": "number:0",
+      "role": "word",
+      "topics": [
+        "nombres"
+      ]
+    },
+    {
+      "key": "nombre-1",
+      "theme": "nombres",
+      "label": "Un",
+      "aliases": [
+        "un"
+      ],
+      "preferred": [
+        "yiwen"
+      ],
+      "art": "number:1",
+      "role": "word",
+      "topics": [
+        "nombres"
+      ]
+    },
+    {
+      "key": "nombre-2",
+      "theme": "nombres",
+      "label": "Deux",
+      "aliases": [
+        "deux"
+      ],
+      "preferred": [
+        "sin",
+        "snat"
+      ],
+      "art": "number:2",
+      "role": "word",
+      "topics": [
+        "nombres"
+      ]
+    },
+    {
+      "key": "nombre-3",
+      "theme": "nombres",
+      "label": "Trois",
+      "aliases": [
+        "trois"
+      ],
+      "preferred": [
+        "kraḍ"
+      ],
+      "art": "number:3",
+      "role": "word",
+      "topics": [
+        "nombres"
+      ]
+    },
+    {
+      "key": "nombre-4",
+      "theme": "nombres",
+      "label": "Quatre",
+      "aliases": [
+        "quatre"
+      ],
+      "preferred": [
+        "kuẓ"
+      ],
+      "art": "number:4",
+      "role": "word",
+      "topics": [
+        "nombres"
+      ]
+    },
+    {
+      "key": "nombre-5",
+      "theme": "nombres",
+      "label": "Cinq",
+      "aliases": [
+        "cinq"
+      ],
+      "preferred": [
+        "semmus"
+      ],
+      "art": "number:5",
+      "role": "word",
+      "topics": [
+        "nombres"
+      ]
+    },
+    {
+      "key": "nombre-6",
+      "theme": "nombres",
+      "label": "Six",
+      "aliases": [
+        "six"
+      ],
+      "preferred": [
+        "sḍis"
+      ],
+      "art": "number:6",
+      "role": "word",
+      "topics": [
+        "nombres"
+      ]
+    },
+    {
+      "key": "nombre-7",
+      "theme": "nombres",
+      "label": "Sept",
+      "aliases": [
+        "sept"
+      ],
+      "preferred": [
+        "ṣa"
+      ],
+      "art": "number:7",
+      "role": "word",
+      "topics": [
+        "nombres"
+      ]
+    },
+    {
+      "key": "nombre-9",
+      "theme": "nombres",
+      "label": "Neuf",
+      "aliases": [
+        "neuf"
+      ],
+      "preferred": [
+        "tẓa"
+      ],
+      "art": "number:9",
+      "role": "word",
+      "topics": [
+        "nombres"
+      ]
+    },
+    {
+      "key": "nombre-10",
+      "theme": "nombres",
+      "label": "Dix",
+      "aliases": [
+        "dix"
+      ],
+      "preferred": [
+        "mraw"
+      ],
+      "art": "number:10",
+      "role": "word",
+      "topics": [
+        "nombres"
+      ]
+    },
+    {
+      "key": "nombre-11",
+      "theme": "nombres",
+      "label": "Onze",
+      "aliases": [
+        "onze"
+      ],
+      "preferred": [
+        "mraw d yiwen",
+        "ḥdac"
+      ],
+      "art": "number:11",
+      "role": "word",
+      "topics": [
+        "nombres"
+      ]
+    },
+    {
+      "key": "nombre-12",
+      "theme": "nombres",
+      "label": "Douze",
+      "aliases": [
+        "douze"
+      ],
+      "preferred": [
+        "mraw d sin",
+        "tnac"
+      ],
+      "art": "number:12",
+      "role": "word",
+      "topics": [
+        "nombres"
+      ]
+    },
+    {
+      "key": "nombre-20",
+      "theme": "nombres",
+      "label": "Vingt",
+      "aliases": [
+        "vingt"
+      ],
+      "preferred": [
+        "snat tmerwin",
+        "tmerwin",
+        "ɛecrin"
+      ],
+      "art": "number:20",
+      "role": "word",
+      "topics": [
+        "nombres"
+      ]
+    },
+    {
+      "key": "me",
+      "theme": "grammaire",
+      "label": "Me",
+      "aliases": [
+        "me"
+      ],
+      "preferred": [
+        "iyi"
+      ],
+      "art": "me",
+      "role": "function",
+      "topics": [
+        "grammaire"
+      ]
+    },
+    {
+      "key": "couler",
+      "theme": "actions",
+      "label": "Couler",
+      "aliases": [
+        "coule",
+        "coûle",
+        "couler"
+      ],
+      "preferred": [
+        "yetturug"
+      ],
+      "art": "couler",
+      "role": "word",
+      "topics": [
+        "actions"
+      ]
+    },
+    {
+      "key": "demain",
+      "theme": "temps",
+      "label": "Demain",
+      "aliases": [
+        "demain",
+        "hier",
+        "aujourd’hui",
+        "matin",
+        "soir",
+        "heure",
+        "heures"
+      ],
+      "preferred": [],
+      "art": "demain",
+      "role": "word",
+      "topics": [
+        "temps"
+      ]
+    },
+    {
+      "key": "meteo",
+      "theme": "temps",
+      "label": "La météo",
+      "aliases": [
+        "pleut",
+        "pluie",
+        "neige",
+        "météo",
+        "orage",
+        "vent"
+      ],
+      "preferred": [],
+      "art": "meteo",
+      "role": "word",
+      "topics": [
+        "temps"
+      ]
+    },
+    {
+      "key": "train",
+      "theme": "voyages",
+      "label": "Train",
+      "aliases": [
+        "train",
+        "trains",
+        "gare",
+        "gares"
+      ],
+      "preferred": [],
+      "art": "train",
+      "role": "word",
+      "topics": [
+        "voyages"
+      ]
+    },
+    {
+      "key": "transport",
+      "theme": "voyages",
+      "label": "Transports",
+      "aliases": [
+        "avion",
+        "avions",
+        "bus",
+        "voiture",
+        "voitures",
+        "route",
+        "routes",
+        "billet",
+        "billets"
+      ],
+      "preferred": [],
+      "art": "transport",
+      "role": "word",
+      "topics": [
+        "voyages"
+      ]
+    },
+    {
+      "key": "hopital",
+      "theme": "sante",
+      "label": "Hôpital",
+      "aliases": [
+        "hôpital",
+        "hôpitaux",
+        "malade",
+        "malades",
+        "maladie",
+        "maladies",
+        "médicament",
+        "douleur"
+      ],
+      "preferred": [],
+      "art": "hopital",
+      "role": "word",
+      "topics": [
+        "sante"
+      ]
+    },
+    {
+      "key": "nombre-8",
+      "theme": "nombres",
+      "label": "Huit",
+      "aliases": [
+        "huit"
+      ],
+      "preferred": [
+        "ṭam"
+      ],
+      "art": "number:8",
+      "role": "word",
+      "topics": [
+        "nombres"
+      ]
+    },
+    {
+      "key": "souper",
+      "theme": "alimentation",
+      "label": "Souper",
+      "aliases": [
+        "souper"
+      ],
+      "preferred": [
+        "imensi"
+      ],
+      "art": "souper",
+      "role": "word",
+      "topics": [
+        "alimentation"
+      ]
+    },
+    {
+      "key": "dejeuner",
+      "theme": "alimentation",
+      "label": "Déjeuner",
+      "aliases": [
+        "déjeuner"
+      ],
+      "preferred": [
+        "imekli"
+      ],
+      "art": "dejeuner",
+      "role": "word",
+      "topics": [
+        "alimentation"
+      ]
+    },
+    {
+      "key": "assistante",
+      "theme": "metiers",
+      "label": "Assistantes",
+      "aliases": [
+        "assistante",
+        "assistantes"
+      ],
+      "preferred": [
+        "timaragin"
+      ],
+      "art": "assistante",
+      "role": "word",
+      "topics": [
+        "metiers"
+      ]
+    },
+    {
+      "key": "voix",
+      "theme": "musique",
+      "label": "Voix",
+      "aliases": [
+        "voix"
+      ],
+      "preferred": [],
+      "art": "voix",
+      "role": "word",
+      "topics": [
+        "musique"
+      ]
+    },
+    {
+      "key": "rat",
+      "theme": "animaux",
+      "label": "Rat",
+      "aliases": [
+        "rat",
+        "rats"
+      ],
+      "preferred": [],
+      "art": "rat",
+      "role": "word",
+      "topics": [
+        "animaux"
+      ]
+    },
+    {
+      "key": "appeler",
+      "theme": "salutations",
+      "label": "S’appeler",
+      "aliases": [
+        "m'appelle",
+        "s'appelle",
+        "s'appeler"
+      ],
+      "preferred": [
+        "ssawalen-iyi"
+      ],
+      "art": "appeler",
+      "role": "word",
+      "topics": [
+        "salutations"
+      ]
+    },
+    {
+      "key": "partir",
+      "theme": "voyages",
+      "label": "Partir",
+      "aliases": [
+        "partons",
+        "partir"
+      ],
+      "preferred": [
+        "nruḥ"
+      ],
+      "art": "partir",
+      "role": "word",
+      "topics": [
+        "voyages"
+      ]
+    },
+    {
+      "key": "arriver",
+      "theme": "voyages",
+      "label": "Arriver",
+      "aliases": [
+        "arrivés",
+        "arrivées",
+        "arriver"
+      ],
+      "preferred": [
+        "wwḍen",
+        "wwḍent"
+      ],
+      "art": "arriver",
+      "role": "word",
+      "topics": [
+        "voyages"
+      ]
+    }
+  ]
+}

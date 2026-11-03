@@ -22,7 +22,9 @@ def tokens(text):
 
 def features(kind, data):
     count = len(tokens(data.get("latin", ""))) if kind == "phrase" else 0
+    from .organization import fields
     return {
+        **fields(kind,data),
         "learning_band": (
             ("short" if count <= 4 else "medium" if count <= 8 else "long")
             if kind == "phrase"

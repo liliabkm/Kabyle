@@ -11,6 +11,9 @@ CATEGORIES={'alphabet':'Alphabet','animaux':'Animaux','fruits':'Fruits','legumes
 def fold(value):
     return ''.join(c for c in unicodedata.normalize('NFKD',value).casefold() if not unicodedata.combining(c))
 
+from .organization import TOPICS
+CATEGORIES.update({key:value[0] for key,value in TOPICS.items()})
+
 def category_label(theme):return CATEGORIES.get(theme,theme.replace('-',' ').replace('_',' ').capitalize())
 
 def is_published(c):
@@ -18,16 +21,8 @@ def is_published(c):
     return c.status!='rejected'
 
 def suggested_category(item):
-    if item['kind']=='letter':return 'alphabet'
-    d=item['data'];value=' '+fold(' '.join([d.get('french','')]+d.get('french_variants',[])))+' '
-    groups=[('fruits',r'\b(fraises?|figues?|raisin|pommes?|poires?|oranges?|bananes?|cerises?|fruits?)\b'),('legumes',r'\b(carottes?|legumes?|tomates?|oignons?)\b'),('animaux',r'\b(chats?|chiens?|chevaux|cheval|canards?|ours|lions?|anes?|animaux|oiseaux?)\b'),('vetements',r'\b(robes?|jupes?|chemises?|chapeaux?|chaussures?|lunettes|t.shirts?|vetements?)\b'),('famille',r'\b(amis?|amies?|meres?|peres?|parents?|freres?|soeurs?|famille)\b'),('metiers',r'\b(docteurs?|medecins?|professeurs?|etudiants?|ecole|enseignants?)\b'),('nature',r'\b(plages?|arbres?|forets?|rivieres?|montagnes?|ciel|mer|fleurs?)\b'),('alimentation',r'\b(pain|lait|pates|couscous|cafe|the|eau|biere|soupe|repas|aliments?)\b')]
-    for category,pattern in groups:
-        if re.search(pattern,value):return category
-    source=' '.join(s.get('url','') for s in d.get('sources',[]))
-    if any(t in source for t in ('/verbs.yaml','/continuous.yaml','/verb_plurals.yaml')):return 'actions'
-    if '/phrases.yaml' in source:return 'salutations'
-    if '/adjectives.yaml' in source:return 'description'
-    return {'adjectifs':'description','pluriels':'grammaire','premiers-mots':'vie-quotidienne'}.get(item.get('theme'),item.get('theme','vie-quotidienne'))
+    from .organization import organize
+    return organize(item['kind'],item['data'])['topics'][0]
 
 def seed_categories(session):
     import json

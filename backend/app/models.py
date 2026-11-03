@@ -1,5 +1,7 @@
 from sqlalchemy import String, JSON, ForeignKey, DateTime, UniqueConstraint, Text, event, Boolean
 from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy import inspect
+from sqlalchemy.dialects.postgresql import JSONB
 from datetime import datetime, timezone
 from .db import Base
 class Content(Base):
@@ -16,6 +18,12 @@ class Content(Base):
     learning_band: Mapped[str | None] = mapped_column(String(16),nullable=True)
     has_audio: Mapped[bool] = mapped_column(Boolean,nullable=False,default=False,server_default="false")
     lexeme_key: Mapped[str | None] = mapped_column(String(64),nullable=True)
+    topic_keys: Mapped[list] = mapped_column(JSONB,nullable=False,default=list,server_default="[]")
+    matched_concepts: Mapped[list] = mapped_column(JSONB,nullable=False,default=list,server_default="[]")
+    concept_key: Mapped[str | None] = mapped_column(String(100),nullable=True)
+    learning_role: Mapped[str | None] = mapped_column(String(24),nullable=True)
+    learning_rank: Mapped[int] = mapped_column(default=999,server_default="999")
+    organization_version: Mapped[str | None] = mapped_column(String(32),nullable=True)
 class Progress(Base):
     __tablename__ = "progress"
     __table_args__ = (UniqueConstraint("learner", "content_id"),)
@@ -59,4 +67,23 @@ def update_search_text(mapper, connection, target):
     target.search_text=searchable(target.data)
     target.pair_key=pair_key(target.kind,target.data)
     from .learning import features
+    from .organization import VERSION
+    state=inspect(target)
+    previous_role=target.learning_role
+    first_organization=target.organization_version!=VERSION
+    old_data=state.attrs.data.history.deleted
+    french_changed=bool(old_data and old_data[0].get('french')!=target.data.get('french'))
+    explicit_theme_change=state.persistent and state.attrs.theme.history.has_changes()
+    auto_category=target.data.get('category_status')=='suggested' or target.data.get('complete_course_revision')
+    implicit_category=target.theme in (None,'alphabet')
     for key,value in features(target.kind,target.data).items():setattr(target,key,value)
+    if target.kind in ('word','phrase') and not target.data.get('category_reviewed_at') and not explicit_theme_change and (first_organization or state.pending or french_changed or previous_role!=target.learning_role) and (auto_category or implicit_category):
+        target.theme=target.topic_keys[0]
+    if target.kind in ('word','phrase') and target.data.get('category_reviewed_at') and target.learning_role not in ('review','fragment'):
+        from .organization import TOPICS,norm
+        if target.theme:
+            target.topic_keys=[target.theme]
+            if target.kind=='word' and target.concept_key is None:
+                import hashlib
+                target.concept_key='manual-'+hashlib.sha256(norm(target.data.get('french','')).encode()).hexdigest()[:16]
+                target.learning_role='word'

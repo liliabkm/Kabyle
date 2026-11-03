@@ -119,3 +119,6 @@ from .tatoeba import register_routes as register_tatoeba_routes
 register_tatoeba_routes(app,db,admin)
 from .phrase_practice import register_routes as register_phrase_routes
 register_phrase_routes(app,db,learner)
+
+from .topics import register_routes as register_topic_routes
+register_topic_routes(app,db,admin)

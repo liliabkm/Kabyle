@@ -114,9 +114,15 @@ try:
         page.get_by_role("navigation").get_by_role(
             "button", name="Mots et phrases", exact=True
         ).click()
-        page.get_by_label("Source des phrases", exact=True).select_option("tatoeba")
-        expect(page.locator(".phrase-pick")).to_have_count(3)
-        page.locator(".phrase-pick").filter(has_text=kab).click()
+        page.locator('[data-topic="salutations"]').click()
+        page.get_by_role("button",name="Voir les phrases du thème",exact=True).click()
+        target=page.locator('.topic-phrase-card').filter(has_text=fr)
+        for _ in range(8):
+            if target.count():break
+            page.get_by_role('button',name='Après',exact=True).click()
+            page.wait_for_timeout(150)
+        target.get_by_role('button',name='Construire cette phrase',exact=True).click()
+        page.get_by_role('button',name='Je découvre',exact=True).click()
         expect(page.locator(".interactive-sentence")).to_have_text(kab)
         expect(
             page.get_by_text("Note grammaticale de test, renseignée dans l’éditeur.", exact=True)

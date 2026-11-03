@@ -84,7 +84,8 @@ def seed_complete_course(session):
                 editorial={k:current.data[k] for k in ('category_reviewed_at','category_status','category_scheme') if k in current.data}
                 current.data={**item['data'],**editorial,'complete_course_revision':'e426e0fa-topics-v2'}
                 if not editorial.get('category_reviewed_at'):
-                    current.theme=item['theme']
+                    from .organization import organize
+                    current.theme=organize(item['kind'],item['data'])['topics'][0]
                 counts['source_metadata_refreshed']+=1
     session.flush()
     # Backfill only old rows. Bulk TSV imports fill this field at insertion.

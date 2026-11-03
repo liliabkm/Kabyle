@@ -1,3 +1,16 @@
+# Parcours par thèmes illustrés — 3 novembre 2026
+
+- Audit exhaustif des 442 entrées lexicales et 133 phrases livrées : 310 reclassements, regroupements par sens, 13 éléments techniques/incohérents distingués du vocabulaire. Rapport reproductible : `content/catalog/organization-report.json`.
+- **43 tests API passent** : couverture des entrées, souris/éléphants/boissons/pronoms, faux positifs français, regroupement des formes, appartenance multi-thème, correspondance bilingue entre mot et phrase, contexte kabyle réellement présent et catégories éditoriales personnalisées. Les tests API antérieurs restent inclus.
+- Schéma PostgreSQL temporaire : migrations 001 à **006** et seed réussis. Vérification des classements principaux de souris, éléphant, café, nous et de la fiche source incohérente `ṭam`. Aucun texte ni validation d’une fiche existante n’est remplacé par l’organisation.
+- Compilation Next.js/TypeScript réussie.
+- `scripts/topic_browser_smoke.py` passe avec les vraies données livrées : cartes illustrées sans filtre apprenant, 3 fiches fruits, 12 fiches animaux, clic sur un mot, contexte attesté et surligné, cinq contextes de cheval, construction de la phrase des fraises, progrès réel et lettres consultables. Ordinateur, 390 px et 320 px, sans erreur JavaScript ou débordement.
+- Captures locales ignorées par Git : `artifacts/topics-gallery.png`, `topic-animals-words.png`, `topic-horse-contexts.png`, `topics-mobile.png`.
+
+Les sections ci-dessous sont historiques, notamment les anciens écrans utilisant des listes de filtres publiques.
+
+---
+
 # Tatoeba et activités de phrases — 3 novembre 2026
 
 - **38 tests API passent** contre PostgreSQL réel : alignement direct, archives compressées, voix multiples, dédoublonnage, conservation des textes/catégories/validations, identité de source après correction des deux textes, lexique exact et variantes, exercices corrigés côté serveur et progression idempotente.

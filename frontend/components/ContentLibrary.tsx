@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState, useRef } from "react";
 import { Search, X } from "lucide-react";
+import OrganizationAudit from "./OrganizationAudit";
 import TatoebaImport from "./TatoebaImport";
 import TsvImport from "./TsvImport";
 import ReadingLibrary from "./ReadingLibrary";
@@ -167,11 +168,19 @@ export default function ContentLibrary({
     try {
       const photo = photos.find((p) => p.id === picked),
         images = selected.data.images || [];
+      const categoryChanged =
+        items.find((i) => i.id === selected.id)?.theme !== selected.theme;
       const updated = {
         ...selected,
         status: "draft",
         data: {
           ...selected.data,
+          ...(categoryChanged
+            ? {
+                category_reviewed_at: new Date().toISOString(),
+                category_status: "editorial",
+              }
+            : {}),
           images:
             photo && !images.some((i) => i.url === photo.data.url)
               ? [...images, { ...photo.data, asset_id: photo.id }]
@@ -244,6 +253,7 @@ export default function ContentLibrary({
           {message}
         </p>
       )}
+      <OrganizationAudit token={token} />
       <TatoebaImport
         token={token}
         onDone={() => {

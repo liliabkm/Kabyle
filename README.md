@@ -1,10 +1,10 @@
 # Tifin · apprendre le kabyle
 
-Application Next.js + FastAPI + PostgreSQL pour des débutants francophones.
+Application Next.js, FastAPI et PostgreSQL pour des débutants francophones.
 
-## Voir la mise à jour sur ton ordinateur
+## Voir la mise à jour
 
-Arrêter le serveur avec Ctrl+C, puis :
+Arrêter le site avec Ctrl+C, puis :
 
 ```bash
 cd ~/Documents/projet_kabyle/Kabyle
@@ -13,126 +13,110 @@ npm --prefix frontend run build
 bash scripts/start.sh
 ```
 
-Ouvrir **http://localhost:3000**. Le démarrage applique les migrations jusqu’à 005 et importe les nouveaux contenus sans écraser les corrections ni les validations de l’administrateur. Le `.env`, le port PostgreSQL local et les dépendances verrouillées restent ceux de ton installation. Si `scripts/db.sh` a été adapté au port 5433, conserver cette adaptation et la même valeur dans `DATABASE_URL`.
+Ouvrir **http://localhost:3000 → Mots et phrases**. Le démarrage applique la migration **006** et reclasse les données existantes par sens français. Il conserve les textes, les photos ajoutées, les validations linguistiques et les catégories explicitement confirmées dans l’administration. Le `.env`, le verrou Python local et `scripts/db.sh` ne sont pas remplacés par cette mise à jour ; conserver ton adaptation au port PostgreSQL 5433 si elle est utilisée.
 
-Première installation : `bash scripts/install.sh`, puis `bash scripts/start.sh`. Il faut Node.js 22+, Python avec `uv`, Docker actif et accessible. Le cloud utilise Python 3.12 ; pour Python 3.10, conserver le verrou de dépendances compatible déjà généré sur ton PC. Les journaux sont dans `artifacts/`. Ctrl+C arrête les serveurs ; PostgreSQL conserve ses données dans le volume Docker.
+Première installation : `bash scripts/install.sh`, puis `bash scripts/start.sh`. Prérequis : Node.js 22+, Python avec `uv`, Docker actif et accessible. Le cloud utilise Python 3.12 ; l’installation Python 3.10 doit conserver son verrou compatible. Les serveurs restent au premier plan ; Ctrl+C les arrête. Journaux : `artifacts/`. PostgreSQL conserve ses données dans le volume Docker.
 
-## Tatoeba : importer et apprendre avec des enregistrements
+## Le parcours par images
 
-Après la mise à jour et le démarrage du site, ouvrir un deuxième terminal :
+Les utilisateurs choisissent des **cartes illustrées**, sans menus de filtres : animaux, fruits, vêtements, nature, personnes, école, métiers, nombres, couleurs, etc.
+
+Chaque thème propose :
+
+1. **Les mots** : illustration ou photo, mot kabyle, sens français et formes associées regroupées dans une même fiche.
+2. **Les phrases** : « Utiliser ce mot » ouvre uniquement ses contextes attestés. Le français doit exprimer le même concept et une forme kabyle connue doit être présente ; elle est surlignée.
+3. **À moi de jouer** : « Construire cette phrase » ouvre directement le puzzle. Le serveur corrige la réponse et enregistre la progression réelle.
+
+Exemple : **Animaux → Cheval (`agmar`) → cinq phrases**, dont `Agmar itess aman` / « Le cheval boit de l’eau », puis construction de la phrase. **Fruits** contient trois fiches : fraises, raisin et figues. Les pluriels et formes de contexte ne sont plus présentés comme autant de nouveaux mots sans rapport.
+
+**Ma bibliothèque** utilise les mêmes cartes et ajoute **Les lettres** : huit lettres lisibles sans jeu obligatoire. Lire une fiche ne crée aucune réussite.
+
+Les images d’animaux sont des illustrations originales du projet. Les photos de fruits/légumes sont les fichiers Fruits-360 déjà livrés, attribués à Mihai Oltean, 100 × 100 px, pixels inchangés ; leurs crédits sont dans les sources des fiches.
+
+## Organisation des données
+
+Le catalogue livré comprend **442 entrées lexicales sources, 133 paires de phrases, 8 lettres et 30 photos**. Parmi les entrées lexicales, 370 viennent des mini-dictionnaires : elles comprennent des formes conjuguées, pluriels, pronoms, fragments et libellés techniques. Les compteurs des thèmes représentent les fiches regroupées, pas le nombre brut de variantes.
+
+L’audit actuel corrige **310 classements** du catalogue livré. Exemples : souris et éléphants passent dans Animaux ; café, thé et bière dans Boissons ; pronoms dans Les petits mots ; « Merci » dans Salutations ; les phrases avec raisin ou figues quittent leur ancien chapitre Actions pour rejoindre Fruits.
+
+- Le classement suit le **sens français**, pas le dossier du cours source. Les alias et frontières lexicales évitent les faux rapprochements : « achat » n’est pas « chat », « pommes de terre » ne devient pas « pommes », « un chien » n’est pas une leçon du nombre un, « Quoi de neuf ? » n’est pas le nombre neuf.
+- Une phrase peut appartenir à plusieurs thèmes justifiés par son contenu : le cheval qui boit de l’eau appartient aussi aux contextes des boissons. Il reste un seul enregistrement en base.
+- Les variantes d’un même sens sont regroupées ; repas, déjeuner et souper, ou assistante et infirmière, restent des sens distincts.
+- **13 éléments sources à clarifier** sont séparés des fiches d’apprentissage : 12 incohérences/libellés techniques et un fragment d’expression. Ils restent publics dans **Le coin du dictionnaire**. Exemple : `ṭam` est traduit « un ours » malgré les images du nombre huit ; sa traduction n’est pas modifiée automatiquement.
+- Les prénoms des personnages sont rangés dans le dictionnaire, distinctement des noms communs.
+- Les phrases sans sujet suffisamment identifiable restent dans Autres situations, plutôt que d’être rattachées arbitrairement à un thème.
+
+Fichiers de référence :
+
+- `content/catalog/semantic-topics.json` : sens français, variantes, catégories et formes kabyles préférées lorsqu’elles existent dans le corpus.
+- `content/catalog/organization-report.json` : décision pour chacune des **575 entrées** mots/phrases, anciens classements, nouveaux thèmes et éléments à clarifier.
+- `content/catalog/course-words.json`, `course-phrases.json` : données sources, avec provenance et traductions conservées.
+- `course-files.json`, `course-report.json` : les 15 compétences LibreLingo sont incluses, dont les juniors et les mini-dictionnaires, à la révision `e426e0fa052da1c91b6efd800d8469e6940757d5`.
+
+Reproduire l’audit :
+
+```bash
+.venv/bin/python scripts/audit_organization.py
+```
+
+Les décisions sont conservées dans PostgreSQL : `content.theme` pour le classement principal, `topic_keys` pour les appartenances, `concept_key` pour les regroupements et `matched_concepts` pour les sens présents dans une phrase. La migration 006 ajoute des index GIN ; les mises à niveau traitent les données par lots.
+
+## Administration et validation
+
+Dans **Gestion des contenus**, saisir `ADMIN_TOKEN` depuis ton `.env`, puis ouvrir la bibliothèque. Le jeton reste en mémoire dans l’onglet.
+
+- Tous les mots, phrases, lettres et photos restent consultables, avec recherche et filtres **dans l’administration**.
+- **Valider** confirme la relecture d’une fiche. Le classement automatique ne transforme pas une traduction en traduction validée.
+- Modifier une fiche conserve sa visibilité et la remet À vérifier. Modifier uniquement la catégorie conserve le texte et la validation. Les catégories confirmées manuellement restent utilisables dans le parcours, y compris les catégories personnalisées.
+- **Classement des données et fiches à clarifier** montre les formes lexicales, petits mots, noms propres et entrées à corriger.
+- Les notes grammaticales et niveaux A1–C2 peuvent être renseignés dans l’éditeur. Un niveau CECR n’est pas déduit du nombre de mots.
+
+Les fiches `draft` sont publiques avec « À vérifier » ; `validated` indique la validation humaine. Les fiches retirées (`rejected`) restent masquées au public. Les sources, révisions, licences déclarées et empreintes des fichiers sont conservées.
+
+## Importer Tatoeba
+
+Dans un second terminal :
 
 ```bash
 cd ~/Documents/projet_kabyle/Kabyle
 bash scripts/import_tatoeba.sh --download
 ```
 
-Cette commande télécharge les quatre exports hebdomadaires utiles depuis `downloads.tatoeba.org` : phrases kabyles détaillées, phrases françaises détaillées, liens kabyle–français et métadonnées audio kabyles. Elle applique les migrations, aligne les identifiants, garde uniquement les traductions directement reliées et importe les paires en PostgreSQL. Aucun texte kabyle ou français n’est généré. La collecte peut prendre quelques minutes selon la connexion. Le rapport annonce les quantités réellement importées.
+Le script télécharge les quatre exports hebdomadaires utiles depuis `downloads.tatoeba.org` : phrases kabyles détaillées, françaises détaillées, liens kabyle–français et métadonnées audio kabyles. Il aligne les identifiants, conserve les traductions directement liées et dédoublonne en préservant les corrections, même après modification des deux textes. Le rapport affiche les quantités réellement ajoutées.
 
-**Dans ce cloud, le site Tatoeba et son serveur de téléchargement sont refusés par le proxy (403). Aucun millier de phrases Tatoeba ni enregistrement réel n’est donc annoncé comme déjà chargé.** Le pipeline et les exercices sont disponibles ; le téléchargement doit être exécuté sur une machine ayant accès à Tatoeba, ou remplacé par un téléversement des exports officiels.
-
-Dans **Gestion des contenus → Importer Tatoeba : phrases et enregistrements**, on peut choisir un export de paires `kab → fra` et le fichier de métadonnées `sentences_with_audio`. Un aperçu affiche les textes, identifiants et nombres d’enregistrements avant **Importer Tatoeba et rendre public**. Les formats sont vérifiés contre le code officiel [Tatoeba/tatoeba2 à la révision f2c80b8](https://github.com/Tatoeba/tatoeba2/tree/f2c80b81032630648f7896182174a9f5784ccde2).
-
-Formats pris en charge :
-
-- Paires TSV à quatre colonnes : `id_kab`, `texte_kab`, `id_fra`, `texte_fra`. Les exports à six colonnes avec codes langue sont aussi reconnus.
-- Ou, via le script, fichiers de phrases `id / langue / texte` (détaillés à six colonnes également acceptés) et fichier de liens `id / id`.
-- Audio : **cinq colonnes**, `sentence_id / audio_id / auteur / licence / attribution_url`. Plusieurs voix peuvent correspondre à une phrase. L’URL est construite avec l’**identifiant audio**, selon le format officiel ; elle n’est jamais déduite du seul identifiant de phrase.
-- TSV/CSV séparés par tabulations, `.bz2`, `.gz` et archives `.tar.bz2`/`.tar.gz`. Les archives sont lues sans extraire leurs chemins sur le disque. L’interface accepte 128 Mo au total ; le script convient aux exports plus grands.
-
-Import de fichiers déjà téléchargés :
+Alternative : **Gestion des contenus → Importer Tatoeba : phrases et enregistrements**, puis choisir l’export `kab → fra` à quatre colonnes et le fichier de métadonnées audio. L’aperçu précède l’import public. Formats vérifiés contre [le code officiel Tatoeba](https://github.com/Tatoeba/tatoeba2/tree/f2c80b81032630648f7896182174a9f5784ccde2).
 
 ```bash
-bash scripts/import_tatoeba.sh --pairs "/chemin/paires-kab-fra.tsv" --audio "/chemin/sentences_with_audio.tar.bz2"
-# Ou les fichiers bruts, alignés sur leurs identifiants :
+bash scripts/import_tatoeba.sh --pairs "/chemin/paires.tsv" --audio "/chemin/sentences_with_audio.tar.bz2"
+# Ou les exports bruts :
 bash scripts/import_tatoeba.sh --sentences "/chemin/kab_sentences_detailed.tsv.bz2" "/chemin/fra_sentences_detailed.tsv.bz2" --links "/chemin/kab-fra_links.tsv.bz2" --audio "/chemin/kab_sentences_with_audio.tsv.bz2"
 ```
 
-Ajouter `--preview` prépare le rapport sans écrire dans PostgreSQL. Les empreintes des fichiers et les identifiants des phrases/enregistrements sont conservés. Une réimportation dédoublonne les paires et enrichit leurs sources/voix en conservant textes édités, catégories et validations. Les fichiers de travail et rapports sont dans `artifacts/tatoeba-imports/`, exclus de Git et non servis publiquement.
+Ajouter `--preview` prépare l’alignement sans écrire dans PostgreSQL. TSV/CSV tabulés, bz2, gzip et archives tar sont acceptés sans extraction de chemins. Interface : 128 Mo au total ; utiliser le script pour les gros exports.
 
-### Les quatre activités
+L’audio suit les cinq colonnes officielles `sentence_id / audio_id / auteur / licence / attribution_url`. Une phrase peut avoir plusieurs voix. L’URL utilise l’identifiant **audio**, pas le seul identifiant de phrase. Les MP3 sont lus à la demande depuis Tatoeba, pas copiés dans Git. Les crédits sont conservés ; l’application ne certifie pas indépendamment que chaque auteur est natif.
 
-Dans **Mots et phrases → Je choisis mon thème**, filtrer par catégorie, difficulté, présence d’audio ou source Tatoeba. Une séance propose jusqu’à cinq phrases ; on peut aussi choisir une phrase seule. Dans **Ma bibliothèque → Phrases**, **M’entraîner avec cette phrase** ouvre directement ses activités. Les phrases déjà présentes sont utilisables sans attendre Tatoeba.
+**Dans ce cloud, Tatoeba et son serveur de téléchargement sont bloqués (403). Aucun corpus Tatoeba réel n’est inclus dans les 133 phrases livrées.** Exécuter le téléchargement sur un ordinateur autorisant ces destinations, ou téléverser les exports officiels.
 
-1. **Je découvre** : carte à retourner, traduction, mots cliquables, note grammaticale si renseignée et voix disponibles.
-2. **Je construis** : étiquettes mélangées, reconstruction, correction serveur et nouvelle tentative. Les mots répétés conservent chacun leur position.
-3. **Je fais la dictée** : écouter un enregistrement puis saisir la phrase kabyle, avec clavier des caractères particuliers.
-4. **J’écoute et je choisis** : trois traductions provenant de vraies fiches de la bibliothèque ; le serveur vérifie la réponse. Les autres traductions d’une même phrase kabyle ne servent pas de mauvaises réponses.
+## Importer Sifal
 
-La dictée et le QCM audio sont désactivés sans métadonnées d’enregistrement attribué. Un échec de lecture est affiché ; aucun son synthétique ni texte parlé artificiellement n’est substitué. Les MP3 sont lus à la demande depuis Tatoeba, sans être copiés dans Git. Les crédits de chaque voix sont conservés. Le fait qu’un enregistrement soit dans Tatoeba n’est pas présenté comme une preuve indépendante que son auteur est natif. Les réponses, erreurs et révisions sont enregistrées dans la progression anonyme ; retourner une carte ne crée pas une réussite.
+Source : [le TSV Kabyle-French du 18 juillet 2023](https://huggingface.co/datasets/Sifal/Kabyle-French/blob/main/Sentence%20pairs%20in%20Kabyle-French%20-%202023-07-18.tsv).
 
-### Lexique, niveaux et grammaire
-
-Le découpage lexical conserve les formes telles que `Axxam-a` ; il ne prétend pas analyser automatiquement l’annexion. Les mots cliquables cherchent une forme ou un synonyme attesté dans le lexique existant. Si une traduction individuelle manque, le site le dit : l’alignement de deux phrases ne suffit pas à inventer l’alignement de leurs mots.
-
-La difficulté proposée est **une estimation par longueur** : jusqu’à quatre mots, cinq à huit mots, neuf mots ou plus. Ce classement ne constitue pas une évaluation CECR. Dans l’éditeur d’une phrase, l’administrateur peut attribuer **A1 à C2** et ajouter une **note grammaticale**. Ces champs apparaissent sur la carte ; les niveaux attribués A1/A2 sont filtrables. Les fiches restent publiques et le bouton **Valider** garde son rôle de relecture humaine.
-
-La migration 005 ajoute les index de difficulté, présence d’audio et recherche exacte du lexique. Les imports Sifal remplissent également ces champs, afin que leurs phrases puissent utiliser les mêmes activités.
-
-
-## Bibliothèque publique et catégories
-
-**Ma bibliothèque** affiche les lettres, mots et phrases sans jeu obligatoire ni connexion. Elle propose une recherche en kabyle/français/tifinagh, des catégories et une pagination.
-
-Le catalogue livré contient **8 lettres, 442 entrées lexicales, 133 paires de phrases et 30 photos**. Les entrées lexicales incluent les mots des leçons et les formes des mini-dictionnaires : ce ne sont pas toutes des noms isolés. Les 15 fichiers de compétences LibreLingo sont traités, y compris `juniors/skills/nombres_jr.yaml`, `test_jr.yaml` et `verb_plurals.yaml`. Ce dernier comportait une tabulation YAML : seule sa mise en forme a été réparée. Aucun fichier de compétences n’est exclu. Les 21 fichiers de cours/configuration/documentation sont référencés dans l’inventaire.
-
-**La visibilité ne dépend plus de la validation humaine.** Les fiches `draft` sont publiques avec le badge **À vérifier** ; les fiches `validated` portent **Validé**. Les fiches retirées (`rejected`) restent masquées au public. Les catégories proposées peuvent être corrigées. Les catégories et chapitres d’origine sont également conservés dans les métadonnées.
-
-## Administration
-
-Dans **Gestion des contenus**, saisir `ADMIN_TOKEN` depuis ton `.env`, puis **Ouvrir la bibliothèque**. Le jeton reste en mémoire dans l’onglet.
-
-- Consulter toutes les lettres, tous les mots et toutes les phrases par pages ; rechercher et filtrer par catégorie et validation.
-- Cliquer sur **Valider** à côté d’une fiche après relecture. Le serveur mémorise la validation et sa date ; aucune transcription tifinagh ni photo n’est exigée pour valider une paire kabyle/français.
-- Ouvrir une fiche pour modifier le texte, la traduction, la catégorie ou ajouter une photo. Enregistrer une modification remet la fiche **À vérifier**, en la gardant publique.
-- **Enregistrer uniquement la catégorie** conserve le texte et son état de validation.
-
-Une incohérence de la source est signalée sur `ṭam` : dans le chapitre Nombres, les images indiquent 8 mais la traduction est « un ours ». Le texte d’origine est conservé pour correction humaine. Le bouton de validation ne corrige aucune traduction automatiquement.
-
-## Importer le TSV Sifal
-
-Source demandée : [Kabyle-French / Sentence pairs in Kabyle-French - 2023-07-18.tsv](https://huggingface.co/datasets/Sifal/Kabyle-French/blob/main/Sentence%20pairs%20in%20Kabyle-French%20-%202023-07-18.tsv).
-
-Dans **Gestion des contenus → Importer les phrases Kabyle–Français (Sifal)** :
-
-1. Cliquer sur **Télécharger depuis Hugging Face**, ou télécharger le fichier sur ton ordinateur puis **Choisir le fichier TSV**.
-2. Vérifier l’aperçu : choisir les colonnes kabyle/français et préciser si la première ligne est un titre.
-3. Cliquer sur **Importer et rendre public**.
-
-Les paires sont enregistrées en PostgreSQL et deviennent consultables dans **Ma bibliothèque → Phrases**. Leur catégorie est proposée à partir du français (salutations, famille, alimentation, voyages, temps, etc.), avec **Autres phrases** comme catégorie de repli. Ces propositions restent modifiables. Les nouvelles fiches sont **À vérifier**. Les traductions ne sont pas générées ou réécrites. Le rapport donne les ajouts, doublons et lignes incomplètes ; réimporter le même fichier préserve les corrections et validations existantes. L’origine et l’empreinte SHA-256 du fichier sont conservées.
-
-**État du cloud :** le téléchargement du TSV exact renvoie HTTP 403 dans cet environnement. Il n’est donc pas inclus dans les 133 phrases livrées. Le téléversement local et l’import sont disponibles pour ce fichier ; aucune quantité issue de Sifal n’est annoncée comme déjà importée.
-
-Alternative en terminal, après avoir téléchargé le TSV :
+Dans l’administration, **Importer les phrases Kabyle–Français (Sifal)** permet le téléchargement serveur ou le téléversement, l’aperçu et le choix des colonnes. Les traductions sont conservées et classées par le même moteur sémantique.
 
 ```bash
-bash scripts/import_sifal.sh "/chemin/vers/phrases.tsv" --preview
-bash scripts/import_sifal.sh "/chemin/vers/phrases.tsv"
+bash scripts/import_sifal.sh "/chemin/phrases.tsv" --preview
+bash scripts/import_sifal.sh "/chemin/phrases.tsv"
 # Si nécessaire : --kab-column 2 --fr-column 4
 ```
 
-## Apprendre
+Le téléchargement Hugging Face est également bloqué dans ce cloud : le vrai corpus Sifal n’est pas inclus dans le total livré. Les fichiers téléversés et rapports sont dans `artifacts/`, exclus de Git et non servis publiquement.
 
-Les trois petites leçons de lettres suivent découverte, rappel, jeu et bilan. Dans **Mots et phrases → Je commence !**, la leçon publique propose trois mots illustrés, trois phrases de la source et huit défis : reconnaissance, ordre des mots, phrase à compléter et rappel. Les réponses sont vérifiées par le serveur ; réussites et erreurs sont enregistrées dans la progression anonyme de l’appareil. La lecture seule ne crée aucun progrès.
+## Exercices et progression
 
-Les autres phrases disposent également de cartes et d’exercices de construction dans les séances par thème. Les activités audio dépendent des enregistrements importés ; ces exercices ne constituent pas une validation linguistique automatique. Le dessin et l’enregistrement/écoute locale sont disponibles ; aucun audio kabyle ni score de prononciation n’est simulé.
+La construction de phrases fonctionne sur les paires attestées. La carte retournée, le lexique cliquable, la dictée et le QCM audio restent disponibles dans l’exercice. Les modules sonores nécessitent des métadonnées d’enregistrement ; un échec de lecture est affiché sans son artificiel de substitution. Un mot sans traduction individuelle attestée est indiqué comme absent du lexique, sans alignement inventé.
 
-## Où sont les données ?
-
-- **PostgreSQL**, table `content` : `kind` distingue lettre/mot/phrase ; `theme` est la catégorie ; `status` indique la validation ; `data` contient textes, variantes, sources et corrections.
-- `content/catalog/course-words.json` et `course-phrases.json` : données de départ livrées avec le dépôt.
-- `course-files.json` et `course-report.json` : fichiers, empreintes, quantités et anomalies de collecte.
-- `content/photos/` et table `media_asset` : 30 photos Fruits-360 attribuées à Mihai Oltean, 100 × 100 px, pixels inchangés. Elles ne constituent pas 30 associations mot–photo validées.
-- `artifacts/tsv-imports/` : fichiers TSV téléversés, exclus de Git et non servis publiquement.
-
-Les sources LibreLingo, leurs révisions et les déclarations de licence sont conservées, sans en faire une condition de visibilité. Les mots sans tifinagh ou audio n’en reçoivent pas de version inventée.
-
-Collecte reproductible avec PyYAML (`scripts/requirements-data.txt`) et les dépendances de l’application :
-
-```bash
-.venv/bin/python scripts/collect_course.py --source-checkout /chemin/LibreLingo-KAB-from-FR
-```
-
-Le checkout source doit être à la révision `e426e0fa052da1c91b6efd800d8469e6940757d5`.
+Les réussites et erreurs sont vérifiées par le serveur et enregistrées dans la progression anonyme de l’appareil. Le dessin, les trois petites leçons de lettres et l’enregistrement/écoute locale restent disponibles. Aucun modèle de prononciation ni maîtrise linguistique automatique n’est simulé.
 
 ## Vérifications
 
@@ -142,6 +126,9 @@ cd backend
 cd ../frontend
 npm run typecheck
 npm run build
+cd ..
+.venv/bin/python scripts/topic_browser_smoke.py
+.venv/bin/python scripts/phrase_public_mobile_smoke.py
 ```
 
-Les tests utilisent la base locale initialisée, jamais une base de production. Les tests navigateur nécessitent Playwright et Chromium ainsi que l’application démarrée. Les documents d’audits plus anciens décrivent l’ancienne politique de brouillons privés ; la politique actuelle est celle décrite ici.
+Playwright et Chromium sont nécessaires aux tests navigateur, ainsi que le site démarré. Les tests utilisent une base de développement, jamais une base de production, et nettoient leurs données d’essai. Les anciens points d’entrée `library_browser_smoke.py` et `vocabulary_browser_smoke.py` exécutent désormais le parcours commun par thèmes. Les anciens documents d’audit décrivent des versions historiques ; le fonctionnement actuel est celui-ci.

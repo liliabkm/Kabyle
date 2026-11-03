@@ -64,10 +64,12 @@ const labels: Record<Mode, string> = {
 };
 export default function PhrasePractice({
   initialId,
+  initialMode = "flashcard",
   onExit,
   onActiveChange,
 }: {
   initialId?: string;
+  initialMode?: Mode;
   onExit?: () => void;
   onActiveChange?: (active: boolean) => void;
 } = {}) {
@@ -79,7 +81,7 @@ export default function PhrasePractice({
     [offset, setOffset] = useState(0),
     [queue, setQueue] = useState<string[]>(initialId ? [initialId] : []),
     [position, setPosition] = useState(0),
-    [mode, setMode] = useState<Mode>("flashcard"),
+    [mode, setMode] = useState<Mode>(initialMode),
     [question, setQuestion] = useState<Question | null>(null),
     [flipped, setFlipped] = useState(false),
     [chips, setChips] = useState<number[]>([]),

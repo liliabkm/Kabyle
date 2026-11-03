@@ -33,10 +33,8 @@ def preview(path):
     return {'sample':sample,'kab_column':kab,'fr_column':fr,'has_header':header}
 
 def classify(french):
-    text=fold(french)
-    for category,pattern in [('salutations',r'\b(bonjour|bonsoir|merci|salut|bienvenue|revoir)\b'),('nombres',r'^(un|deux|trois|quatre|cinq|six|sept|huit|neuf|dix|onze|douze|vingt|cent|mille|zero|[0-9]+)[.!?]?$'),('temps',r'\b(demain|hier|aujourd.hui|pluie|neige|soleil|heure|matin|soir|temps)\b'),('sante',r'\b(malade|hopital|sante|douleur|medicament)\b'),('voyages',r'\b(voyage|train|avion|voiture|route|gare|bus)\b'),('maison',r'\b(maison|chambre|porte|cuisine|lit|fenetre)\b')]:
-        if re.search(pattern,text):return category
-    return suggested_category({'kind':'phrase','theme':'autres-phrases','data':{'french':french}})
+    from .organization import organize
+    return organize('phrase',{'french':french,'latin':''})['topics'][0]
 
 def import_file(session,path,kab_column,fr_column,has_header=False):
     if kab_column==fr_column:raise ValueError('Choisir deux colonnes différentes')

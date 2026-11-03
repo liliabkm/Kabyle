@@ -20,8 +20,7 @@ import {
   X,
 } from "lucide-react";
 import ReadingLibrary from "../components/ReadingLibrary";
-import PhrasePractice from "../components/PhrasePractice";
-import VocabularyPreview from "../components/VocabularyPreview";
+import ThemeLearning from "../components/ThemeLearning";
 import GuidedLesson from "../components/GuidedLesson";
 import Mascot from "../components/Mascot";
 import Matching from "../components/Matching";
@@ -41,7 +40,6 @@ type View =
   | "progress"
   | "admin";
 export default function Home() {
-  const [phraseActive, setPhraseActive] = useState(false);
   const [lessonIndex, setLessonIndex] = useState<number | null>(null);
   const [drawingLetters, setDrawingLetters] = useState<Entry[] | null>(null);
   const [matching, setMatching] = useState<Entry[] | null>(null);
@@ -556,8 +554,11 @@ export default function Home() {
                     <BookOpen size={27} />
                   </span>
                   <div>
-                    <h3>Des mots aux phrases</h3>
-                    <p>Cartes, mots à replacer et phrases à compléter.</p>
+                    <h3>Mes thèmes à explorer</h3>
+                    <p>
+                      Choisis une image, découvre ses mots et construis des
+                      phrases.
+                    </p>
                     <span className="private-preview-label">
                       Accessible à tous
                     </span>
@@ -685,17 +686,7 @@ export default function Home() {
             </>
           ) : view === "words" ? (
             <>
-              <PageTitle
-                tag="APPRENDRE AVEC DES MOTS"
-                title="Mots et phrases"
-                text="Une image pour comprendre. Une phrase pour utiliser le mot."
-              />
-              {!phraseActive && <VocabularyPreview />}
-              <PhrasePractice onActiveChange={setPhraseActive} />
-              <button className="secondary" onClick={() => setView("library")}>
-                Voir tous les mots et phrases par catégorie{" "}
-                <BookOpen size={18} />
-              </button>
+              <ThemeLearning />
             </>
           ) : view === "draw" ? (
             <>
