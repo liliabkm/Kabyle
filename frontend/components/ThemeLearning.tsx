@@ -10,6 +10,7 @@ import {
 import { request } from "../lib/api";
 import { TopicArt, WordArt, PhotoCredit } from "./TopicArt";
 import PhrasePractice from "./PhrasePractice";
+import PhraseAudio, { type Recording } from "./PhraseAudio";
 import AlphabetExplorer, { type AlphabetLetter } from "./AlphabetExplorer";
 type Topic = {
   id: string;
@@ -52,6 +53,7 @@ type Phrase = {
   french: string;
   status: string;
   has_audio: boolean;
+  audios?: Recording[];
   highlight: {
     start: number;
     end: number;
@@ -498,6 +500,7 @@ export default function ThemeLearning({
                 </p>
                 <p>{p.french}</p>
                 {badge(p.status)}
+                <PhraseAudio audios={p.audios} text={p.latin} />
                 <button
                   className="primary"
                   onClick={() => {

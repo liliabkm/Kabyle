@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { BookOpen, Search, ChevronLeft, ChevronRight } from "lucide-react";
 import ThemeLearning from "./ThemeLearning";
 import PhrasePractice from "./PhrasePractice";
+import PhraseAudio from "./PhraseAudio";
 import { request } from "../lib/api";
 type Kind = "letter" | "word" | "phrase";
 type Citation = {
@@ -229,21 +230,7 @@ function EditorialReadingLibrary({
                   <p className="reading-french">
                     {c.french || "Traduction non disponible"}
                   </p>
-                  {c.audios
-                    ?.filter((a) => allowed(a.url))
-                    .map((a, i) => (
-                      <div key={i}>
-                        <audio
-                          controls
-                          preload="none"
-                          src={a.url}
-                          aria-label={"Écouter " + c.latin}
-                        />
-                        <small>
-                          {a.author} · {a.license}
-                        </small>
-                      </div>
-                    ))}
+                  <PhraseAudio audios={c.audios} text={c.latin} />
                   {c.images?.[0] && (
                     <small className="reading-image-credit">
                       Image : {c.images[0].author} · {c.images[0].license}

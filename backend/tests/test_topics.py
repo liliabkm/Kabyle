@@ -150,3 +150,32 @@ def test_explicit_editorial_topic_remains_visible_and_can_link_its_words():
         finally:
             s.execute(delete(Content).where(Content.id.in_([wid, pid])))
             s.commit()
+
+
+def test_topic_phrases_expose_only_usable_audio_and_credits():
+    import uuid
+    from sqlalchemy import delete
+    from app.db import Session
+    from app.models import Content
+
+    marker = 'test-topic-audio-' + uuid.uuid4().hex
+    recording = {'url': 'https://tatoeba.org/en/audio/download/9900000001',
+                 'author': 'Synthetic test speaker', 'license': 'CC0',
+                 'attribution_url': 'https://tatoeba.org/en/sentences/show/1'}
+    with Session() as session:
+        try:
+            session.add(Content(id=marker, kind='phrase', theme='animaux', status='draft',
+                data={'latin': 'D agmar.', 'french': 'Un cheval.',
+                      'audios': [recording,
+                                 {'url': 'javascript:alert(1)', 'author': 'Test', 'license': 'CC0'},
+                                 {'url': 'https://example.org/no-credit.mp3'}]}))
+            session.commit()
+            with TestClient(app) as client:
+                rows = client.get('/api/topics/animaux/phrases?limit=24').json()['items']
+                row = next(item for item in rows if item['id'] == marker)
+                assert row['has_audio'] is True
+                assert row['audios'] == [recording]
+                assert all(item['audios'] == [] for item in rows if not item['has_audio'])
+        finally:
+            session.execute(delete(Content).where(Content.id == marker))
+            session.commit()

@@ -6,10 +6,10 @@ import {
   ChevronLeft,
   Headphones,
   RotateCcw,
-  Volume2,
   X,
 } from "lucide-react";
 import { request } from "../lib/api";
+import PhraseAudio from "./PhraseAudio";
 type Mode = "flashcard" | "order" | "dictation" | "audio-choice";
 type Audio = {
   url: string;
@@ -423,47 +423,12 @@ export default function PhrasePractice({
                   : "Écoute et choisis la traduction."}
           </h2>
           {question.audios.length > 0 ? (
-            <div className="phrase-audio">
-              <Volume2 size={20} />
-              <label>
-                Voix enregistrée
-                <audio
-                  key={question.id + mode}
-                  controls
-                  preload="none"
-                  src={question.audios[0].url}
-                  onError={() => setAudioError(true)}
-                  onPlay={() => setAudioError(false)}
-                />
-              </label>
-              <small>
-                {question.audios[0].author} · {question.audios[0].license}
-              </small>
-              {question.audios.length > 1 && (
-                <details>
-                  <summary>Autres voix ({question.audios.length - 1})</summary>
-                  {question.audios.slice(1).map((a) => (
-                    <label key={a.url}>
-                      {a.author}
-                      <audio
-                        controls
-                        preload="none"
-                        src={a.url}
-                        onError={() => setAudioError(true)}
-                        onPlay={() => setAudioError(false)}
-                      />
-                      <small>{a.license}</small>
-                    </label>
-                  ))}
-                </details>
-              )}
-              {audioError && (
-                <p className="error">
-                  Cet enregistrement ne se charge pas. Réessaie plus tard ou
-                  choisis « Je construis ».
-                </p>
-              )}
-            </div>
+            <PhraseAudio
+              key={question.id + mode}
+              audios={question.audios}
+              text={question.latin}
+              onAvailability={(available) => setAudioError(!available)}
+            />
           ) : (
             <p className="tiny">
               Cette phrase n’a pas encore d’enregistrement. Tu peux découvrir la

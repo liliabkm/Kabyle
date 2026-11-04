@@ -7,14 +7,12 @@ import {
   ChevronLeft,
   ChevronRight,
   Compass,
-  Headphones,
   LayoutGrid,
   Leaf,
   Menu,
   PenLine,
   RotateCcw,
   Settings,
-  ShieldCheck,
   Sparkles,
   Target,
   X,
@@ -28,7 +26,6 @@ import type { Entry, Progress } from "../lib/types";
 import { request } from "../lib/api";
 import PageTitle from "../components/PageTitle";
 import Drawing from "../components/Drawing";
-import Recorder from "../components/Recorder";
 import Admin from "../components/Admin";
 type View =
   | "library"
@@ -36,7 +33,6 @@ type View =
   | "alphabet"
   | "words"
   | "draw"
-  | "oral"
   | "progress"
   | "admin";
 export default function Home() {
@@ -165,7 +161,6 @@ export default function Home() {
     { id: "alphabet", label: "Les lettres", icon: BookOpen },
     { id: "words", label: "Mots et phrases", icon: LayoutGrid },
     { id: "draw", label: "Dessiner", icon: PenLine },
-    { id: "oral", label: "Ma voix", icon: Headphones },
     { id: "progress", label: "Mes progrès", icon: Target },
   ] as const;
   const learnerNav = nav;
@@ -696,22 +691,6 @@ export default function Home() {
                 text="Choisis une lettre, puis dessine-la avec ton doigt ou la souris."
               />
               <Drawing letters={drawingLetters || letters} />
-            </>
-          ) : view === "oral" ? (
-            <>
-              <PageTitle
-                tag="JE M’ÉCOUTE"
-                title="À toi de parler !"
-                text="Enregistre ta voix, puis écoute-toi."
-              />
-              <Recorder />
-              <div className="info-note">
-                <ShieldCheck size={20} />
-                <span>
-                  Ta voix reste sur cet appareil. Les audios à écouter et la
-                  transcription automatique ne sont pas encore disponibles.
-                </span>
-              </div>
             </>
           ) : view === "progress" ? (
             <>

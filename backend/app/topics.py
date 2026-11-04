@@ -5,6 +5,7 @@ from fastapi import Depends, HTTPException, Query
 from sqlalchemy import select, func, true, or_, distinct, case
 from sqlalchemy.dialects.postgresql import array
 from .models import Content
+from .learning import usable_audios
 from .organization import TOPICS, concepts, organize, source_span, word_french
 
 
@@ -289,7 +290,8 @@ def phrases(s, topic, word, offset, limit):
                 "latin": c.data["latin"],
                 "french": c.data["french"],
                 "status": c.status,
-                "has_audio": c.has_audio,
+                "has_audio": bool(usable_audios(c.data)),
+                "audios": usable_audios(c.data),
                 "highlight": source_span(c.data["latin"], forms) if word else None,
                 "concepts": c.matched_concepts,
                 "topics": c.topic_keys,

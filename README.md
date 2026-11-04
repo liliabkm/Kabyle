@@ -157,3 +157,14 @@ Le démarrage ajoute les nouvelles lettres et enrichit les anciennes fiches
 inchangées, en conservant leur statut éditorial. Les fiches modifiées dans
 l’administration sont préservées. Le générateur reproductible est
 `scripts/build_alphabet.py` ; il ne modifie pas les phrases importées.
+
+### Écouter les phrases
+
+Les phrases par thème et les fiches de bibliothèque affichent un lecteur quand
+un enregistrement avec crédits est disponible. Le lecteur commun est aussi
+utilisé dans les exercices. Il charge le son au clic, propose les autres voix
+et interrompt le lecteur précédent. Les crédits sont accessibles sous le lecteur.
+La section d’enregistrement « Ma voix » a été retirée.
+
+Test navigateur avec WAV synthétiques (sans prétendre être du kabyle parlé) :
+`KABYLE_BASE_URL=http://127.0.0.1:3000 .venv/bin/python scripts/audio_browser_smoke.py`.
