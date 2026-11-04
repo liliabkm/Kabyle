@@ -207,6 +207,16 @@ def organize(kind, data):
                 reason="Incohérence source ou libellé technique/français dans le champ kabyle",
                 version=VERSION,
             )
+        automatic = data.get("automatic_organization", {})
+        automatic = automatic if isinstance(automatic, dict) else {}
+        input_key = hashlib.sha256((lat.strip() + "\0" + fr.strip()).encode()).hexdigest()
+        if automatic.get("input_key") == input_key and automatic.get("theme") in TOPICS:
+            theme = automatic["theme"]
+            known = french_index().get(word_french(fr), [])
+            key = next((k for k in known if theme in concepts()[k]["topics"]), None)
+            return dict(topics=[theme], concept=key or "auto-" + hashlib.sha256(word_french(fr).encode()).hexdigest()[:20],
+                        role="review" if theme == "a-revoir" else concepts()[key]["role"] if key else "name" if theme == "prenoms" else "word", rank=100 + len(lat),
+                        reason=automatic.get("reason", "Classement automatique à vérifier"), version=VERSION)
         if (
             "(name)" in lat.casefold()
             or "(nom)" in lat.casefold()
@@ -329,6 +339,10 @@ def organize(kind, data):
 
 def fields(kind, data):
     result = organize(kind, data)
+    if kind == "phrase":
+        extra = [t for t in data.get("word_entry_topics", []) if t in TOPICS]
+        if extra:
+            result["topics"] = list(dict.fromkeys(extra + [t for t in result["topics"] if t != "autres-phrases"]))
     return {
         "topic_keys": result["topics"],
         "concept_key": result["concept"],

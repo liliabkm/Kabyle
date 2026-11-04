@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { LockKeyhole, ArrowRight } from "lucide-react";
 import ContentLibrary from "./ContentLibrary";
+import WordLaboratory from "./WordLaboratory";
 import { request } from "../lib/api";
 export default function Admin({ onSaved }: { onSaved: () => void }) {
   const [token, setToken] = useState(""),
@@ -47,6 +48,7 @@ export default function Admin({ onSaved }: { onSaved: () => void }) {
           placeholder="ADMIN_TOKEN"
         />
       </label>
+      <WordLaboratory key={token} token={token} onSaved={onSaved} />
       <ContentLibrary token={token} onSaved={onSaved} />
       <details className="advanced-editor">
         <summary>Édition avancée et import JSON</summary>

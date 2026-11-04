@@ -170,3 +170,42 @@ La section d’enregistrement « Ma voix » a été retirée.
 
 Test navigateur avec WAV synthétiques (sans prétendre être du kabyle parlé) :
 `KABYLE_BASE_URL=http://127.0.0.1:3000 .venv/bin/python scripts/audio_browser_smoke.py`.
+
+### Ajouter un mot et tester automatiquement ses associations
+
+Dans **Gestion des contenus**, saisir le jeton admin puis utiliser **Ajouter un
+mot et tester ses associations** : mot kabyle, traduction française, variantes
+facultatives, et jusqu’à 20 phrases bilingues facultatives.
+
+1. **Tester sans enregistrer** affiche une catégorie proposée et les phrases
+   correspondantes déjà présentes dans toute la base, sans ajouter de fiche.
+2. La proposition combine le dictionnaire existant, le complément versionné
+   `content/catalog/word-category-hints.json`, les mots ayant le même sens et,
+   à défaut, des contextes concordants. Aucun service IA externe n’est appelé.
+   Les sens ambigus restent à préciser ; une catégorie peut être choisie avant
+   de relancer l’aperçu. Ce classement reste une proposition à vérifier.
+3. **Enregistrer dans la base** ajoute une fiche publique à vérifier et les
+   phrases renseignées, en évitant les doublons et en préservant les corrections
+   des fiches existantes. Les phrases facultatives sans correspondance bilingue
+   doivent être corrigées avant enregistrement.
+4. Dans le parcours public, **Utiliser ce mot** cherche à chaque consultation
+   dans tout le corpus, sans se limiter au thème actuel. Les phrases importées
+   après la création du mot sont donc également trouvées.
+
+L’association exige une forme kabyle entière et le sens français correspondant.
+Elle accepte les variantes explicites et celles déjà connues du même concept,
+conserve les distinctions kabyles (t / ṭ, etc.), les crédits et le filtre audio.
+Elle ne génère ni phrase, ni traduction, ni flexion kabyle inconnue. Un même mot
+français peut encore avoir plusieurs sens : les résultats restent des
+associations automatiques à relire.
+
+Les métadonnées de classement, leur version et la signature du texte sont
+conservées dans le JSON de la fiche. Le recalcul des champs dérivés respecte ces
+informations tant que les textes n’ont pas changé. Les associations sont
+calculées en direct : aucune copie des phrases sources ni réimportation globale
+n’est nécessaire. Le contenu saisi dans l’admin est une contribution manuelle,
+pas une nouvelle citation de LibreLingo ou de Tatoeba.
+
+Contrôle navigateur (données synthétiques, supprimées après essai) :
+`KABYLE_BASE_URL=http://127.0.0.1:3000 .venv/bin/python scripts/word_laboratory_browser_smoke.py`.
+Le serveur et le script doivent disposer du même `ADMIN_TOKEN`.

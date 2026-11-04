@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "description": "French glossary supplements, exact senses only. Ambiguities stay for review.",
+  "topics": {
+    "fruits": ["kiwi", "mangue", "banane", "orange", "mandarine", "citron", "pomme", "poire", "abricot", "pêche", "cerise", "datte", "pastèque", "melon", "ananas", "grenade", "prune", "framboise", "mûre", "myrtille"],
+    "legumes": ["carotte", "tomate", "courgette", "aubergine", "pomme de terre", "oignon", "ail", "poivron", "concombre", "navet", "chou", "épinard", "petit pois", "lentille", "haricot"],
+    "animaux": ["lapin", "chèvre", "mouton", "brebis", "vache", "veau", "taureau", "poule", "coq", "poussin", "oiseau", "abeille", "fourmi", "papillon", "tortue", "serpent", "singe", "renard", "loup", "chameau", "chèvre", "girafe", "zèbre"],
+    "maison": ["table", "chaise", "armoire", "canapé", "cuisine", "chambre", "salle de bain", "jardin", "toit", "mur", "escalier", "couverture", "oreiller", "assiette", "cuillère", "fourchette", "couteau", "réfrigérateur"],
+    "ecole": ["cahier", "stylo", "crayon", "gomme", "cartable", "ardoise", "tableau", "classe", "leçon", "exercice", "devoir", "élève", "apprendre", "lire", "écrire"],
+    "famille": ["mère", "père", "frère", "sœur", "grand-mère", "grand-père", "oncle", "tante", "cousin", "cousine", "bébé", "parent", "fils", "fille"],
+    "vetements": ["pantalon", "manteau", "veste", "pull", "ceinture", "écharpe", "gant", "botte", "sandale", "pyjama", "bonnet"],
+    "nature": ["arbre", "fleur", "forêt", "feuille", "racine", "herbe", "pierre", "sable", "terre", "lune", "étoile", "nuage", "océan"],
+    "boissons": ["jus", "limonade", "tisane", "chocolat chaud"],
+    "alimentation": ["fromage", "beurre", "yaourt", "œuf", "riz", "soupe", "gâteau", "biscuit", "miel", "sel", "sucre", "huile", "farine"],
+    "metiers": ["enseignant", "enseignante", "boulanger", "boulangère", "menuisier", "chauffeur", "cuisinier", "cuisinière", "avocat"],
+    "sante": ["médecin", "hôpital", "médicament", "maladie", "douleur", "main", "pied", "tête", "dent", "oreille", "nez", "œil"],
+    "temps": ["pluie", "neige", "vent", "orage", "brouillard", "chaleur", "froid"],
+    "jours": ["lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche", "matin", "soir", "midi", "semaine", "mois", "année"],
+    "voyages": ["train", "avion", "voiture", "bus", "bateau", "gare", "aéroport", "route", "billet", "passeport"],
+    "musique": ["guitare", "tambour", "flûte", "piano", "chanson"],
+    "jeux": ["ballon", "jouet", "poupée", "cache-cache"],
+    "couleurs": ["violet", "rose", "orange", "marron", "gris", "jaune", "noir", "blanc", "rouge", "vert", "bleu"],
+    "actions": ["courir", "sauter", "dormir", "ouvrir", "fermer", "porter", "chercher", "trouver", "travailler", "danser", "dessiner", "jouer", "rire", "pleurer"]
+  }
+}

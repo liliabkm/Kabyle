@@ -122,3 +122,6 @@ register_phrase_routes(app,db,learner)
 
 from .topics import register_routes as register_topic_routes
 register_topic_routes(app,db,admin)
+
+from .word_entry import register_routes as register_word_entry_routes
+register_word_entry_routes(app, db, admin)

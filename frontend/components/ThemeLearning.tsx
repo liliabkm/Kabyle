@@ -107,7 +107,7 @@ export default function ThemeLearning({
         ? "library?kind=letter&limit=72"
         : stage === "words"
           ? `topics/${topic.id}/words?offset=${wordOffset}`
-          : `topics/${topic.id}/phrases?` +
+          : (selected ? `words/${encodeURIComponent(selected.id)}/phrases?` : `topics/${topic.id}/phrases?`) +
             new URLSearchParams({
               word: selected?.concept || "",
               offset: String(phraseOffset),
@@ -130,7 +130,7 @@ export default function ThemeLearning({
       active = false;
       c.abort();
     };
-  }, [topic?.id, stage, selected?.concept, wordOffset, phraseOffset, audioOnly]);
+  }, [topic?.id, stage, selected?.concept, wordOffset, phraseOffset, audioOnly, selected?.id]);
   function open(t: Topic) {
     setTopic(t);
     setAudioOnly(false);
