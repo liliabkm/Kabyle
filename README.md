@@ -161,8 +161,10 @@ l’administration sont préservées. Le générateur reproductible est
 ### Écouter les phrases
 
 Les phrases par thème et les fiches de bibliothèque affichent un lecteur quand
-un enregistrement avec crédits est disponible. Le lecteur commun est aussi
-utilisé dans les exercices. Il charge le son au clic, propose les autres voix
+un enregistrement avec crédits est disponible. Le lecteur commun utilise un bouton lecture/pause et une barre de progression
+personnalisés, aussi dans les exercices. Le filtre « Avec audio uniquement »
+des thèmes est appliqué avant le comptage et la pagination, en conservant le mot
+sélectionné. Le lecteur charge le son au clic, propose les autres voix
 et interrompt le lecteur précédent. Les crédits sont accessibles sous le lecteur.
 La section d’enregistrement « Ma voix » a été retirée.
 

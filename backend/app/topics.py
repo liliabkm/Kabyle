@@ -224,7 +224,7 @@ def word_forms(s, key):
     return [x for x in forms if isinstance(x, str) and x.strip()]
 
 
-def phrases(s, topic, word, offset, limit):
+def phrases(s, topic, word, offset, limit, audio_only=False):
     title, description = topic_info(s, topic)
     predicates = base("phrase", topic)
     forms = []
@@ -267,6 +267,8 @@ def phrases(s, topic, word, offset, limit):
             )
         else:
             predicates.append(Content.matched_concepts.contains([word]))
+    if audio_only:
+        predicates.append(Content.has_audio.is_(True))
     total = s.scalar(select(func.count()).where(*predicates))
     rows = s.scalars(
         select(Content)
@@ -317,11 +319,12 @@ def register_routes(app, db, admin):
     def get_phrases(
         topic: str,
         word: str = "",
+        audio_only: bool = False,
         offset: int = Query(0, ge=0),
         limit: int = Query(12, ge=1, le=36),
         s=Depends(db),
     ):
-        return phrases(s, topic, word, offset, limit)
+        return phrases(s, topic, word, offset, limit, audio_only)
 
     @app.get("/api/admin/organization", dependencies=[Depends(admin)])
     def audit(s=Depends(db)):

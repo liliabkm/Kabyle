@@ -76,6 +76,7 @@ export default function ThemeLearning({
     [phraseData, setPhraseData] = useState<Phrases | null>(null),
     [wordOffset, setWordOffset] = useState(0),
     [phraseOffset, setPhraseOffset] = useState(0),
+    [audioOnly, setAudioOnly] = useState(false),
     [exercise, setExercise] = useState<string | null>(null),
     [letters, setLetters] = useState<AlphabetLetter[]>([]),
     [loading, setLoading] = useState(true),
@@ -110,6 +111,7 @@ export default function ThemeLearning({
             new URLSearchParams({
               word: selected?.concept || "",
               offset: String(phraseOffset),
+              audio_only: String(audioOnly),
             });
     request(path, { signal: c.signal })
       .then((r) => {
@@ -128,9 +130,10 @@ export default function ThemeLearning({
       active = false;
       c.abort();
     };
-  }, [topic?.id, stage, selected?.concept, wordOffset, phraseOffset]);
+  }, [topic?.id, stage, selected?.concept, wordOffset, phraseOffset, audioOnly]);
   function open(t: Topic) {
     setTopic(t);
+    setAudioOnly(false);
     setStage(t.word_count ? "words" : "phrases");
     setSelected(null);
     setWordOffset(0);
@@ -480,6 +483,16 @@ export default function ThemeLearning({
               </button>
             </div>
           )}
+          <div className="phrase-filter-bar">
+            <label className={"audio-only-toggle" + (audioOnly ? " active" : "")}>
+              <input type="checkbox" checked={audioOnly} onChange={(event) => {
+                setAudioOnly(event.target.checked);
+                setPhraseOffset(0);
+              }} />
+              Avec audio uniquement
+            </label>
+            {phraseData && <span>{phraseData.total} phrase{phraseData.total !== 1 ? "s" : ""}</span>}
+          </div>
           <div className="topic-phrase-grid">
             {phraseData?.items.map((p) => (
               <article
@@ -516,10 +529,13 @@ export default function ThemeLearning({
           {phraseData && !phraseData.total && (
             <div className="topic-empty">
               <BookOpen size={34} />
-              <h3>Pas encore de phrase attestée pour ce mot.</h3>
-              <p>Tu peux déjà découvrir les autres phrases de ce thème.</p>
-              <button className="secondary" onClick={() => contexts(null)}>
-                Voir les phrases du thème
+              <h3>{audioOnly ? "Pas encore d’audio pour ces phrases." : "Pas encore de phrase attestée pour ce mot."}</h3>
+              <p>{audioOnly ? "Tu peux consulter les phrases sans enregistrement." : "Tu peux déjà découvrir les autres phrases de ce thème."}</p>
+              <button className="secondary" onClick={() => {
+                if (audioOnly) { setAudioOnly(false); setPhraseOffset(0); }
+                else contexts(null);
+              }}>
+                {audioOnly ? "Afficher toutes les phrases" : "Voir les phrases du thème"}
               </button>
             </div>
           )}

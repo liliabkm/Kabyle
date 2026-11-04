@@ -175,6 +175,12 @@ def test_topic_phrases_expose_only_usable_audio_and_credits():
                 row = next(item for item in rows if item['id'] == marker)
                 assert row['has_audio'] is True
                 assert row['audios'] == [recording]
+                filtered = client.get('/api/topics/animaux/phrases?audio_only=true&limit=1').json()
+                assert filtered['total'] == 1
+                assert filtered['items'][0]['id'] == marker
+                assert client.get('/api/topics/animaux/phrases?audio_only=true&offset=1').json()['items'] == []
+                selected = client.get('/api/topics/animaux/phrases?audio_only=true&word=cheval').json()
+                assert selected['total'] == 1 and selected['items'][0]['id'] == marker
                 assert all(item['audios'] == [] for item in rows if not item['has_audio'])
         finally:
             session.execute(delete(Content).where(Content.id == marker))
