@@ -79,6 +79,7 @@ def reindex_content(session, batch_size=500, report=None):
                     "_content_id": row["id"],
                     **values,
                     "theme": theme,
+                    "structured_dirty": True,
                     "search_text": searchable(row["data"]),
                     "pair_key": pair_key(row["kind"], row["data"]),
                 }

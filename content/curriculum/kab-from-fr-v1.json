@@ -1,0 +1,159 @@
+{
+  "id": "kab-from-fr",
+  "version": "pilot-v1",
+  "title": "Le kabyle, pas à pas",
+  "source_language": "fra",
+  "target_language": "kab",
+  "notice": "Parcours pilote public. Objectifs A1/A2 proposés ; progression et textes à relire, sans certification CECRL.",
+  "levels": [
+    {
+      "code": "A1",
+      "title": "Premiers pas",
+      "units": [
+        {
+          "id": "a1-bonjour",
+          "title": "Je dis bonjour",
+          "topic": "salutations",
+          "objective": "Reconnaître quelques échanges très courts.",
+          "lessons": [
+            {
+              "id": "a1-bonjour-1",
+              "title": "Bonjour et merci",
+              "objective": "Découvrir trois échanges de base.",
+              "prerequisites": [],
+              "activities": [
+                {
+                  "content_id": "phrase-ll-f81ffcb6245ad212",
+                  "kind": "order"
+                },
+                {
+                  "content_id": "phrase-ll-8958ca4edee137bb",
+                  "kind": "order"
+                },
+                {
+                  "content_id": "phrase-ll-df7629e09a8183f1",
+                  "kind": "order"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-nombres",
+          "title": "Je compte",
+          "topic": "nombres",
+          "objective": "Retenir les premiers nombres.",
+          "lessons": [
+            {
+              "id": "a1-nombres-1",
+              "title": "Un, deux, trois",
+              "objective": "Reconnaître les trois premiers nombres.",
+              "prerequisites": [],
+              "activities": [
+                {
+                  "content_id": "word-ll-9aa6d5cf903aae31",
+                  "kind": "recall"
+                },
+                {
+                  "content_id": "word-ll-cccc68c7928e63fe",
+                  "kind": "recall"
+                },
+                {
+                  "content_id": "word-ll-2b58d852f8a69fcc",
+                  "kind": "recall"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-animaux",
+          "title": "Les animaux",
+          "topic": "animaux",
+          "objective": "Nommer quelques animaux puis lire des phrases.",
+          "lessons": [
+            {
+              "id": "a1-animaux-1",
+              "title": "Trois animaux",
+              "objective": "Découvrir les mots chien, chat et cheval.",
+              "prerequisites": [],
+              "activities": [
+                {
+                  "content_id": "word-ll-1eab8b37b60faf6b",
+                  "kind": "recall"
+                },
+                {
+                  "content_id": "word-ll-e83f7f1d967dd2d1",
+                  "kind": "recall"
+                },
+                {
+                  "content_id": "word-ll-744863bc359507d6",
+                  "kind": "recall"
+                }
+              ]
+            },
+            {
+              "id": "a1-animaux-2",
+              "title": "Mes premières phrases",
+              "objective": "Réutiliser les mots dans deux phrases.",
+              "prerequisites": [
+                "a1-animaux-1"
+              ],
+              "activities": [
+                {
+                  "content_id": "phrase-ll-preview-horse",
+                  "kind": "order"
+                },
+                {
+                  "content_id": "phrase-ll-973e3b781c8a2b56",
+                  "kind": "order"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-repas",
+          "title": "À table",
+          "topic": "alimentation",
+          "objective": "Découvrir des aliments et demander du pain.",
+          "lessons": [
+            {
+              "id": "a1-repas-1",
+              "title": "Du pain et du lait",
+              "objective": "Nommer deux aliments et découvrir une demande courte.",
+              "prerequisites": [],
+              "activities": [
+                {
+                  "content_id": "word-ll-c9286ec537db320e",
+                  "kind": "recall"
+                },
+                {
+                  "content_id": "word-ll-3ca3ece6d8522a03",
+                  "kind": "recall"
+                },
+                {
+                  "content_id": "phrase-ll-631b262bf5e47fc4",
+                  "kind": "order"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "A2",
+      "title": "Pour aller plus loin",
+      "units": [
+        {
+          "id": "a2-quotidien",
+          "title": "Parler du quotidien",
+          "topic": "actions",
+          "objective": "À composer et à relire avant d’y ajouter des leçons.",
+          "lessons": []
+        }
+      ]
+    }
+  ]
+}

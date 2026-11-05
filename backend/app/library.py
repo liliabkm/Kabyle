@@ -60,7 +60,7 @@ def library_payload(s,kind,category,q,offset,limit,private=False,status=""):
     total=s.scalar(select(func.count()).select_from(Content).where(*filters))
     sort=Content.data['latin'].as_string() if kind=='letter' else func.coalesce(Content.data['french'].as_string(),Content.data['latin'].as_string())
     page=s.scalars(select(Content).where(*filters).order_by(*([Content.data['alphabet_order'].as_string().cast(Integer).nulls_last()] if kind=='letter' else []),func.lower(sort),Content.id).offset(offset).limit(limit))
-    return {'private':private,'counts':{k:counts.get(k,0) for k in ('letter','word','phrase')},'categories':[{'id':k,'label':category_label(k),'count':v} for k,v in sorted(categories,key=lambda x:category_label(x[0]))],'total':total,'offset':offset,'limit':limit,'items':[{**c.data,'id':c.id,'kind':c.kind,'variety':c.variety,'script':c.script,'theme':c.theme,'category_label':category_label(c.theme),'status':c.status} for c in page]}
+    return {'private':private,'counts':{k:counts.get(k,0) for k in ('letter','word','phrase')},'categories':[{'id':k,'label':category_label(k),'count':v} for k,v in sorted(categories,key=lambda x:category_label(x[0]))],'total':total,'offset':offset,'limit':limit,'items':[{**c.data,'id':c.id,'kind':c.kind,'variety':c.variety,'script':c.script,'theme':c.theme,'category_label':category_label(c.theme),'status':c.status,'learning_role':c.learning_role} for c in page]}
 
 def register_routes(app,db,admin):
     @app.get('/api/library')

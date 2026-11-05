@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 import ReadingLibrary from "../components/ReadingLibrary";
 import ThemeLearning from "../components/ThemeLearning";
+import LearningPath from "../components/LearningPath";
 import GuidedLesson from "../components/GuidedLesson";
 import Mascot from "../components/Mascot";
 import Matching from "../components/Matching";
@@ -29,6 +30,7 @@ import Drawing from "../components/Drawing";
 import Admin from "../components/Admin";
 type View =
   | "library"
+  | "path"
   | "learn"
   | "alphabet"
   | "words"
@@ -157,6 +159,7 @@ export default function Home() {
   }
   const nav = [
     { id: "learn", label: "Accueil", icon: Compass },
+    { id: "path", label: "Mon parcours", icon: BookOpen },
     { id: "library", label: "Ma bibliothèque", icon: BookOpen },
     { id: "alphabet", label: "Les lettres", icon: BookOpen },
     { id: "words", label: "Mots et phrases", icon: LayoutGrid },
@@ -592,6 +595,8 @@ export default function Home() {
                 )}
               </div>
             </>
+          ) : view === "path" ? (
+            <LearningPath />
           ) : view === "library" ? (
             <ReadingLibrary />
           ) : view === "alphabet" ? (

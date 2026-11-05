@@ -13,6 +13,7 @@ class Content(Base):
     theme: Mapped[str] = mapped_column(String, default="alphabet")
     status: Mapped[str] = mapped_column(String, default="draft")
     data: Mapped[dict] = mapped_column(JSON)
+    structured_dirty: Mapped[bool] = mapped_column(Boolean, nullable=False, default=True, server_default="true")
     search_text: Mapped[str] = mapped_column(Text, nullable=False, default="", server_default="")
     pair_key: Mapped[str | None] = mapped_column(String(64), nullable=True)
     learning_band: Mapped[str | None] = mapped_column(String(16),nullable=True)
@@ -69,6 +70,8 @@ def update_search_text(mapper, connection, target):
     from .learning import features, editorial_features
     from .organization import VERSION
     state=inspect(target)
+    if state.pending or any(state.attrs[k].history.has_changes() for k in ("data", "status", "theme", "kind", "variety", "script")):
+        target.structured_dirty=True
     previous_role=target.learning_role
     first_organization=target.organization_version!=VERSION
     old_data=state.attrs.data.history.deleted
@@ -81,3 +84,6 @@ def update_search_text(mapper, connection, target):
     if target.kind in ('word','phrase') and not target.data.get('category_reviewed_at') and not explicit_theme_change and (first_organization or state.pending or french_changed or previous_role!=target.learning_role) and (auto_category or implicit_category):
         target.theme=target.topic_keys[0]
     for key,value in editorial_features(target.kind,target.data,target.theme,values).items():setattr(target,key,value)
+
+# Register additive relational models with the shared metadata.
+from . import structured_models  # noqa: E402,F401

@@ -137,6 +137,8 @@ def transaction_lock(s, key):
 
 
 def save(s, entry):
+    # Same lock as the batch normalizer: keep the immediate projection atomic.
+    s.execute(select(func.pg_advisory_xact_lock(714295311)))
     transaction_lock(s, 'word:' + lexeme_key(entry.latin) + ':' + word_french(entry.french))
     preview = inspect_entry(s, entry)
     if any(not p['matches'] for p in preview['provided_phrases']):
@@ -176,6 +178,12 @@ def save(s, entry):
         s.add(Content(id='phrase-admin-' + key[:24], kind='phrase', script='Latn', variety='kab', theme=word.theme, status='draft', data=d))
         s.flush()
         added += 1
+    from .data_pipeline import project
+    keys = [word.id] + ['phrase-admin-' + pair_key('phrase', p.model_dump())[:24] for p in entry.phrases]
+    changed = list(s.scalars(
+        select(Content).where(Content.id.in_(keys)).order_by(Content.id).with_for_update()
+    ))
+    project(s, changed)
     s.commit()
     result = for_word(s, word.id)
     if not word_created:

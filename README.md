@@ -209,3 +209,29 @@ pas une nouvelle citation de LibreLingo ou de Tatoeba.
 Contrôle navigateur (données synthétiques, supprimées après essai) :
 `KABYLE_BASE_URL=http://127.0.0.1:3000 .venv/bin/python scripts/word_laboratory_browser_smoke.py`.
 Le serveur et le script doivent disposer du même `ADMIN_TOKEN`.
+
+### Corpus structuré et parcours par niveaux
+
+La migration `007` ajoute une projection relationnelle des sources, versions,
+unités lexicales, formes, phrases, traductions et audios, et un modèle
+**cours → niveau proposé → unité → leçon → activité**. Les activités référencent
+les contenus existants ; les imports et corrections ne sont pas supprimés.
+
+```bash
+bash scripts/organize_data.sh
+```
+
+Le traitement est reprenable par lots de 500, avec progression affichée. Le
+site reste utilisable sans attendre une organisation complète du gros corpus.
+Les nouveaux mots admin sont projetés immédiatement ; les gros imports sont
+marqués à traiter. La commande `bash scripts/start.sh` ne lance pas ce gros
+traitement automatiquement à chaque ouverture.
+
+**Mon parcours** affiche cinq leçons pilotes A1 proposées ; A2 est à composer.
+**Gestion des contenus → Organiser les données et les parcours** affiche les
+compteurs et permet de composer/modifier les leçons, ajouter des niveaux,
+ordonner les activités et exporter le plan. Les réponses sont vérifiées côté
+serveur, les révisions et essais conservés. Les prérequis restent des conseils,
+et les contenus à vérifier sont publics.
+
+[Architecture, limites, sauvegarde et reproductibilité](docs/data-architecture.md).

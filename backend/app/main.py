@@ -57,6 +57,8 @@ def answer(body: Answer, who=Depends(learner), s=Depends(db)):
 @app.delete("/api/progress",status_code=204)
 def clear(who=Depends(learner),s=Depends(db)):
     from sqlalchemy import delete
+    from .structured_models import LessonRun
+    s.execute(delete(LessonRun).where(LessonRun.learner==who))
     s.execute(delete(Attempt).where(Attempt.learner==who));s.execute(delete(Progress).where(Progress.learner==who));s.commit()
 @app.get("/api/ai/status")
 def ai_status():
@@ -125,3 +127,8 @@ register_topic_routes(app,db,admin)
 
 from .word_entry import register_routes as register_word_entry_routes
 register_word_entry_routes(app, db, admin)
+
+from .curriculum import register_routes as register_curriculum_routes
+register_curriculum_routes(app, db, admin, learner)
+from .data_admin import register_routes as register_data_admin_routes
+register_data_admin_routes(app, db, admin)

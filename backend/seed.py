@@ -13,6 +13,7 @@ from app.catalog import (
 )
 from app.library import seed_categories
 from app.reindex import reindex_content, limit_startup_lock_wait
+from app.curriculum import seed_curriculum
 
 
 def report(message):
@@ -43,6 +44,7 @@ def seed():
         counts["categories_initialized"] = seed_categories(session)
         counts.update(seed_complete_course(session))
         # Preserve initialization and each completed backfill batch on Ctrl+C.
+        counts["course_initialized"] = seed_curriculum(session)
         session.commit()
         counts["reclassified"] = reindex_content(session, report=report)
     report("Import idempotent terminé : " + str(counts))
