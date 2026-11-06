@@ -49,6 +49,14 @@ export default function Admin({ onSaved }: { onSaved: () => void }) {
           placeholder="ADMIN_TOKEN"
         />
       </label>
+      <details className="advanced-editor">
+        <summary>Entraîner le chatbot avec Colab</summary>
+        <p>1. Dans le terminal du projet : <code>bash scripts/export_chat_dataset.sh</code>.</p>
+        <p>2. Importe le ZIP dans le notebook et compare les résultats avant et après adaptation.</p>
+        <p>3. Télécharge l’adaptateur puis démarre le serveur de modèle local.</p>
+        <a href="https://colab.research.google.com/github/liliabkm/Kabyle/blob/main/notebooks/kabyle_chat_finetune.ipynb" target="_blank" rel="noreferrer">Ouvrir le notebook Colab</a>
+        <p><a href="https://github.com/liliabkm/Kabyle/blob/main/docs/chatbot-kabyle.md" target="_blank" rel="noreferrer">Instructions complètes</a> · Le notebook doit être exécuté pour entraîner le modèle.</p>
+      </details>
       <DataStudio key={"structure-" + token} token={token} />
       <WordLaboratory key={token} token={token} onSaved={onSaved} />
       <ContentLibrary token={token} onSaved={onSaved} />

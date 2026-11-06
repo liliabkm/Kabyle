@@ -1748,3 +1748,28 @@ textarea {
 .matching span {
   font-size: 38px;
 }
+
+/* Conversation uses the same soft colors as the reading library. */
+.kabyle-chat { max-width: 820px; margin: 0 auto; }
+.chat-header { display: flex; gap: 18px; align-items: center; margin-bottom: 24px; }
+.chat-header h1 { margin: 0 0 8px; }
+.chat-header p { margin: 0; }
+.chat-icon { display: grid; place-items: center; flex: 0 0 64px; height: 64px; border-radius: 22px; color: #775bcc; background: #ede7ff; }
+.chat-connection, .chat-bubble, .chat-compose { padding: 22px; border: 1px solid #e3def2; border-radius: 22px; background: white; margin-bottom: 16px; }
+.chat-connection { background: #f2effc; }
+.chat-connection p, .chat-notice { color: #677497; font-size: 14px; }
+.kabyle-chat details { margin-top: 16px; font-size: 14px; }
+.kabyle-chat summary { cursor: pointer; color: #6747bc; }
+.chat-bubble.user { margin-left: 48px; background: #e9f6ee; border-color: #d4e9dc; }
+.chat-bubble.assistant { margin-right: 24px; }
+.chat-text { white-space: pre-wrap; overflow-wrap: anywhere; line-height: 1.7; }
+.chat-reference { padding: 14px 0; border-top: 1px solid #eee; }
+.chat-compose label { display: block; font-weight: 600; }
+.chat-compose textarea { width: 100%; margin: 10px 0; resize: vertical; }
+.chat-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.chat-error { padding: 14px; border-radius: 12px; background: #fff0ed; color: #983b2e; }
+@media (max-width: 600px) {
+  .chat-bubble.user { margin-left: 16px; }
+  .chat-bubble.assistant { margin-right: 0; }
+  .chat-connection, .chat-bubble, .chat-compose { padding: 16px; }
+}

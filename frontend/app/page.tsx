@@ -10,6 +10,7 @@ import {
   LayoutGrid,
   Leaf,
   Menu,
+  MessageCircle,
   PenLine,
   RotateCcw,
   Settings,
@@ -28,7 +29,9 @@ import { request } from "../lib/api";
 import PageTitle from "../components/PageTitle";
 import Drawing from "../components/Drawing";
 import Admin from "../components/Admin";
+import KabyleChat from "../components/KabyleChat";
 type View =
+  | "chat"
   | "library"
   | "path"
   | "learn"
@@ -164,6 +167,7 @@ export default function Home() {
     { id: "alphabet", label: "Les lettres", icon: BookOpen },
     { id: "words", label: "Mots et phrases", icon: LayoutGrid },
     { id: "draw", label: "Dessiner", icon: PenLine },
+    { id: "chat", label: "Parler kabyle", icon: MessageCircle },
     { id: "progress", label: "Mes progrès", icon: Target },
   ] as const;
   const learnerNav = nav;
@@ -595,6 +599,8 @@ export default function Home() {
                 )}
               </div>
             </>
+          ) : view === "chat" ? (
+            <KabyleChat />
           ) : view === "path" ? (
             <LearningPath />
           ) : view === "library" ? (

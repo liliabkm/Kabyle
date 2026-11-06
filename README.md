@@ -259,3 +259,7 @@ node scripts/library_cache_test.cjs
 # Serveurs démarrés, avec le catalogue de démonstration :
 .venv/bin/python scripts/library_cache_browser_smoke.py
 ```
+
+## Chatbot kabyle et Colab
+
+La rubrique **Parler kabyle** utilise un modèle local optionnel et des exemples de la bibliothèque. Pour exporter le corpus, adapter Qwen avec Colab, comparer les résultats et connecter l’adaptateur : [guide du chatbot](docs/chatbot-kabyle.md). L’entraînement doit être exécuté dans le notebook ; le dépôt ne contient pas d’adaptateur déjà entraîné.

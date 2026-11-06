@@ -132,3 +132,6 @@ from .curriculum import register_routes as register_curriculum_routes
 register_curriculum_routes(app, db, admin, learner)
 from .data_admin import register_routes as register_data_admin_routes
 register_data_admin_routes(app, db, admin)
+
+from .chatbot import register_routes as register_chat_routes
+register_chat_routes(app, db)

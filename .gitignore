@@ -8,3 +8,4 @@ media/
 *.db
 artifacts/
 *.tsbuildinfo
+.venv-chat/
