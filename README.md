@@ -235,3 +235,27 @@ serveur, les révisions et essais conservés. Les prérequis restent des conseil
 et les contenus à vérifier sont publics.
 
 [Architecture, limites, sauvegarde et reproductibilité](docs/data-architecture.md).
+
+### Cache de la bibliothèque
+
+Les thèmes, pages de mots, phrases et lettres de la bibliothèque publique sont
+chargés à la demande et conservés en mémoire dans l’onglet pendant cinq minutes
+(maximum 120 pages). Les requêtes identiques simultanées sont regroupées. Revenir
+sur une page déjà chargée évite une nouvelle lecture serveur et retrouve le
+thème, la page et le filtre audio. Les pages suivantes restent chargées seulement
+lorsqu’elles sont demandées.
+
+Le bouton **Actualiser** vide le cache. Une modification admin réussie dans le
+même onglet l’invalide aussi. Les exercices, progrès, réponses et écrans admin
+ne sont pas mis en cache. Pour une modification provenant d’un autre onglet ou
+d’un import CLI, utiliser Actualiser ou attendre l’expiration avant de rouvrir
+la page concernée. Un rechargement complet du navigateur repart avec un cache vide.
+
+Vérifications :
+
+```bash
+frontend/node_modules/.bin/tsc frontend/lib/api.ts --outDir artifacts/library-cache-test --target ES2020 --module commonjs --skipLibCheck
+node scripts/library_cache_test.cjs
+# Serveurs démarrés, avec le catalogue de démonstration :
+.venv/bin/python scripts/library_cache_browser_smoke.py
+```

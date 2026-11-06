@@ -3825,3 +3825,6 @@ footer > span:last-child {
 
 .course-unit-heading { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
 .course-unit-heading .topic-art { flex: 0 0 85px; width: 85px; height: 85px; }
+
+.theme-learning > .page-heading { flex-wrap: wrap; gap: 1rem; }
+.theme-learning > .page-heading > div { min-width: 0; }

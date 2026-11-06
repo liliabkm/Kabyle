@@ -6,8 +6,9 @@ import {
   ChevronRight,
   BookOpen,
   Check,
+  RefreshCw,
 } from "lucide-react";
-import { request } from "../lib/api";
+import { cachedLibrary, peekLibrary, libraryVersion, invalidateLibraryCache } from "../lib/api";
 import { TopicArt, WordArt, PhotoCredit } from "./TopicArt";
 import PhrasePractice from "./PhrasePractice";
 import PhraseAudio, { type Recording } from "./PhraseAudio";
@@ -63,74 +64,91 @@ type Phrase = {
   } | null;
 };
 type Phrases = { items: Phrase[]; total: number };
+type Catalog = {topics: Topic[]; letter_count: number};
+type Browsing = {generation: number; topic: Topic | null; stage: "words" | "phrases"; selected: Word | null; wordOffset: number; phraseOffset: number; audioOnly: boolean};
+const browsing = new Map<string, Browsing>();
+type LibraryPage = Words | Phrases | {items: AlphabetLetter[]};
+function pagePath(topic: Topic, stage: "words" | "phrases", selected: Word | null, wordOffset: number, phraseOffset: number, audioOnly: boolean) {
+  if (topic.id === "alphabet") return "library?kind=letter&limit=72";
+  if (stage === "words") return `topics/${topic.id}/words?offset=${wordOffset}`;
+  return (selected ? `words/${encodeURIComponent(selected.id)}/phrases?` : `topics/${topic.id}/phrases?`) + new URLSearchParams({word: selected?.concept || "", offset: String(phraseOffset), audio_only: String(audioOnly)});
+}
+
+
 export default function ThemeLearning({
   showAlphabet = false,
   title = "Choisis ton thème",
 }: { showAlphabet?: boolean; title?: string } = {}) {
-  const [topics, setTopics] = useState<Topic[]>([]),
-    [letterCount, setLetterCount] = useState(0),
-    [topic, setTopic] = useState<Topic | null>(null),
-    [stage, setStage] = useState<"words" | "phrases">("words"),
-    [selected, setSelected] = useState<Word | null>(null),
-    [wordData, setWordData] = useState<Words | null>(null),
-    [phraseData, setPhraseData] = useState<Phrases | null>(null),
-    [wordOffset, setWordOffset] = useState(0),
-    [phraseOffset, setPhraseOffset] = useState(0),
-    [audioOnly, setAudioOnly] = useState(false),
+  const scope = showAlphabet ? "library" : "vocabulary";
+  const remembered = browsing.get(scope);
+  const saved = remembered?.generation === libraryVersion() ? remembered : undefined;
+  const [revision, setRevision] = useState(libraryVersion());
+  const [topics, setTopics] = useState<Topic[]>(() => peekLibrary<Catalog>("topics")?.topics || []),
+    [letterCount, setLetterCount] = useState(() => peekLibrary<Catalog>("topics")?.letter_count || 0),
+    [topic, setTopic] = useState<Topic | null>(saved?.topic || null),
+    [stage, setStage] = useState<"words" | "phrases">(saved?.stage || "words"),
+    [selected, setSelected] = useState<Word | null>(saved?.selected || null),
+    [wordData, setWordData] = useState<Words | null>(() => saved?.topic && saved.topic.id !== "alphabet" && saved.stage === "words" ? peekLibrary<Words>(pagePath(saved.topic, saved.stage, saved.selected, saved.wordOffset, saved.phraseOffset, saved.audioOnly)) || null : null),
+    [phraseData, setPhraseData] = useState<Phrases | null>(() => saved?.topic && saved.topic.id !== "alphabet" && saved.stage === "phrases" ? peekLibrary<Phrases>(pagePath(saved.topic, saved.stage, saved.selected, saved.wordOffset, saved.phraseOffset, saved.audioOnly)) || null : null),
+    [wordOffset, setWordOffset] = useState(saved?.wordOffset || 0),
+    [phraseOffset, setPhraseOffset] = useState(saved?.phraseOffset || 0),
+    [audioOnly, setAudioOnly] = useState(saved?.audioOnly || false),
     [exercise, setExercise] = useState<string | null>(null),
-    [letters, setLetters] = useState<AlphabetLetter[]>([]),
-    [loading, setLoading] = useState(true),
+    [letters, setLetters] = useState<AlphabetLetter[]>(() => peekLibrary<{items: AlphabetLetter[]}>("library?kind=letter&limit=72")?.items || []),
+    [loading, setLoading] = useState(() => saved?.topic ? !peekLibrary(pagePath(saved.topic, saved.stage, saved.selected, saved.wordOffset, saved.phraseOffset, saved.audioOnly)) : !peekLibrary<Catalog>("topics")),
     [error, setError] = useState("");
   useEffect(() => {
-    const c = new AbortController();
-    request("topics", { signal: c.signal })
-      .then((r) => {
-        setTopics(r.topics);
-        setLetterCount(r.letter_count);
-      })
-      .catch((e) => {
-        if (e.name !== "AbortError") setError(e.message);
-      })
-      .finally(() => {
-        if (!c.signal.aborted) setLoading(false);
-      });
-    return () => c.abort();
+    const refresh = () => setRevision((value) => value + 1);
+    window.addEventListener("library-data-changed", refresh);
+    return () => window.removeEventListener("library-data-changed", refresh);
   }, []);
   useEffect(() => {
-    if (!topic) return;
-    const c = new AbortController();
+    browsing.set(scope, {generation: libraryVersion(), topic, stage, selected, wordOffset, phraseOffset, audioOnly});
+  }, [scope, topic, stage, selected, wordOffset, phraseOffset, audioOnly, revision]);
+  useEffect(() => {
     let active = true;
-    setLoading(true);
     setError("");
-    const path =
-      topic.id === "alphabet"
-        ? "library?kind=letter&limit=72"
-        : stage === "words"
-          ? `topics/${topic.id}/words?offset=${wordOffset}`
-          : (selected ? `words/${encodeURIComponent(selected.id)}/phrases?` : `topics/${topic.id}/phrases?`) +
-            new URLSearchParams({
-              word: selected?.concept || "",
-              offset: String(phraseOffset),
-              audio_only: String(audioOnly),
-            });
-    request(path, { signal: c.signal })
-      .then((r) => {
-        if (!active) return;
-        if (topic.id === "alphabet") setLetters(r.items);
-        else if (stage === "words") setWordData(r);
-        else setPhraseData(r);
-      })
-      .catch((e) => {
-        if (active && e.name !== "AbortError") setError(e.message);
-      })
-      .finally(() => {
-        if (active) setLoading(false);
-      });
-    return () => {
-      active = false;
-      c.abort();
+    const apply = (r: Catalog) => { setTopics(r.topics); setLetterCount(r.letter_count); };
+    const cached = peekLibrary<Catalog>("topics");
+    if (cached) { apply(cached); if (!topic) setLoading(false); }
+    else {
+      if (!topic) setLoading(true);
+      cachedLibrary<Catalog>("topics").then((r) => { if (active) apply(r); })
+        .catch((e) => { if (active) setError(e.message); })
+        .finally(() => { if (active && !topic) setLoading(false); });
+    }
+    return () => { active = false; };
+  }, [revision]);
+  useEffect(() => {
+    if (!topic) return;
+    let active = true;
+    setError("");
+    const path = pagePath(topic, stage, selected, wordOffset, phraseOffset, audioOnly);
+    const apply = (r: LibraryPage) => {
+      if (topic.id === "alphabet") setLetters((r as {items: AlphabetLetter[]}).items);
+      else if (stage === "words") setWordData(r as Words);
+      else setPhraseData(r as Phrases);
     };
-  }, [topic?.id, stage, selected?.concept, wordOffset, phraseOffset, audioOnly, selected?.id]);
+    const cached = peekLibrary<LibraryPage>(path);
+    if (cached) { apply(cached); setLoading(false); }
+    else {
+      setLoading(true);
+      cachedLibrary<LibraryPage>(path).then((r) => { if (active) apply(r); })
+        .catch((e) => { if (active) setError(e.message); })
+        .finally(() => { if (active) setLoading(false); });
+    }
+    return () => { active = false; };
+  }, [topic?.id, stage, selected?.concept, wordOffset, phraseOffset, audioOnly, selected?.id, revision]);
+  function hydrate(t: Topic, nextStage: "words" | "phrases", w: Word | null, wo: number, po: number, audio: boolean) {
+    const cached = peekLibrary<LibraryPage>(pagePath(t, nextStage, w, wo, po, audio));
+    setLoading(!cached);
+    if (!cached && topic && pagePath(topic, stage, selected, wordOffset, phraseOffset, audioOnly) === pagePath(t, nextStage, w, wo, po, audio)) {
+      setRevision((value) => value + 1);
+    }
+    if (t.id === "alphabet") setLetters((cached as {items: AlphabetLetter[]} | undefined)?.items || []);
+    else if (nextStage === "words") setWordData(cached as Words || null);
+    else setPhraseData(cached as Phrases || null);
+  }
   function open(t: Topic) {
     setTopic(t);
     setAudioOnly(false);
@@ -138,15 +156,14 @@ export default function ThemeLearning({
     setSelected(null);
     setWordOffset(0);
     setPhraseOffset(0);
-    setWordData(null);
-    setPhraseData(null);
+    hydrate(t, t.word_count ? "words" : "phrases", null, 0, 0, false);
     window.scrollTo(0, 0);
   }
   function contexts(w: Word | null) {
     setSelected(w);
     setStage("phrases");
     setPhraseOffset(0);
-    setPhraseData(null);
+    if (topic) hydrate(topic, "phrases", w, wordOffset, 0, audioOnly);
     window.scrollTo(0, 0);
   }
   function back() {
@@ -158,8 +175,10 @@ export default function ThemeLearning({
     window.scrollTo(0, 0);
   }
   function page(kind: "words" | "phrases", direction: number) {
-    if (kind === "words") setWordOffset((x) => Math.max(0, x + direction * 24));
-    else setPhraseOffset((x) => Math.max(0, x + direction * 12));
+    const wo = kind === "words" ? Math.max(0, wordOffset + direction * 24) : wordOffset;
+    const po = kind === "phrases" ? Math.max(0, phraseOffset + direction * 12) : phraseOffset;
+    if (topic) hydrate(topic, kind, selected, wo, po, audioOnly);
+    setWordOffset(wo); setPhraseOffset(po);
     window.scrollTo(0, 0);
   }
   const badge = (status: string) => (
@@ -198,6 +217,9 @@ export default function ThemeLearning({
             <h1>{title}</h1>
             <p>Une image, des mots, puis des petites phrases.</p>
           </div>
+          <button className="secondary" onClick={invalidateLibraryCache} disabled={loading}>
+            <RefreshCw size={16} /> Actualiser
+          </button>
         </div>
         {error && (
           <p className="error" role="alert">
@@ -311,6 +333,7 @@ export default function ThemeLearning({
               onClick={() => {
                 setStage("words");
                 setSelected(null);
+                hydrate(topic, "words", null, wordOffset, phraseOffset, audioOnly);
               }}
             >
               1 <span>Les mots</span>
@@ -466,6 +489,7 @@ export default function ThemeLearning({
               onClick={() => {
                 setStage("words");
                 setSelected(null);
+                hydrate(topic, "words", null, wordOffset, phraseOffset, audioOnly);
               }}
             >
               <ChevronLeft size={16} /> Revoir les mots
@@ -488,6 +512,7 @@ export default function ThemeLearning({
               <input type="checkbox" checked={audioOnly} onChange={(event) => {
                 setAudioOnly(event.target.checked);
                 setPhraseOffset(0);
+                hydrate(topic, "phrases", selected, wordOffset, 0, event.target.checked);
               }} />
               Avec audio uniquement
             </label>
@@ -532,7 +557,7 @@ export default function ThemeLearning({
               <h3>{audioOnly ? "Pas encore d’audio pour ces phrases." : "Pas encore de phrase attestée pour ce mot."}</h3>
               <p>{audioOnly ? "Tu peux consulter les phrases sans enregistrement." : "Tu peux déjà découvrir les autres phrases de ce thème."}</p>
               <button className="secondary" onClick={() => {
-                if (audioOnly) { setAudioOnly(false); setPhraseOffset(0); }
+                if (audioOnly) { setAudioOnly(false); setPhraseOffset(0); hydrate(topic, "phrases", selected, wordOffset, 0, false); }
                 else contexts(null);
               }}>
                 {audioOnly ? "Afficher toutes les phrases" : "Voir les phrases du thème"}
