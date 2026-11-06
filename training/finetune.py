@@ -1,4 +1,4 @@
-"""Real QLoRA training. Requires an NVIDIA GPU; never marks an unrun model trained."""
+"""Real LoRA training. Requires an NVIDIA GPU; never marks an unrun model trained."""
 import argparse,hashlib,json,random
 from pathlib import Path
 
@@ -22,11 +22,11 @@ def main():
     p.add_argument('--evaluation-examples',type=int,default=40)
     a=p.parse_args()
     import torch
-    if not torch.cuda.is_available():raise SystemExit('GPU NVIDIA requis pour ce notebook QLoRA. Active un runtime GPU dans Colab.')
+    if not torch.cuda.is_available():raise SystemExit('GPU NVIDIA requis pour ce notebook LoRA. Active un runtime GPU dans Colab.')
     from huggingface_hub import model_info
-    from transformers import AutoTokenizer,AutoModelForCausalLM,BitsAndBytesConfig,Trainer,TrainingArguments,set_seed
+    from transformers import AutoTokenizer,AutoModelForCausalLM,Trainer,TrainingArguments,set_seed
     from transformers.trainer_utils import get_last_checkpoint
-    from peft import LoraConfig,get_peft_model,prepare_model_for_kbit_training
+    from peft import LoraConfig,get_peft_model
     from datasets import load_dataset
     from sacrebleu.metrics import CHRF
     set_seed(42)
@@ -47,11 +47,11 @@ def main():
     checkpoint=existing if a.resume else None
     previous=a.output/'run-input.json'
     resolved=model_info(a.base_model).sha
-    inputs={'base_model':a.base_model,'model_revision':resolved,'dataset_sha256':manifest['sha256'],'max_steps':a.max_steps,'seed':42,'max_length':512}
+    inputs={'base_model':a.base_model,'model_revision':resolved,'dataset_sha256':manifest['sha256'],'max_steps':a.max_steps,'seed':42,'max_length':512,'method':'lora-amp-v1','training_script_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest()}
     if checkpoint and not previous.exists():raise SystemExit('Métadonnées du checkpoint absentes : utilise un nouveau dossier.')
     if checkpoint and previous.exists():
         old=json.loads(previous.read_text())
-        if old['base_model']!=a.base_model or old['dataset_sha256']!=manifest['sha256'] or old['max_steps']!=a.max_steps:raise SystemExit('Le checkpoint utilise un autre modèle ou corpus.')
+        if old['base_model']!=a.base_model or old['dataset_sha256']!=manifest['sha256'] or old['max_steps']!=a.max_steps or old.get('method')!='lora-amp-v1':raise SystemExit('Le checkpoint utilise un autre modèle ou corpus.')
         resolved=old['model_revision'];inputs['model_revision']=resolved
     previous.write_text(json.dumps(inputs,indent=2)+'\n')
     tokenizer=AutoTokenizer.from_pretrained(a.base_model,revision=resolved,trust_remote_code=False)
@@ -60,9 +60,9 @@ def main():
     tokenized=data.map(tokenize,remove_columns=data['train'].column_names).filter(lambda x:x['keep']).remove_columns('keep')
     if len(tokenized['train'])<64 or len(tokenized['validation'])<8:raise SystemExit('Trop peu d’exemples après tokenisation.')
     model=AutoModelForCausalLM.from_pretrained(a.base_model,revision=resolved,trust_remote_code=False,use_safetensors=True,
-        quantization_config=BitsAndBytesConfig(load_in_4bit=True,bnb_4bit_quant_type='nf4',bnb_4bit_use_double_quant=True,bnb_4bit_compute_dtype=torch.float16),device_map={'':0})
-    model=prepare_model_for_kbit_training(model)
+        torch_dtype=torch.float32,device_map={'':0})
     model=get_peft_model(model,LoraConfig(r=16,lora_alpha=32,lora_dropout=.05,bias='none',task_type='CAUSAL_LM',target_modules=['q_proj','k_proj','v_proj','o_proj','gate_proj','up_proj','down_proj']))
+    model.enable_input_require_grads()
     model.config.use_cache=False
     def collate(rows):
         batch=tokenizer.pad([{'input_ids':x['input_ids'],'attention_mask':x['attention_mask']} for x in rows],return_tensors='pt')
@@ -73,7 +73,7 @@ def main():
     args=TrainingArguments(output_dir=str(a.output),per_device_train_batch_size=1,per_device_eval_batch_size=1,gradient_accumulation_steps=16,
         gradient_checkpointing=True,num_train_epochs=1,max_steps=a.max_steps,learning_rate=2e-4,fp16=True,bf16=False,
         logging_steps=10,eval_strategy='steps',eval_steps=100,save_steps=100,save_total_limit=2,report_to='none',seed=42,
-        optim='paged_adamw_8bit',remove_unused_columns=False,eval_accumulation_steps=1)
+        optim='adamw_torch',remove_unused_columns=False,eval_accumulation_steps=1)
     # Evaluate a bounded validation sample during training, never the test set.
     validation=tokenized['validation'].select(range(min(128,len(tokenized['validation']))))
     trainer=Trainer(model=model,args=args,train_dataset=tokenized['train'],eval_dataset=validation,data_collator=collate)
@@ -96,7 +96,7 @@ def main():
         subset=[r for r in records if r['id'].endswith(direction)]
         if subset:scores[direction]={name:metric.corpus_score([r[name] for r in subset],[[r['expected'] for r in subset]]).score for name in ('baseline','adapted')}
     (a.output/'evaluation.json').write_text(json.dumps({'scores_chrf':scores,'examples':records,'notice':'Évaluation de traduction seulement ; relecture native et tests conversationnels nécessaires.'},ensure_ascii=False,indent=2)+'\n')
-    training={'status':'completed','adaptation':'lora','base_model':a.base_model,'model_revision':resolved,'dataset':manifest,
+    training={'status':'completed','adaptation':'lora','method':inputs['method'],'training_script_sha256':inputs['training_script_sha256'],'base_model':a.base_model,'model_revision':resolved,'dataset':manifest,
         'training_metrics':result.metrics,'global_steps':trainer.state.global_step,'training_examples_available':len(tokenized['train']),
         'max_steps':a.max_steps,'mode':'pilot' if a.max_steps>0 else 'one_epoch','scores_chrf':scores,'quality_status':'requires_human_evaluation'}
     (adapter/'training_manifest.json').write_text(json.dumps(training,ensure_ascii=False,indent=2)+'\n')

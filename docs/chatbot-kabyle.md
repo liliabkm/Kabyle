@@ -22,7 +22,7 @@ Chaque paire génère deux tâches de traduction, sans inventer de réponses con
 
 [Ouvrir le notebook](https://colab.research.google.com/github/liliabkm/Kabyle/blob/main/notebooks/kabyle_chat_finetune.ipynb).
 
-Active un GPU T4, importe le ZIP et exécute les cellules. Le notebook récupère le code correspondant à l’export et installe les versions indiquées. Il utilise QLoRA 4 bits, n’entraîne que les adaptateurs et masque les instructions dans la fonction de coût. Le SHA du modèle de base est enregistré. L’environnement GPU et les calculs peuvent néanmoins introduire des variations : ce n’est pas une garantie de résultats identiques bit à bit.
+Active un GPU T4, importe le ZIP et exécute les cellules. Le notebook récupère le code correspondant à l’export et installe les versions indiquées. Il utilise LoRA sans quantification (poids du modèle en float32 et calculs en précision mixte FP16), n’entraîne que les adaptateurs et masque les instructions dans la fonction de coût. Le SHA du modèle de base est enregistré. L’environnement GPU et les calculs peuvent néanmoins introduire des variations : ce n’est pas une garantie de résultats identiques bit à bit.
 
 Commence par `MODE = 'pilot'` (200 étapes). Ce test ne parcourt pas toute la base. `MODE = 'full'` lance une époque complète, qui peut dépasser une session gratuite. Les checkpoints sont conservés dans ton Drive pour reprendre. Aucun service payant n’est lancé automatiquement. Vérifie également les conditions du modèle et les métadonnées des sources avant redistribution.
 
@@ -46,3 +46,5 @@ bash scripts/start.sh
 Ouvre **Parler kabyle**, puis clique sur **Vérifier la connexion**. Le statut « Modèle adapté chargé » n’apparaît que lorsque le worker a chargé un adaptateur terminé. Pour comparer sans adaptation : `bash scripts/start_chat_model.sh --base-only`. Le serveur n’écoute que sur la machine locale. Le site fonctionne aussi sans ce processus ; seul le chat est indisponible.
 
 Les paramètres optionnels `CHAT_MODEL_BASE_URL` et `CHAT_MODEL_NAME` sont documentés dans `.env.example`. La configuration par défaut utilise `http://127.0.0.1:8010/v1`. Aucun abonnement ni clé API n’est nécessaire pour ce serveur local. Un déploiement public demandera une capacité d’inférence dédiée et des limites par utilisateur ; ce worker traite une génération à la fois et refuse les requêtes simultanées.
+
+En cas d’erreur `libbitsandbytes_cuda130.so` sur une ancienne session : le script corrigé n’utilise plus bitsandbytes. Mettre à jour le script et désinstaller cette bibliothèque dans Colab ; ne pas réutiliser un ancien checkpoint QLoRA avec le nouvel optimiseur. Le SHA du script d’entraînement est conservé avec l’adaptateur.
